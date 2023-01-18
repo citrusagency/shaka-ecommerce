@@ -43,7 +43,7 @@
 
                 @section('body-header')
                     {{-- top nav which contains currency, locale and login header --}}
-                    <!-- @include('shop::layouts.top-nav.index') -->
+                    @include('shop::layouts.top-nav.index')
 
                     {!! view_render_event('bagisto.shop.layout.header.before') !!}
 
@@ -55,7 +55,7 @@
                     <div class="main-content-wrapper col-12 no-padding">
 
                         {{-- secondary header --}}
-                        <!-- <header class="row velocity-divide-page vc-header header-shadow active">
+                        <header class="row velocity-divide-page vc-header header-shadow active">
 
                             {{-- mobile header --}}
                             <div class="vc-small-screen container">
@@ -65,7 +65,7 @@
                             {{-- desktop header --}}
                             @include('shop::layouts.header.desktop')
 
-                        </header> -->
+                        </header>
 
                         <div class="">
                             <div class="row col-12 remove-padding-margin">
