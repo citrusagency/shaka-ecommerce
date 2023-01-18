@@ -4,7 +4,7 @@
         @mouseover="isActive ? isActive = !isActive : ''"
         @mouseout="active !== '' && !isActive ? isActive = !isActive : ''">
 
-        {{ isActive ? 'favorite_border' : 'favorite' }}
+        <!-- {{ isActive ? 'favorite_border' : 'favorite' }} -->
     </i>
 </template>
 
