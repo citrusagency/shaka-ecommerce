@@ -1,4 +1,12 @@
-<header class="sticky-header navbar-dark bg-dark text-white py-3 " style="height: auto!important;">
+@php
+    // If current route is /
+    if (request()->route()->getName() == 'shop.home.index') {
+        $headerClass = 'bg-transparent';
+    } else {
+        $headerClass = 'bg-shaka-dark';
+    }
+@endphp
+<header class="sticky-header navbar-dark  text-white py-4 {{ $headerClass }}" style="height: auto!important;">
     <div class="container">
 
 

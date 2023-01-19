@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-6">
-            <div v-if="hamburger" class="nav-container scrollable">
+            <div v-if="hamburger" class="nav-container scrollable ">
                 <div class="wrapper" v-if="this.rootCategories">
                     <div class="greeting drawer-section fw6">
                         <i class="material-icons">perm_identity</i>
@@ -275,11 +275,17 @@
                 </div>
             </div>
 
-            <div class="hamburger-wrapper" @click="toggleHamburger">
-                <i class="rango-toggle hamburger"></i>
-            </div>
 
-            <slot name="logo"></slot>
+<div class="row" style="height: 100%;">
+    <div class="align-content-center col-12 d-flex flex-column justify-content-center" style="height: 100%;">
+        <div class="mr-4" @click="toggleHamburger">
+            <i class="rango-toggle hamburger" style="font-size: 25px!important"></i>
+        </div>
+
+        <slot name="logo" ></slot>
+    </div>
+</div>
+
         </div>
 
         <div class="right-vc-header col-6">

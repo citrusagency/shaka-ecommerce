@@ -4,6 +4,7 @@
 @endphp
 
 <mobile-header
+    class="py-2"
     is-customer="{{ auth()->guard('customer')->check() ? 'true' : 'false' }}"
     heading= "{{ __('velocity::app.menu-navbar.text-category') }}"
     :header-content="{{ json_encode(app('Webkul\Velocity\Repositories\ContentRepository')->getAllContents()) }}"
@@ -24,7 +25,7 @@
             </div>
 
             <a class="left" href="{{ route('shop.home.index') }}" aria-label="Logo">
-                <img class="logo" src="{{ core()->getCurrentChannel()->logo_url ?? asset('themes/velocity/assets/images/logo-text.png') }}" alt="" />
+                <img class=" w-100" src="{{ core()->getCurrentChannel()->logo_url ?? asset('themes/velocity/assets/images/logo-text.png') }}" style="max-height: 30px!important; width: 98px!important;" alt="" />
             </a>
         </div>
 
@@ -152,12 +153,13 @@
     </template>
 
     <template v-slot:logo>
-        <a class="left" href="{{ route('shop.home.index') }}" aria-label="Logo">
-            <img class="logo" src="{{ core()->getCurrentChannel()->logo_url ?? asset('themes/velocity/assets/images/logo-text.png') }}" alt="" />
+        <a class="left ml-5" href="{{ route('shop.home.index') }}" aria-label="Logo">
+            <img class=" w-100" src="{{ core()->getCurrentChannel()->logo_url ?? asset('themes/velocity/assets/images/logo-text.png') }}" style="max-height: 30px!important; width: auto!important;" alt="" />
+
         </a>
     </template>
 
-    
+
 
     <template v-slot:search-bar>
         <div class="row">

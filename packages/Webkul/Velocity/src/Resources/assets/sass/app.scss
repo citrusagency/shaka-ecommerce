@@ -28,6 +28,51 @@
 /* static */
 @import 'static/material-icons';
 
+.bg-shaka-dark {
+    background-color: #0A3640!important;
+    color: white!important;
+}
+
+.bg-shaka-darker {
+    background-color: #052A32!important;
+    color: white!important;
+}
+.heading-1 {
+    font-size: 4.5rem;
+}
+.text-shaka{
+    color: #1197C2!important;
+}
+.bg-shaka-primary {
+    background-color: #1197C2!important;
+    color: white!important;
+}
+*{
+    font-size: 16px;
+}
+*{
+    font-size: 16px;
+}
+.bg-shaka-darker {
+    background-color: #052A32!important;
+    color: white!important;
+}
+
+.heading-1 {
+    font-size: 4.5rem;
+
+}
+
+.text-shaka{
+    color: #1197C2!important;
+}
+.bg-shaka-primary {
+    background-color: #1197C2!important;
+    color: white!important;
+}
+.main-container-wrapper .sticky-header.header-shadow {
+    background-color: #052A32!important;
+}
 /* starting */
 * {
     margin: 0;
@@ -1155,7 +1200,7 @@ i.within-circle {
     padding-left: 0 !important;
     padding-top: 0 !important;
     line-height: 2.0rem !important;
-    
+
     i {
         margin-top: 8px !important;
     }
