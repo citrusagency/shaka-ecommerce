@@ -21,7 +21,7 @@
         @endphp
 
         <a
-            class="unset wishlist-icon w-100 pr-3 {{ $addWishlistClass ?? '' }} text-right"
+            class="unset wishlist-icon float-right w-100 pr-3 {{ $addWishlistClass ?? '' }} text-right"
             href="javascript:void(0);"
             title="{{ $title }}"
             onclick="submitWishlistForm(
@@ -47,7 +47,7 @@
             @csrf
 
             <a
-                class="unset wishlist-icon {{ $addWishlistClass ?? '' }} text-right"
+                class="unset wishlist-icon float-right {{ $addWishlistClass ?? '' }} text-right"
                 href="javascript:void(0);"
                 title="{{ __('velocity::app.shop.wishlist.add-wishlist-text') }}"
                 onclick="document.getElementById('wishlist-{{ $product->product_id }}').submit();">

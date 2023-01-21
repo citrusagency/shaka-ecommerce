@@ -66,7 +66,7 @@ class CMSPagesTableSeeder extends Seeder
                 'locale'           => 'en',
                 'cms_page_id'      => 1,
                 'url_key'          => 'about-us',
-                'html_content'     => `<p>@include('shop::about')</p>`,
+                'html_content'     => "<p>@include('shop::about')</p>",
                 'page_title'       => 'About Us',
                 'meta_title'       => 'about us',
                 'meta_description' => '',

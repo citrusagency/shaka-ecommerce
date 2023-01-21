@@ -53,10 +53,8 @@
             <div class="sticker-new px-4 py-1" style="background-color: #B84626!important;" v-if="!product.isSaleable">
                 sold out
             </div>
-            <div class="product-actions bg-shaka-darker py-3 px-3">
-
+            <div class="product-actions bg-shaka-darker py-2 px-3">
                     <vnode-injector :nodes="getDynamicHTML(product.addToCartHtml)"></vnode-injector>
-
             </div>
         </a>
         <div class="product-name col-12 no-padding mt-2">
@@ -64,7 +62,6 @@
                 class="unset"
                 :title="product.name"
                 :href="`${baseUrl}/${product.slug}`">
-
                 <span class="fs16 font-weight-bold">{{ product.name }}</span>
                 <br>
                 <div class="product-price text-shaka-subtitle mt-2">{{ product.special_price ? product.special_price : product.price }}</div>
