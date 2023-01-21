@@ -3,33 +3,42 @@
         <shimmer-component v-if="isLoading"></shimmer-component>
 
         <template v-else-if="productCollections.length > 0">
-            <card-list-header
-                :heading="isCategory ? categoryDetails.name : productTitle"
-                :view-all="isCategory ? `${this.baseUrl}/${categoryDetails.url_path}` : ''">
-            </card-list-header>
+<!--            <card-list-header-->
+<!--                :heading="isCategory ? categoryDetails.name : productTitle"-->
+<!--                :view-all="isCategory ? `${this.baseUrl}/${categoryDetails.url_path}` : ''">-->
+<!--            </card-list-header>-->
 
             <div class="row" :class="localeDirection">
                 <div
                     class="col-md-12 no-padding carousel-products"
                     :class="showRecentlyViewed === 'true' ? 'with-recent-viewed col-lg-9' : 'without-recent-viewed col-lg-12'">
-                    <carousel-component
-                        :slides-per-page="slidesPerPage"
-                        pagination-enabled="hide"
-                        :id="isCategory ? `${categoryDetails.name}-carousel` : productId"
-                        :locale-direction="localeDirection"
-                        :slides-count="productCollections.length"
-                        v-if="count != 0">
+                    <div class="row">
+                    <div class="col-sm-6 col-md-4 col-lg-3" v-for="product in productCollections">
 
-                        <slide
-                            :key="index"
-                            :slot="`slide-${index}`"
-                            v-for="(product, index) in productCollections">
-                            <product-card
-                                :list="list"
-                                :product="product">
-                            </product-card>
-                        </slide>
-                    </carousel-component>
+                        <product-card
+                                                            :list="list"
+                                                            :product="product">
+                                                        </product-card>
+                    </div>
+                    </div>
+<!--                    <carousel-component-->
+<!--                        :slides-per-page="slidesPerPage"-->
+<!--                        -->
+<!--                        :id="isCategory ? `${categoryDetails.name}-carousel` : productId"-->
+<!--                        :locale-direction="localeDirection"-->
+<!--                        :slides-count="productCollections.length"-->
+<!--                        v-if="count != 0">-->
+
+<!--                        <slide-->
+<!--                            :key="index"-->
+<!--                            :slot="`slide-${index}`"-->
+<!--                            v-for="(product, index) in productCollections">-->
+<!--                            <product-card-->
+<!--                                :list="list"-->
+<!--                                :product="product">-->
+<!--                            </product-card>-->
+<!--                        </slide>-->
+<!--                    </carousel-component>-->
                 </div>
 
                 <recently-viewed
@@ -73,7 +82,7 @@
                 isLoading: true,
                 isCategory: false,
                 productCollections: [],
-                slidesPerPage: 6,
+                slidesPerPage: 4,
                 windowWidth: window.innerWidth,
             }
         },
@@ -157,13 +166,13 @@
             /* setting slides on the basis of window width */
             setSlidesPerPage: function (width) {
                 if (width >= 1200) {
-                    this.slidesPerPage = 6;
-                } else if (width < 1200 && width >= 992) {
-                    this.slidesPerPage = 5;
-                } else if (width < 992 && width >= 822) {
                     this.slidesPerPage = 4;
-                } else if (width < 822 && width >= 626) {
+                } else if (width < 1200 && width >= 992) {
                     this.slidesPerPage = 3;
+                } else if (width < 992 && width >= 822) {
+                    this.slidesPerPage = 2;
+                } else if (width < 822 && width >= 626) {
+                    this.slidesPerPage = 2;
                 } else {
                     this.slidesPerPage = 2;
                 }

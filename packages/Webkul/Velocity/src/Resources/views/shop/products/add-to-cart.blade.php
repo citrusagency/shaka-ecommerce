@@ -1,37 +1,7 @@
 {!! view_render_event('bagisto.shop.products.add_to_cart.before', ['product' => $product]) !!}
 
-    <div class="mx-0 no-padding">
-        @if (
-            isset($showCompare)
-            && $showCompare
-        )
-            <compare-component
-                @auth('customer')
-                    customer="true"
-                @endif
-
-                @guest('customer')
-                    customer="false"
-                @endif
-
-                slug="{{ $product->url_key }}"
-                product-id="{{ $product->id }}"
-                add-tooltip="{{ __('velocity::app.customer.compare.add-tooltip') }}"
-            ></compare-component>
-        @endif
-
-        @if (
-            ! (
-                isset($showWishlist)
-                && ! $showWishlist
-            )
-            && core()->getConfigData('general.content.shop.wishlist_option')
-        )
-            @include('shop::products.wishlist', [
-                'addClass' => $addWishlistClass ?? ''
-            ])
-        @endif
-
+<div class="row">
+    <div class="col-6">
         <div class="add-to-cart-btn pl0">
             @if (
                 isset($form)
@@ -46,7 +16,7 @@
                         ! (isset($showCartIcon)
                         && ! $showCartIcon)
                     )
-                        <i class="material-icons text-down-3">shopping_cart</i>
+                        {{--                        <i class="material-icons text-down-3">shopping_cart</i>--}}
                     @endif
 
                     {{ ($product->type == 'booking') ?  __('shop::app.products.book-now') :  __('shop::app.products.add-to-cart') }}
@@ -69,7 +39,7 @@
                             ! (isset($showCartIcon)
                             && ! $showCartIcon)
                         )
-                            <i class="material-icons text-down-3">shopping_cart</i>
+                            {{--                            <i class="material-icons text-down-3">shopping_cart</i>--}}
                         @endif
 
                         <span class="fs14 fw6 text-uppercase text-up-4">
@@ -94,5 +64,14 @@
             @endif
         </div>
     </div>
+    <div class="col-6">
+
+            @include('shop::products.wishlist', [
+                'addClass' => $addWishlistClass ?? ''
+            ])
+
+    </div>
+</div>
+
 
 {!! view_render_event('bagisto.shop.products.add_to_cart.after', ['product' => $product]) !!}

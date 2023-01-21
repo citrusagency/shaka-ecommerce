@@ -284,6 +284,9 @@ class Helper extends Review
 
         return [
             'priceHTML'        => $priceHTML,
+            'isSaleable' => $product->isSaleable(),
+            'price'            => core()->currency($product->price),
+            'special_price'            => $product->special_price ? core()->currency($product->special_price) : null,
             'avgRating'        => ceil($reviewHelper->getAverageRating($product)),
             'totalReviews'     => $reviewHelper->getTotalReviews($product),
             'image'            => $productImage,
@@ -298,7 +301,7 @@ class Helper extends Review
                 'product'          => $product,
                 'addWishlistClass' => ! (isset($list) && $list) ? '' : '',
 
-                'showCompare' => (bool) core()->getConfigData('general.content.shop.compare_option'),
+                'showCompare' => false,
 
                 'btnText' => (isset($metaInformation['btnText']) && $metaInformation['btnText'])
                     ? $metaInformation['btnText'] : null,

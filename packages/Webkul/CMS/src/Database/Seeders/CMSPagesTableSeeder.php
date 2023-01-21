@@ -58,7 +58,7 @@ class CMSPagesTableSeeder extends Seeder
                 'id'         => 11,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-            ] 
+            ]
         ]);
 
         DB::table('cms_page_translations')->insert([
@@ -66,7 +66,7 @@ class CMSPagesTableSeeder extends Seeder
                 'locale'           => 'en',
                 'cms_page_id'      => 1,
                 'url_key'          => 'about-us',
-                'html_content'     => '<div class="static-container"><div class="mb-5">About us page content</div></div>',
+                'html_content'     => `<p>@include('shop::about')</p>`,
                 'page_title'       => 'About Us',
                 'meta_title'       => 'about us',
                 'meta_description' => '',
@@ -161,7 +161,7 @@ class CMSPagesTableSeeder extends Seeder
                 'meta_title'       => 'Privacy Policy',
                 'meta_description' => '',
                 'meta_keywords'    => 'privacy, policy',
-            ] 
+            ]
         ]);
     }
 }

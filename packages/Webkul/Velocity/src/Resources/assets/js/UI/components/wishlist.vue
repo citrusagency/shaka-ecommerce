@@ -1,10 +1,10 @@
 <template>
     <i
-        :class="`material-icons ${addClass ? addClass : ''}`"
+        :class="`material-icons text-white ${addClass ? addClass : ''}`"
         @mouseover="isActive ? isActive = !isActive : ''"
         @mouseout="active !== '' && !isActive ? isActive = !isActive : ''">
 
-        <!-- {{ isActive ? 'favorite_border' : 'favorite' }} -->
+         {{ isActive ? 'favorite_border' : 'favorite' }}
     </i>
 </template>
 

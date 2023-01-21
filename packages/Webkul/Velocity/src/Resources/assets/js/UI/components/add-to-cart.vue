@@ -9,20 +9,20 @@
             v-if="moveToCart"
             >
 
-            <i class="material-icons text-down-3" v-if="showCartIcon">shopping_cart</i>
+<!--            <i class="material-icons text-down-3" v-if="showCartIcon">shopping_cart</i>-->
 
-            <span class="fs14 fw6 text-uppercase text-up-4" v-text="btnText"></span>
+            <span class="fs14 fw6 text-uppercase text-up-4" v-text="btnText">asdasd</span>
         </a>
 
         <!-- for add to cart -->
         <button
             type="submit"
             :disabled="isButtonEnable == 'false' || isButtonEnable == false"
-            :class="`btn btn-add-to-cart ${addClassToBtn}`"
+            class="btn bg-transparent text-white atc-btn"
             v-else
             >
 
-            <i class="material-icons text-down-3" v-if="showCartIcon">shopping_cart</i>
+<!--            <i class="material-icons text-down-3" v-if="showCartIcon">shopping_cart</i>-->
 
             <span class="fs14 fw6 text-uppercase text-up-4" v-text="btnText"></span>
         </button>

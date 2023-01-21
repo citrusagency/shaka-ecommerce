@@ -21,7 +21,7 @@
         @endphp
 
         <a
-            class="unset wishlist-icon {{ $addWishlistClass ?? '' }} text-right"
+            class="unset wishlist-icon w-100 pr-3 {{ $addWishlistClass ?? '' }} text-right"
             href="javascript:void(0);"
             title="{{ $title }}"
             onclick="submitWishlistForm(
@@ -40,12 +40,12 @@
     @endauth
 
     @guest('customer')
-        <form           
+        <form
             id="wishlist-{{ $product->product_id }}"
             action="{{ route('customer.wishlist.add', $product->product_id) }}"
             method="POST">
             @csrf
-            
+
             <a
                 class="unset wishlist-icon {{ $addWishlistClass ?? '' }} text-right"
                 href="javascript:void(0);"

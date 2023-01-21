@@ -23,9 +23,9 @@
 
     {{-- fav icon --}}
     @if ($favicon = core()->getCurrentChannel()->favicon_url)
-        <link rel="icon" sizes="16x16" href="{{ $favicon }}" />
+        <link rel="icon" sizes="16x16" href="{{ $favicon }}"/>
     @else
-        <link rel="icon" sizes="16x16" href="{{ asset('/themes/velocity/assets/images/static/v-icon.png') }}" />
+        <link rel="icon" sizes="16x16" href="{{ asset('/themes/velocity/assets/images/static/v-icon.png') }}"/>
     @endif
 
     {{-- all styles --}}
@@ -77,24 +77,29 @@
                             add-class="category-list-container pt10">
                         </sidebar-component>
 
-                        {{--                                <div class="col-12 no-padding content" id="home-right-bar-container">--}}
-                        {{--                                    <div class="container-right row no-margin col-12 no-padding">--}}
-                        {{--                                        {!! view_render_event('bagisto.shop.layout.content.before') !!}--}}
 
-                        {{--                                            @yield('content-wrapper')--}}
 
-                        {{--                                        {!! view_render_event('bagisto.shop.layout.content.after') !!}--}}
-                        {{--                                    </div>--}}
-                        {{--                                </div>--}}
                     </div>
                 </div>
             </div>
         @show
 
+{{--            <div class="col-12 no-padding content" id="home-right-bar-container">----}}
+{{--                <div class="container-right row no-margin col-12 no-padding">----}}
+{{--                    {!! view_render_event('bagisto.shop.layout.content.before') !!}--}}
+
+{{--                    @yield('content-wrapper')--}}
+
+{{--                    {!! view_render_event('bagisto.shop.layout.content.after') !!}--}}
+{{--                </div>--}}
+
+{{--            </div>--}}
+
         <div class="">
             {!! view_render_event('bagisto.shop.layout.full-content.before') !!}
 
             @yield('full-content-wrapper')
+            @yield('content-wrapper')
 
             {!! view_render_event('bagisto.shop.layout.full-content.after') !!}
         </div>

@@ -1,76 +1,172 @@
 @php
-    // If current route is /
-    if (request()->route()->getName() == 'shop.home.index') {
-        $headerClass = 'bg-transparent';
-    } else {
-        $headerClass = 'bg-shaka-dark';
-    }
+    $cart = cart()->getCart();
+    $cartItemsCount = $cart ? $cart->items->count() : trans('shop::app.minicart.zero');
 @endphp
-<header class="sticky-header navbar-dark  text-white py-4 {{ $headerClass }}" style="height: auto!important;">
-    <div class="container">
 
+<mobile-header
+    class="py-2"
+    is-customer="{{ auth()->guard('customer')->check() ? 'true' : 'false' }}"
+    heading= "{{ __('velocity::app.menu-navbar.text-category') }}"
+    :header-content="{{ json_encode(app('Webkul\Velocity\Repositories\ContentRepository')->getAllContents()) }}"
+    category-count="{{ $velocityMetaData ? $velocityMetaData->sidebar_category_count : 10 }}"
+    cart-items-count="{{ $cartItemsCount }}"
+    cart-route="{{ route('shop.checkout.cart.index') }}"
+    :locale="{{ json_encode(core()->getCurrentLocale()) }}"
+    :all-locales="{{ json_encode(core()->getCurrentChannel()->locales()->orderBy('name')->get()) }}"
+    :currency="{{ json_encode(core()->getCurrentCurrency()) }}"
+    :all-currencies="{{ json_encode(core()->getCurrentChannel()->currencies) }}"
+>
 
-        <div class="row remove-padding-margin velocity-divide-page d-flex justify-content-between align-items-center">
-            <a class="navbar-brand" href="{{ route('shop.home.index') }}" aria-label="Logo">
-                <img class="logo" src="{{ core()->getCurrentChannel()->logo_url ?? asset('themes/velocity/assets/images/logo-text.png') }}" alt="" />
+    {{-- this is default content if js is not loaded --}}
+    <div class="row">
+        <div class="col-6">
+            <div class="hamburger-wrapper">
+                <i class="rango-toggle hamburger"></i>
+            </div>
+
+            <a class="left" href="{{ route('shop.home.index') }}" aria-label="Logo">
+                <img class=" w-100" src="{{ core()->getCurrentChannel()->logo_url ?? asset('images/shaka-white.png') }}" style="max-height: 30px!important; width: 98px!important;" alt="" />
             </a>
-            <div class="row gap-4">
-                <a href="/" class="text-white">Homepage</a>
-                <a href="/" class="text-white ml-4">Shop</a>
-                <a href="{{ route("shop.cms.page", 'about-us') }}" class="text-white ml-4">About the label</a>
-                <a href="/" class="text-white ml-4">Behind the scenes</a>
-                <a href="{{ route("shop.cms.page", 'contact-us') }}" class="text-white ml-4">Contact us</a>
-            </div>
+        </div>
 
-
-            <div class="searchbar">
-                <div class="row">
-                    <div class="col-lg-5 col-md-12">
-                        <!-- @include('velocity::shop.layouts.particals.search-bar') -->
-                    </div>
-
-                    <div class="col-lg-7 col-md-12 vc-full-screen">
-                        <div class="left-wrapper d-flex align-items-center justify-content-center">
-
-
-                            {!! view_render_event('bagisto.shop.layout.header.wishlist.before') !!}
-
-                            @include('velocity::shop.layouts.particals.wishlist', ['isText' => true])
-
-                            {!! view_render_event('bagisto.shop.layout.header.wishlist.after') !!}
-
-                            {!! view_render_event('bagisto.shop.layout.header.compare.before') !!}
-
-                            <!-- @include('velocity::shop.layouts.particals.compare', ['isText' => true]) -->
-
-                            {!! view_render_event('bagisto.shop.layout.header.compare.after') !!}
-
-                            {!! view_render_event('bagisto.shop.layout.header.cart-item.before') !!}
-
-                            @include('shop::checkout.cart.mini-cart')
-
-                            {!! view_render_event('bagisto.shop.layout.header.cart-item.after') !!}
-                            @include('velocity::layouts.top-nav.login-section')
-                        </div>
-                    </div>
+        <div class="right-vc-header col-6">
+            <a class="unset cursor-pointer">
+                <i class="material-icons">search</i>
+            </a>
+            <a href="{{ route('shop.checkout.cart.index') }}" class="unset">
+                <i class="material-icons text-down-3">shopping_cart</i>
+                <div class="badge-wrapper">
+                    <span class="badge">{{ $cartItemsCount }}</span>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
-</header>
 
-@push('scripts')
-    <script type="text/javascript">
-        (() => {
-            document.addEventListener('scroll', e => {
-                scrollPosition = Math.round(window.scrollY);
+    <template v-slot:greetings>
+        @guest('customer')
+            <a class="unset" href="{{ route('customer.session.index') }}">
+                {{ __('velocity::app.responsive.header.greeting', ['customer' => 'Guest']) }}
+            </a>
+        @endguest
 
-                if (scrollPosition > 50) {
-                    document.querySelector('header').classList.add('header-shadow');
-                } else {
-                    document.querySelector('header').classList.remove('header-shadow');
-                }
-            });
-        })();
-    </script>
-@endpush
+        @auth('customer')
+            <a class="unset" href="{{ route('customer.profile.index') }}">
+                {{ __('velocity::app.responsive.header.greeting', ['customer' => auth()->guard('customer')->user()->first_name]) }}
+            </a>
+        @endauth
+    </template>
+
+    <template v-slot:customer-navigation>
+        @auth('customer')
+            <ul type="none" class="vc-customer-options">
+                <li>
+                    <a href="{{ route('customer.profile.index') }}" class="unset">
+                        <i class="icon profile text-down-3"></i>
+                        <span>{{ __('shop::app.header.profile') }}</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('customer.address.index') }}" class="unset">
+                        <i class="icon address text-down-3"></i>
+                        <span>{{ __('velocity::app.shop.general.addresses') }}</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('customer.reviews.index') }}" class="unset">
+                        <i class="icon reviews text-down-3"></i>
+                        <span>{{ __('velocity::app.shop.general.reviews') }}</span>
+                    </a>
+                </li>
+
+                @if (core()->getConfigData('general.content.shop.wishlist_option'))
+                    <li>
+                        <a href="{{ route('customer.wishlist.index') }}" class="unset">
+                            <i class="icon wishlist text-down-3"></i>
+                            <span>{{ __('shop::app.header.wishlist') }}</span>
+                        </a>
+                    </li>
+                @endif
+
+                @if (core()->getConfigData('general.content.shop.compare_option'))
+                    <li>
+                        <a href="{{ route('velocity.customer.product.compare') }}" class="unset">
+                            <i class="icon compare text-down-3"></i>
+                            <span>{{ __('shop::app.customer.compare.text') }}</span>
+                        </a>
+                    </li>
+                @endif
+
+                <li>
+                    <a href="{{ route('customer.orders.index') }}" class="unset">
+                        <i class="icon orders text-down-3"></i>
+                        <span>{{ __('velocity::app.shop.general.orders') }}</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('customer.downloadable_products.index') }}" class="unset">
+                        <i class="icon downloadables text-down-3"></i>
+                        <span>{{ __('velocity::app.shop.general.downloadables') }}</span>
+                    </a>
+                </li>
+            </ul>
+        @endauth
+    </template>
+
+    <template v-slot:extra-navigation>
+        <li>
+            @auth('customer')
+                <form id="customerLogout" action="{{ route('customer.session.destroy') }}" method="POST">
+                    @csrf
+
+                    @method('DELETE')
+                </form>
+
+                <a
+                    class="unset"
+                    href="{{ route('customer.session.destroy') }}"
+                    onclick="event.preventDefault(); document.getElementById('customerLogout').submit();">
+                    {{ __('shop::app.header.logout') }}
+                </a>
+            @endauth
+
+            @guest('customer')
+                <a
+                    class="unset"
+                    href="{{ route('customer.session.create') }}">
+                    <span>{{ __('shop::app.customer.login-form.title') }}</span>
+                </a>
+            @endguest
+        </li>
+
+        <li>
+            @guest('customer')
+                <a
+                    class="unset"
+                    href="{{ route('customer.register.index') }}">
+                    <span>{{ __('shop::app.header.sign-up') }}</span>
+                </a>
+            @endguest
+        </li>
+    </template>
+
+    <template v-slot:logo>
+        <a class="left ml-5" href="{{ route('shop.home.index') }}" aria-label="Logo">
+            <img class=" w-100" src="{{ core()->getCurrentChannel()->logo_url ?? asset('images/shaka-white.png') }}" style="max-height: 30px!important; width: auto!important;" alt="" />
+
+        </a>
+    </template>
+
+
+
+    <template v-slot:search-bar>
+        <div class="row">
+            <div class="col-md-12">
+                @include('velocity::shop.layouts.particals.search-bar')
+            </div>
+        </div>
+    </template>
+
+</mobile-header>

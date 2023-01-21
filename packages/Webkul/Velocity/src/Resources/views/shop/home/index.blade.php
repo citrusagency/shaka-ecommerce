@@ -51,17 +51,35 @@
             font-weight: 600;
         }
 
-        .homepage-img {
-            margin-top: -130px;
+        #demo{
+            margin-top: -150px;
+            /*padding-top: 280px;*/
+            /*padding-bottom: 180px;*/
+        }
+        .homepage-imga, .carousel-item {
+            padding-top: 380px;
+            padding-bottom: 380px;
             width: 100%;
-            background-image: url({{ asset('images/homepage1.png') }});
-            background-repeat: no-repeat;
+            {{--background-image: url({{ asset('images/homepage1.png') }});--}}
+             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
-            padding-top: 280px;
-            padding-bottom: 180px;
+
         }
     </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(".carousel").swipe({
+            swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+                if (direction == 'left') $(this).carousel('next');
+                if (direction == 'right') $(this).carousel('prev');
+            },
+            allowPageScroll: "vertical"
+        });
+    </script>
 @endpush
 
 {{--@section('content-wrapper')--}}
@@ -69,15 +87,42 @@
 {{--@endsection--}}
 
 
-
 @section('full-content-wrapper')
 
     <div class="homepage-img text-white">
-        <div class="container">
-            <h1 class="heading-1 font-weight-bold">Shaka & <br> Katarina Zlajić</h1>
-            <p>Extravagant clothes and jewelry pieces.</p>
-            <button class="btn bg-shaka-primary btn-lg px-5">Shop now</button>
+        <div id="demo" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner w-100">
+                <div class="carousel-item active" style="background-image: url({{ asset('images/homepage2.png') }});">
+                    <div class="container">
+                        <p class="text-uppercase" style="letter-spacing: 3px">Shaka & Katarina Zlajić</p>
+                        <h1 class="heading-1 font-weight-normal mb-5">Shop extravagant <br>jewelry and clothes</h1>
+                        <button class="btn bg-shaka-primary btn-lg px-5">Shop now</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Left and right controls -->
+{{--            <a class="carousel-control-prev" href="#demo" data-slide="prev">--}}
+{{--                <span class="carousel-control-prev-icon"></span>--}}
+{{--            </a>--}}
+{{--            <a class="carousel-control-next" href="#demo" data-slide="next">--}}
+{{--                <span class="carousel-control-next-icon"></span>--}}
+{{--            </a>--}}
         </div>
+        {{--        @include('shop::home.slider')--}}
+        {{--        <div class="container">--}}
+        {{--            <h1 class="heading-1 font-weight-bold">Shaka & <br> Katarina Zlajić</h1>--}}
+        {{--            <p>Extravagant clothes and jewelry pieces.</p>--}}
+        {{--            <button class="btn bg-shaka-primary btn-lg px-5">Shop now</button>--}}
+        {{--        </div>--}}
     </div>
 
     <div class="bg-shaka-darker py-4">
@@ -103,12 +148,35 @@
         </div>
     </div>
 
+    <div class="bg-shaka-light py-5">
+        <div class="container">
+            <h2 class="text-center text-white text-shaka-black  heading-2 h1 mt-5 mb-5">
+                Shop by collection
+            </h2>
+            <br>
+            <div class="row mt-4">
+                <div class="col-md-6 col-sm-12 collection">
+                    <a href="#">
+                    <img src="{{ asset('images/collection1.png') }}" class="w-100 mt-3" alt="">
+                    <div class="bg-shaka-black px-4 py-2 text-white text-uppercase collection-title" style="letter-spacing: 2px">Katarina Zlajić</div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-sm-12 collection">
+                    <a href="#">
+                        <img src="{{ asset('images/collection2.png') }}" class="w-100 mt-3" alt="">
+                        <div class="bg-shaka-black px-4 py-2 text-white text-uppercase collection-title" style="letter-spacing: 2px">Shaka</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="full-content-wrapper container">
         <!-- {!! view_render_event('bagisto.shop.home.content.before') !!} -->
 
 
         <!-- @include('shop::home.advertisements.advertisement-four') -->
-        @include('shop::home.featured-products')
+{{--        @include('shop::home.featured-products')--}}
         <!-- @include('shop::home.advertisements.advertisement-three') -->
         @include('shop::home.new-products')
         <!-- @include('shop::home.advertisements.advertisement-two') -->
