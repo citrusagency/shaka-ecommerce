@@ -184,5 +184,37 @@
         {{ view_render_event('bagisto.shop.home.content.after') }}
     </div>
 
+    <div class="bg-shaka-light">
+
+
+    <div class="container mt-5" style="position:relative;">
+
+
+        <div class="row " >
+
+            <div class="align-items-center col-md-6 col-sm-12 d-flex flex-column justify-content-center" >
+                <h2 class="text-left w-100 mb-3">About the label</h2>
+                <p class="mt-3" style="padding-right: 7rem;">
+                    Shaka is based on sustainable design, which strengthens and encourages awareness raising, fair production, animal welfare, environmental protection and careful use of our resources.
+                </p>
+                <div class="mt-5 w-100">
+                    <a href="#" class="btn bg-shaka-primary">Read more</a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 opacity-0">
+                <img src="{{asset('images/homepage3.png')}}" class="w-100" alt="" style="max-height: 730px; object-fit: cover">
+            </div>
+        </div>
+        <img src="{{asset('images/homepage3.png')}}" class="" alt="" style="max-height: 730px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    width: 50vw;
+    object-position: left;">
+    </div>
+    </div>
 @endsection
 
