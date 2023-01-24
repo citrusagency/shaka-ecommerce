@@ -1,28 +1,28 @@
-
-<div class="bg-shaka-dark">
+<div class="bg-shaka-black2">
     <div class="container p-5">
         <div class="row">
-            <div class="col-md-6">
-                <h3 class="font-weight-bold">Connect with Shaka on Social Media</h3>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/shakacommunity" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com/shakacommunity" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/shakacommunity/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/channel/UCZQY9YQZ5ZQZ5ZQZ5ZQZ5ZQ" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.linkedin.com/company/shaka-community" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                </div>
+            <div class="col-4 py-5">
+                <img src="{{ asset('images/shaka-white.png') }}" alt="">
+                <p class="text-shaka-subtitle my-4">Based in Montenegro</p>
+                <a href="#" target="_blank"><img src="{{ asset('images/facebook-logo.svg') }}" alt=""></a>
+                <a href="#" class="ml-3" target="_blank"><img src="{{ asset('images/instagram-logo.svg') }}" alt=""></a>
             </div>
-            <div class="col-md-6">
+            <div class="col-8 py-5">
                 <div class="row">
-                    <div class="col-6">
-                        <a href="">Homepage</a> <br>
-                        <a href="">Shop</a> <br>
-                        <a href="">About the label</a>
+                    <div class="col-4">
+                        <div><a href="#" class="text-shaka-subtitle">Homepage</a></div>
+                        <div class="mt-3"><a href="#" class="text-shaka-subtitle">Shop</a></div>
+                        <div class="mt-3"><a href="#" class="text-shaka-subtitle">About tge label</a></div>
                     </div>
-                    <div class="col-6">
-                        <a href="">Homepage</a> <br>
-                        <a href="">Shop</a> <br>
-                        <a href="">About the label</a>
+                    <div class="col-4">
+                        <div><a href="#" class="text-shaka-subtitle">Behind the scenes</a></div>
+                        <div class="mt-3"><a href="#" class="text-shaka-subtitle">Contact us</a></div>
+                    </div>
+                    <div class="col-4">
+                        <div><a href="#" class="text-shaka-subtitle">Terms and Conditions</a></div>
+                        <div class="mt-3"><a href="#" class="text-shaka-subtitle">Privacy Policy</a></div>
+                        <div class="mt-3"><a href="#" class="text-shaka-subtitle">FAQ</a></div>
+                        <div class="mt-3"><a href="#" class="text-shaka-subtitle">Returns</a></div>
                     </div>
                 </div>
             </div>
@@ -30,36 +30,18 @@
     </div>
 </div>
 
-<div class="bg-shaka-darker">
+<div class="bg-shaka-black2" style="border-top: 1px solid rgba(255,255,255,0.2);">
     <div class="container p-4">
         <div class="row footer-statics no-margin ">
-            <div class="col-12 text-center">
+            <div class="col-6 text-left text-white">
                 © {{ date('Y') }} Shaka
-                <span class="author float-right">
+
+            </div>
+            <div class="col-6">
+                <span class="author float-right text-white">
             Made with ♡ by D.
         </span>
             </div>
-            {{--    <div class="col-12 software-description">--}}
-            {{--        <div class="logo">--}}
-            {{--            <a href="{{ route('shop.home.index') }}" aria-label="Logo">--}}
-            {{--                @if ($logo = core()->getCurrentChannel()->logo_url)--}}
-            {{--                    <img--}}
-            {{--                        src="{{ $logo }}"--}}
-            {{--                        class="logo full-img" alt="" width="200" height="50" />--}}
-            {{--                @else--}}
-            {{--                    <img--}}
-            {{--                        src="{{ asset('themes/velocity/assets/images/static/logo-text-white.png') }}"--}}
-            {{--                        class="logo full-img" alt="" width="200" height="50" />--}}
-            {{--                @endif--}}
-            {{--            </a>--}}
-            {{--        </div>--}}
-
-            {{--        @if ($velocityMetaData)--}}
-            {{--            {!! $velocityMetaData->footer_left_content !!}--}}
-            {{--        @else--}}
-            {{--            {!! __('velocity::app.admin.meta-data.footer-left-raw-content') !!}--}}
-            {{--        @endif--}}
-            {{--    </div>--}}
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@
 
 namespace Webkul\Velocity\Http\Controllers\Shop;
 
+use Illuminate\Support\Facades\Request;
 use Webkul\Product\Facades\ProductImage;
 
 class ShopController extends Controller
@@ -269,6 +270,20 @@ class ShopController extends Controller
         $products = $this->productRepository->getAll($categoryId);
         $products->withPath($categoryDetails->slug);
 
+        /* sending response */
+        return response()->json([
+            'products'       => collect($products->items())->map(function ($product) {
+                return $this->velocityHelper->formatProduct($product);
+            }),
+            'paginationHTML' => $products->appends(request()->input())->links()->toHtml(),
+        ]);
+    }
+    public function getAllProducts(Request $request)
+    {
+
+
+        /* fetching products */
+        $products = $this->productRepository->getAll();
         /* sending response */
         return response()->json([
             'products'       => collect($products->items())->map(function ($product) {

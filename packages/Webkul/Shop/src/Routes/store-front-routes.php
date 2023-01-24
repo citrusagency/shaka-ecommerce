@@ -36,6 +36,8 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
             ->name('shop.productOrCategory.index');
     });
 
+    Route::get('/shop', [ProductController::class, 'getAll'])->name('shop.getAllProducts');
+
     /**
      * Store front home.
      */

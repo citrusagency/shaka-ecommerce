@@ -2,11 +2,13 @@
 
 namespace Webkul\Shop\Http\Controllers;
 
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
 use Webkul\Attribute\Repositories\AttributeRepository;
 use Webkul\Product\Repositories\ProductAttributeValueRepository;
 use Webkul\Product\Repositories\ProductDownloadableLinkRepository;
 use Webkul\Product\Repositories\ProductDownloadableSampleRepository;
+use Webkul\Product\Repositories\ProductRepository;
 
 class ProductController extends Controller
 {
@@ -21,7 +23,8 @@ class ProductController extends Controller
     public function __construct(
         protected ProductAttributeValueRepository $productAttributeValueRepository,
         protected ProductDownloadableSampleRepository $productDownloadableSampleRepository,
-        protected ProductDownloadableLinkRepository $productDownloadableLinkRepository
+        protected ProductDownloadableLinkRepository $productDownloadableLinkRepository,
+        protected ProductRepository $productRepository,
     )
     {
         parent::__construct();
@@ -44,6 +47,13 @@ class ProductController extends Controller
         return isset($productAttribute['text_value'])
             ? Storage::download($productAttribute['text_value'])
             : null;
+    }
+
+    public function getAll(Request $request)
+    {
+
+        $product = $this->productRepository->getAll();
+            return view('shop::products.index', compact('product'));
     }
 
     /**

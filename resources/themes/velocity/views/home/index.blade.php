@@ -51,20 +51,39 @@
             font-weight: 600;
         }
 
-        #demo{
+        #demo {
             margin-top: -150px;
             /*padding-top: 280px;*/
             /*padding-bottom: 180px;*/
         }
+
         .homepage-imga, .carousel-item {
             padding-top: 380px;
             padding-bottom: 380px;
             width: 100%;
             {{--background-image: url({{ asset('images/homepage1.png') }});--}}
-             background-repeat: no-repeat;
+              background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
 
+        }
+        .subscribe {
+            height: 62px;
+            width: 100%;
+
+        }
+        .subscribe input{
+            height: 100%;
+            background: #FFFFFF;
+            /* Stroke color */
+            padding: 5px 20px;
+            border: 1px solid #A9A9A9;
+        }
+        .subscribe button {
+            height: 100%;
+            display: inline-block;
+            border: none;
+            padding: 0 20px;
         }
     </style>
 
@@ -110,12 +129,12 @@
             </div>
 
             <!-- Left and right controls -->
-{{--            <a class="carousel-control-prev" href="#demo" data-slide="prev">--}}
-{{--                <span class="carousel-control-prev-icon"></span>--}}
-{{--            </a>--}}
-{{--            <a class="carousel-control-next" href="#demo" data-slide="next">--}}
-{{--                <span class="carousel-control-next-icon"></span>--}}
-{{--            </a>--}}
+            {{--            <a class="carousel-control-prev" href="#demo" data-slide="prev">--}}
+            {{--                <span class="carousel-control-prev-icon"></span>--}}
+            {{--            </a>--}}
+            {{--            <a class="carousel-control-next" href="#demo" data-slide="next">--}}
+            {{--                <span class="carousel-control-next-icon"></span>--}}
+            {{--            </a>--}}
         </div>
         {{--        @include('shop::home.slider')--}}
         {{--        <div class="container">--}}
@@ -157,14 +176,18 @@
             <div class="row mt-4">
                 <div class="col-md-6 col-sm-12 collection">
                     <a href="#">
-                    <img src="{{ asset('images/collection1.png') }}" class="w-100 mt-3" alt="">
-                    <div class="bg-shaka-black px-4 py-2 text-white text-uppercase collection-title" style="letter-spacing: 2px">Katarina Zlajić</div>
+                        <img src="{{ asset('images/collection1.png') }}" class="w-100 mt-3" alt="">
+                        <div class="bg-shaka-black px-4 py-2 text-white text-uppercase collection-title"
+                             style="letter-spacing: 2px">Katarina Zlajić
+                        </div>
                     </a>
                 </div>
                 <div class="col-md-6 col-sm-12 collection">
                     <a href="#">
                         <img src="{{ asset('images/collection2.png') }}" class="w-100 mt-3" alt="">
-                        <div class="bg-shaka-black px-4 py-2 text-white text-uppercase collection-title" style="letter-spacing: 2px">Shaka</div>
+                        <div class="bg-shaka-black px-4 py-2 text-white text-uppercase collection-title"
+                             style="letter-spacing: 2px">Shaka
+                        </div>
                     </a>
                 </div>
             </div>
@@ -176,7 +199,7 @@
 
 
         <!-- @include('shop::home.advertisements.advertisement-four') -->
-{{--        @include('shop::home.featured-products')--}}
+        {{--        @include('shop::home.featured-products')--}}
         <!-- @include('shop::home.advertisements.advertisement-three') -->
         @include('shop::home.new-products')
         <!-- @include('shop::home.advertisements.advertisement-two') -->
@@ -184,28 +207,28 @@
         {{ view_render_event('bagisto.shop.home.content.after') }}
     </div>
 
+    <div class="d-block d-md-none mt-5"></div>
     <div class="bg-shaka-light">
-
-
-    <div class="container mt-5" style="position:relative;">
-
-
-        <div class="row " >
-
-            <div class="align-items-center col-md-6 col-sm-12 d-flex flex-column justify-content-center" >
-                <h2 class="text-left w-100 mb-3">About the label</h2>
-                <p class="mt-3" style="padding-right: 7rem;">
-                    Shaka is based on sustainable design, which strengthens and encourages awareness raising, fair production, animal welfare, environmental protection and careful use of our resources.
-                </p>
-                <div class="mt-5 w-100">
-                    <a href="#" class="btn bg-shaka-primary">Read more</a>
+        <img src="{{asset('images/homepage3.png')}}" class="w-100 d-block d-md-none" alt=""
+             style="max-height: 730px; object-fit: cover">
+        <div class="container mt-5" style="position:relative;">
+            <div class="row ">
+                <div class="align-items-center col-md-6 col-sm-12 d-flex flex-column justify-content-center order-md-0 order-1">
+                    <h2 class="text-left w-100 mb-3 text-shaka-black">About the label</h2>
+                    <p class="mt-3 text-shaka-subtitle" style="padding-right: 7rem;">
+                        Shaka is based on sustainable design, which strengthens and encourages awareness raising, fair
+                        production, animal welfare, environmental protection and careful use of our resources.
+                    </p>
+                    <div class="mt-5 w-100">
+                        <a href="#" class="btn bg-shaka-primary">Read more</a>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 opacity-0 order-0 order-md-1 d-none d-md-block">
+                    <img src="{{asset('images/homepage3.png')}}" class="w-100" alt=""
+                         style="max-height: 730px; object-fit: cover">
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 opacity-0">
-                <img src="{{asset('images/homepage3.png')}}" class="w-100" alt="" style="max-height: 730px; object-fit: cover">
-            </div>
-        </div>
-        <img src="{{asset('images/homepage3.png')}}" class="" alt="" style="max-height: 730px;
+            <img src="{{asset('images/homepage3.png')}}" class="d-none d-md-block" alt="" style="max-height: 730px;
     object-fit: cover;
     position: absolute;
     top: 0;
@@ -214,7 +237,40 @@
     aspect-ratio: 1/1;
     width: 50vw;
     object-position: left;">
+        </div>
+        <div class="d-block d-md-none pt-5"></div>
     </div>
+
+    <img src="{{asset('images/homepage4.png')}}" class="w-100 d-block d-md-none" alt=""
+         style="max-height: 730px; object-fit: cover">
+    <div class="">
+        <div class="container " style="position:relative;">
+            <div class="row ">
+                <div class="col-sm-12 col-md-6 opacity-0 d-none d-md-block">
+                    <img src="{{asset('images/homepage4.png')}}" class="w-100" alt=""
+                         style="max-height: 730px; object-fit: cover">
+                </div>
+                <div class="align-items-center col-md-6 col-sm-12 d-flex flex-column justify-content-center py-5 pl-5">
+                    <h2 class="text-left w-100 mb-1 text-shaka-black">Newsletter Subscription</h2>
+                    <p class="mt-1 text-shaka-subtitle text-left w-100" style="padding-right: 7rem;">
+                        Subscribe to our newsletter and stay updated for new Shaka arrivals.
+                    </p>
+                    <div class="mt-3 w-100 subscribe">
+                        <input type="text" placeholder="Your email address"><button href="#" class="bg-shaka-primary">Subscribe</button>
+                    </div>
+                </div>
+
+            </div>
+            <img src="{{asset('images/homepage4.png')}}" class="d-none d-md-block" alt="" style="max-height: 730px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    right: 50%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    width: 50vw;
+    object-position: left;">
+        </div>
     </div>
 @endsection
 
