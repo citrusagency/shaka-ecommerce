@@ -20,6 +20,10 @@
                                 :product="product">
                             </product-card>
                         </div>
+
+                        <div class="col-12 d-flex justify-content-center align-items-center">
+                            <button class="mt-5 btn rounded-0 py-3 px-5 bg-shaka-primary" :disabled="buttonDisabled" @click="getProducts(true)">More items</button>
+                        </div>
                     </div>
                     <!--                    <carousel-component-->
                     <!--                        :slides-per-page="slidesPerPage"-->
@@ -84,6 +88,9 @@ export default {
             productCollections: [],
             slidesPerPage: 4,
             windowWidth: window.innerWidth,
+            route: '',
+            pagination: [],
+            buttonDisabled: true
         }
     },
 
@@ -91,6 +98,8 @@ export default {
         this.$nextTick(() => {
             window.addEventListener('resize', this.onResize);
         });
+
+        this.route = this.productRoute;
 
         this.getProducts();
         this.setWindowWidth();
@@ -106,8 +115,9 @@ export default {
 
     methods: {
         /* fetch product collections */
-        getProducts: function () {
-            this.$http.get(this.productRoute)
+        getProducts: function (loadMore = false) {
+            this.isLoading = true;
+            this.$http.get(this.route)
                 .then(response => {
                     let count = this.count;
 
@@ -116,17 +126,34 @@ export default {
                             this.isCategory = true;
                             this.categoryDetails = response.data.categoryDetails;
                             this.productCollections = response.data.categoryProducts;
+                            this.pagination = response.data.pagination;
                         } else {
-                            this.productCollections = response.data.products;
+                            if(loadMore){
+                                response.data.products.forEach(item => {
+                                    this.productCollections.push(item)
+                                })
+
+                            }else{
+                                this.productCollections = response.data.products;
+                            }
+                            this.pagination = response.data.pagination;
                         }
                     } else {
                         this.productCollections = 0;
+                    }
+
+                    if (this.pagination.total !== this.pagination.to){
+                        this.buttonDisabled = false;
+                        this.route = this.pagination.next_page_url;
+                    }else {
+                        this.buttonDisabled = true;
                     }
 
                     this.isLoading = false;
                 })
                 .catch(error => {
                     this.isLoading = false;
+                    console.log(error)
                     console.log(this.__('error.something_went_wrong'));
                 })
         },

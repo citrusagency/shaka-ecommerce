@@ -79,19 +79,24 @@ class ShopController extends Controller
                     $products = $this->velocityProductRepository->getFeaturedProducts($count);
                 }
 
+                $arrPaginationData = $products->toArray();
+                unset($arrPaginationData['data']);
+
+                $products2 = $products->map(function ($product) {
+                    if (core()->getConfigData('catalog.products.homepage.out_of_stock_items')) {
+                        return $this->velocityHelper->formatProduct($product);
+                    } else {
+                        if ($product->isSaleable()) {
+                            return $this->velocityHelper->formatProduct($product);
+                        }
+                    }
+                })->reject(function ($product) {
+                    return is_null($product);
+                })->values();
                 $response = [
                     'status'   => true,
-                    'products' => $products->map(function ($product) {
-                        if (core()->getConfigData('catalog.products.homepage.out_of_stock_items')) {
-                            return $this->velocityHelper->formatProduct($product);
-                        } else {
-                            if ($product->isSaleable()) {
-                                return $this->velocityHelper->formatProduct($product);
-                            }
-                        }
-                    })->reject(function ($product) {
-                        return is_null($product);
-                    })->values(),
+                    'products' => $products2,
+                    'pagination' => $arrPaginationData
                 ];
 
                 break;

@@ -220,7 +220,7 @@
                         production, animal welfare, environmental protection and careful use of our resources.
                     </p>
                     <div class="mt-5 w-100">
-                        <a href="#" class="btn bg-shaka-primary">Read more</a>
+                        <a href="{{ route("shop.cms.page", 'about-us') }}" class="btn px-4 py-3 rounded-0 bg-shaka-primary">Read more</a>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 opacity-0 order-0 order-md-1 d-none d-md-block">

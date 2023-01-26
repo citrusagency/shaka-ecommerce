@@ -7,24 +7,24 @@
 @push('scripts')
     <script type="text/x-template" id="toolbar-template">
         <div class="toolbar-wrapper" v-if='!isMobile()'>
-            <div class="view-mode">
-                @php
-                  $viewOption = $toolbarHelper->getViewOption();
-                @endphp
+{{--            <div class="view-mode">--}}
+{{--                @php--}}
+{{--                  $viewOption = $toolbarHelper->getViewOption();--}}
+{{--                @endphp--}}
 
-                <div class="rango-view-grid-container {{ $viewOption === 'grid' ? 'active' : '' }}">
-                    <a href="{{ $toolbarHelper->getModeUrl('grid') }}" class="grid-view unset" aria-label="Grid">
-                        <span class="rango-view-grid fs24"></span>
-                    </a>
-                </div>
-                <div class="rango-view-list-container {{ $viewOption === 'list' ? 'active' : '' }}" aria-label="List">
-                    <a
-                        href="{{ $toolbarHelper->getModeUrl('list') }}"
-                        class="list-view unset">
-                        <span class="rango-view-list fs24"></span>
-                    </a>
-                </div>
-            </div>
+{{--                <div class="rango-view-grid-container {{ $viewOption === 'grid' ? 'active' : '' }}">--}}
+{{--                    <a href="{{ $toolbarHelper->getModeUrl('grid') }}" class="grid-view unset" aria-label="Grid">--}}
+{{--                        <span class="rango-view-grid fs24"></span>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--                <div class="rango-view-list-container {{ $viewOption === 'list' ? 'active' : '' }}" aria-label="List">--}}
+{{--                    <a--}}
+{{--                        href="{{ $toolbarHelper->getModeUrl('list') }}"--}}
+{{--                        class="list-view unset">--}}
+{{--                        <span class="rango-view-list fs24"></span>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
             <div class="sorter">
                 <label>{{ __('shop::app.products.sort-by') }}</label>

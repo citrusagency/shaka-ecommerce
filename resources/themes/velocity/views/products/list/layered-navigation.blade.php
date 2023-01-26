@@ -34,7 +34,7 @@
     </script>
 
     <script type="text/x-template" id="filter-attribute-item-template">
-        <div :class="`cursor-pointer filter-attributes-item ${active ? 'active' : ''}`">
+        <div :class="`cursor-pointer filter-attributes-item active`">
             <div class="filter-attributes-title" @click="active = ! active">
                 <h6 class="fw6 display-inbl">@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
 
@@ -229,8 +229,8 @@
                         .then((response) => {
                             let maxPrice  = response.data.max_price;
                             this.sliderConfig.max = maxPrice ? ((parseInt(maxPrice) !== 0 || maxPrice) ? parseInt(maxPrice) : 500) : 500;
-                            
-                            if (! this.appliedFilterValues) { 
+
+                            if (! this.appliedFilterValues) {
                                 this.sliderConfig.value = [0, this.sliderConfig.max];
                                 this.sliderConfig.priceTo = this.sliderConfig.max;
                             }

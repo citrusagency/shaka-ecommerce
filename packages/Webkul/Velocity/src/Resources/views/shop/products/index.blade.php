@@ -45,37 +45,40 @@
 
 @push('scripts')
     <script type="text/x-template" id="category-template">
-        <section class="row col-12 velocity-divide-page category-page-wrapper">
-            {{--            {!! view_render_event('bagisto.shop.productOrCategory.index.before', ['category' => $category]) !!}--}}
+        <section class="container-fluidvelocity-divide-page category-page-wrapper">
+            <div class="row">
+                {{--            {!! view_render_event('bagisto.shop.productOrCategory.index.before', ['category' => $category]) !!}--}}
 
-            @if (true)
-                @include ('shop::products.list.layered-navigation')
-            @endif
+                {{--            @if (true)--}}
+                <div class="col-3">
+                    @include ('shop::products.list.layered-navigation')
+                </div>
+                {{--            @endif--}}
 
-            <div class="category-container right">
-                <div class="row remove-padding-margin">
-                    <div class="pl0 col-12">
-                        {{--                        <h2 class="fw6 mb10">{{ $category->name }}</h2>--}}
+                <div class="col-12 col-md-9 container right">
+                    <div class="row remove-padding-margin">
+                        <div class="pl0 col-12">
+                            {{--                        <h2 class="fw6 mb10">{{ $category->name }}</h2>--}}
 
-                        @if ($isDescriptionDisplayMode)
-                            {{--                            @if ($category->description)--}}
-                            {{--                                <div class="category-description">--}}
-                            {{--                                    {!! $category->description !!}--}}
-                            {{--                                </div>--}}
-                            {{--                            @endif--}}
-                        @endif
-                    </div>
+                            @if ($isDescriptionDisplayMode)
+                                {{--                            @if ($category->description)--}}
+                                {{--                                <div class="category-description">--}}
+                                {{--                                    {!! $category->description !!}--}}
+                                {{--                                </div>--}}
+                                {{--                            @endif--}}
+                            @endif
+                        </div>
 
-                    <div class="col-12 no-padding">
-                        <div class="hero-image">
-                            {{--                            @if (!is_null($category->image))--}}
-                            {{--                                <img class="logo" src="{{ $category->image_url }}" alt="" width="20" height="20" />--}}
-                            {{--                            @endif--}}
+                        <div class="col-12 no-padding">
+                            <div class="hero-image">
+                                {{--                            @if (!is_null($category->image))--}}
+                                {{--                                <img class="logo" src="{{ $category->image_url }}" alt="" width="20" height="20" />--}}
+                                {{--                            @endif--}}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                @if ($isProductsDisplayMode)
+
                     <div class="filters-container">
                         <template v-if="products.length >= 0">
                             @include ('shop::products.list.toolbar')
@@ -92,8 +95,9 @@
 
                     <template v-else-if="products.length > 0">
                         @if ($toolbarHelper->getCurrentMode() == 'grid')
-                            <div class="row col-6 col-md-4 col-lg-3 remove-padding-margin">
+                            <div class="row  remove-padding-margin">
                                 <product-card
+                                    class="col-6 col-md-4 col-lg-3"
                                     :key="index"
                                     :product="product"
                                     v-for="(product, index) in products">
@@ -121,10 +125,10 @@
                         <h2>{{ __('shop::app.products.whoops') }}</h2>
                         <p>{{ __('shop::app.products.empty') }}</p>
                     </div>
-            </div>
-            @endif
-            </div>
+                </div>
 
+            </div>
+            </div>
             {{--            {!! view_render_event('bagisto.shop.productOrCategory.index.after', ['category' => $category]) !!}--}}
         </section>
     </script>

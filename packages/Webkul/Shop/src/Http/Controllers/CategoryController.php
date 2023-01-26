@@ -17,8 +17,9 @@ class CategoryController extends Controller
      */
     public function __construct(
         protected CategoryRepository $categoryRepository,
-        protected ProductFlatRepository $productFlatRepository
-        
+        protected ProductFlatRepository $productFlatRepository,
+        protected AttributeRepository $attributeRepository
+
     )
     {
         parent::__construct();
@@ -29,12 +30,12 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getFilterAttributes($categoryId = null, AttributeRepository $attributeRepository)
+    public function getFilterAttributes($categoryId = 2)
     {
         $category = $this->categoryRepository->findOrFail($categoryId);
 
         if (empty($filterAttributes = $category->filterableAttributes)) {
-            $filterAttributes = $attributeRepository->getFilterAttributes();
+            $filterAttributes = $this->attributeRepository->getFilterAttributes();
         }
 
         return response()->json([
@@ -47,7 +48,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getCategoryProductMaximumPrice($categoryId = null)
+    public function getCategoryProductMaximumPrice($categoryId = 2)
     {
         $category = $this->categoryRepository->findOrFail($categoryId);
 

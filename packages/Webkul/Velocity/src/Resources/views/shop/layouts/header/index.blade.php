@@ -16,7 +16,7 @@
             </a>
             <div class="row gap-4">
                 <a href="/" class="text-white text-uppercase  {{ request()->is('/') ? 'active-route' : '' }}">Homepage</a>
-                <a href="/" class="text-white text-uppercase  {{ request()->is('/shop') ? 'active-route' : '' }} ml-5">Shop</a>
+                <a href="{{ route('shop.getAllProducts') }}" class="text-white text-uppercase  {{ request()->is('shop') ? 'active-route' : '' }} ml-5">Shop</a>
                 <a href="{{ route("shop.cms.page", 'about-us') }}" class="text-white text-uppercase  {{ request()->route()->slug? 'active-route' : '' }} ml-5">About the label</a>
                 <a href="/" class="text-white text-uppercase  {{ request()->is('/behind-the-scenes') ? 'active-route' : '' }} ml-5">Behind the scenes</a>
                 <a href="{{ route("shop.cms.page", 'contact-us') }}" class="text-white  text-uppercase {{ request()->is('/page/contact-us') ? 'active-route' : '' }} ml-5">Contact us</a>

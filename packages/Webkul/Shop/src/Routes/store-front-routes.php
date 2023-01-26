@@ -82,7 +82,9 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
         'view' => 'shop.products.index',
     ])->name('shop.product.file.download');
 
-    Route::get('categories/filterable-attributes/{categoryId?}', [CategoryController::class, 'getFilterAttributes'])->name('catalog.categories.filterable-attributes');
+//    Route::get('categories/filterable-attributes/{categoryId?}', [CategoryController::class, 'getFilterAttributes'])->name('catalog.categories.filterable-attributes');
+    Route::get('categories/filterable-attributes', [CategoryController::class, 'getFilterAttributes'])->name('catalog.categories.filterable-attributes');
 
-    Route::get('categories/maximum-price/{categoryId?}', [CategoryController::class, 'getCategoryProductMaximumPrice'])->name('catalog.categories.maximum-price');
+    Route::get('categories/maximum-price', [CategoryController::class, 'getCategoryProductMaximumPrice'])->name('catalog.categories.maximum-price');
+//    Route::get('categories/maximum-price/{categoryId?}', [CategoryController::class, 'getCategoryProductMaximumPrice'])->name('catalog.categories.maximum-price');
 });
