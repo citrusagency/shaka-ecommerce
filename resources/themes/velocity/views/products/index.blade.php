@@ -45,7 +45,7 @@
 
 @push('scripts')
     <script type="text/x-template" id="category-template">
-        <section class="container-fluidvelocity-divide-page category-page-wrapper">
+        <section class="container-fluidvelocity-divide-page category-page-wrapper pb-5">
             <div class="row">
                 {{--            {!! view_render_event('bagisto.shop.productOrCategory.index.before', ['category' => $category]) !!}--}}
 
@@ -95,9 +95,9 @@
 
                     <template v-else-if="products.length > 0">
                         @if ($toolbarHelper->getCurrentMode() == 'grid')
-                            <div class="row  remove-padding-margin">
+                            <div class="row  remove-padding-margin pb-5">
                                 <product-card
-                                    class="col-6 col-md-4 col-lg-3"
+                                    class="col-6 col-md-4 col-lg-3 mt-5"
                                     :key="index"
                                     :product="product"
                                     v-for="(product, index) in products">
@@ -116,7 +116,7 @@
 
                         {{--                            {!! view_render_event('bagisto.shop.productOrCategory.index.pagination.before', ['category' => $category]) !!}--}}
 
-                        <div class="bottom-toolbar" v-html="paginationHTML"></div>
+                        <div class="bottom-toolbar py-5" v-html="paginationHTML"></div>
 
                         {{--                            {!! view_render_event('bagisto.shop.productOrCategory.index.pagination.after', ['category' => $category]) !!}--}}
                     </template>

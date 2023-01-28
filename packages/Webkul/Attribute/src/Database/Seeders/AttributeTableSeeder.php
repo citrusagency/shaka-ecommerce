@@ -478,7 +478,7 @@ class AttributeTableSeeder extends Seeder
                 'id'                  => '25',
                 'code'                => 'brand',
                 'admin_name'          => 'Brand',
-                'type'                => 'select',
+                'type'                => 'multiselect',
                 'validation'          => NULL,
                 'position'            => '28',
                 'is_required'         => '0',
@@ -486,7 +486,7 @@ class AttributeTableSeeder extends Seeder
                 'value_per_locale'    => '0',
                 'value_per_channel'   => '0',
                 'is_filterable'       => '1',
-                'is_configurable'     => '0',
+                'is_configurable'     => '1',
                 'is_user_defined'     => '1',
                 'is_visible_on_front' => '1',
                 'use_in_flat'         => '1',
@@ -531,7 +531,27 @@ class AttributeTableSeeder extends Seeder
                 'created_at'          => $now,
                 'updated_at'          => $now,
                 'is_comparable'       => '0',
-            ]
+            ],
+            [
+                'id'                  => '28',
+                'code'                => 'material',
+                'admin_name'          => 'Material',
+                'type'                => 'multiselect',
+                'validation'          => NULL,
+                'position'            => '29',
+                'is_required'         => '0',
+                'is_unique'           => '0',
+                'value_per_locale'    => '0',
+                'value_per_channel'   => '0',
+                'is_filterable'       => '1',
+                'is_configurable'     => '1',
+                'is_user_defined'     => '1',
+                'is_visible_on_front' => '1',
+                'use_in_flat'         => '1',
+                'created_at'          => $now,
+                'updated_at'          => $now,
+                'is_comparable'       => '0',
+            ],
         ]);
 
         DB::table('attribute_translations')->insert([
@@ -670,6 +690,12 @@ class AttributeTableSeeder extends Seeder
                'locale'       => 'en',
                'name'         => 'Product Number',
                'attribute_id' => '27',
+            ],
+            [
+                'id'           => '28',
+                'locale'       => 'en',
+                'name'         => 'Material',
+                'attribute_id' => '28',
             ]
         ]);
     }

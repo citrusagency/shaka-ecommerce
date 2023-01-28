@@ -1,115 +1,32 @@
 <template>
-    <div :class="`dropdown ${cartItems.length > 0 ? '' : 'disable-active'}`">
-        <div class="dropdown-toggle btn btn-link" id="mini-cart" :class="{'cursor-not-allowed': ! cartItems.length}">
+    <div class="cart-container">
+        <div class=" btn btn-link" id="mini-cart" :class="{'cursor-not-allowed': ! cartItems.length}">
             <div class="mini-cart-content">
                 <i class="material-icons-outlined text-white">shopping_cart</i>
-                <div class="badge-container">
-                    <span class="badge" v-text="cartItems.length" v-if="cartItems.length != 0"></span>
+                <div class="badge-container ">
+                    <span class="badge bg-shaka-primary" v-text="cartItems.length" v-if="cartItems.length != 0"></span>
                 </div>
                 <!-- <span class="fs18 fw6 cart-text text-white" v-text="cartText"></span> -->
             </div>
 
-            <div class="down-arrow-container">
-                <span class="rango-arrow-down text-white"></span>
-            </div>
         </div>
 
-        <div
-            id="cart-modal-content"
-            class="modal-content dropdown-list sensitive-modal cart-modal-content"
-            :class="{hide: ! cartItems.length}"
-        >
-            <div class="mini-cart-container">
-                <div
-                    class="row small-card-container"
-                    :key="index"
-                    v-for="(item, index) in cartItems"
-                >
-                    <div class="col-3 product-image-container mr15">
-                        <span class="remove-item" @click="removeProduct(item.id)">
-                            <span class="rango-close"></span>
-                        </span>
 
-                        <a
-                            class="unset"
-                            :href="`${$root.baseUrl}/${item.url_key}`"
-                        >
-                            <div
-                                class="product-image"
-                                :style="
-                                    `background-image: url(${item.images.medium_image_url});`
-                                "
-                            ></div>
-                        </a>
-                    </div>
-                    <div class="col-9 no-padding card-body align-vertical-top">
-                        <div class="no-padding">
-                            <div
-                                class="fs16 text-nowrap fw6 product-name"
-                                v-html="item.name"
-                            ></div>
-
-                            <div class="fs18 card-current-price fw6">
-                                <div class="display-inbl">
-                                    <label class="fw5">{{
-                                        __('checkout.qty')
-                                    }}</label>
-                                    <input
-                                        type="text"
-                                        disabled
-                                        :value="item.quantity"
-                                        class="ml5"
-                                    />
-                                </div>
-                                <span class="card-total-price fw6">
-                                    {{
-                                        isTaxInclusive == '1'
-                                            ? item.base_total_with_tax
-                                            : item.base_total
-                                    }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <h5 class="col-6 text-left fw6">
-                    {{ subtotalText }}
-                </h5>
-
-                <h5 class="col-6 text-right fw6 no-padding">
-                    {{
-                        isTaxInclusive == '1'
-                            ? cartInformation.base_grand_total
-                            : cartInformation.base_sub_total
-                    }}
-                </h5>
-            </div>
-
-            <div class="modal-footer">
-                <a
-                    class="col text-left fs16 link-color remove-decoration"
-                    :href="viewCartRoute"
-                    >{{ viewCartText }}</a
-                >
-
-                <div class="col text-right no-padding">
-                    <a :href="checkoutRoute" @click="checkMinimumOrder($event)">
-                        <button type="button" class="theme-btn fs16 fw6">
-                            {{ checkoutText }}
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
     </div>
 </template>
 
 <style lang="scss">
 .hide {
     display: none !important;
+}
+.badge-container{
+    position: absolute!important;
+    top: 100%;
+    right: -3px;
+    transform: translate(50%, -50%);
+}
+.cart-container {
+    position: relative!important;
 }
 </style>
 

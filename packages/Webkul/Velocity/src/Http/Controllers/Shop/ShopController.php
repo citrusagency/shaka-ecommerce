@@ -289,12 +289,16 @@ class ShopController extends Controller
 
         /* fetching products */
         $products = $this->productRepository->getAll();
+        $pagination = $products->appends(request()->input())->links()->toHtml();
+        // replace the all-products url with the current url
+
+        $pagination = str_replace('all-products','shop', $pagination);
         /* sending response */
         return response()->json([
             'products'       => collect($products->items())->map(function ($product) {
                 return $this->velocityHelper->formatProduct($product);
             }),
-            'paginationHTML' => $products->appends(request()->input())->links()->toHtml(),
+            'paginationHTML' => $pagination,
         ]);
     }
 

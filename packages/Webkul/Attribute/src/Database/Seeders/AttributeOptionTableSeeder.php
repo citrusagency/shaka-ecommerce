@@ -60,7 +60,62 @@ class AttributeOptionTableSeeder extends Seeder
                 'admin_name'   => 'XL',
                 'sort_order'   => '4',
                 'attribute_id' => '24',
+            ],
+            [
+                'id'           => '10',
+                'admin_name'   => 'Shaka',
+                'sort_order'   => '1',
+                'attribute_id' => '25',
+            ],
+            [
+                'id'           => '11',
+                'admin_name'   => 'Katarina Zlajić',
+                'sort_order'   => '2',
+                'attribute_id' => '25',
+            ],
+            [
+                'id'           => '12',
+                'admin_name'   => 'Gift Card',
+                'sort_order'   => '3',
+                'attribute_id' => '25',
+            ],
+            [
+                'id'           => '13',
+                'admin_name'   => 'Made to order',
+                'sort_order'   => '4',
+                'attribute_id' => '25',
+            ],
+            [
+                'id'           => '14',
+                'admin_name'   => 'Sale',
+                'sort_order'   => '5',
+                'attribute_id' => '25',
+            ],
+            [
+                'id'           => '15',
+                'admin_name'   => 'Cotton',
+                'sort_order'   => '1',
+                'attribute_id' => '28',
+            ],
+            [
+                'id'           => '16',
+                'admin_name'   => 'Linen',
+                'sort_order'   => '2',
+                'attribute_id' => '28',
+            ],
+            [
+                'id'           => '17',
+                'admin_name'   => 'Hemp',
+                'sort_order'   => '3',
+                'attribute_id' => '28',
+            ],
+            [
+                'id'           => '18',
+                'admin_name'   => 'Zip',
+                'sort_order'   => '4',
+                'attribute_id' => '28',
             ]
+
         ]);
 
         DB::table('attribute_option_translations')->insert([
@@ -109,6 +164,60 @@ class AttributeOptionTableSeeder extends Seeder
                 'locale'              => 'en',
                 'label'               => 'XL',
                 'attribute_option_id' => '9',
+            ],
+            [
+                'id'                  => '10',
+                'locale'              => 'en',
+                'label'               => 'Shaka',
+                'attribute_option_id' => '10',
+            ],
+            [
+                'id'                  => '11',
+                'locale'              => 'en',
+                'label'               => 'Katarina Zlajić',
+                'attribute_option_id' => '11',
+            ],
+            [
+                'id'                  => '12',
+                'locale'              => 'en',
+                'label'               => 'Gift Card',
+                'attribute_option_id' => '12',
+            ],
+            [
+                'id'                  => '13',
+                'locale'              => 'en',
+                'label'               => 'Made to order',
+                'attribute_option_id' => '13',
+            ],
+            [
+                'id'                  => '14',
+                'locale'              => 'en',
+                'label'               => 'Sale',
+                'attribute_option_id' => '14',
+            ],
+            [
+                'id'                  => '15',
+                'locale'              => 'en',
+                'label'               => 'Cotton',
+                'attribute_option_id' => '15',
+            ],
+            [
+                'id'                  => '16',
+                'locale'              => 'en',
+                'label'               => 'Linen',
+                'attribute_option_id' => '16',
+            ],
+            [
+                'id'                  => '17',
+                'locale'              => 'en',
+                'label'               => 'Hemp',
+                'attribute_option_id' => '17',
+            ],
+            [
+                'id'                  => '18',
+                'locale'              => 'en',
+                'label'               => 'Zip',
+                'attribute_option_id' => '18',
             ]
         ]);
     }

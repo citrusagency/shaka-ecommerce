@@ -32,6 +32,11 @@
                     <div class="col-lg-7 col-md-12 vc-full-screen">
                         <div class="left-wrapper d-flex align-items-center justify-content-center">
 
+                            {!! view_render_event('bagisto.shop.layout.header.cart-item.before') !!}
+
+                            @include('shop::checkout.cart.mini-cart')
+
+                            {!! view_render_event('bagisto.shop.layout.header.cart-item.after') !!}
 
                             {!! view_render_event('bagisto.shop.layout.header.wishlist.before') !!}
 
@@ -45,11 +50,7 @@
 
                             {!! view_render_event('bagisto.shop.layout.header.compare.after') !!}
 
-                            {!! view_render_event('bagisto.shop.layout.header.cart-item.before') !!}
 
-                            @include('shop::checkout.cart.mini-cart')
-
-                            {!! view_render_event('bagisto.shop.layout.header.cart-item.after') !!}
                             @include('velocity::layouts.top-nav.login-section')
                         </div>
                     </div>
