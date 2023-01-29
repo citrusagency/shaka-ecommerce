@@ -2,6 +2,7 @@
     <div class="rounded-circle bg-shaka-light"
         style="height: 43px;
     width: 43px;
+    float: right;
     display: grid;
     place-items: center;">
 

@@ -32,6 +32,17 @@ class CategoryTableSeeder extends Seeder
                 'parent_id'  => NULL,
                 'created_at' => $now,
                 'updated_at' => $now,
+            ],
+            [
+                'id'         => '2',
+                'position'   => '2',
+                'image'      => NULL,
+                'status'     => '1',
+                '_lft'       => '1',
+                '_rgt'       => '14',
+                'parent_id'  => NULL,
+                'created_at' => $now,
+                'updated_at' => $now,
             ]
         ]);
 
@@ -85,6 +96,16 @@ class CategoryTableSeeder extends Seeder
                 'meta_keywords'    => '',
                 'category_id'      => '1',
                 'locale'           => 'tr',
+            ],
+            [
+                'name'             => 'All',
+                'slug'             => 'all',
+                'description'      => 'All',
+                'meta_title'       => '',
+                'meta_description' => '',
+                'meta_keywords'    => '',
+                'category_id'      => '2',
+                'locale'           => 'en',
             ]
         ]);
     }

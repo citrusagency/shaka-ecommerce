@@ -64,7 +64,8 @@
                 :href="`${baseUrl}/${product.slug}`">
                 <span class="fs16 font-weight-bold">{{ product.name }}</span>
                 <br>
-                <div class="product-price text-shaka-subtitle mt-2">{{ product.special_price ? product.special_price : product.price }}</div>
+                <p v-html="product.priceHTML"></p>
+<!--                <div class="product-price text-shaka-subtitle mt-2">{{ product.special_price ? product.special_price : product.price }}</div>-->
             </a>
         </div>
     </div>

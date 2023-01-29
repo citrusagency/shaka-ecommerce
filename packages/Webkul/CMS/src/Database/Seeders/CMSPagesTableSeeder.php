@@ -58,6 +58,10 @@ class CMSPagesTableSeeder extends Seeder
                 'id'         => 11,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+            ], [
+                'id'         => 12,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]
         ]);
 
@@ -161,7 +165,17 @@ class CMSPagesTableSeeder extends Seeder
                 'meta_title'       => 'Privacy Policy',
                 'meta_description' => '',
                 'meta_keywords'    => 'privacy, policy',
-            ]
+            ],
+            [
+                'locale'           => 'en',
+                'cms_page_id'      => 12,
+                'url_key'          => 'behind-the-scenes',
+                'html_content'     => "<p>@include('shop::behind-the-scenes')</p>",
+                'page_title'       => 'Behind the Scenes',
+                'meta_title'       => 'Behind the Scenes',
+                'meta_description' => 'Behind the Scenes',
+                'meta_keywords'    => 'shaka behind the scenes',
+            ],
         ]);
     }
 }

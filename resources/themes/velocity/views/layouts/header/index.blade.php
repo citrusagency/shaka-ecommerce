@@ -1,6 +1,6 @@
 @php
     // If current route is /
-    if (request()->route()->getName() == 'shop.home.index') {
+    if (request()->route()->getName() == 'shop.home.index' || request()->route()->slug == 'about-us') {
         $headerClass = 'bg-transparent';
     } else {
         $headerClass = 'bg-shaka-dark';
@@ -17,9 +17,9 @@
             <div class="row gap-4">
                 <a href="/" class="text-white text-uppercase  {{ request()->is('/') ? 'active-route' : '' }}">Homepage</a>
                 <a href="{{ route('shop.getAllProducts') }}" class="text-white text-uppercase  {{ request()->is('shop') ? 'active-route' : '' }} ml-5">Shop</a>
-                <a href="{{ route("shop.cms.page", 'about-us') }}" class="text-white text-uppercase  {{ request()->route()->slug? 'active-route' : '' }} ml-5">About the label</a>
-                <a href="/" class="text-white text-uppercase  {{ request()->is('/behind-the-scenes') ? 'active-route' : '' }} ml-5">Behind the scenes</a>
-                <a href="{{ route("shop.cms.page", 'contact-us') }}" class="text-white  text-uppercase {{ request()->is('/page/contact-us') ? 'active-route' : '' }} ml-5">Contact us</a>
+                <a href="{{ route("shop.cms.page", 'about-us') }}" class="text-white text-uppercase  {{ request()->route()->slug == 'about-us'? 'active-route' : '' }} ml-5">About the label</a>
+                <a href="{{ route("shop.cms.page", 'behind-the-scenes') }}" class="text-white text-uppercase  {{ request()->route()->slug == 'behind-the-scenes' ? 'active-route' : '' }} ml-5">Behind the scenes</a>
+                <a href="{{ route("shop.cms.page", 'contact-us') }}" class="text-white  text-uppercase {{ request()->route()->slug == 'contact-us' ? 'active-route' : '' }} ml-5">Contact us</a>
             </div>
 
 

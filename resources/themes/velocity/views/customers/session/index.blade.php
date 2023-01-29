@@ -72,11 +72,11 @@
                                     v-validate="'required'"
                                     value="{{ old('password') }}"
                                     data-vv-as="&quot;{{ __('shop::app.customer.login-form.password') }}&quot;" />
-                                <input type="checkbox" onclick="myFunction()" id="shoPassword" class="show-password"> {{ __('shop::app.customer.login-form.show-password') }}  
+                                <input type="checkbox" onclick="myFunction()" id="shoPassword" class="show-password"> {{ __('shop::app.customer.login-form.show-password') }}
                                 <span class="control-error" v-if="errors.has('password')" v-text="errors.first('password')"></span>
 
                                 <a href="{{ route('customer.forgot-password.create') }}" class=" show-password float-right">
-                                    {{ __('shop::app.customer.login-form.forgot_pass') }}  
+                                    {{ __('shop::app.customer.login-form.forgot_pass') }}
                                 </a>
 
                                 <div class="mt10">
@@ -96,7 +96,7 @@
 
                             {!! view_render_event('bagisto.shop.customers.login_form_controls.after') !!}
 
-                            <input class="theme-btn" type="submit" value="{{ __('shop::app.customer.login-form.button_title') }}">
+                            <input class="theme-btn bg-shaka-primary" type="submit" value="{{ __('shop::app.customer.login-form.button_title') }}">
 
                         </form>
                     </div>
@@ -112,7 +112,7 @@
 {!! Captcha::renderJS() !!}
 
 <script>
-    $(function(){       
+    $(function(){
         $(":input[name=email]").focus();
     });
 
@@ -124,7 +124,7 @@
                 x.type = "password";
             }
         }
-    
+
     </script>
 
 @endpush

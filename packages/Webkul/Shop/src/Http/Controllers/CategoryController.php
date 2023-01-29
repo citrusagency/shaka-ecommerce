@@ -2,7 +2,9 @@
 
 namespace Webkul\Shop\Http\Controllers;
 
+use Webkul\Attribute\Models\Attribute;
 use Webkul\Attribute\Repositories\AttributeRepository;
+use Webkul\Category\Models\Category;
 use Webkul\Category\Repositories\CategoryRepository;
 use Webkul\Product\Repositories\ProductFlatRepository;
 
@@ -37,9 +39,21 @@ class CategoryController extends Controller
         if (empty($filterAttributes = $category->filterableAttributes)) {
             $filterAttributes = $this->attributeRepository->getFilterAttributes();
         }
+        $attributes = Attribute::query()->where('code','=', 'material')->with('options')->get();
+        // get all categories with their children
+        $categories = Category::query()->whereNull('parent_id')->with('children')->get();
+
+        // Order filter attributes by name asc using php array functions
+        $array = $filterAttributes->toArray();
+        usort($array, fn($a, $b) => $a['name'] <=> $b['name']);
+
+
+
 
         return response()->json([
-            'filter_attributes' => $filterAttributes,
+            'filter_attributes' => $array,
+            'categories' => $categories,
+            'attributes' => $attributes
         ]);
     }
 

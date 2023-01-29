@@ -17,9 +17,14 @@
         <meta name="keywords" content="{{ $page->meta_keywords }}" />
     @endisset
 @endsection
-
+@if($page->url_key != 'about-us')
 @section('content-wrapper')
     <div class="cms-page-container p-2">
         {!! DbView::make($page)->field('html_content')->render() !!}
     </div>
 @endsection
+    @else
+        @section('content-wrapper')
+                {!! DbView::make($page)->field('html_content')->render() !!}
+        @endsection
+    @endif

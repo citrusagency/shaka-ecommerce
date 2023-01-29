@@ -18,7 +18,7 @@
         <button
             type="submit"
             :disabled="isButtonEnable == 'false' || isButtonEnable == false"
-            class="btn bg-transparent text-white atc-btn"
+            class="btn bg-transparent bg-shaka-primary text-white atc-btn"
             v-else
             >
 

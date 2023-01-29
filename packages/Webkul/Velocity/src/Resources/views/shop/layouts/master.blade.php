@@ -31,12 +31,11 @@
     {{-- all styles --}}
     @include('shop::layouts.styles')
 </head>
-
-<body @if (core()->getCurrentLocale() && core()->getCurrentLocale()->direction === 'rtl') class="rtl" @endif>
+<body @if (core()->getCurrentLocale() && core()->getCurrentLocale()->direction === 'rtl') class="rtl" @endif class="{{ str_contains(request()->getUri(), 'customer') ? 'bg-shaka-light' : '' }}">
 {!! view_render_event('bagisto.shop.layout.body.before') !!}
 
 {{-- main app --}}
-<div id="app">
+<div id="app" class="">
     <product-quick-view v-if="$root.quickView"></product-quick-view>
 
     <div class="main-container-wrapper">
@@ -52,7 +51,7 @@
 
             {!! view_render_event('bagisto.shop.layout.header.after') !!}
 
-            <div class="main-content-wrapper col-12 no-padding">
+            <div class="main-content-a col-12 no-padding">
 
                 {{-- secondary header --}}
                 <header class="row velocity-divide-page bg-shaka-dark vc-header header-shadow active">
@@ -96,9 +95,15 @@
 {{--            </div>--}}
 
         <div class="">
-            {!! view_render_event('bagisto.shop.layout.full-content.before') !!}
+{{--            {!! view_render_event('bagisto.shop.layout.full-content.before') !!}--}}
 
             @yield('full-content-wrapper')
+
+            {{--                    {!! view_render_event('bagisto.shop.layout.content.before') !!}--}}
+
+            {{--                    @yield('content-wrapper')--}}
+
+            {{--                    {!! view_render_event('bagisto.shop.layout.content.after') !!}--}}
             @yield('content-wrapper')
 
             {!! view_render_event('bagisto.shop.layout.full-content.after') !!}

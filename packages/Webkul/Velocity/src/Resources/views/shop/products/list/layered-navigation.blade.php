@@ -1,4 +1,4 @@
-<div class="layered-filter-wrapper left">
+<div class="layered-filter-wrapper p-0 py-4 left">
     {!! view_render_event('bagisto.shop.products.list.layered-nagigation.before') !!}
 
     <layered-navigation
@@ -12,15 +12,32 @@
 @push('scripts')
     <script type="text/x-template" id="layered-navigation-template">
         <div v-if="attributes.length > 0">
+            <div class="border border-2 w-100">
+                <h5 class="text-center font-shaka py-3">Category</h5>
+            </div>
 
-            <h5 class="filter-title fw6 mb20">
-                {{ __('shop::app.products.layered-nav-title') }}
-            </h5>
-
-            <div class="filter-content">
-                <div class="filter-attributes">
+            <div class="filter-content border border-top-0">
+                <div class="filter-attributes p-3">
                     <filter-attribute-item
-                        v-for='(attribute, index) in attributes'
+                        v-for='(attribute, index) in categories'
+                        :key="index"
+                        type="category"
+                        :index="index"
+                        :attribute="attribute"
+                        :appliedFilterValues="appliedFilters[attribute.code]"
+                        :max-price-src="maxPriceSrc"
+                        @onFilterAdded="addFilters(attribute.code, $event)">
+                    </filter-attribute-item>
+                </div>
+            </div>
+
+            <div class="border border-2 border-top-0 w-100">
+                <h5 class="text-center font-shaka py-3">Material</h5>
+            </div>
+            <div class="filter-content border border-top-0">
+                <div class="filter-attributes p-3">
+                    <filter-attribute-item
+                        v-for='(attribute, index) in materials'
                         :key="index"
                         :index="index"
                         :attribute="attribute"
@@ -30,70 +47,77 @@
                     </filter-attribute-item>
                 </div>
             </div>
+
+            <div class="border border-2 border-top-0 w-100">
+                <h5 class="text-center font-shaka py-3">Price range</h5>
+            </div>
+            <div class="filter-content border border-top-0">
+                <div class="filter-attributes p-3">
+                    <filter-attribute-item
+                        :attribute="attributes[2]"
+                        :appliedFilterValues="appliedFilters[attributes[2].code]"
+                        :max-price-src="maxPriceSrc"
+                        @onFilterAdded="addFilters(attributes[2].code, $event)">
+                    </filter-attribute-item>
+                </div>
+            </div>
         </div>
     </script>
 
     <script type="text/x-template" id="filter-attribute-item-template">
-        <div :class="`cursor-pointer filter-attributes-item active`">
-            <div class="filter-attributes-title" @click="active = ! active">
-                <h6 class="fw6 display-inbl">@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
 
-                <div class="float-right display-table">
+
+        <div>
+            <div class="price-range-wrapper" v-if="attribute.type == 'price'">
+                <vue-slider
+                    ref="slider"
+                    v-model="sliderConfig.value"
+                    :process-style="sliderConfig.processStyle"
+                    :tooltip-style="sliderConfig.tooltipStyle"
+                    :max="sliderConfig.max"
+                    :lazy="true"
+                    @change="priceRangeUpdated($event)"
+                ></vue-slider>
+
+                <div class="filter-input row col-12 no-padding">
+                    <div class="d-flex w-100 justify-content-between">
+                        <span class="pl-3" v-text="sliderConfig.value[0]"></span>
+                        <span v-text="sliderConfig.value[1]"></span>
+                    </div>
+                </div>
+            </div>
+            <div :class="`cursor-pointer filter-attributes-item ${active ? 'active' : ''}`" v-else>
+                <div class="filter-attributes-title" @click="active = ! active">
+                    <h6 class="fw6 display-inbl">@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
+
+                    <div class="float-right display-table">
                     <span class="link-color cursor-pointer" v-if="appliedFilters.length" @click.stop="clearFilters()">
                         {{ __('shop::app.products.remove-filter-link-title') }}
                     </span>
 
-                    <i :class="`icon fs16 cell ${active ? 'rango-arrow-up' : 'rango-arrow-down'}`"></i>
-                </div>
-            </div>
-
-            <div class="filter-attributes-content">
-                <ul type="none" class="items ml15" v-if="attribute.type != 'price'">
-                    <li
-                        class="item"
-                        v-for='(option, index) in attribute.options'>
-                        <div
-                            class="checkbox"
-                            @click="optionClicked(option.id, $event)">
-                            <input
-                                type="checkbox"
-                                :id="option.id"
-                                v-bind:value="option.id"
-                                v-model="appliedFilters"
-                                @change="addFilter($event)" />
-                            <span>@{{ option.label ? option.label : option.admin_name }}</span>
-                        </div>
-                    </li>
-                </ul>
-
-                <div class="price-range-wrapper" v-if="attribute.type == 'price'">
-                    <vue-slider
-                        ref="slider"
-                        v-model="sliderConfig.value"
-                        :process-style="sliderConfig.processStyle"
-                        :tooltip-style="sliderConfig.tooltipStyle"
-                        :max="sliderConfig.max"
-                        :lazy="true"
-                        @change="priceRangeUpdated($event)"
-                    ></vue-slider>
-
-                    <div class="filter-input row col-12 no-padding">
-                        <input
-                            type="text"
-                            name="price_from"
-                            :value="sliderConfig.priceFrom"
-                            id="price_from"
-                            disabled>
-
-                        <label class="col text-center" for="to">{{ __('shop::app.products.filter-to') }}</label>
-
-                        <input
-                            type="text"
-                            name="price_to"
-                            :value="sliderConfig.priceTo"
-                            id="price_to"
-                            disabled>
+                        <i :class="`icon fs16 cell ${active ? 'rango-arrow-up' : 'rango-arrow-down'}`"></i>
                     </div>
+                </div>
+
+                <div class="filter-attributes-content">
+                    <ul type="none" class="items ml15" v-if="attribute.type != 'price'">
+                        <li
+                            class="item"
+                            v-for='(option, index) in attribute.options'>
+                            <div
+                                class="checkbox"
+                                @click="optionClicked(option.id, $event)">
+                                <input
+                                    type="checkbox"
+                                    :id="option.id"
+                                    v-bind:value="option.id"
+                                    v-model="appliedFilters"
+                                    @change="addFilter($event)"/>
+                                <span>@{{ option.label ? option.label : option.admin_name }}</span>
+                            </div>
+                        </li>
+                    </ul>
+
                 </div>
             </div>
         </div>
@@ -108,10 +132,12 @@
                 'maxPriceSrc',
             ],
 
-            data: function() {
+            data: function () {
                 return {
                     appliedFilters: {},
                     attributes: [],
+                    categories: [],
+                    materials: [],
                 }
             },
 
@@ -127,6 +153,8 @@
                         .get(this.attributeSrc)
                         .then((response) => {
                             this.attributes = response.data.filter_attributes;
+                            this.categories[0] = this.attributes[0]
+                            this.materials[0] = this.attributes[1]
                         });
                 },
 
@@ -171,9 +199,10 @@
                 'addFilters',
                 'appliedFilterValues',
                 'maxPriceSrc',
+                'type'
             ],
 
-            data: function() {
+            data: function () {
                 return {
                     active: false,
 
@@ -201,7 +230,7 @@
             },
 
             created: function () {
-                if (! this.index) this.active = false;
+                if (!this.index) this.active = false;
 
                 if (this.appliedFilterValues && this.appliedFilterValues.length) {
                     this.appliedFilters = this.appliedFilterValues;
@@ -227,10 +256,10 @@
                     axios
                         .get(this.maxPriceSrc)
                         .then((response) => {
-                            let maxPrice  = response.data.max_price;
+                            let maxPrice = response.data.max_price;
                             this.sliderConfig.max = maxPrice ? ((parseInt(maxPrice) !== 0 || maxPrice) ? parseInt(maxPrice) : 500) : 500;
 
-                            if (! this.appliedFilterValues) {
+                            if (!this.appliedFilterValues) {
                                 this.sliderConfig.value = [0, this.sliderConfig.max];
                                 this.sliderConfig.priceTo = this.sliderConfig.max;
                             }
@@ -261,7 +290,7 @@
 
                     if (checkbox && checkbox.length > 0 && target.type != "checkbox") {
                         checkbox = checkbox[0];
-                        checkbox.checked = ! checkbox.checked;
+                        checkbox.checked = !checkbox.checked;
 
                         if (checkbox.checked) {
                             this.appliedFilters.push(id);

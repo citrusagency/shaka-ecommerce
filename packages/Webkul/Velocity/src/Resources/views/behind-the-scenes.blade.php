@@ -1,19 +1,3 @@
-<style>
-
-</style>
-
-<div class="about-content text-white">
-
-
-    <!-- The slideshow -->
-    <div class="about-container" style="background-image: url({{ asset('images/about.png') }});">
-        <div class="container">
-            <h1 class="text-uppercase text-center font-shaka" style="letter-spacing: 3px">About the label</h1>
-        </div>
-
-    </div>
-
-</div>
 
 <div class="bg-shaka-light d-block d-md-none">
     <div class="container py-5 py-md-0">
