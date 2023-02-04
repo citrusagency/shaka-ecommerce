@@ -26,7 +26,7 @@
                         :attribute="attribute"
                         :appliedFilterValues="appliedFilters[attribute.code]"
                         :max-price-src="maxPriceSrc"
-                        @onFilterAdded="addFilters(attribute.code, $event)">
+                        @onFilterAdded="addFilters('category', $event)">
                     </filter-attribute-item>
                 </div>
             </div>
@@ -68,7 +68,7 @@
 
 
         <div>
-            <div class="price-range-wrapper" v-if="attribute.type == 'price'">
+            <div class="price-range-wrapper" v-if="attribute.type === 'price'">
                 <vue-slider
                     ref="slider"
                     v-model="sliderConfig.value"
@@ -86,7 +86,49 @@
                     </div>
                 </div>
             </div>
-            <div :class="`cursor-pointer filter-attributes-item ${active ? 'active' : ''}`" v-else>
+            <div v-if="attribute.type === 'category'">
+                <div v-if="attribute.children.length === 0">
+                    <h6 @click="changeCategory(attribute.id)" class="fw6 display-inbl">@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
+                </div>
+                <div :class="`cursor-pointer filter-attributes-item border-bottom-0 ${active ? 'active' : ''}`" v-else>
+                    <div class="filter-attributes-title" @click="active = ! active">
+                        <h6 class="fw6 display-inbl">@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
+
+                        <div class="float-right display-table">
+{{--                    <span class="link-color cursor-pointer" v-if="appliedFilters.length" @click.stop="clearFilters()">--}}
+{{--                        {{ __('shop::app.products.remove-filter-link-title') }}--}}
+{{--                    </span>--}}
+
+                            <i :class="`icon fs16 cell ${active ? 'rango-arrow-up' : 'rango-arrow-down'}`"></i>
+                        </div>
+                    </div>
+
+
+
+                    <div class="filter-attributes-content border-bottom-0">
+                        <ul type="none" class="items ml15">
+                            <li
+                                class="item"
+                                v-for='(option, index) in attribute.children'>
+                                <div
+                                    class="checkbox"
+                                    @click="changeCategory(option.id)">
+{{--                                    <input--}}
+{{--                                        style="opacity: 0"--}}
+{{--                                        type="radio"--}}
+{{--                                        :id="option.id"--}}
+{{--                                        v-bind:value="option.id"--}}
+{{--                                        v-model="appliedFilters"--}}
+{{--                                        @change="addFilter($event)"/>--}}
+                                    <span >@{{ option.name ? option.name : option.admin_name }}</span>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <div :class="`cursor-pointer filter-attributes-item ${active ? 'active' : ''}`" v-if="attribute.code === 'material'">
                 <div class="filter-attributes-title" @click="active = ! active">
                     <h6 class="fw6 display-inbl">@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
 
@@ -153,7 +195,7 @@
                         .get(this.attributeSrc)
                         .then((response) => {
                             this.attributes = response.data.filter_attributes;
-                            this.categories[0] = this.attributes[0]
+                            this.categories = response.data.categories
                             this.materials[0] = this.attributes[1]
                         });
                 },
@@ -204,7 +246,7 @@
 
             data: function () {
                 return {
-                    active: false,
+                    active: true,
 
                     appliedFilters: [],
 
@@ -230,7 +272,7 @@
             },
 
             created: function () {
-                if (!this.index) this.active = false;
+                if (!this.index) this.active = true;
 
                 if (this.appliedFilterValues && this.appliedFilterValues.length) {
                     this.appliedFilters = this.appliedFilterValues;
@@ -282,6 +324,12 @@
 
                     this.appliedFilters = [];
 
+                    this.$emit('onFilterAdded', this.appliedFilters);
+                },
+
+                changeCategory: function (id) {
+                    console.log(id)
+                    this.appliedFilters.push(id);
                     this.$emit('onFilterAdded', this.appliedFilters);
                 },
 

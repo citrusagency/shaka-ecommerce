@@ -66,7 +66,7 @@ class Category extends TranslatableModel implements CategoryContract
      *
      * @var array
      */
-    protected $appends = ['image_url', 'category_icon_url'];
+    protected $appends = ['image_url', 'category_icon_url', 'type'];
 
     /**
      * The products that belong to the category.
@@ -76,6 +76,11 @@ class Category extends TranslatableModel implements CategoryContract
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(ProductProxy::modelClass(), 'product_categories');
+    }
+
+    public function getTypeAttribute()
+    {
+        return 'category';
     }
 
     /**
@@ -163,7 +168,7 @@ class Category extends TranslatableModel implements CategoryContract
 
         while (isset($category->parent)) {
             $category = $category->parent;
-            
+
             $categories[] = $category;
         }
 

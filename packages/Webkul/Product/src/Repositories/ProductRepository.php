@@ -176,8 +176,8 @@ class ProductRepository extends Repository
                 ->where('product_flat.locale', $locale)
                 ->whereNotNull('product_flat.url_key');
 
-            if ($categoryId) {
-                $qb->whereIn('product_categories.category_id', explode(',', $categoryId));
+            if (isset($params['category'])) {
+                $qb->where('product_categories.category_id',$params['category']);
             }
 
             if (! core()->getConfigData('catalog.products.homepage.out_of_stock_items')) {
