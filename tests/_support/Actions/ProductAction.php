@@ -35,6 +35,7 @@ trait ProductAction
         $possibleTypes = [
             'text'     => 'text_value',
             'select'   => 'integer_value',
+            'multiselect'   => 'integer_value',
             'boolean'  => 'boolean_value',
             'textarea' => 'text_value',
             'price'    => 'float_value',
