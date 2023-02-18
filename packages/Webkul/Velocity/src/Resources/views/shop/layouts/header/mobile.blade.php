@@ -57,6 +57,46 @@
     </template>
 
     <template v-slot:customer-navigation>
+
+        <ul class="vc-customer-options">
+            <li>
+                <a
+                    class="unset fw5  {{ request()->is('/') ? 'fw7' : '' }}"
+                    href="/">
+                    <span class="text-shaka-black text-uppercase fs18">Homepage</span>
+                </a>
+            </li>
+            <li>
+                <a
+                    class="unset fw5 {{ request()->is('shop') ? 'fw7' : '' }}"
+                    href="{{ route('shop.getAllProducts') }}">
+                    <span class="text-shaka-black text-uppercase fs18">Shop</span>
+                </a>
+            </li>
+            <li>
+                <a
+                    class="unset fw5 {{ request()->is('about') ? 'fw7' : '' }}"
+                    href="{{ route("shop.about") }}">
+                    <span class="text-shaka-black text-uppercase fs18">About</span>
+                </a>
+            </li>
+            <li>
+                <a
+                    class="unset fw5 {{ request()->is('behind-the-scenes') ? 'fw7' : '' }}"
+                    href="{{ route("shop.behind-the-scenes") }}">
+                    <span class="text-shaka-black text-uppercase fs18">Behind the scenes</span>
+                </a>
+            </li>
+            <li>
+                <a
+                    class="unset fw5 {{ request()->is('contact') ? 'fw7' : '' }}"
+                    href="{{ route("shop.contact.index") }}">
+                    <span class="text-shaka-black text-uppercase fs18">Contact</span>
+                </a>
+            </li>
+
+        </ul>
+
         @auth('customer')
             <ul type="none" class="vc-customer-options">
                 <li>
@@ -89,14 +129,14 @@
                     </li>
                 @endif
 
-                @if (core()->getConfigData('general.content.shop.compare_option'))
-                    <li>
-                        <a href="{{ route('velocity.customer.product.compare') }}" class="unset">
-                            <i class="icon compare text-down-3"></i>
-                            <span>{{ __('shop::app.customer.compare.text') }}</span>
-                        </a>
-                    </li>
-                @endif
+{{--                @if (core()->getConfigData('general.content.shop.compare_option'))--}}
+{{--                    <li>--}}
+{{--                        <a href="{{ route('velocity.customer.product.compare') }}" class="unset">--}}
+{{--                            <i class="icon compare text-down-3"></i>--}}
+{{--                            <span>{{ __('shop::app.customer.compare.text') }}</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                @endif--}}
 
                 <li>
                     <a href="{{ route('customer.orders.index') }}" class="unset">
@@ -105,12 +145,12 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="{{ route('customer.downloadable_products.index') }}" class="unset">
-                        <i class="icon downloadables text-down-3"></i>
-                        <span>{{ __('velocity::app.shop.general.downloadables') }}</span>
-                    </a>
-                </li>
+{{--                <li>--}}
+{{--                    <a href="{{ route('customer.downloadable_products.index') }}" class="unset">--}}
+{{--                        <i class="icon downloadables text-down-3"></i>--}}
+{{--                        <span>{{ __('velocity::app.shop.general.downloadables') }}</span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
             </ul>
         @endauth
     </template>
@@ -125,7 +165,7 @@
                 </form>
 
                 <a
-                    class="unset"
+                    class="unset fw7"
                     href="{{ route('customer.session.destroy') }}"
                     onclick="event.preventDefault(); document.getElementById('customerLogout').submit();">
                     {{ __('shop::app.header.logout') }}
@@ -134,9 +174,9 @@
 
             @guest('customer')
                 <a
-                    class="unset"
+                    class="unset fw7 "
                     href="{{ route('customer.session.create') }}">
-                    <span>{{ __('shop::app.customer.login-form.title') }}</span>
+                    <span class="text-shaka text-uppercase fs18">{{ __('shop::app.customer.login-form.title') }}</span>
                 </a>
             @endguest
         </li>
@@ -144,9 +184,9 @@
         <li>
             @guest('customer')
                 <a
-                    class="unset"
+                    class="unset fw7 "
                     href="{{ route('customer.register.index') }}">
-                    <span>{{ __('shop::app.header.sign-up') }}</span>
+                    <span class="text-shaka text-uppercase fs18">Create an account</span>
                 </a>
             @endguest
         </li>
@@ -160,6 +200,24 @@
     </template>
 
 
+    <template v-slot:top-header>
+            <div class="" style="display: flex; flex-direction: row; justify-content: flex-end; align-items: center; gap: 20px">
+                <a href="{{  route('shop.checkout.cart.index') }}" class="mini-cart-btna m-0" >
+                    <mini-cart
+                        is-tax-inclusive="{{ Webkul\Tax\Helpers\Tax::isTaxInclusive() }}"
+                        view-cart-route="{{ route('shop.checkout.cart.index') }}"
+                        checkout-route="{{ route('shop.checkout.onepage.index') }}"
+                        check-minimum-order-route="{{ route('shop.checkout.check-minimum-order') }}"
+                        cart-text="{{ __('shop::app.minicart.cart') }}"
+                        view-cart-text="{{ __('shop::app.minicart.view-cart') }}"
+                        checkout-text="{{ __('shop::app.minicart.checkout') }}"
+                        subtotal-text="{{ __('shop::app.checkout.cart.cart-subtotal') }}">
+                    </mini-cart>
+                </a>
+                @include('shop::layouts.particals.wishlist', ['isText' => true])
+
+            </div>
+    </template>
 
     <template v-slot:search-bar>
         <div class="row">

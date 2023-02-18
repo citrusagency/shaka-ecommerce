@@ -1,4 +1,4 @@
-<a href="{{  route('shop.checkout.onepage.index') }}" class="mini-cart-btn m-0" >
+<a href="{{  route('shop.checkout.cart.index') }}" class="mini-cart-btn m-0" >
     <mini-cart
         is-tax-inclusive="{{ Webkul\Tax\Helpers\Tax::isTaxInclusive() }}"
         view-cart-route="{{ route('shop.checkout.cart.index') }}"

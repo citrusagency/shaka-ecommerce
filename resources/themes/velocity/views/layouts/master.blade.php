@@ -54,7 +54,7 @@
             <div class="main-content-a col-12 no-padding">
 
                 {{-- secondary header --}}
-                <header class="row velocity-divide-page bg-shaka-dark vc-header header-shadow active">
+                <header class="row velocity-divide-page bg-shaka-black2 text-white vc-header header-shadow active">
 
                     {{-- mobile header --}}
                     <div class="vc-small-screen container">

@@ -52,9 +52,12 @@
     color: #1197C2 !important;
 }
 
-.bg-shaka-primary {
+.bg-shaka-primary, .theme-btn {
     background-color: #1197C2 !important;
     color: white !important;
+}
+p {
+    margin-bottom: 0!important;
 }
 
 .p-shaka-about{
@@ -100,7 +103,7 @@
     color: white !important;
 }
 
-.bg-shaka-primary:hover {
+.bg-shaka-primary:hover, .theme-btn:hover {
     background-color: #14697b !important;
     color: white !important;
 }
@@ -109,12 +112,17 @@
 }
 
 .main-container-wrapper .sticky-header.header-shadow {
-    background-color: #052A32 !important;
+    background-color: #232427 !important;
 }
 .vue-slider .vue-slider-process {
     background-color: #777777 !important;
 }
 
+
+.zoomContainer {
+    height: auto!important;
+    width: 100%;
+}
 
 .active-route {
     display: block;
@@ -190,8 +198,8 @@
 }
 
 .about-container {
-    padding-top: 200px;
-    padding-bottom: 180px !important;
+    padding-top: 300px;
+    padding-bottom: 280px !important;
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1332,16 +1340,22 @@ i.within-circle {
 
     .nav-container {
         top: 0px;
-        left: 0px;
-        width: 75%;
+        right: 0!important;
+        left: auto!important;
+        width: 85%;
         position: fixed !important;
         opacity: 1;
         z-index: 9999;
         height: 100vh;
         font-size: 16px;
         overflow-y: scroll;
-        box-shadow: 5px 0 5px -5px #333;
+        box-shadow: 5px 0 5px 195px #777;
         background-color: #ffffff;
+    }
+
+    .badge-container{
+        top: 50%!important;
+        right: 2px!important;
     }
 }
 
@@ -1353,9 +1367,15 @@ i.within-circle {
     width: 101.2% !important;
 }
 
+
+.badge-container .badge {
+    border-radius: 50%;
+}
 .show-password {
     margin-top: 10px !important;
 }
+
+
 
 .category {
     line-height: 2.0rem !important;

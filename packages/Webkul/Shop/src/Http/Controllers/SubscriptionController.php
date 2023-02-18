@@ -3,7 +3,7 @@
 namespace Webkul\Shop\Http\Controllers;
 
 use Illuminate\Support\Facades\Mail;
-use Webkul\Shop\Mail\SubscriptionEmail;
+use Webkul\Shop\Mail\ContactEmail;
 use Webkul\Core\Repositories\SubscribersListRepository;
 
 class SubscriptionController extends Controller
@@ -49,7 +49,7 @@ class SubscriptionController extends Controller
             $mailSent = true;
 
             try {
-                Mail::queue(new SubscriptionEmail($subscriptionData));
+                Mail::queue(new ContactEmail($subscriptionData));
 
                 session()->flash('success', trans('shop::app.subscription.subscribed'));
             } catch (\Exception $e) {

@@ -2,16 +2,15 @@
     <div class="cart-container">
         <div class=" btn btn-link" id="mini-cart" :class="{'cursor-not-allowed': ! cartItems.length}">
             <div class="mini-cart-content">
-                <i class="material-icons-outlined text-white">shopping_cart</i>
+<!--                <i class="material-icons-outlined text-white">shopping_cart</i>-->
+                <img :src="imgSrc" alt="Wishlist">
+
                 <div class="badge-container ">
                     <span class="badge bg-shaka-primary" v-text="cartItems.length" v-if="cartItems.length != 0"></span>
                 </div>
                 <!-- <span class="fs18 fw6 cart-text text-white" v-text="cartText"></span> -->
             </div>
-
         </div>
-
-
     </div>
 </template>
 
@@ -25,6 +24,10 @@
     right: -3px;
     transform: translate(50%, -50%);
 }
+//.badge {
+//    top: -21px!important;
+//    left: -10px!important;
+//}
 .cart-container {
     position: relative!important;
 }
@@ -46,12 +49,15 @@ export default {
     data: function() {
         return {
             cartItems: [],
-            cartInformation: []
+            cartInformation: [],
+            imgSrc: ''
+
         };
     },
 
     mounted: function() {
         this.getMiniCartDetails();
+        this.imgSrc = this.$root.baseUrl + "/images/cart.svg"
     },
 
     watch: {

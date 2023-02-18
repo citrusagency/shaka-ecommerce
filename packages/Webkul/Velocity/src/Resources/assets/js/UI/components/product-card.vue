@@ -4,7 +4,7 @@
             <a :title="product.name" :href="`${baseUrl}/${product.slug}`">
                 <img
                     :src="product.image || product.product_image"
-                    class="w-100"
+                    class="w-100 product-image"
                     :onerror="`this.src='${this.$root.baseUrl}/vendor/webkul/ui/assets/images/product/large-product-placeholder.png'`"/>
 
                 <product-quick-view-btn :quick-view-details="product" v-if="!isMobile()"></product-quick-view-btn>
@@ -119,6 +119,14 @@
     <!--        </div>-->
     <!--    </div>-->
 </template>
+
+<style lang="scss">
+.product-image {
+    aspect-ratio: 4/5;
+    width: 100%;
+    object-fit: cover;
+}
+</style>
 
 <script type="text/javascript">
 export default {

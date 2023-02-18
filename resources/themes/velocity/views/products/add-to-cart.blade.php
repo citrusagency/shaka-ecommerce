@@ -64,7 +64,7 @@
             @endif
         </div>
     </div>
-    <div class="col-6 p-0">
+    <div class="col-6 p-0 pr-2">
 
             @include('shop::products.wishlist', [
                 'addClass' => $addWishlistClass ?? ''

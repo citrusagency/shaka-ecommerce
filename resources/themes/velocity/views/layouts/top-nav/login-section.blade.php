@@ -5,7 +5,8 @@
         @if (auth()->guard('customer')->user() && auth()->guard('customer')->user()->image)
             <i class="align-vertical-top"><img class= "profile-small-icon" src="{{ auth('customer')->user()->image_url }}" alt="{{ auth('customer')->user()->first_name }}"/></i>
         @else
-            <i class="material-icons align-vertical-top">perm_identity</i>
+{{--            <i class="material-icons align-vertical-top">perm_identity</i>--}}
+            <img src="{{asset('images/account.svg')}}" alt="Account">
         @endif
 
 
@@ -17,7 +18,7 @@
     margin-left: -253px;">
             <div class="modal-content dropdown-container">
                 <div class="modal-header no-border pb0">
-                    <label class="fs18 grey">{{ __('shop::app.header.title') }}</label>
+                    <label class="fs18 text-shaka">{{ __('shop::app.header.title') }}</label>
                 </div>
 
                 <div class="fs14 content">
@@ -40,7 +41,7 @@
     @auth('customer')
         <div class="dropdown-list" style="margin-top: 262px;
     margin-left: -153px;">
-            <div class="dropdown-label">
+            <div class="dropdown-label text-shaka">
                 {{ auth()->guard('customer')->user()->first_name }}
             </div>
 
@@ -66,11 +67,11 @@
                         </li>
                     @endif
 
-                    @if ($showCompare)
-                        <li>
-                            <a href="{{ route('velocity.customer.product.compare') }}" class="unset">{{ __('velocity::app.customer.compare.text') }}</a>
-                        </li>
-                    @endif
+{{--                    @if ($showCompare)--}}
+{{--                        <li>--}}
+{{--                            <a href="{{ route('velocity.customer.product.compare') }}" class="unset">{{ __('velocity::app.customer.compare.text') }}</a>--}}
+{{--                        </li>--}}
+{{--                    @endif--}}
 
                     <li>
                         <form id="customerLogout" action="{{ route('customer.session.destroy') }}" method="POST">

@@ -1,9 +1,9 @@
 <template>
-<li class="compare-dropdown-container">
+<li class="compare-dropdown-container cart-container">
     <a :href="src" @endauth style="color: #242424;">
 
         <i class="icon wishlist-icon"></i>
-        <span class="name">
+        <span class="name badge-container">
             {{ text }}
             <span class="count">(<span>{{ compareCount ? compareCount : 0 }}</span>)</span>
         </span>
@@ -26,15 +26,29 @@ export default {
     },
 
     methods: {
-        updateHeaderItemsCount: function () {       
+        updateHeaderItemsCount: function () {
 
             this.$http
                 .get(`${this.$root.baseUrl}/items-count`)
                 .then(response => {
-                    
+
                     this.compareCount = response.data.wishlistedProductsCount;
                 });
         }
     }
 };
 </script>
+<style lang="scss">
+.hide {
+    display: none !important;
+}
+.badge-container{
+    position: absolute!important;
+    top: 100%;
+    right: -3px;
+    transform: translate(50%, -50%);
+}
+.cart-container {
+    position: relative!important;
+}
+</style>

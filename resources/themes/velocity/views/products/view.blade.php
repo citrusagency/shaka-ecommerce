@@ -77,12 +77,19 @@
             height: 40px;
             text-transform: uppercase;
         }
+        .gg img {
+            aspect-ratio: 4/5!important;
+            width: 100%!important;
+            object-fit: cover!important;
+        }
     </style>
 @endpush
 
-@section('full-content-wrapper')
+@section('content-wrapper')
+    <div class="container pt-4">
+        <p>HOME > SHOP > {{ $product->name }}</p>
     {!! view_render_event('bagisto.shop.products.view.before', ['product' => $product]) !!}
-        <div class="row no-margin">
+        <div class="row no-margin container">
             <section class="col-12 product-detail">
                 <div class="layouter">
                     <product-view>
@@ -93,7 +100,7 @@
 
                             <div class="row">
                                 {{-- product-gallery --}}
-                                <div class="left col-lg-5 col-md-6">
+                                <div class="left col-lg-5 col-md-6 gg">
                                     @include ('shop::products.view.gallery')
                                 </div>
 
@@ -135,6 +142,9 @@
                                                 </span>
                                             @endif
                                         </div>
+
+                                        @include ('shop::products.view.description')
+
 
                                         @if (count($product->getTypeInstance()->getCustomerGroupPricingOffers()) > 0)
                                             <div class="col-12">
@@ -188,7 +198,7 @@
                                     ])
 
                                     {{-- product long description --}}
-                                    @include ('shop::products.view.description')
+{{--                                    @include ('shop::products.view.description')--}}
 
                                     {{-- reviews count --}}
                                     @include ('shop::products.view.reviews', ['accordian' => true])
@@ -205,6 +215,7 @@
             </div>
         </div>
     {!! view_render_event('bagisto.shop.products.view.after', ['product' => $product]) !!}
+    </div>
 @endsection
 
 @push('scripts')
@@ -296,7 +307,7 @@
                 },
 
                 activateAutoScroll: function(event) {
-                    
+
                     /**
                      * This is normal Element
                      */

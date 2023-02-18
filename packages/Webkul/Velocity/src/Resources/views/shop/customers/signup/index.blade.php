@@ -7,32 +7,35 @@
 @section('content-wrapper')
     <div class="auth-content form-container">
         <div class="container">
-            <div class="col-lg-10 col-md-12 offset-lg-1">
+            <div class="col-lg-10 col-md-12 offset-lg-1 py-5">
                 <div class="heading">
-                    <h2 class="fs24 fw6">
-                        {{ __('velocity::app.customer.signup-form.user-registration')}}
+                    <h2 class="fs30 fw2 font-shaka">
+                        Create an account
                     </h2>
 
                     <a href="{{ route('customer.session.index') }}" class="btn-new-customer">
-                        <button type="button" class="theme-btn light">
+                        <button type="button" class="theme-btn light" style="color: #1197C2!important">
                             {{ __('velocity::app.customer.signup-form.login')}}
                         </button>
                     </a>
                 </div>
 
-                <div class="body col-12">
-                    <h3 class="fw6">
-                        {{ __('velocity::app.customer.signup-form.become-user')}}
-                    </h3>
+                <div class="body col-12 border-0 p-0">
+{{--                    <h3 class="fw2 font-shaka">--}}
+{{--                        Create an account--}}
+{{--                    </h3>--}}
 
                     <p class="fs16">
-                        {{ __('velocity::app.customer.signup-form.form-sginup-text')}}
+{{--                        {{ __('velocity::app.customer.signup-form.form-sginup-text')}}--}}
                     </p>
 
                     {!! view_render_event('bagisto.shop.customers.signup.before') !!}
 
+                    <div class="pt-2"></div>
+
                     <form
                         method="post"
+                        class="mt-4"
                         action="{{ route('customer.register.create') }}"
                         @submit.prevent="onSubmit">
 
@@ -40,7 +43,7 @@
 
                         {!! view_render_event('bagisto.shop.customers.signup_form_controls.before') !!}
 
-                        <div class="control-group" :class="[errors.has('first_name') ? 'has-error' : '']">
+                        <div class="control-group mt-4" :class="[errors.has('first_name') ? 'has-error' : '']">
                             <label for="first_name" class="required label-style">
                                 {{ __('shop::app.customer.signup-form.firstname') }}
                             </label>
@@ -145,7 +148,7 @@
 
                         {!! view_render_event('bagisto.shop.customers.signup_form_controls.after') !!}
 
-                        <button class="theme-btn" type="submit">
+                        <button class="theme-btn bg-shaka-primary" type="submit">
                             {{ __('shop::app.customer.signup-form.title') }}
                         </button>
                     </form>

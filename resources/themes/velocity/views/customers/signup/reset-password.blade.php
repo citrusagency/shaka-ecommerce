@@ -6,18 +6,18 @@
 
 @section('content-wrapper')
 
-<div class="auth-content">
+<div class="auth-content py-5">
     {!! view_render_event('bagisto.shop.customers.reset_password.before') !!}
         <div class="auth-content form-container">
             <div class="container">
                 <div class="col-lg-10 col-md-12 offset-lg-1">
                     <div class="heading">
-                        <h2 class="fs24 fw6">
+                        <h2 class="fs30 fw2 font-shaka">
                             {{ __('shop::app.customer.reset-password.title')}}
                         </h2>
                     </div>
 
-                    <div class="body col-12">
+                    <div class="body col-12 p-0 border-0">
 
                         {!! view_render_event('bagisto.shop.customers.forget_password.before') !!}
 
@@ -79,7 +79,7 @@
 
                             {!! view_render_event('bagisto.shop.customers.forget_password_form_controls.after') !!}
 
-                            <button class="theme-btn" type="submit">
+                            <button class="theme-btn bg-shaka-primary" type="submit">
                                 {{ __('shop::app.customer.reset-password.submit-btn-title') }}
                             </button>
                         </form>

@@ -1,28 +1,31 @@
 <div class="bg-shaka-black2">
     <div class="container p-5">
         <div class="row">
-            <div class="col-4 py-5">
-                <img src="{{ asset('images/shaka-white.png') }}" alt="">
+            <div class="col-md-4 col-12 py-5 offset-3 offset-md-0">
+                <img src="{{ asset('images/shaka-white.png') }}" class="mx-auto" alt="">
                 <p class="text-shaka-subtitle my-4">Based in Montenegro</p>
                 <a href="#" target="_blank"><img src="{{ asset('images/facebook-logo.svg') }}" alt=""></a>
                 <a href="#" class="ml-3" target="_blank"><img src="{{ asset('images/instagram-logo.svg') }}" alt=""></a>
             </div>
-            <div class="col-8 py-5">
+            <div class="col-md-8 col-sm-12 py-md-5 py-2">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="d-sm-block d-md-none mb-5" style="border-top: 1px solid rgba(255,255,255,0.2); width: 200%"></div>
+
+                    <div class="col-md-4 col-6">
                         <div><a href="#" class="text-shaka-subtitle">Homepage</a></div>
                         <div class="mt-3"><a href="#" class="text-shaka-subtitle">Shop</a></div>
                         <div class="mt-3"><a href="#" class="text-shaka-subtitle">About tge label</a></div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4 col-6">
                         <div><a href="#" class="text-shaka-subtitle">Behind the scenes</a></div>
                         <div class="mt-3"><a href="#" class="text-shaka-subtitle">Contact us</a></div>
                     </div>
-                    <div class="col-4">
-                        <div><a href="#" class="text-shaka-subtitle">Terms and Conditions</a></div>
-                        <div class="mt-3"><a href="#" class="text-shaka-subtitle">Privacy Policy</a></div>
+                    <div class="d-sm-block d-md-none mt-5" style="border-top: 1px solid rgba(255,255,255,0.2); width: 200%"></div>
+                    <div class="col-md-4 col-12 mt-5 mt-md-0">
+                        <div><a href="{{ route('shop.terms-conditions') }}" class="text-shaka-subtitle">Terms and Conditions</a></div>
+                        <div class="mt-3"><a href="{{ route('shop.privacy-policy') }}" class="text-shaka-subtitle">Privacy Policy</a></div>
                         <div class="mt-3"><a href="#" class="text-shaka-subtitle">FAQ</a></div>
-                        <div class="mt-3"><a href="#" class="text-shaka-subtitle">Returns</a></div>
+                        <div class="mt-3"><a href="{{ route('shop.returns') }}" class="text-shaka-subtitle">Returns</a></div>
                     </div>
                 </div>
             </div>

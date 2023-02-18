@@ -177,7 +177,7 @@
                 <div class="col-md-6 col-sm-12 collection">
                     <a href="#">
                         <img src="{{ asset('images/collection1.png') }}" class="w-100 mt-3" alt="">
-                        <div class="bg-shaka-black px-4 py-2 text-white text-uppercase collection-title"
+                        <div class="bg-shaka-light px-4 py-2 text-shaka-black text-uppercase collection-title"
                              style="letter-spacing: 2px">Katarina Zlajić
                         </div>
                     </a>
@@ -185,7 +185,7 @@
                 <div class="col-md-6 col-sm-12 collection">
                     <a href="#">
                         <img src="{{ asset('images/collection2.png') }}" class="w-100 mt-3" alt="">
-                        <div class="bg-shaka-black px-4 py-2 text-white text-uppercase collection-title"
+                        <div class="bg-shaka-light px-4 py-2 text-shaka-black text-uppercase collection-title"
                              style="letter-spacing: 2px">Shaka
                         </div>
                     </a>
@@ -255,8 +255,8 @@
                     <p class="mt-1 text-shaka-subtitle text-left w-100" style="padding-right: 7rem;">
                         Subscribe to our newsletter and stay updated for new Shaka arrivals.
                     </p>
-                    <div class="mt-3 w-100 subscribe">
-                        <input type="text" placeholder="Your email address"><button href="#" class="bg-shaka-primary">Subscribe</button>
+                    <div class="mt-3 w-100 subscribe d-flex">
+                        <input type="text" class="w-100" placeholder="Your email address"><button href="#" class="bg-shaka-primary">Subscribe</button>
                     </div>
                 </div>
 

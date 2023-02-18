@@ -9,21 +9,21 @@
         <div class="container">
             <div class="col-lg-10 col-md-12 offset-lg-1">
                 <div class="heading">
-                    <h2 class="fs24 fw6">
+                    <h2 class="fs30 fw2 font-shaka">
                         {{ __('velocity::app.customer.forget-password.forgot-password')}}
                     </h2>
 
                     <a href="{{ route('customer.session.index') }}" class="btn-new-customer">
-                        <button type="button" class="theme-btn light">
+                        <button type="button" class="theme-btn  light text-shaka" style="color: #1197C2!important">
                             {{  __('velocity::app.customer.signup-form.login') }}
                         </button>
                     </a>
                 </div>
 
-                <div class="body col-12">
-                    <h3 class="fw6">
-                        {{ __('velocity::app.customer.forget-password.recover-password')}}
-                    </h3>
+                <div class="body col-12 border-0 px-0 pt-0">
+{{--                    <h3 class="fw6">--}}
+{{--                        {{ __('velocity::app.customer.forget-password.recover-password')}}--}}
+{{--                    </h3>--}}
 
                     <p class="fs16">
                         {{ __('velocity::app.customer.forget-password.recover-password-text')}}
@@ -62,7 +62,7 @@
 
                         {!! view_render_event('bagisto.shop.customers.forget_password_form_controls.after') !!}
 
-                        <button class="theme-btn" type="submit">
+                        <button class="theme-btn bg-shaka-primary" type="submit">
                             {{ __('shop::app.customer.forgot-password.submit') }}
                         </button>
                     </form>

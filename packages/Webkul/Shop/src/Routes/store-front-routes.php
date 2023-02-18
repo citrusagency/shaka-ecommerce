@@ -24,6 +24,25 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
          * CMS pages.
          */
         Route::get('page/{slug}', [PagePresenterController::class, 'presenter'])->name('shop.cms.page');
+        Route::get('about', function (){
+            return view('shop::about');
+        })->name('shop.about');
+        Route::get('behind-the-scenes', function (){
+            return view('shop::behind-the-scenes');
+        })->name('shop.behind-the-scenes');
+
+        Route::get('privacy-policy', function (){
+            $pp = \Webkul\CMS\Models\CmsPageTranslation::where('url_key', 'privacy-policy')->first();
+            return view('shop::privacy-policy', compact('pp'));
+        })->name('shop.privacy-policy');
+        Route::get('returns', function (){
+            $r = \Webkul\CMS\Models\CmsPageTranslation::where('url_key', 'return-policy')->first();
+            return view('shop::returns', compact('r'));
+        })->name('shop.returns');
+        Route::get('terms-conditions', function (){
+            $tc = \Webkul\CMS\Models\CmsPageTranslation::where('url_key', 'terms-conditions')->first();
+            return view('shop::terms-conditions', compact('tc'));
+        })->name('shop.terms-conditions');
 
         /**
          * Fallback route.

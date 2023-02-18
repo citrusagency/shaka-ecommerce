@@ -345,6 +345,7 @@ $(function() {
                     window.alert(window.flashMessages.alertMessage);
             },
 
+
             showModal: function(id) {
                 this.$set(this.modalIds, id, true);
             },

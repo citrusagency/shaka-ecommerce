@@ -10,28 +10,28 @@
         {!! view_render_event('bagisto.shop.customers.login.before') !!}
 
             <div class="container">
-                <div class="col-lg-10 col-md-12 offset-lg-1">
+                <div class="col-lg-10 col-md-12 offset-lg-1 py-5">
                     <div class="heading">
-                        <h2 class="fs24 fw6">
-                            {{ __('velocity::app.customer.login-form.customer-login')}}
+                        <h2 class="fs30 fw2 font-shaka">
+                            Sign in
                         </h2>
 
                         <a href="{{ route('customer.register.index') }}" class="btn-new-customer">
-                            <button type="button" class="theme-btn light">
+                            <button type="button" class="theme-btn light" style="color: #1197C2!important">
                                 {{ __('velocity::app.customer.login-form.sign-up')}}
                             </button>
                         </a>
                     </div>
 
-                    <div class="body col-12">
+                    <div class="body col-12 border-0 p-0">
                         <div class="form-header">
-                            <h3 class="fw6">
-                                {{ __('velocity::app.customer.login-form.registered-user')}}
-                            </h3>
+{{--                            <h3 class="fw6">--}}
+{{--                                {{ __('velocity::app.customer.login-form.registered-user')}}--}}
+{{--                            </h3>--}}
 
-                            <p class="fs16">
-                                {{ __('velocity::app.customer.login-form.form-login-text')}}
-                            </p>
+{{--                            <p class="fs16">--}}
+{{--                                {{ __('velocity::app.customer.login-form.form-login-text')}}--}}
+{{--                            </p>--}}
                         </div>
 
                         <form

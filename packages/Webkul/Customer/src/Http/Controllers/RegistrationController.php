@@ -12,7 +12,7 @@ use Webkul\Customer\Mail\RegistrationEmail;
 use Webkul\Customer\Mail\VerificationEmail;
 use Webkul\Customer\Repositories\CustomerGroupRepository;
 use Webkul\Customer\Repositories\CustomerRepository;
-use Webkul\Shop\Mail\SubscriptionEmail;
+use Webkul\Shop\Mail\ContactEmail;
 
 class RegistrationController extends Controller
 {
@@ -98,7 +98,7 @@ class RegistrationController extends Controller
                 ]);
 
                 try {
-                    Mail::queue(new SubscriptionEmail([
+                    Mail::queue(new ContactEmail([
                         'email' => $data['email'],
                         'token' => $token,
                     ]));

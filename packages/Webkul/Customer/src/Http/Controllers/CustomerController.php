@@ -9,7 +9,7 @@ use Webkul\Core\Repositories\SubscribersListRepository;
 use Webkul\Customer\Http\Requests\CustomerProfileRequest;
 use Webkul\Customer\Repositories\CustomerRepository;
 use Webkul\Product\Repositories\ProductReviewRepository;
-use Webkul\Shop\Mail\SubscriptionEmail;
+use Webkul\Shop\Mail\ContactEmail;
 
 class CustomerController extends Controller
 {
@@ -134,7 +134,7 @@ class CustomerController extends Controller
                     ]);
 
                     try {
-                        Mail::queue(new SubscriptionEmail([
+                        Mail::queue(new ContactEmail([
                             'email' => $data['email'],
                             'token' => $token,
                         ]));

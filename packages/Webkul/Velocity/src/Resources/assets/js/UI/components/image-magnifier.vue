@@ -24,11 +24,12 @@
 
 <style lang="scss">
 .outer-assets-container {
+    width: 100%;
     .image-container {
         .magnifier {
             > img {
                 max-width: 100%;
-                max-height: 420px;
+                //max-height: 420px;
             }
         }
     }
@@ -40,7 +41,7 @@
             .magnifier {
                 > img {
                     width: 100%;
-                    max-height: 300px;
+                    //max-height: 300px;
                 }
             }
         }
@@ -48,11 +49,11 @@
 
     .video-container {
         position: relative;
-        min-height: 420px;
-        max-height: 420px;
+        //min-height: 420px;
+        //max-height: 420px;
 
         video {
-            max-height: 420px;
+            //max-height: 420px;
         }
     }
 }

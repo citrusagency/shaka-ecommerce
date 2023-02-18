@@ -1,54 +1,30 @@
 @extends('shop::layouts.master')
 
 @section('page_title')
-    {{ __('admin::app.error.404.page-title') }}
-@stop
-
-@section('body-header')
+    Shaka | About the label
 @endsection
 
-@section('full-content-wrapper')
-    <div class="error-page row text-center">
-        <div class="col-6">
-            <div
-                class="col-12 bg-image broken-image"
-            ></div>
+@section('content-wrapper')
 
-            <div class="col-12 fs24">
-                {{ __('velocity::app.error.page-lost-short') }}
+    <div class="about-content text-white">
+
+
+        <!-- The slideshow -->
+        <div class="about-container" style="background-image: url({{ asset('images/404img.png') }});">
+            <div class="container">
+                <h1 class="text-uppercase text-center font-shaka" style="letter-spacing: 3px; font-size: 180px">404</h1>
+                <p class="text-center fs18">Oops! The page you are looking for does not exist.</p>
+                <p class="mt-5 text-center">
+                    <a href="/" class="theme-btn px-5 py-3 fs20 text-center mx-auto">Go to homepage</a>
+                </p>
             </div>
 
-            <p class="col-12 fs20">
-                {{ __('velocity::app.error.page-lost-description') }}
-            </p>
         </div>
 
-        <div class="col-6">
-            <div class="row">
-
-                @if ($logo = core()->getCurrentChannel()->logo_url)
-                    <div
-                        class="col-12 velocity-icon bg-image"
-                        style="background-image: url('{{ $logo }}')"
-                    ></div>
-                @else
-                    <div class="col-12 velocity-icon bg-image"></div>
-                @endif
-            </div>
-
-            <a class="row remove-decoration" href="{{ route('shop.home.index') }}">
-                <div class="col-12">
-                    <span class="custom-circle">></span>
-                </div>
-
-                <span class="col-12 fs16">
-                    {{ __('velocity::app.error.go-to-home') }}
-                </span>
-            </a>
-        </div>
     </div>
 
-@endsection
 
-@section('footer')
-@show
+
+
+
+@endsection

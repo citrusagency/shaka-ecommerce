@@ -12,12 +12,17 @@
 @push('scripts')
     <script type="text/x-template" id="layered-navigation-template">
         <div v-if="attributes.length > 0">
-            <div class="border border-2 w-100">
-                <h5 class="text-center font-shaka py-3">Category</h5>
+            <div class="row border border-2 w-100 m-0 p-0">
+                <div class="col-4 m-0 p-0"></div>
+                <div class="col-8 m-0 p-0">
+                    <h5 class="text-left font-shaka py-3">Collection</h5>
+                </div>
             </div>
 
-            <div class="filter-content border border-top-0">
-                <div class="filter-attributes p-3">
+
+            <div class="filter-content border border-top-0 row p-0 m-0">
+                <div class="col-4 p-0 m-0"></div>
+                <div class="filter-attributes col-8 p-0 m-0">
                     <filter-attribute-item
                         v-for='(attribute, index) in categories'
                         :key="index"
@@ -31,11 +36,15 @@
                 </div>
             </div>
 
-            <div class="border border-2 border-top-0 w-100">
-                <h5 class="text-center font-shaka py-3">Material</h5>
+            <div class="border border-2 border-top-0 w-100 row m-0 p-0">
+                <div class="col-4 m-0 p-0"></div>
+                <div class="col-8 m-0 p-0">
+                    <h5 class="text-left font-shaka py-3">Material</h5>
+                </div>
             </div>
-            <div class="filter-content border border-top-0">
-                <div class="filter-attributes p-3">
+            <div class="filter-content border border-top-0 row m-0 p-0">
+                <div class="col-4 p-0 m-0"></div>
+                <div class="filter-attributes p-0 m-0 col-8 border-0">
                     <filter-attribute-item
                         v-for='(attribute, index) in materials'
                         :key="index"
@@ -48,11 +57,16 @@
                 </div>
             </div>
 
-            <div class="border border-2 border-top-0 w-100">
-                <h5 class="text-center font-shaka py-3">Price range</h5>
+            <div class="border border-2 border-top-0 w-100 row m-0 p-0">
+                <div class="col-4 m-0 p-0"></div>
+                <div class="col-8 m-0 p-0">
+                    <h5 class="text-left font-shaka py-3">Price range</h5>
+                </div>
             </div>
-            <div class="filter-content border border-top-0">
-                <div class="filter-attributes p-3">
+            <div class="filter-content border border-top-0 row p-0 m-0">
+                <div class="col-4 p-0 m-0"></div>
+
+                <div class="filter-attributes p-0 col-8 m-0 py-4 pr-4">
                     <filter-attribute-item
                         :attribute="attributes[2]"
                         :appliedFilterValues="appliedFilters[attributes[2].code]"
@@ -88,25 +102,25 @@
             </div>
             <div v-if="attribute.type === 'category'">
                 <div v-if="attribute.children.length === 0">
-                    <h6 @click="changeCategory(attribute.id)" class="fw6 display-inbl">@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
+                    <h6 @click="changeCategory(attribute.id)" class="text-uppercase display-inbl">@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
                 </div>
                 <div :class="`cursor-pointer filter-attributes-item border-bottom-0 ${active ? 'active' : ''}`" v-else>
                     <div class="filter-attributes-title" @click="active = ! active">
-                        <h6 class="fw6 display-inbl">@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
+                        <h6 class="text-uppercase display-inbl">@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
 
-                        <div class="float-right display-table">
+                        <div class="float-right display-table pr-4">
 {{--                    <span class="link-color cursor-pointer" v-if="appliedFilters.length" @click.stop="clearFilters()">--}}
 {{--                        {{ __('shop::app.products.remove-filter-link-title') }}--}}
 {{--                    </span>--}}
 
-                            <i :class="`icon fs16 cell ${active ? 'rango-arrow-up' : 'rango-arrow-down'}`"></i>
+                            <i :class="`icon text-right fs16 cell ${active ? 'rango-arrow-up' : 'rango-arrow-down'}`"></i>
                         </div>
                     </div>
 
 
 
                     <div class="filter-attributes-content border-bottom-0">
-                        <ul type="none" class="items ml15">
+                        <ul type="none" class="items px-0 mx-0">
                             <li
                                 class="item"
                                 v-for='(option, index) in attribute.children'>
@@ -128,21 +142,21 @@
                     </div>
                 </div>
             </div>
-            <div :class="`cursor-pointer filter-attributes-item ${active ? 'active' : ''}`" v-if="attribute.code === 'material'">
-                <div class="filter-attributes-title" @click="active = ! active">
-                    <h6 class="fw6 display-inbl">@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
+            <div :class="`cursor-pointer border-0 filter-attributes-item ${active ? 'active' : ''}`" v-if="attribute.code === 'material'">
+{{--                <div class="filter-attributes-title" @click="active = ! active">--}}
+{{--                    <h6 class="fw6 display-inbl">@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>--}}
 
-                    <div class="float-right display-table">
-                    <span class="link-color cursor-pointer" v-if="appliedFilters.length" @click.stop="clearFilters()">
-                        {{ __('shop::app.products.remove-filter-link-title') }}
-                    </span>
+{{--                    <div class="float-right display-table">--}}
+{{--                    <span class="link-color cursor-pointer" v-if="appliedFilters.length" @click.stop="clearFilters()">--}}
+{{--                        {{ __('shop::app.products.remove-filter-link-title') }}--}}
+{{--                    </span>--}}
 
-                        <i :class="`icon fs16 cell ${active ? 'rango-arrow-up' : 'rango-arrow-down'}`"></i>
-                    </div>
-                </div>
+{{--                        <i :class="`icon fs16 cell ${active ? 'rango-arrow-up' : 'rango-arrow-down'}`"></i>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-                <div class="filter-attributes-content">
-                    <ul type="none" class="items ml15" v-if="attribute.type != 'price'">
+                <div class="filter-attributes-content py-4 px-0 mx-0">
+                    <ul type="none" class="items p-0 m-0" v-if="attribute.type != 'price'">
                         <li
                             class="item"
                             v-for='(option, index) in attribute.options'>
