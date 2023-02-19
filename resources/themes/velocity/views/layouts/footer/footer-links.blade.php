@@ -1,7 +1,7 @@
 <div class="bg-shaka-black2">
     <div class="container p-5">
         <div class="row">
-            <div class="col-md-4 col-12 py-5 offset-3 offset-md-0">
+            <div class="col-md-4 col-6 py-5 offset-3 offset-md-0">
                 <img src="{{ asset('images/shaka-white.png') }}" class="mx-auto" alt="">
                 <p class="text-shaka-subtitle my-4">Based in Montenegro</p>
                 <a href="#" target="_blank"><img src="{{ asset('images/facebook-logo.svg') }}" alt=""></a>
