@@ -79,15 +79,6 @@ class CMSPagesTableSeeder extends Seeder
                 'locale'           => 'en',
                 'cms_page_id'      => 2,
                 'url_key'          => 'return-policy',
-                'html_content'     => '<div class="static-container"><div class="mb-5">Return policy page content</div></div>',
-                'page_title'       => 'Return Policy',
-                'meta_title'       => 'return policy',
-                'meta_description' => '',
-                'meta_keywords'    => 'return, policy',
-            ], [
-                'locale'           => 'en',
-                'cms_page_id'      => 3,
-                'url_key'          => 'refund-policy',
                 'html_content'     => '<div class="static-container">
 <div class="mb-5">
 <div class="mb-5">You can return or exchange any item within 14 days from receipt of delivery.</div>
@@ -118,6 +109,15 @@ class CMSPagesTableSeeder extends Seeder
 <div class="mb-5">If a product is faulty, you will be required to take photo proof of the faulty product and the packaging it arrived in, within two days of receipt of delivery and send the photo to us. For all faulty items you will be offered a replacement or repair, or a full refund.</div>
 </div>
 </div>',
+                'page_title'       => 'Return Policy',
+                'meta_title'       => 'return policy',
+                'meta_description' => '',
+                'meta_keywords'    => 'return, policy',
+            ], [
+                'locale'           => 'en',
+                'cms_page_id'      => 3,
+                'url_key'          => 'refund-policy',
+                'html_content'     => 'Refund policy page content',
                 'page_title'       => 'Refund Policy',
                 'meta_title'       => 'Refund policy',
                 'meta_description' => '',
