@@ -13,8 +13,8 @@ require 'sales-routes.php';
 /**
  * Catalog routes.
  */
-require 'catalog-routes.php';
 
+require 'catalog-routes.php';
 /**
  * Customers routes.
  */

@@ -286,9 +286,16 @@ class ShopController extends Controller
     public function getAllProducts(Request $request)
     {
 
-
+//        dd($request);
+//        $params = request()->input();
         /* fetching products */
         $products = $this->productRepository->getAll();
+        // If Request has isSaleable param then filter the product collection by isSaleable
+//        if (isset($params['isSaleable']) ) {
+//            $products = $products->filter(function ($product) {
+//                return $product->isSaleable();
+//            });
+//        }
         $pagination = $products->appends(request()->input())->links()->toHtml();
         // replace the all-products url with the current url
 

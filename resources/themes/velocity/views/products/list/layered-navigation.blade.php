@@ -31,6 +31,8 @@
                         :attribute="attribute"
                         :appliedFilterValues="appliedFilters[attribute.code]"
                         :max-price-src="maxPriceSrc"
+                        :attributeFilers="appliedFilters"
+                        @onSaleFilterAdded="addFilters('isSaleable', $event)"
                         @onFilterAdded="addFilters('category', $event)">
                     </filter-attribute-item>
                 </div>
@@ -134,7 +136,24 @@
 {{--                                        v-bind:value="option.id"--}}
 {{--                                        v-model="appliedFilters"--}}
 {{--                                        @change="addFilter($event)"/>--}}
-                                    <span >@{{ option.name ? option.name : option.admin_name }}</span>
+                                    <span :class="`${isActiveCategory(option.id) ? 'font-weight-bold' : ''}`">@{{ option.name ? option.name : option.admin_name }}</span>
+                                </div>
+                            </li>
+
+                            <li
+                                class="item"
+                            >
+                                <div
+                                    class="checkbox text-shaka"
+                                    @click="filterSale">
+                                    {{--                                    <input--}}
+                                    {{--                                        style="opacity: 0"--}}
+                                    {{--                                        type="radio"--}}
+                                    {{--                                        :id="option.id"--}}
+                                    {{--                                        v-bind:value="option.id"--}}
+                                    {{--                                        v-model="appliedFilters"--}}
+                                    {{--                                        @change="addFilter($event)"/>--}}
+                                    <span >SALE</span>
                                 </div>
                             </li>
                         </ul>
@@ -204,6 +223,8 @@
             },
 
             methods: {
+
+
                 setFilterAttributes: function () {
                     axios
                         .get(this.attributeSrc)
@@ -223,10 +244,25 @@
                 },
 
                 addFilters: function (attributeCode, filters) {
+
+                    if(attributeCode ==='isSaleable'){
+
+                    // If isSaleable is already applied, set its value to false
+                    if (this.appliedFilters.hasOwnProperty('isSaleable')){
+                        delete this.appliedFilters['isSaleable'];
+                    }else {
+                        this.appliedFilters['isSaleable'] = [true];
+                    }
+                    }
+                    else {
+
+
                     if (filters.length) {
                         this.appliedFilters[attributeCode] = filters;
                     } else {
                         delete this.appliedFilters[attributeCode];
+                    }
+
                     }
 
                     this.applyFilter();
@@ -255,7 +291,9 @@
                 'addFilters',
                 'appliedFilterValues',
                 'maxPriceSrc',
-                'type'
+                'type',
+                'attributeFilers'
+
             ],
 
             data: function () {
@@ -304,6 +342,13 @@
             },
 
             methods: {
+
+                isActiveCategory: function(id){
+                    if (this.attributeFilers.hasOwnProperty('category')){
+                        return this.attributeFilers['category'].includes(id.toString())
+                    }
+                    return false
+                },
                 setMaxPrice: function () {
                     if (this.attribute['code'] != 'price') {
                         return;
@@ -345,6 +390,12 @@
                     console.log(id)
                     this.appliedFilters.push(id);
                     this.$emit('onFilterAdded', this.appliedFilters);
+                },
+
+                filterSale: function() {
+                    this.appliedFilters.push(true);
+                    this.$emit('onSaleFilterAdded', this.appliedFilters);
+
                 },
 
                 optionClicked: function (id, {target}) {

@@ -176,9 +176,13 @@ class ProductRepository extends Repository
                 ->where('product_flat.locale', $locale)
                 ->whereNotNull('product_flat.url_key');
 
-            if (isset($params['category'])) {
+            if (isset($params['category']) && $params['category'] != 1) {
                 $qb->where('product_categories.category_id',$params['category']);
             }
+
+//            if (isset($params['isSaleable'])) {
+//                $qb->where('isSaleable',$params['isSaleable']);
+//            }
 
             if (! core()->getConfigData('catalog.products.homepage.out_of_stock_items')) {
                 $qb = $this->checkOutOfStockItem($qb);
@@ -227,6 +231,10 @@ class ProductRepository extends Repository
                 }
             }
 
+            if($saleFilter = request('isSaleable')){
+                $qb->where('product_flat.special_price', '!=', null);
+            }
+
             if ($priceFilter = request('price')) {
                 $priceRange = explode(',', $priceFilter);
 
@@ -271,11 +279,14 @@ class ProductRepository extends Repository
 
             $attributeFilters = $this->attributeRepository
                 ->getProductDefaultAttributes(array_keys(
-                    request()->except(['price'])
+                    request()->except(['price']),
+                    request()->except(['isSaleable']),
                 ));
 
             if (count($attributeFilters) > 0) {
                 $this->variantJoin($qb);
+
+//                dd($attributeFilters);
 
                 $qb->where(function ($filterQuery) use ($attributeFilters) {
                     foreach ($attributeFilters as $attribute) {
@@ -310,9 +321,14 @@ class ProductRepository extends Repository
 
                 # this is key! if a product has been filtered down to the same number of attributes that we filtered on,
                 # we know that it has matched all of the requested filters.
-                $qb->groupBy('variants.id');
-                $qb->havingRaw('COUNT(*) = ' . count($attributeFilters));
+//                $qb->groupBy('variants.id');
+//                $qb->havingRaw('COUNT(*) = ' . count($attributeFilters));
             }
+
+//            $sql = $qb->toSql();
+//            $bindings = $qb->getBindings();
+//            dd($sql, $bindings);
+
 
             return $qb->groupBy('product_flat.id');
         });
