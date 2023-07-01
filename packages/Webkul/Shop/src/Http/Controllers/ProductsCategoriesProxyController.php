@@ -4,6 +4,7 @@ namespace Webkul\Shop\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Webkul\Core\Repositories\SliderRepository;
+use Webkul\Product\Facades\ProductImage;
 use Webkul\Product\Repositories\ProductRepository;
 use Webkul\Category\Repositories\CategoryRepository;
 
@@ -23,6 +24,62 @@ class ProductsCategoriesProxyController extends Controller
     )
     {
         parent::__construct();
+    }
+
+
+    public function formatProduct($product, $list = false, $metaInformation = [])
+    {
+        $reviewHelper = app('Webkul\Product\Helpers\Review');
+
+        $galleryImages = ProductImage::getGalleryImages($product);
+        $productImage = ProductImage::getProductBaseImage($product, $galleryImages)['medium_image_url'];
+
+        $largeProductImageName = 'large-product-placeholder.png';
+        $mediumProductImageName = 'meduim-product-placeholder.png';
+
+        if (strpos($productImage, $mediumProductImageName) > -1) {
+            $productImageNameCollection = explode('/', $productImage);
+            $productImageName = $productImageNameCollection[sizeof($productImageNameCollection) - 1];
+
+            if ($productImageName == $mediumProductImageName) {
+                $productImage = str_replace($mediumProductImageName, $largeProductImageName, $productImage);
+            }
+        }
+
+        $priceHTML = view('shop::products.price', ['product' => $product])->render();
+
+        $isProductNew = ($product->new && strpos($priceHTML, 'sticker sale') === false) ? __('shop::app.products.new') : false;
+
+        return [
+            'priceHTML'        => $priceHTML,
+            'isSaleable' => $product->isSaleable(),
+            'price'            => core()->currency($product->price),
+            'special_price'            => $product->special_price ? core()->currency($product->special_price) : null,
+            'avgRating'        => ceil($reviewHelper->getAverageRating($product)),
+            'totalReviews'     => $reviewHelper->getTotalReviews($product),
+            'image'            => $productImage,
+            'new'              => $isProductNew,
+            'galleryImages'    => $galleryImages,
+            'name'             => $product->name,
+            'slug'             => $product->url_key,
+            'description'      => $product->description,
+            'shortDescription' => $product->short_description,
+            'firstReviewText'  => trans('velocity::app.products.be-first-review'),
+            'addToCartHtml'    => view('shop::products.add-to-cart', [
+                'product'          => $product,
+                'addWishlistClass' => ! (isset($list) && $list) ? '' : '',
+
+                'showCompare' => false,
+
+                'btnText' => (isset($metaInformation['btnText']) && $metaInformation['btnText'])
+                    ? $metaInformation['btnText'] : null,
+
+                'moveToCart' => (isset($metaInformation['moveToCart']) && $metaInformation['moveToCart'])
+                    ? $metaInformation['moveToCart'] : null,
+
+                'addToCartBtnClass' => ! (isset($list) && $list) ? 'small-padding' : '',
+            ])->render(),
+        ];
     }
 
     /**
@@ -45,8 +102,11 @@ class ProductsCategoriesProxyController extends Controller
 
             if ($product = $this->productRepository->findBySlug($slugOrPath)) {
                 $customer = auth()->guard('customer')->user();
+                $relatedProducts = $product->related_products()->get()->map(function ($relatedProduct) {
+                    return $this->formatProduct($relatedProduct);
+                });
 
-                return view($this->_config['product_view'], compact('product', 'customer'));
+                return view($this->_config['product_view'], compact('product', 'customer', 'relatedProducts'));
             }
 
             abort(404);

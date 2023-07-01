@@ -22,7 +22,8 @@
 @stop
 
 @section('seo')
-    <meta name="description" content="{{ trim($product->meta_description) != "" ? $product->meta_description : \Illuminate\Support\Str::limit(strip_tags($product->description), 120, '') }}"/>
+    <meta name="description"
+          content="{{ trim($product->meta_description) != "" ? $product->meta_description : \Illuminate\Support\Str::limit(strip_tags($product->description), 120, '') }}"/>
 
     <meta name="keywords" content="{{ $product->meta_keywords }}"/>
 
@@ -34,25 +35,25 @@
 
     <?php $productBaseImage = productimage()->getProductBaseImage($product, $images); ?>
 
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary_large_image"/>
 
-    <meta name="twitter:title" content="{{ $product->name }}" />
+    <meta name="twitter:title" content="{{ $product->name }}"/>
 
-    <meta name="twitter:description" content="{{ $product->description }}" />
+    <meta name="twitter:description" content="{{ $product->description }}"/>
 
-    <meta name="twitter:image:alt" content="" />
+    <meta name="twitter:image:alt" content=""/>
 
-    <meta name="twitter:image" content="{{ $productBaseImage['medium_image_url'] }}" />
+    <meta name="twitter:image" content="{{ $productBaseImage['medium_image_url'] }}"/>
 
-    <meta property="og:type" content="og:product" />
+    <meta property="og:type" content="og:product"/>
 
-    <meta property="og:title" content="{{ $product->name }}" />
+    <meta property="og:title" content="{{ $product->name }}"/>
 
-    <meta property="og:image" content="{{ $productBaseImage['medium_image_url'] }}" />
+    <meta property="og:image" content="{{ $productBaseImage['medium_image_url'] }}"/>
 
-    <meta property="og:description" content="{{ $product->description }}" />
+    <meta property="og:description" content="{{ $product->description }}"/>
 
-    <meta property="og:url" content="{{ route('shop.productOrCategory.index', $product->url_key) }}" />
+    <meta property="og:url" content="{{ route('shop.productOrCategory.index', $product->url_key) }}"/>
 @stop
 
 @push('css')
@@ -77,22 +78,54 @@
             height: 40px;
             text-transform: uppercase;
         }
+
         .gg img {
-            aspect-ratio: 4/5!important;
-            width: 100%!important;
-            object-fit: cover!important;
+            aspect-ratio: 4/5 !important;
+            width: 100% !important;
+            object-fit: cover !important;
+        }
+
+        .single-price {
+            font-family: 'Open Sans', sans-serif !important;
+            font-size: 1.5rem !important;
+            font-weight: 400 !important;
+        }
+
+        .quantity .actions .add-to-cart-btn button {
+            background: #1197C2 !important;
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
+        }
+
+        .actions {
+            gap: 1rem;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-content: flex-end;
+            align-items: flex-end;
+            justify-content: flex-start;
+        }
+        body {
+            overflow-x: hidden!important;
+        }
+        .titlebaby1 .titlebaby div h2 {
+            font-weight: 400!important;
+            font-size: 1.8rem!important;
         }
     </style>
 @endpush
 
 @section('content-wrapper')
+{{--    {{ dd($relatedProducts) }}--}}
     <div class="container pt-4">
         <p>HOME > SHOP > {{ $product->name }}</p>
-    {!! view_render_event('bagisto.shop.products.view.before', ['product' => $product]) !!}
+        {!! view_render_event('bagisto.shop.products.view.before', ['product' => $product]) !!}
         <div class="row no-margin container">
             <section class="col-12 product-detail">
                 <div class="layouter">
                     <product-view>
+
                         <div class="form-container">
                             @csrf()
 
@@ -108,29 +141,31 @@
                                 <div class="right col-lg-7 col-md-6">
                                     {{-- product-info-section --}}
                                     <div class="info">
-                                        <h2 class="col-12">{{ $product->name }}</h2>
+                                        <h2 class="col-12 pb-0 mb-0 font-shaka-noto-serif"
+                                            style="font-weight: 400!important;font-size: 2rem; line-height: 1.9rem;">{{ $product->name }}</h2>
 
-                                        @if ($total)
-                                            <div class="reviews col-lg-12">
-                                                <star-ratings
-                                                    push-class="mr5"
-                                                    :ratings="{{ $avgStarRating }}"
-                                                ></star-ratings>
+                                        {{--                                        @if ($total)--}}
+                                        {{--                                            <div class="reviews col-lg-12">--}}
+                                        {{--                                                <star-ratings--}}
+                                        {{--                                                    push-class="mr5"--}}
+                                        {{--                                                    :ratings="{{ $avgStarRating }}"--}}
+                                        {{--                                                ></star-ratings>--}}
 
-                                                <div class="reviews">
-                                                    <span>
-                                                        {{ __('shop::app.reviews.ratingreviews', [
-                                                            'rating' => $avgRatings,
-                                                            'review' => $total])
-                                                        }}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        @endif
+                                        {{--                                                <div class="reviews">--}}
+                                        {{--                                                    <span>--}}
+                                        {{--                                                        {{ __('shop::app.reviews.ratingreviews', [--}}
+                                        {{--                                                            'rating' => $avgRatings,--}}
+                                        {{--                                                            'review' => $total])--}}
+                                        {{--                                                        }}--}}
+                                        {{--                                                    </span>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                        @endif--}}
 
-                                        @include ('shop::products.view.stock', ['product' => $product])
+                                        {{--                                        @include ('shop::products.view.stock', ['product' => $product])--}}
 
-                                        <div class="col-12 price">
+                                        <div class="col-12 price font-shaka-open-sans">
+
                                             @include ('shop::products.price', ['product' => $product])
 
                                             @if (
@@ -154,54 +189,149 @@
                                             </div>
                                         @endif
 
-                                        {!! view_render_event('bagisto.shop.products.view.quantity.before', ['product' => $product]) !!}
+                                        <hr>
 
-                                        @if ($product->getTypeInstance()->showQuantityBox())
-                                            <div class="col-12">
-                                                <quantity-changer quantity-text="{{ __('shop::app.products.quantity') }}"></quantity-changer>
+
+                                        <div class="options-section py-2">
+                                            <h6 class="font-shaka-open-sans" style="font-weight: 600">Available
+                                                options</h6>
+                                            <div class="stock py-2">
+                                                <div class="col-12 availability">
+                                                    @if($product->haveSufficientQuantity(1) === true)
+                                                        <div>
+                                                            <img src="{{asset('images/check.svg')}}" alt=""> <span
+                                                                class="pl-2">{{ $product->totalQuantity() }} in stock</span>
+                                                        </div>
+                                                    @else
+                                                        <div>
+                                                            <img src="{{asset('images/close.svg')}}" alt=""> out of
+                                                            stock
+                                                        </div>
+                                                    @endif
+                                                </div>
                                             </div>
-                                        @else
-                                            <input type="hidden" name="quantity" value="1">
-                                        @endif
 
-                                        {!! view_render_event('bagisto.shop.products.view.quantity.after', ['product' => $product]) !!}
+                                            <div class="quantity py-2">
+                                                {!! view_render_event('bagisto.shop.products.view.quantity.before', ['product' => $product]) !!}
 
-                                        @include ('shop::products.view.configurable-options')
+                                                @if ($product->getTypeInstance()->showQuantityBox())
+                                                    <div class="col-12 actions">
+                                                        <quantity-changer
+                                                            quantity-text="{{ __('shop::app.products.quantity') }}"></quantity-changer>
+                                                        <div>
+                                                            @if (core()->getConfigData('catalog.products.storefront.buy_now_button_display'))
+                                                                @include ('shop::products.buy-now', [
+                                                                    'product' => $product,
+                                                                ])
+                                                            @endif
 
-                                        @include ('shop::products.view.downloadable')
+                                                            @include ('shop::products.add-to-cart-product', [
+                                                                'form' => false,
+                                                                'product' => $product,
+                                                                'showCartIcon' => false,
+                                                                'showCompare' => core()->getConfigData('general.content.shop.compare_option') == "1"
+                                                                                ? true : false,
+                                                            ])
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <input type="hidden" name="quantity" value="1">
+                                                @endif
 
-                                        @include ('shop::products.view.grouped-products')
+                                                {!! view_render_event('bagisto.shop.products.view.quantity.after', ['product' => $product]) !!}
 
-                                        @include ('shop::products.view.bundle-options')
+                                                <div class="col-12 pt-3 text-left d-flex">
+                                                    <div class="p-0 pr-2 pt-1">
 
-                                        <div class="col-12 product-actions">
-                                            @if (core()->getConfigData('catalog.products.storefront.buy_now_button_display'))
-                                                @include ('shop::products.buy-now', [
-                                                    'product' => $product,
-                                                ])
-                                            @endif
+                                                        @include('shop::products.wishlist-product', [
+                                                            'addClass' => $addWishlistClass ?? ''
+                                                        ])
 
-                                            @include ('shop::products.add-to-cart', [
-                                                'form' => false,
-                                                'product' => $product,
-                                                'showCartIcon' => false,
-                                                'showCompare' => core()->getConfigData('general.content.shop.compare_option') == "1"
-                                                                ? true : false,
-                                            ])
+                                                    </div>
+                                                </div>
+
+                                            </div>
                                         </div>
+
+                                        <hr>
+                                        <div class="details-section py-2">
+                                            <p>CATEGORY:
+                                                <span class="text-uppercase text-shaka-primary">
+            {{ $product->product->categories->implode('name', ', ') }}
+        </span>
+                                            </p>
+                                            <div class="pt-3 d-flex align-content-center"
+                                                 style="display: flex!important; align-items: flex-end;">
+                                                <p>SHARE THIS PRODUCT:</p>
+                                                <div class="d-flex gap-2" style="gap: 10px">
+            <span>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::fullUrl()) }}"
+                   target="_blank">
+                    <img src="{{asset('images/Facebook.svg')}}" alt="">
+                </a>
+            </span>
+                                                    <span>
+                <a href="fb-messenger://share?link={{ urlencode(Request::fullUrl()) }}" target="_blank">
+                    <img src="{{asset('images/Messenger.svg')}}" alt="">
+                </a>
+            </span>
+                                                    <span>
+                <a href="https://twitter.com/share?url={{ urlencode(Request::fullUrl()) }}&text={{ $product->name }}&via=YourTwitterUsername"
+                   target="_blank">
+                    <img src="{{asset('images/Twitter.svg')}}" alt="">
+                </a>
+            </span>
+                                                    <span>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(Request::fullUrl()) }}&title={{ $product->name }}&source={{ config('app.url') }}"
+                   target="_blank">
+                    <img src="{{asset('images/Linkedin.svg')}}" alt="">
+                </a>
+            </span>
+                                                    <span>
+                <a href="#"
+                   onclick="event.preventDefault(); navigator.clipboard.writeText('{{ Request::fullUrl() }}'); alert('Link copied to clipboard!');">
+                    <img src="{{asset('images/Link45deg.svg')}}" alt="">
+                </a>
+            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        {{--                                        @include ('shop::products.view.configurable-options')--}}
+
+                                        {{--                                        @include ('shop::products.view.downloadable')--}}
+
+                                        {{--                                        @include ('shop::products.view.grouped-products')--}}
+
+                                        {{--                                        @include ('shop::products.view.bundle-options')--}}
+
+                                        {{--                                        <div class="col-12 product-actions">--}}
+                                        {{--                                            @if (core()->getConfigData('catalog.products.storefront.buy_now_button_display'))--}}
+                                        {{--                                                @include ('shop::products.buy-now', [--}}
+                                        {{--                                                    'product' => $product,--}}
+                                        {{--                                                ])--}}
+                                        {{--                                            @endif--}}
+
+                                        {{--                                            @include ('shop::products.add-to-cart', [--}}
+                                        {{--                                                'form' => false,--}}
+                                        {{--                                                'product' => $product,--}}
+                                        {{--                                                'showCartIcon' => false,--}}
+                                        {{--                                                'showCompare' => core()->getConfigData('general.content.shop.compare_option') == "1"--}}
+                                        {{--                                                                ? true : false,--}}
+                                        {{--                                            ])--}}
+                                        {{--                                        </div>--}}
                                     </div>
 
-                                    @include ('shop::products.view.short-description')
+                                    {{--                                    @include ('shop::products.view.short-description')--}}
 
-                                    @include ('shop::products.view.attributes', [
-                                        'active' => true
-                                    ])
+
 
                                     {{-- product long description --}}
-{{--                                    @include ('shop::products.view.description')--}}
+                                    {{--                                    @include ('shop::products.view.description')--}}
 
                                     {{-- reviews count --}}
-                                    @include ('shop::products.view.reviews', ['accordian' => true])
+                                    {{--                                    @include ('shop::products.view.reviews', ['accordian' => true])--}}
                                 </div>
                             </div>
                         </div>
@@ -210,11 +340,19 @@
             </section>
 
             <div class="related-products">
-                @include('shop::products.view.related-products')
+                @if($relatedProducts->count())
+                <div class="bg-shaka-light py-5" style="    width: 121%;
+    margin-left: -10%;
+    padding-left: 10%;
+    overflow: hidden;">
+
+                @include('shop::products.view.related-products', ['relatedProducts' => $relatedProducts])
+                </div>
+                @endif
                 @include('shop::products.view.up-sells')
             </div>
         </div>
-    {!! view_render_event('bagisto.shop.products.view.after', ['product' => $product]) !!}
+        {!! view_render_event('bagisto.shop.products.view.after', ['product' => $product]) !!}
     </div>
 @endsection
 
@@ -258,7 +396,7 @@
                 let currentProductId = '{{ $product->url_key }}';
                 let existingViewed = window.localStorage.getItem('recentlyViewed');
 
-                if (! existingViewed) {
+                if (!existingViewed) {
                     existingViewed = [];
                 } else {
                     existingViewed = JSON.parse(existingViewed);
@@ -274,7 +412,7 @@
                 } else {
                     var uniqueNames = [];
 
-                    $.each(existingViewed, function(i, el){
+                    $.each(existingViewed, function (i, el) {
                         if ($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
                     });
 
@@ -287,7 +425,7 @@
             },
 
             methods: {
-                onSubmit: function(event) {
+                onSubmit: function (event) {
                     if (event.target.getAttribute('type') != 'submit')
                         return;
 
@@ -297,7 +435,7 @@
                         if (result) {
                             this.is_buy_now = event.target.classList.contains('buynow') ? 1 : 0;
 
-                            setTimeout(function() {
+                            setTimeout(function () {
                                 document.getElementById('product-form').submit();
                             }, 0);
                         } else {
@@ -306,7 +444,7 @@
                     });
                 },
 
-                activateAutoScroll: function(event) {
+                activateAutoScroll: function (event) {
 
                     /**
                      * This is normal Element
@@ -332,35 +470,35 @@
             }
         });
 
-        window.onload = function() {
+        window.onload = function () {
             var thumbList = document.getElementsByClassName('thumb-list')[0];
             var thumbFrame = document.getElementsByClassName('thumb-frame');
             var productHeroImage = document.getElementsByClassName('product-hero-image')[0];
 
             if (thumbList && productHeroImage) {
-                for (let i=0; i < thumbFrame.length ; i++) {
-                    thumbFrame[i].style.height = (productHeroImage.offsetHeight/4) + "px";
-                    thumbFrame[i].style.width = (productHeroImage.offsetHeight/4)+ "px";
+                for (let i = 0; i < thumbFrame.length; i++) {
+                    thumbFrame[i].style.height = (productHeroImage.offsetHeight / 4) + "px";
+                    thumbFrame[i].style.width = (productHeroImage.offsetHeight / 4) + "px";
                 }
 
                 if (screen.width > 720) {
-                    thumbList.style.width = (productHeroImage.offsetHeight/4) + "px";
-                    thumbList.style.minWidth = (productHeroImage.offsetHeight/4) + "px";
+                    thumbList.style.width = (productHeroImage.offsetHeight / 4) + "px";
+                    thumbList.style.minWidth = (productHeroImage.offsetHeight / 4) + "px";
                     thumbList.style.height = productHeroImage.offsetHeight + "px";
                 }
             }
 
-            window.onresize = function() {
+            window.onresize = function () {
                 if (thumbList && productHeroImage) {
 
-                    for(let i=0; i < thumbFrame.length; i++) {
-                        thumbFrame[i].style.height = (productHeroImage.offsetHeight/4) + "px";
-                        thumbFrame[i].style.width = (productHeroImage.offsetHeight/4)+ "px";
+                    for (let i = 0; i < thumbFrame.length; i++) {
+                        thumbFrame[i].style.height = (productHeroImage.offsetHeight / 4) + "px";
+                        thumbFrame[i].style.width = (productHeroImage.offsetHeight / 4) + "px";
                     }
 
                     if (screen.width > 720) {
-                        thumbList.style.width = (productHeroImage.offsetHeight/4) + "px";
-                        thumbList.style.minWidth = (productHeroImage.offsetHeight/4) + "px";
+                        thumbList.style.width = (productHeroImage.offsetHeight / 4) + "px";
+                        thumbList.style.minWidth = (productHeroImage.offsetHeight / 4) + "px";
                         thumbList.style.height = productHeroImage.offsetHeight + "px";
                     }
                 }

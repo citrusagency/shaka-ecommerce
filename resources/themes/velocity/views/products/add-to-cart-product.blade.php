@@ -1,7 +1,6 @@
 {!! view_render_event('bagisto.shop.products.add_to_cart.before', ['product' => $product]) !!}
 
-<div class="row">
-    <div class="col-6">
+
         <div class="add-to-cart-btn pl0">
             @if (
                 isset($form)
@@ -75,15 +74,7 @@
                 @endif
             @endif
         </div>
-    </div>
-    <div class="col-6 p-0 pr-2">
 
-        @include('shop::products.wishlist', [
-            'addClass' => $addWishlistClass ?? ''
-        ])
-
-    </div>
-</div>
 
 
 {!! view_render_event('bagisto.shop.products.add_to_cart.after', ['product' => $product]) !!}

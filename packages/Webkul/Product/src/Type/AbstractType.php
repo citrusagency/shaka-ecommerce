@@ -788,7 +788,7 @@ abstract class AbstractType
                 <span class="discount float-right ml-2 px-2" style="color: white!important; background-color: #BB4626!important;">-' . $this->getDiscount() . '%</span>
                 </span>';
         } else {
-            $html = '<span>' . core()->currency($this->evaluatePrice($this->product->price)) . '</span>';
+            $html = '<span class="single-price">' . core()->currency($this->evaluatePrice($this->product->price)) . '</span>';
         }
 
         return $html;

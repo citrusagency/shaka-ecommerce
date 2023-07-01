@@ -126,6 +126,9 @@
     width: 100%;
     object-fit: cover;
 }
+.add-to-cart-btn button span{
+    font-size: 0.7rem!important;
+}
 </style>
 
 <script type="text/javascript">
