@@ -85,6 +85,11 @@
             border: none;
             padding: 0 20px;
         }
+
+        .collection a:hover .titlovi {
+            background-color: #090909!important;
+            color: #fff!important;
+        }
     </style>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
@@ -177,7 +182,7 @@
                 <div class="col-md-6 col-sm-12 collection">
                     <a href="#">
                         <img src="{{ asset('images/collection1.png') }}" class="w-100 mt-3" alt="">
-                        <div class="bg-shaka-light px-4 py-2 text-shaka-black text-uppercase collection-title"
+                        <div class="bg-shaka-light px-4 py-2 text-shaka-black text-uppercase collection-title titlovi"
                              style="letter-spacing: 2px">Katarina Zlajić
                         </div>
                     </a>
@@ -185,7 +190,7 @@
                 <div class="col-md-6 col-sm-12 collection">
                     <a href="#">
                         <img src="{{ asset('images/collection2.png') }}" class="w-100 mt-3" alt="">
-                        <div class="bg-shaka-light px-4 py-2 text-shaka-black text-uppercase collection-title"
+                        <div class="bg-shaka-light px-4 py-2 text-shaka-black text-uppercase collection-title titlovi"
                              style="letter-spacing: 2px">Shaka
                         </div>
                     </a>
@@ -250,7 +255,7 @@
                     <img src="{{asset('images/homepage4.png')}}" class="w-100" alt=""
                          style="max-height: 730px; object-fit: cover">
                 </div>
-                <div class="align-items-center col-md-6 col-sm-12 d-flex flex-column justify-content-center py-5 pl-5">
+                <div class="align-items-center col-md-6 col-sm-12 d-flex flex-column justify-content-center py-5 pl-5" style="padding-top: 6rem!important; padding-bottom: 6rem!important">
                     <h2 class="text-left w-100 mb-1 text-shaka-black">Newsletter Subscription</h2>
                     <p class="mt-1 text-shaka-subtitle text-left w-100" style="padding-right: 7rem;">
                         Subscribe to our newsletter and stay updated for new Shaka arrivals.
