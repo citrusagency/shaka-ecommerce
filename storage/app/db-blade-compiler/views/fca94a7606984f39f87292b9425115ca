@@ -1,0 +1,1 @@
+<p><?php echo $__env->make('shop::about', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?></p>
