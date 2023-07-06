@@ -69,7 +69,7 @@
 
                     <div v-else
                         class="bg-image"
-                        :style="`background-image: url(${thumb.small_image_url}); background-size: cover; aspect-ratio: 4/5; height: auto!important`">
+                        :style="`background-image: url(${thumb.small_image_url}); background-size: auto; aspect-ratio: 4/5; height: auto!important`">
                     </div>
                 </li>
             </slide>

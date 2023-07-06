@@ -66,6 +66,7 @@ Vue.component('sidebar-header', () => import('@components/header-sidebar'));
 Vue.component('right-side-header', () => import('@components/header-right-side'));
 Vue.component('sidebar-component', () => import('@components/sidebar'));
 Vue.component('product-card', () => import('@components/product-card'));
+Vue.component('product-specs', () => import('@components/product-specs'));
 Vue.component('wishlist-component', () => import('@components/wishlist'));
 Vue.component('wishlist-component-product', () => import('@components/wishlist-product'));
 Vue.component('carousel-component', () => import('@components/carousel'));

@@ -90,11 +90,17 @@
             background-color: #090909!important;
             color: #fff!important;
         }
+        .available:hover {
+            text-decoration: underline;
+
+        }
     </style>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+
     <script>
         $(".carousel").swipe({
             swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
@@ -118,35 +124,40 @@
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
-                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                @foreach($sliderData as $slider)
+                    <li data-target="#demo" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
+                @endforeach
             </ul>
 
             <!-- The slideshow -->
             <div class="carousel-inner w-100">
-                <div class="carousel-item active" style="background-image: url({{ asset('images/homepage2.png') }});">
-                    <div class="container">
-                        <p class="text-uppercase" style="letter-spacing: 3px">Shaka & Katarina Zlajić</p>
-                        <h1 class="heading-1 font-weight-normal mb-5">Shop extravagant <br>jewelry and clothes</h1>
-                        <button class="btn bg-shaka-primary btn-lg px-5">Shop now</button>
+                @foreach($sliderData as $slider)
+                    <div class="carousel-item {{ $loop->first ? 'active' : '' }}" style="background-image: url({{ $slider['image_url'] }});">
+                        <div class="container">
+                            <p class="text-uppercase" style="letter-spacing: 3px">Shaka & Katarina Zlajić</p>
+                            <h1 class="heading-1 font-weight-normal mb-5">Shop extravagant <br>jewelry and clothes</h1>
+                            <button class="btn bg-shaka-primary btn-lg px-5">Shop now</button>
+                        </div>
                     </div>
-                </div>
+                @endforeach
+
 
             </div>
 
             <!-- Left and right controls -->
-            {{--            <a class="carousel-control-prev" href="#demo" data-slide="prev">--}}
-            {{--                <span class="carousel-control-prev-icon"></span>--}}
-            {{--            </a>--}}
-            {{--            <a class="carousel-control-next" href="#demo" data-slide="next">--}}
-            {{--                <span class="carousel-control-next-icon"></span>--}}
-            {{--            </a>--}}
+{{--                        <a class="carousel-control-prev" href="#demo" data-slide="prev">--}}
+{{--                            <span class="carousel-control-prev-icon"></span>--}}
+{{--                        </a>--}}
+{{--                        <a class="carousel-control-next" href="#demo" data-slide="next">--}}
+{{--                            <span class="carousel-control-next-icon"></span>--}}
+{{--                        </a>--}}
         </div>
-        {{--        @include('shop::home.slider')--}}
-        {{--        <div class="container">--}}
-        {{--            <h1 class="heading-1 font-weight-bold">Shaka & <br> Katarina Zlajić</h1>--}}
-        {{--            <p>Extravagant clothes and jewelry pieces.</p>--}}
-        {{--            <button class="btn bg-shaka-primary btn-lg px-5">Shop now</button>--}}
-        {{--        </div>--}}
+{{--                @include('shop::home.slider')--}}
+{{--                <div class="container">--}}
+{{--                    <h1 class="heading-1 font-weight-bold">Shaka & <br> Katarina Zlajić</h1>--}}
+{{--                    <p>Extravagant clothes and jewelry pieces.</p>--}}
+{{--                    <button class="btn bg-shaka-primary btn-lg px-5">Shop now</button>--}}
+{{--                </div>--}}
     </div>
 
     <div class="bg-shaka-darker py-4">
@@ -174,11 +185,11 @@
 
     <div class="bg-shaka-light py-5">
         <div class="container">
-            <h2 class="text-center text-white text-shaka-black  heading-2 h1 mt-5 mb-5">
+            <h2 class="text-center text-white text-shaka-black  heading-2 h1 mt-5 mb-2">
                 Shop by collection
             </h2>
             <br>
-            <div class="row mt-4">
+            <div class="row mt-4 mb-5 py-3">
                 <div class="col-md-6 col-sm-12 collection">
                     <a href="#">
                         <img src="{{ asset('images/collection1.png') }}" class="w-100 mt-3" alt="">

@@ -1,7 +1,7 @@
 {!! view_render_event('bagisto.shop.products.add_to_cart.before', ['product' => $product]) !!}
 
 <div class="row">
-    <div class="col-6">
+    <div class="col-8">
         <div class="add-to-cart-btn pl0">
             @if (
                 isset($form)
@@ -71,12 +71,18 @@
                     btn-text="{{ (! isset($moveToCart) && $product->type == 'booking') ?  __('shop::app.products.book-now') : $btnText ?? __('shop::app.products.add-to-cart') }}">
                     </add-to-cart>
                 @else
-                    <button class="btn btn-add-to-cart" style="font-size: 12px">let me know when available</button>
+                    <button class="btn btn-add-to-cart available text-uppercase font-shaka-open-sans" style="font-size: 12px;
+                    background-color: transparent!important;
+                    border: none!important;
+                    text-align: left;
+                    font-weight: 700;
+                    /*text-decoration: underline;*/
+                    ">let me know when available</button>
                 @endif
             @endif
         </div>
     </div>
-    <div class="col-6 p-0 pr-2">
+    <div class="col-4 p-0 pr-2">
 
         @include('shop::products.wishlist', [
             'addClass' => $addWishlistClass ?? ''

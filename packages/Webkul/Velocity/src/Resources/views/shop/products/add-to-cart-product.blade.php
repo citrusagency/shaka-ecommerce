@@ -22,7 +22,7 @@
                         {{ ($product->type == 'booking') ?  __('shop::app.products.book-now') :  __('shop::app.products.add-to-cart') }}
                     </button>
                 @else
-                    <button>marko</button>
+                    <button class="notify-available">Notify when available</button>
                 @endif
             @elseif(isset($addToCartForm) && ! $addToCartForm)
                 <form

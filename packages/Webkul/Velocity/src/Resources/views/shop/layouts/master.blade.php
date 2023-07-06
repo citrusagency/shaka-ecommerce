@@ -141,7 +141,7 @@
     {{-- overlay loader --}}
     <velocity-overlay-loader></velocity-overlay-loader>
 
-    <go-top bg-color="#26A37C"></go-top>
+{{--    <go-top bg-color="#26A37C"></go-top>--}}
 </div>
 
 {{-- footer --}}

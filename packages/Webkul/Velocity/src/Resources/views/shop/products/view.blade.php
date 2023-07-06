@@ -113,6 +113,18 @@
             font-weight: 400!important;
             font-size: 1.8rem!important;
         }
+        .galop {
+            background-color: #FAFAFA!important;
+            display: grid;
+            place-items: center;
+        }
+
+        .quantity .actions .add-to-cart-btn button.notify-available{
+            background: #B84626!important;
+            color: #fff!important;
+            border-radius: 5px!important;
+            border: none!important;
+        }
     </style>
 @endpush
 
@@ -216,8 +228,10 @@
 
                                                 @if ($product->getTypeInstance()->showQuantityBox())
                                                     <div class="col-12 actions">
+                                                        @if($product->isSaleable())
                                                         <quantity-changer
                                                             quantity-text="{{ __('shop::app.products.quantity') }}"></quantity-changer>
+                                                        @endif
                                                         <div>
                                                             @if (core()->getConfigData('catalog.products.storefront.buy_now_button_display'))
                                                                 @include ('shop::products.buy-now', [
@@ -336,10 +350,25 @@
                             </div>
                         </div>
                     </product-view>
-                </div>
-            </section>
 
-            <div class="related-products">
+                </div>
+
+
+
+            </section>
+            @if($product->product->washing_tips || $product->product->specifications || $product->product->delivery)
+            <div class="specs w-100 mt-5">
+                <product-specs :product="{{ $product }}"></product-specs>
+            </div>
+            @endif
+
+            @if($product->product->galop_sticker)
+                <div class="galop w-100 mt-5 py-5">
+                    <img src="{{asset("images/galop.png")}}" alt="">
+                </div>
+                @endif
+
+            <div class="related-products mt-5">
                 @if($relatedProducts->count())
                 <div class="bg-shaka-light py-5" style="    width: 121%;
     margin-left: -10%;
@@ -351,6 +380,7 @@
                 @endif
                 @include('shop::products.view.up-sells')
             </div>
+
         </div>
         {!! view_render_event('bagisto.shop.products.view.after', ['product' => $product]) !!}
     </div>

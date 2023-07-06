@@ -33,6 +33,7 @@ class ProductsCategoriesProxyController extends Controller
 
         $galleryImages = ProductImage::getGalleryImages($product);
         $productImage = ProductImage::getProductBaseImage($product, $galleryImages)['medium_image_url'];
+        dd($productImage);
 
         $largeProductImageName = 'large-product-placeholder.png';
         $mediumProductImageName = 'meduim-product-placeholder.png';

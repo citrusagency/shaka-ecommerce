@@ -29,6 +29,7 @@
                         type="category"
                         :index="index"
                         :attribute="attribute"
+                        :sale="categories.length === index+1"
                         :appliedFilterValues="appliedFilters[attribute.code]"
                         :max-price-src="maxPriceSrc"
                         :attributeFilers="appliedFilters"
@@ -121,6 +122,8 @@
 
 
 
+
+
                     <div class="filter-attributes-content border-bottom-0">
                         <ul type="none" class="items px-0 mx-0">
                             <li
@@ -140,25 +143,13 @@
                                 </div>
                             </li>
 
-                            <li
-                                class="item"
-                            >
-                                <div
-                                    class="checkbox text-shaka"
-                                    @click="filterSale">
-                                    {{--                                    <input--}}
-                                    {{--                                        style="opacity: 0"--}}
-                                    {{--                                        type="radio"--}}
-                                    {{--                                        :id="option.id"--}}
-                                    {{--                                        v-bind:value="option.id"--}}
-                                    {{--                                        v-model="appliedFilters"--}}
-                                    {{--                                        @change="addFilter($event)"/>--}}
-                                    <span >SALE</span>
-                                </div>
-                            </li>
+
                         </ul>
 
                     </div>
+                </div>
+                <div v-if="sale">
+                    <h6 @click="filterSale" class="text-uppercase display-inbl text-shaka">SALE</h6>
                 </div>
             </div>
             <div :class="`cursor-pointer border-0 filter-attributes-item ${active ? 'active' : ''}`" v-if="attribute.code === 'material'">
@@ -292,7 +283,8 @@
                 'appliedFilterValues',
                 'maxPriceSrc',
                 'type',
-                'attributeFilers'
+                'attributeFilers',
+                'sale'
 
             ],
 

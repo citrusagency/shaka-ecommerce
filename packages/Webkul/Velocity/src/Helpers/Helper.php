@@ -2,6 +2,7 @@
 
 namespace Webkul\Velocity\Helpers;
 
+use Illuminate\Support\Facades\Storage;
 use Webkul\Attribute\Repositories\AttributeOptionRepository;
 use Webkul\Product\Facades\ProductImage;
 use Webkul\Product\Helpers\Review;
@@ -264,7 +265,10 @@ class Helper extends Review
         $reviewHelper = app('Webkul\Product\Helpers\Review');
 
         $galleryImages = ProductImage::getGalleryImages($product);
-        $productImage = ProductImage::getProductBaseImage($product, $galleryImages)['medium_image_url'];
+//        $productImage = ProductImage::getProductBaseImage($product, $galleryImages)['medium_image_url'];
+        $productImage = Storage::url($product->images[0]->path);
+        // IMAGE CHANGE MAKOGAI NOTE
+//        dd());
 
         $largeProductImageName = 'large-product-placeholder.png';
         $mediumProductImageName = 'meduim-product-placeholder.png';
