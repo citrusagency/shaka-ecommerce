@@ -7,14 +7,14 @@
 
         <div class="row remove-padding-margin velocity-divide-page d-flex justify-content-between align-items-center">
             <a class="navbar-brand" href="{{ route('shop.home.index') }}" aria-label="Logo">
-                <img class="logo" src="{{ core()->getCurrentChannel()->logo_url ?? asset('images/shaka-white.png') }}" alt="" />
+                {!! file_get_contents(public_path('\images\logo.svg')) !!}
             </a>
             <div class="row gap-4">
-                <a href="/" class="text-white text-uppercase  {{ request()->is('/') ? 'active-route' : '' }}">Homepage</a>
+                <a href="/" class="text-white text-uppercase  {{ request()->is('/') ? 'active-route' : '' }}">Home</a>
                 <a href="{{ route('shop.getAllProducts') }}" class="text-white text-uppercase  {{ request()->is('shop') ? 'active-route' : '' }} ml-5">Shop</a>
-                <a href="{{ route("shop.about") }}" class="text-white text-uppercase  {{ request()->is('shop.about') ? 'active-route' : '' }} ml-5">About the label</a>
-                <a href="{{ route("shop.behind-the-scenes") }}" class="text-white text-uppercase  {{ request()->is('behind-the-scenes') ? 'active-route' : '' }} ml-5">Behind the scenes</a>
-                <a href="{{ route("shop.contact.index") }}" class="text-white  text-uppercase {{ request()->is('contact') ? 'active-route' : '' }} ml-5">Contact us</a>
+                <a href="{{ route("shop.about") }}" class="text-white text-uppercase  {{ request()->is('shop.about') ? 'active-route' : '' }} ml-5">About</a>
+                <!-- <a href="{{ route("shop.behind-the-scenes") }}" class="text-white text-uppercase  {{ request()->is('behind-the-scenes') ? 'active-route' : '' }} ml-5">Behind the scenes</a> -->
+                <a href="{{ route("shop.contact.index") }}" class="text-white  text-uppercase {{ request()->is('contact') ? 'active-route' : '' }} ml-5">Contact</a>
             </div>
 
 

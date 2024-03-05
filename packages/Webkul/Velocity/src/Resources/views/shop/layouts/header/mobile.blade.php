@@ -25,7 +25,7 @@
             </div>
 
             <a class="left" href="{{ route('shop.home.index') }}" aria-label="Logo">
-                <img class=" w-100" src="{{ core()->getCurrentChannel()->logo_url ?? asset('themes/velocity/assets/images/logo-text.png') }}" style="max-height: 30px!important; width: 98px!important;" alt="" />
+                {!! file_get_contents(public_path('\images\logo.svg')) !!}
             </a>
         </div>
 
@@ -63,7 +63,7 @@
                 <a
                     class="unset fw5  {{ request()->is('/') ? 'fw7' : '' }}"
                     href="/">
-                    <span class="text-shaka-black text-uppercase fs18">Homepage</span>
+                    <span class="text-shaka-black text-uppercase fs18">Home</span>
                 </a>
             </li>
             <li>
@@ -80,13 +80,13 @@
                     <span class="text-shaka-black text-uppercase fs18">About</span>
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a
                     class="unset fw5 {{ request()->is('behind-the-scenes') ? 'fw7' : '' }}"
                     href="{{ route("shop.behind-the-scenes") }}">
                     <span class="text-shaka-black text-uppercase fs18">Behind the scenes</span>
                 </a>
-            </li>
+            </li> -->
             <li>
                 <a
                     class="unset fw5 {{ request()->is('contact') ? 'fw7' : '' }}"

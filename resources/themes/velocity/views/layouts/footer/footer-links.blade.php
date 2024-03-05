@@ -2,7 +2,7 @@
     <div class="container p-5">
         <div class="row">
             <div class="col-md-4 col-6 py-5 offset-3 offset-md-0">
-                <img src="{{ asset('images/shaka-white.png') }}" class="mx-auto" alt="">
+                {!! file_get_contents(public_path('\images\logo.svg')) !!}
                 <p class="text-shaka-subtitle my-4">Based in Montenegro</p>
                 <a href="#" target="_blank"><img src="{{ asset('images/facebook-logo.svg') }}" alt=""></a>
                 <a href="#" class="ml-3" target="_blank"><img src="{{ asset('images/instagram-logo.svg') }}" alt=""></a>
@@ -12,13 +12,13 @@
                     <div class="d-sm-block d-md-none mb-5" style="border-top: 1px solid rgba(255,255,255,0.2); width: 200%"></div>
 
                     <div class="col-md-4 col-6">
-                        <div><a href="#" class="text-shaka-subtitle">Homepage</a></div>
+                        <div><a href="#" class="text-shaka-subtitle">Home</a></div>
                         <div class="mt-3"><a href="#" class="text-shaka-subtitle">Shop</a></div>
-                        <div class="mt-3"><a href="#" class="text-shaka-subtitle">About tge label</a></div>
                     </div>
                     <div class="col-md-4 col-6">
-                        <div><a href="#" class="text-shaka-subtitle">Behind the scenes</a></div>
-                        <div class="mt-3"><a href="#" class="text-shaka-subtitle">Contact us</a></div>
+                        <!-- <div><a href="#" class="text-shaka-subtitle">Behind the scenes</a></div> -->
+                        <div><a href="#" class="text-shaka-subtitle">About</a></div>
+                        <div class="mt-3"><a href="#" class="text-shaka-subtitle">Contact</a></div>
                     </div>
                     <div class="d-sm-block d-md-none mt-5" style="border-top: 1px solid rgba(255,255,255,0.2); width: 200%"></div>
                     <div class="col-md-4 col-12 mt-5 mt-md-0">
@@ -37,7 +37,7 @@
     <div class="container p-4">
         <div class="row footer-statics no-margin ">
             <div class="col-6 text-left text-white">
-                © {{ date('Y') }} Shaka
+                © {{ date('Y') }} Katarina Zlajić
 
             </div>
             <div class="col-6">
