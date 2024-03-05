@@ -10,7 +10,7 @@
                 {!! file_get_contents(public_path('\images\logo.svg')) !!}
             </a>
             <div class="row gap-4">
-                <a href="/" class="text-white text-uppercase  {{ request()->is('/') ? 'active-route' : '' }}">Homepage</a>
+                <a href="/" class="text-white text-uppercase  {{ request()->is('/') ? 'active-route' : '' }}">Home</a>
                 <a href="{{ route('shop.getAllProducts') }}" class="text-white text-uppercase  {{ request()->is('shop') ? 'active-route' : '' }} ml-5">Shop</a>
                 <a href="{{ route("shop.about") }}" class="text-white text-uppercase  {{ request()->is('shop.about') ? 'active-route' : '' }} ml-5">About</a>
                 <!-- <a href="{{ route("shop.behind-the-scenes") }}" class="text-white text-uppercase  {{ request()->is('behind-the-scenes') ? 'active-route' : '' }} ml-5">Behind the scenes</a> -->
