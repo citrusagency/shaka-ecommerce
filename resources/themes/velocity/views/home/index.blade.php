@@ -132,10 +132,10 @@
             <!-- The slideshow -->
             <div class="carousel-inner w-100">
                 @foreach($sliderData as $slider)
-                    <div class="carousel-item {{ $loop->first ? 'active' : '' }}" style="background-image: url({{ $slider['image_url'] }});">
+                    <div class="carousel-item {{ $loop->first ? 'active' : '' }}" style="background-color: navajowhite">
                         <div class="container">
                             <p class="text-uppercase" style="letter-spacing: 3px">Shaka & Katarina Zlajić</p>
-                            <h1 class="heading-1 font-weight-normal mb-5">Shop extravagant <br>jewelry and clothes</h1>
+                            <h1 class="heading-1 text-uppercase font-weight-normal mb-5">Shop extravagant <br>jewelry and clothes</h1>
                             <button class="btn bg-shaka-primary btn-lg px-5">Shop now</button>
                         </div>
                     </div>
@@ -144,12 +144,12 @@
 
             </div>
 
-            <!-- Left and right controls -->
+{{--            <!-- Left and right controls -->--}}
 {{--                        <a class="carousel-control-prev" href="#demo" data-slide="prev">--}}
 {{--                            <span class="carousel-control-prev-icon"></span>--}}
 {{--                        </a>--}}
 {{--                        <a class="carousel-control-next" href="#demo" data-slide="next">--}}
-{{--                            <span class="carousel-control-next-icon"></span>--}}
+{{--                            <span class="carousel-control-next-icon">OVO HE ==</span>--}}
 {{--                        </a>--}}
         </div>
 {{--                @include('shop::home.slider')--}}

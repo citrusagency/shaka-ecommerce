@@ -37,7 +37,8 @@
     color: #1197C2!important;
 }
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Noto Serif', serif!important;
+            font-family: 'Open Sans', serif!important;
+            letter-spacing: 2px;
         }
     </style>
 
