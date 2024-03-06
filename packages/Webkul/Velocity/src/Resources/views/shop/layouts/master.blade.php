@@ -24,7 +24,7 @@
         }
 
         * {
-            font-family: 'Open Sans', sans-serif!important;
+            font-family: 'Open Sans', sans-serif;
 
         }
         .material-icons{
@@ -35,6 +35,9 @@
 }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Open Sans', serif!important;
+            letter-spacing: 2px;
+            font-size: 3rem;
+            text-transform: uppercase;
         }
     </style>
 

@@ -85,6 +85,18 @@
             border: none;
             padding: 0 20px;
         }
+        .btn-shaka{
+            padding: 10px 16px;
+            text-align: center;
+            border: none;
+
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 22px; /* 137.5% */
+            letter-spacing: 0.48px;
+        }
 
         .collection a:hover .titlovi {
             background-color: #090909!important;
@@ -132,16 +144,14 @@
             <!-- The slideshow -->
             <div class="carousel-inner w-100">
                 @foreach($sliderData as $slider)
-                    <div class="carousel-item {{ $loop->first ? 'active' : '' }}" style="background-color: navajowhite">
+                    <div class="carousel-item {{ $loop->first ? 'active' : '' }}" style="background-image: url({{ $slider['image_url'] }});">
                         <div class="container">
                             <p class="text-uppercase" style="letter-spacing: 3px">Shaka & Katarina Zlajić</p>
                             <h1 class="heading-1 text-uppercase font-weight-normal mb-5">Shop extravagant <br>jewelry and clothes</h1>
-                            <button class="btn bg-shaka-primary btn-lg px-5">Shop now</button>
+                            <a class="btn-shaka bg-shaka-primary">Shop now</a>
                         </div>
                     </div>
                 @endforeach
-
-
             </div>
 
 {{--            <!-- Left and right controls -->--}}
@@ -159,57 +169,6 @@
 {{--                    <button class="btn bg-shaka-primary btn-lg px-5">Shop now</button>--}}
 {{--                </div>--}}
     </div>
-
-    <div class="bg-shaka-darker py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-0">
-                    <div class="row">
-                        <div class="col-4 d-flex justify-content-center align-items-center flex-column">
-                            <img src="{{ asset('images/vegan.svg') }}" class="" alt="">
-                            <p class="text-white text-center mt-2">Vegan</p>
-                        </div>
-                        <div class="col-4 d-flex justify-content-center align-items-center flex-column">
-                            <img src="{{ asset('images/handmade.svg') }}" alt="">
-                            <p class="text-white text-center mt-2">Handmade</p>
-                        </div>
-                        <div class="col-4 d-flex justify-content-center align-items-center flex-column">
-                            <img src="{{ asset('images/sustainable.svg') }}" alt="">
-                            <p class="text-white text-center mt-2">Sustainable</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="bg-shaka-light py-5">
-        <div class="container">
-            <h2 class="text-center text-white text-shaka-black  heading-2 h1 mt-5 mb-2">
-                Shop by collection
-            </h2>
-            <br>
-            <div class="row mt-4 mb-5 py-3">
-                <div class="col-md-6 col-sm-12 collection">
-                    <a href="#">
-                        <img src="{{ asset('images/collection1.png') }}" class="w-100 mt-3" alt="">
-                        <div class="bg-shaka-light px-4 py-2 text-shaka-black text-uppercase collection-title titlovi"
-                             style="letter-spacing: 2px">Katarina Zlajić
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6 col-sm-12 collection">
-                    <a href="#">
-                        <img src="{{ asset('images/collection2.png') }}" class="w-100 mt-3" alt="">
-                        <div class="bg-shaka-light px-4 py-2 text-shaka-black text-uppercase collection-title titlovi"
-                             style="letter-spacing: 2px">Shaka
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="full-content-wrapper container">
         <!-- {!! view_render_event('bagisto.shop.home.content.before') !!} -->
 
@@ -236,7 +195,7 @@
                         production, animal welfare, environmental protection and careful use of our resources.
                     </p>
                     <div class="mt-5 w-100">
-                        <a href="{{ route("shop.about") }}" class="btn px-4 py-3 rounded-0 bg-shaka-primary">Read more</a>
+                        <a href="{{ route("shop.about") }}" class="btn-shaka rounded-0 bg-shaka-primary">Read more</a>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 opacity-0 order-0 order-md-1 d-none d-md-block">
@@ -272,7 +231,7 @@
                         Subscribe to our newsletter and stay updated for new Shaka arrivals.
                     </p>
                     <div class="mt-3 w-100 subscribe d-flex">
-                        <input type="text" class="w-100" placeholder="Your email address"><button href="#" class="bg-shaka-primary">Subscribe</button>
+                        <input type="text" class="w-100" placeholder="Your email address"><button href="#" class="btn-shaka bg-shaka-primary">Subscribe</button>
                     </div>
                 </div>
 

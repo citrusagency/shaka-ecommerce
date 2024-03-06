@@ -27,19 +27,29 @@
         }
 
         * {
-            font-family: 'Open Sans', sans-serif!important;
+            font-family: 'Open Sans', sans-serif;
 
         }
+        p{
+            font-size: 18px;
+            line-height: 32px;
+            font-family: "Outfit", sans-serif;
+        }
+
         .material-icons{
             font-family: 'Material Icons'!important;
         }
+
 .text-shaka-primary {
     color: #1197C2!important;
 }
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Open Sans', serif!important;
+            font-family: 'Open Sans', serif;
             letter-spacing: 2px;
+            font-size: 3rem;
+            text-transform: uppercase;
         }
+
     </style>
 
     {!! view_render_event('bagisto.shop.layout.head') !!}
