@@ -116,8 +116,8 @@
     <script>
         $(".carousel").swipe({
             swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
-                if (direction == 'left') $(this).carousel('next');
-                if (direction == 'right') $(this).carousel('prev');
+                if (direction === 'left') $(this).carousel('next');
+                if (direction === 'right') $(this).carousel('prev');
             },
             allowPageScroll: "vertical"
         });
@@ -154,13 +154,13 @@
                 @endforeach
             </div>
 
-{{--            <!-- Left and right controls -->--}}
-{{--                        <a class="carousel-control-prev" href="#demo" data-slide="prev">--}}
+            <!-- Left and right controls -->
+                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
 {{--                            <span class="carousel-control-prev-icon"></span>--}}
-{{--                        </a>--}}
-{{--                        <a class="carousel-control-next" href="#demo" data-slide="next">--}}
-{{--                            <span class="carousel-control-next-icon">OVO HE ==</span>--}}
-{{--                        </a>--}}
+                        </a>
+                        <a class="carousel-control-next" href="#demo" data-slide="next">
+{{--                            <span class="carousel-control-next-icon"></span>--}}
+                        </a>
         </div>
 {{--                @include('shop::home.slider')--}}
 {{--                <div class="container">--}}
