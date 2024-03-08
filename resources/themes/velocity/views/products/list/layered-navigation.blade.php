@@ -1,3 +1,57 @@
+@push('css')
+    <style type="text/css">
+        .slider{
+            height:5px;
+            border-radius: 5px;
+            background-color: #ddd;
+            position: relative;
+        }
+
+        .progress{
+            height: 5px;
+            /*left: 25%;*/
+            /*right: 25%;*/
+            position: absolute;
+            border-radius: 5px;
+            background-color: #333333;
+        }
+
+        .range-input{
+            position: relative;
+        }
+
+        .range-input input{
+            position: absolute;
+            top:-5px;
+            height: 5px;
+            width: 100%;
+            background: none;
+            pointer-events: none;
+            appearance:none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb{
+            height: 17px;
+            width: 17px;
+            border-radius: 50%;
+            pointer-events: auto;
+            -webkit-appearance: none;
+            background: #333333;
+        }
+
+        input[type="range"]::-moz-range-thumb{
+            height: 17px;
+            width: 17px;
+            border:none;
+            border-radius: 50%;
+            pointer-events: auto;
+            -moz-appearance: none;
+            background: #333333;
+        }
+    </style>
+@endpush
+
 <div class="layered-filter-wrapper p-0 py-4 left">
     {!! view_render_event('bagisto.shop.products.list.layered-nagigation.before') !!}
 
@@ -8,6 +62,8 @@
 
     {!! view_render_event('bagisto.shop.products.list.layered-nagigation.after') !!}
 </div>
+
+
 
 @push('scripts')
     <script type="text/x-template" id="layered-navigation-template">
@@ -30,51 +86,30 @@
                     </filter-attribute-item>
                 </div>
             </div>
-
-            <div class="border border-2 border-top-0 w-100 row m-0 p-0">
-                <div class="col-4 m-0 p-0"></div>
-                <div class="col-8 m-0 p-0">
-                    <h5 class="text-left font-shaka py-3">Material</h5>
-                </div>
-            </div>
-            <div class="filter-content border border-top-0 row m-0 p-0">
-                <div class="col-4 p-0 m-0"></div>
-                <div class="filter-attributes p-0 m-0 col-8 border-0">
-                    <filter-attribute-item
-                        v-for='(attribute, index) in materials'
-                        :key="index"
-                        :index="index"
-                        :attribute="attribute"
-                        :appliedFilterValues="appliedFilters[attribute.code]"
-                        :max-price-src="maxPriceSrc"
-                        @onFilterAdded="addFilters(attribute.code, $event)">
-                    </filter-attribute-item>
-                </div>
-            </div>
-
             <div class="border border-2 border-top-0 w-100 row m-0 p-0">
                 <div class="col-4 m-0 p-0"></div>
                 <div class="col-8 m-0 p-0">
                     <h5 class="text-left font-shaka py-3">Price range</h5>
                 </div>
-            </div>
-            <div class="filter-content border border-top-0 row p-0 m-0">
-                <div class="col-4 p-0 m-0"></div>
-
-                <div class="filter-attributes p-0 col-8 m-0 py-4 pr-4">
-                    <filter-attribute-item
-                        :attribute="attributes[2]"
-                        :appliedFilterValues="appliedFilters[attributes[2].code]"
-                        :max-price-src="maxPriceSrc"
-                        @onFilterAdded="addFilters(attributes[2].code, $event)">
-                    </filter-attribute-item>
+                <div class="col-4 m-0 p-0"></div>
+                <div class="col-6 m-0 px-0">
+                    <div class="slider">
+                        <div class="progress" style="left:25%; right:25%;"></div>
+                    </div>
+                    <div class="range-input">
+                        <input type="range" id="minPriceFilter" @change="applyPriceRangeFilter" class="range-min" min="0" max="1000" step="10" v-model="appliedFilters.price[0]" />
+                        <input type="range" id="maxPriceFilter" @change="applyPriceRangeFilter" class="range-max" min="0" max="1000" step="10" v-model="appliedFilters.price[1]" />
+                    </div>
+                    <div class="flex row justify-content-between my-3 px-3">
+                        <p>@{{ appliedFilters.price[0] }} </p>
+                        <p>@{{ appliedFilters.price[1] }}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </script>
 
     <script type="text/x-template" id="filter-attribute-item-template">
-
 
         <div>
             <div class="price-range-wrapper" v-if="attribute.type === 'price'">
@@ -111,11 +146,6 @@
                             <i :class="`icon text-right fs16 cell ${active ? 'rango-arrow-up' : 'rango-arrow-down'}`"></i>
                         </div>
                     </div>
-
-
-
-
-
                     <div class="filter-attributes-content border-bottom-0">
                         <ul type="none" class="items px-0 mx-0">
                             <li
@@ -134,10 +164,7 @@
                                     <span :class="`${isActiveCategory(option.id) ? 'font-weight-bold' : ''}`">@{{ option.name ? option.name : option.admin_name }}</span>
                                 </div>
                             </li>
-
-
                         </ul>
-
                     </div>
                 </div>
                 <div v-if="sale">
@@ -192,7 +219,9 @@
 
             data: function () {
                 return {
-                    appliedFilters: {},
+                    appliedFilters: {
+                        price: [250, 750]
+                    },
                     attributes: [],
                     categories: [],
                     materials: [],
@@ -201,13 +230,10 @@
 
             created: function () {
                 this.setFilterAttributes();
-
                 this.setAppliedFilters();
             },
 
             methods: {
-
-
                 setFilterAttributes: function () {
                     axios
                         .get(this.attributeSrc)
@@ -229,7 +255,6 @@
                 addFilters: function (attributeCode, filters) {
 
                     if(attributeCode ==='isSaleable'){
-
                         // If isSaleable is already applied, set its value to false
                         if (this.appliedFilters.hasOwnProperty('isSaleable')){
                             delete this.appliedFilters['isSaleable'];
@@ -238,14 +263,11 @@
                         }
                     }
                     else {
-
-
                         if (filters.length) {
                             this.appliedFilters[attributeCode] = filters;
                         } else {
                             delete this.appliedFilters[attributeCode];
                         }
-
                     }
 
                     this.applyFilter();
@@ -256,12 +278,29 @@
 
                     for (key in this.appliedFilters) {
                         if (key != 'page') {
+                            console.log(this.appliedFilters[key])
                             params.push(key + '=' + this.appliedFilters[key].join(','));
                         }
                     }
 
                     window.location.href = "?" + params.join('&');
                 },
+
+                applyPriceRangeFilter: function (){
+                    let minPrice = document.getElementById("minPriceFilter").value;
+                    let maxPrice = document.getElementById("maxPriceFilter").value;
+                    let rangeMaxInput = document.getElementById("maxPriceFilter").max;
+                    let progress = document.querySelector(".slider .progress");
+                    console.log(progress.style);
+
+                    progress.style.left = (minPrice / rangeMaxInput) * 100+'%';
+                    progress.style.right = (maxPrice / rangeMaxInput) * 100+'%';
+                    console.log("left"+progress.style.left);
+                    console.log("rugh"+progress.style.right);
+
+                    this.appliedFilters.price = [minPrice, maxPrice];
+                    //this.applyFilter();
+                }
             }
         });
 
@@ -276,8 +315,8 @@
                 'maxPriceSrc',
                 'type',
                 'attributeFilers',
-                'sale'
-
+                'sale',
+                'applyPriceRangeFilter'
             ],
 
             data: function () {

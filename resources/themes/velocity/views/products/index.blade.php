@@ -33,6 +33,7 @@
     </style>
 @endpush
 
+
 @php
     $isProductsDisplayMode = true;
 
