@@ -10,12 +10,9 @@
 </div>
 
 @push('scripts')
-
     <script type="text/x-template" id="layered-navigation-template">
         <div v-if="attributes.length > 0">
-            <div class="row border border-2 w-100 m-0 p-0">
-            </div>
-            <div class="filter-content border border-top-0 row px-0 py-4 m-0">
+            <div class="filter-content border border-top-0 row p-0 m-0">
                 <div class="col-4 p-0 m-0"></div>
                 <div class="filter-attributes col-8 p-0 m-0">
                     <filter-attribute-item
@@ -33,7 +30,14 @@
                     </filter-attribute-item>
                 </div>
             </div>
-            <!-- <div class="filter-content border border-top-0 row m-0 p-0">
+
+            <div class="border border-2 border-top-0 w-100 row m-0 p-0">
+                <div class="col-4 m-0 p-0"></div>
+                <div class="col-8 m-0 p-0">
+                    <h5 class="text-left font-shaka py-3">Material</h5>
+                </div>
+            </div>
+            <div class="filter-content border border-top-0 row m-0 p-0">
                 <div class="col-4 p-0 m-0"></div>
                 <div class="filter-attributes p-0 m-0 col-8 border-0">
                     <filter-attribute-item
@@ -46,26 +50,15 @@
                         @onFilterAdded="addFilters(attribute.code, $event)">
                     </filter-attribute-item>
                 </div>
-            </div> -->
+            </div>
+
             <div class="border border-2 border-top-0 w-100 row m-0 p-0">
                 <div class="col-4 m-0 p-0"></div>
                 <div class="col-8 m-0 p-0">
                     <h5 class="text-left font-shaka py-3">Price range</h5>
                 </div>
-                <div class="col-4 m-0 p-0"></div>
-                <div class="col-6 m-0 py-3 px-0">
-                    <div class="slider">
-                        <div class="progress"></div>
-                    </div>
-                    <div class="range-input">
-                        <input type="range" class="range-min" min="0" max="1000" value="250" />
-                        <input type="range" class="range-max" min="0" max="1000" value="750" />
-                    </div>
-                </div>
             </div>
-            <div data-role="main" class="ui-content">
-            </div>
-            <!-- <div class="filter-content border border-top-0 row p-0 m-0">
+            <div class="filter-content border border-top-0 row p-0 m-0">
                 <div class="col-4 p-0 m-0"></div>
 
                 <div class="filter-attributes p-0 col-8 m-0 py-4 pr-4">
@@ -76,11 +69,13 @@
                         @onFilterAdded="addFilters(attributes[2].code, $event)">
                     </filter-attribute-item>
                 </div>
-            </div> -->
+            </div>
         </div>
     </script>
 
     <script type="text/x-template" id="filter-attribute-item-template">
+
+
         <div>
             <div class="price-range-wrapper" v-if="attribute.type === 'price'">
                 <vue-slider
@@ -187,7 +182,6 @@
     </script>
 
     <script>
-
         Vue.component('layered-navigation', {
             template: '#layered-navigation-template',
 
@@ -411,6 +405,5 @@
                 }
             }
         });
-
     </script>
 @endpush
