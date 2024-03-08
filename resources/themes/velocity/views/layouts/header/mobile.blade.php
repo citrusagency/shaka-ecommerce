@@ -25,7 +25,7 @@
             </div>
 
             <a class="left" href="{{ route('shop.home.index') }}" aria-label="Logo">
-                {!! file_get_contents(public_path('\images\logo.svg')) !!}
+                {!! file_get_contents(public_path('/images/logo.svg')) !!}
             </a>
         </div>
 
@@ -194,7 +194,7 @@
 
     <template v-slot:logo>
         <a class="left ml-5" href="{{ route('shop.home.index') }}" aria-label="Logo">
-            {!! file_get_contents(public_path('\images\logo.svg')) !!}
+            {!! file_get_contents(public_path('/images/logo.svg')) !!}
         </a>
     </template>
 

@@ -30,55 +30,6 @@
                 box-shadow: unset;
             }
         }
-        .slider{
-            height:5px;
-            border-radius: 5px;
-            background-color: #ddd;
-            position: relative;
-        }
-
-        .slider .progress{
-            height: 5px;
-            left: 25%;
-            right: 25%;
-            position: absolute;
-            border-radius: 5px;
-            background-color: #333333;
-        }
-
-        .range-input{
-            position: relative;
-        }
-
-        .range-input input{
-            position: absolute;
-            top:-5px;
-            height: 5px;
-            width: 100%;
-            background: none;
-            pointer-events: none;
-            appearance:none;
-            -webkit-appearance: none;
-        }
-
-        input[type="range"]::-webkit-slider-thumb{
-            height: 17px;
-            width: 17px;
-            border-radius: 50%;
-            pointer-events: auto;
-            -webkit-appearance: none;
-            background: #333333;
-        }
-
-        input[type="range"]::-moz-range-thumb{
-            height: 17px;
-            width: 17px;
-            border:none;
-            border-radius: 50%;
-            pointer-events: auto;
-            -moz-appearance: none;
-            background: #333333;
-        }
     </style>
 @endpush
 
@@ -93,39 +44,6 @@
 @stop
 
 @push('scripts')
-    <script type="text/javascript">
-
-        function initializeSlider() {
-            const templateDocument = document.getElementById('layered-navigation-template').innerHTML;
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = templateDocument;
-
-            const rangeInput = tempDiv.querySelectorAll(".range-input input");
-            const progress = tempDiv.querySelector(".slider .progress");
-            let priceGap = 10;
-
-            rangeInput.forEach(input=>{
-                input.addEventListener("input", e=>{
-                    console.log("eventlistener!");
-                    let minVal = parseInt(rangeInput[0].value);
-                    let maxVal = parseInt(rangeInput[1].value);
-
-                    if(maxVal - minVal < priceGap){
-                        if(e.target.className === "range-min"){
-                            rangeInput[0].value = maxVal - priceGap;
-                        }else{
-                            rangeInput[1].value = minVal + priceGap;
-                        }
-                    }else{
-                        progress.style.left = (minVal / rangeInput[0].max)*100;
-                        progress.style.right = (maxVal / rangeInput[1].max)*100;
-                    }
-                });
-            });   
-        }
-
-        initializeSlider();
-    </script>
 
     <script type="text/x-template" id="category-template">
         <section class="container-fluidvelocity-divide-page category-page-wrapper pb-5">

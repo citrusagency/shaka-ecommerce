@@ -6,8 +6,8 @@
 
 
         <div class="row remove-padding-margin velocity-divide-page d-flex justify-content-between align-items-center">
-            <a class="navbar-brand" href="{{ route('shop.home.index') }}" aria-label="Logo"> 
-                {!! file_get_contents(public_path('\images\logo.svg')) !!}
+            <a class="navbar-brand" href="{{ route('shop.home.index') }}" aria-label="Logo">
+                {!! file_get_contents(public_path('/images/logo.svg')) !!}
             </a>
             <div class="row gap-4">
                 <a href="/" class="text-white text-uppercase  {{ request()->is('/') ? 'active-route' : '' }}">Home</a>

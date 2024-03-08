@@ -64,7 +64,6 @@
                 </div>
             </div>
             <div data-role="main" class="ui-content">
-                
             </div>
             <!-- <div class="filter-content border border-top-0 row p-0 m-0">
                 <div class="col-4 p-0 m-0"></div>
