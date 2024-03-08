@@ -174,14 +174,6 @@ class ProductRepository extends Repository
                 ->leftJoin('product_categories', 'product_categories.product_id', '=', 'product_flat.product_id')
                 ->where('product_flat.channel', $channel)
                 ->where('product_flat.locale', $locale)
-                ->when(!empty($params['min_price']), function($q) use ($params){
-                    $q->where('product_flat.price', '>=' ,$params['min_price']);
-
-                })
-                ->when(!empty($params['max_price']), function($q) use ($params){
-                    $q->where('product_flat.price', '<=' ,$params['max_price']);
-
-                })
                 ->whereNotNull('product_flat.url_key');
 
             if (isset($params['category']) && $params['category'] != 1) {
