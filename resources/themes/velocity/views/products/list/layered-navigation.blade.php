@@ -9,8 +9,8 @@
 
         .progress{
             height: 5px;
-            /*left: 25%;*/
-            /*right: 25%;*/
+            /* left: 0%;
+            right: 0%; */
             position: absolute;
             border-radius: 5px;
             background-color: #333333;
@@ -93,9 +93,9 @@
                 </div>
                 <div class="col-4 m-0 p-0"></div>
                 <div class="col-6 m-0 px-0">
-                    <div class="slider">
-                        <div class="progress" style="left:25%; right:25%;"></div>
-                    </div>
+                <div class="slider">
+                    <div class="progress" :style="{ left: progressLeft, right: progressRight }"></div>
+                </div>
                     <div class="range-input">
                         <input type="range" id="minPriceFilter" @change="applyPriceRangeFilter" class="range-min" min="0" max="1000" step="10" v-model="appliedFilters.price[0]" />
                         <input type="range" id="maxPriceFilter" @change="applyPriceRangeFilter" class="range-max" min="0" max="1000" step="10" v-model="appliedFilters.price[1]" />
@@ -209,6 +209,7 @@
     </script>
 
     <script>
+
         Vue.component('layered-navigation', {
             template: '#layered-navigation-template',
 
@@ -220,17 +221,36 @@
             data: function () {
                 return {
                     appliedFilters: {
-                        price: [250, 750]
+                        price: [0, 1000]
                     },
                     attributes: [],
                     categories: [],
                     materials: [],
+                    maxPrice: 1000
                 }
             },
 
             created: function () {
                 this.setFilterAttributes();
                 this.setAppliedFilters();
+                this.setMaxPrice();
+            },
+
+            computed: {
+                progressLeft: function() {
+                    const minPrice = this.appliedFilters.price[0];
+                    const maxPrice = this.appliedFilters.price[1];
+                    let rangeMaxInput = 1000;
+
+                    return (minPrice / rangeMaxInput) * 100 + '%';
+                },
+                progressRight: function() {
+                    const minPrice = this.appliedFilters.price[0];
+                    const maxPrice = this.appliedFilters.price[1];
+                    let rangeMaxInput = 1000;
+
+                    return 100 - (maxPrice / rangeMaxInput) * 100 + '%';
+                }
             },
 
             methods: {
@@ -250,6 +270,21 @@
                     urlParams.forEach((value, index) => {
                         this.appliedFilters[index] = value.split(',');
                     });
+                },
+
+                setMaxPrice: function () {
+                    axios
+                        .get(this.maxPriceSrc)
+                        .then((response) => {
+                            console.log("maxPrice response ", response.data);
+                            // let maxPrice = response.data.max_price;
+                            // this.sliderConfig.max = maxPrice ? ((parseInt(maxPrice) !== 0 || maxPrice) ? parseInt(maxPrice) : 500) : 500;
+
+                            // if (!this.appliedFilterValues) {
+                            //     this.sliderConfig.value = [0, this.sliderConfig.max];
+                            //     this.sliderConfig.priceTo = this.sliderConfig.max;
+                            // }
+                        });
                 },
 
                 addFilters: function (attributeCode, filters) {
@@ -294,12 +329,12 @@
                     console.log(progress.style);
 
                     progress.style.left = (minPrice / rangeMaxInput) * 100+'%';
-                    progress.style.right = (maxPrice / rangeMaxInput) * 100+'%';
+                    progress.style.right = 100-(maxPrice / rangeMaxInput) * 100+'%';
                     console.log("left"+progress.style.left);
                     console.log("rugh"+progress.style.right);
 
                     this.appliedFilters.price = [minPrice, maxPrice];
-                    //this.applyFilter();
+                    this.applyFilter();
                 }
             }
         });
