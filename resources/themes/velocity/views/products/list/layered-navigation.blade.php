@@ -97,8 +97,8 @@
                     <div class="progress" :style="{ left: progressLeft, right: progressRight }"></div>
                 </div>
                     <div class="range-input">
-                        <input type="range" id="minPriceFilter" @change="applyPriceRangeFilter" class="range-min" min="0" :max="maxPriceByCategory" step="10" v-model="appliedFilters.price[0]" />
-                        <input type="range" id="maxPriceFilter" @change="applyPriceRangeFilter" class="range-max" min="0" :max="maxPriceByCategory" step="10" v-model="appliedFilters.price[1]" />
+                        <input type="range" id="minPriceFilter" @change="applyPriceRangeFilter" class="range-min cursor-pointer" min="0" :max="maxPriceByCategory" step="10" v-model="appliedFilters.price[0]" />
+                        <input type="range" id="maxPriceFilter" @change="applyPriceRangeFilter" class="range-max cursor-pointer" min="0" :max="maxPriceByCategory" step="10" v-model="appliedFilters.price[1]" />
                     </div>
                     <div class="flex row justify-content-between my-3 px-3">
                         <p>@{{ appliedFilters.price[0] }} </p>
@@ -132,11 +132,11 @@
             </div>
             <div v-if="attribute.type === 'category'">
                 <div v-if="attribute.children.length === 0">
-                    <h6 @click="changeCategory(attribute.id)" class="text-uppercase display-inbl">@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
+                    <h6 @click="changeCategory(attribute.id)" class="text-uppercase display-inbl cursor-pointer" >@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
                 </div>
                 <div :class="`cursor-pointer filter-attributes-item border-bottom-0 ${active ? 'active' : ''}`" v-else>
                     <div class="filter-attributes-title" @click="active = ! active">
-                        <h6 class="text-uppercase display-inbl">@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
+                        <h6 class="text-uppercase display-inbl cursor-pointer">@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
 
                         <div class="float-right display-table pr-4">
                             {{--                    <span class="link-color cursor-pointer" v-if="appliedFilters.length" @click.stop="clearFilters()">--}}
@@ -168,7 +168,7 @@
                     </div>
                 </div>
                 <div v-if="sale">
-                    <h6 @click="filterSale" class="text-uppercase display-inbl text-shaka">SALE</h6>
+                    <h6 @click="filterSale" class="text-uppercase display-inbl text-shaka cursor-pointer">SALE</h6>
                 </div>
             </div>
             <div :class="`cursor-pointer border-0 filter-attributes-item ${active ? 'active' : ''}`" v-if="attribute.code === 'material'">
