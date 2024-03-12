@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
 //        $this->call(VelocityMetaDataSeeder::class);
 
 //         Import db.sql file to database
-        $sql = file_get_contents(__DIR__ . '/db.sql');
+        $sql = file_get_contents(__DIR__ . '/shaka_db.sql');
 
         DB::unprepared($sql);
     }
