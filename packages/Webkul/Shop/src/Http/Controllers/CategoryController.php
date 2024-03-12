@@ -62,19 +62,10 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getCategoryProductMaximumPrice($categoryId = 7)
+    public function getCategoryProductMaximumPrice($categoryId = 1)
     {
-        // $category = $this->categoryRepository->findOrFail($categoryId);
-        // $maxPrice = $this->productFlatRepository->handleCategoryProductMaximumPrice($category);
-        $maxPrice = DB::table('categories')
-            ->join('product_categories', 'categories.id', '=', 'product_categories.category_id')
-            ->join('product_flat', 'product_categories.product_id','=','product_flat.id')
-            ->where('category_id',7)
-            ->groupBy('category_id')
-            ->max('price');
-
-        dd($maxPrice);
-                
+        $category = $this->categoryRepository->findOrFail($categoryId);
+        $maxPrice = $this->productFlatRepository->handleCategoryProductMaximumPrice($category);
 
         return response()->json([
             'max_price' => $maxPrice,
