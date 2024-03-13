@@ -7,11 +7,14 @@
 {!! view_render_event('bagisto.shop.new-products.before') !!}
 <div class="bg-white py-5">
     <div class="container">
-        <h2 class="text-center text-white text-shaka-black  heading-2 h1 mt-5 mb-2">
+        <h2 class="text-center text-white text-shaka-black  heading-2 h1 mt-5 mb-2 text-uppercase" style="font-size: 32px !important;">
             The new arrivals
         </h2>
         <br>
-        <p class="text-center text-shaka-subtitle">
+        <p class="text-center text-shaka-subtitle" style="font-size: 18px;
+font-style: normal;
+font-weight: 300;
+line-height: 32px;">
             Comfortable and sustainable styles for your sustainable living.
         </p>
     </div>

@@ -84,6 +84,7 @@
             display: inline-block;
             border: none;
             padding: 0 20px;
+
         }
 
         .collection a:hover .titlovi {
@@ -93,6 +94,39 @@
         .available:hover {
             text-decoration: underline;
 
+        }
+        .input-stl{
+            border-radius: 8px 0 0 8px;
+            border:1px solid #DADADA !important;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+            color: #777;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%;
+            letter-spacing: 0.28px;
+            padding: 16px !important;
+            height: 50px !important;
+        }
+        .btn-stl{
+            padding: 8px 22px;
+            border-radius: 0 8px 8px 0;
+            background: #1197C2;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 22px;
+            letter-spacing: 0.48px;
+            color: #FFF;
+            height: 50px !important;
+        }
+        .txt-stl{
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 32px;
+            padding-right: 0 !important;
         }
     </style>
 
@@ -136,7 +170,7 @@
                         <div class="container">
                             <p class="text-uppercase" style="letter-spacing: 3px">Shaka & Katarina Zlajić</p>
                             <h1 class="heading-1 font-weight-normal mb-5">Shop extravagant <br>jewelry and clothes</h1>
-                            <button class="btn bg-shaka-primary btn-lg px-5">Shop now</button>
+                            <button class="btn bg-shaka-primary btn-lg px-4" style="border-radius: 8px !important; font-weight: 600;">Shop now</button>
                         </div>
                     </div>
                 @endforeach
@@ -183,32 +217,32 @@
         </div>
     </div>
 
-    <div class="bg-shaka-light py-5">
-        <div class="container">
-            <h2 class="text-center text-white text-shaka-black  heading-2 h1 mt-5 mb-2">
-                Shop by collection
-            </h2>
-            <br>
-            <div class="row mt-4 mb-5 py-3">
-                <div class="col-md-6 col-sm-12 collection">
-                    <a href="#">
-                        <img src="{{ asset('images/collection1.png') }}" class="w-100 mt-3" alt="">
-                        <div class="bg-shaka-light px-4 py-2 text-shaka-black text-uppercase collection-title titlovi"
-                             style="letter-spacing: 2px">Katarina Zlajić
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6 col-sm-12 collection">
-                    <a href="#">
-                        <img src="{{ asset('images/collection2.png') }}" class="w-100 mt-3" alt="">
-                        <div class="bg-shaka-light px-4 py-2 text-shaka-black text-uppercase collection-title titlovi"
-                             style="letter-spacing: 2px">Shaka
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <div class="bg-shaka-light py-5">--}}
+{{--        <div class="container">--}}
+{{--            <h2 class="text-center text-white text-shaka-black  heading-2 h1 mt-5 mb-2">--}}
+{{--                Shop by collection--}}
+{{--            </h2>--}}
+{{--            <br>--}}
+{{--            <div class="row mt-4 mb-5 py-3">--}}
+{{--                <div class="col-md-6 col-sm-12 collection">--}}
+{{--                    <a href="#">--}}
+{{--                        <img src="{{ asset('images/collection1.png') }}" class="w-100 mt-3" alt="">--}}
+{{--                        <div class="bg-shaka-light px-4 py-2 text-shaka-black text-uppercase collection-title titlovi"--}}
+{{--                             style="letter-spacing: 2px">Katarina Zlajić--}}
+{{--                        </div>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-6 col-sm-12 collection">--}}
+{{--                    <a href="#">--}}
+{{--                        <img src="{{ asset('images/collection2.png') }}" class="w-100 mt-3" alt="">--}}
+{{--                        <div class="bg-shaka-light px-4 py-2 text-shaka-black text-uppercase collection-title titlovi"--}}
+{{--                             style="letter-spacing: 2px">Shaka--}}
+{{--                        </div>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <div class="full-content-wrapper container">
         <!-- {!! view_render_event('bagisto.shop.home.content.before') !!} -->
@@ -230,13 +264,16 @@
         <div class="container mt-5" style="position:relative;">
             <div class="row ">
                 <div class="align-items-center col-md-6 col-sm-12 d-flex flex-column justify-content-center order-md-0 order-1">
-                    <h2 class="text-left w-100 mb-3 text-shaka-black">About the label</h2>
-                    <p class="mt-3 text-shaka-subtitle" style="padding-right: 7rem;">
+                    <h2 class="text-left w-100 mb-3 text-shaka-black  text-uppercase">About the label</h2>
+                    <p class="mt-3 text-shaka-subtitle" style="font-size: 18px;
+font-style: normal;
+font-weight: 300;
+line-height: 32px; padding-right:50px !important;">
                         Shaka is based on sustainable design, which strengthens and encourages awareness raising, fair
                         production, animal welfare, environmental protection and careful use of our resources.
                     </p>
                     <div class="mt-5 w-100">
-                        <a href="{{ route("shop.about") }}" class="btn px-4 py-3 rounded-0 bg-shaka-primary">Read more</a>
+                        <a href="{{ route("shop.about") }}" class="btn px-4 py-3 rounded-0 bg-shaka-primary" style=" border-radius:8px !important; font-weight: 600; padding: 8px 22px !important; ">Read more</a>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 opacity-0 order-0 order-md-1 d-none d-md-block">
@@ -260,19 +297,19 @@
     <img src="{{asset('images/homepage4.png')}}" class="w-100 d-block d-md-none" alt=""
          style="max-height: 730px; object-fit: cover">
     <div class="">
-        <div class="container " style="position:relative;">
+        <div class="container" style="position:relative;">
             <div class="row ">
                 <div class="col-sm-12 col-md-6 opacity-0 d-none d-md-block">
                     <img src="{{asset('images/homepage4.png')}}" class="w-100" alt=""
                          style="max-height: 730px; object-fit: cover">
                 </div>
-                <div class="align-items-center col-md-6 col-sm-12 d-flex flex-column justify-content-center py-5 pl-5" style="padding-top: 6rem!important; padding-bottom: 6rem!important">
-                    <h2 class="text-left w-100 mb-1 text-shaka-black">Newsletter Subscription</h2>
-                    <p class="mt-1 text-shaka-subtitle text-left w-100" style="padding-right: 7rem;">
+                <div class="align-items-center col-md-6 col-sm-12 d-flex flex-column justify-content-center py-5 sm:" style="padding-top: 6rem!important; padding-bottom: 6rem!important; padding-left:60px !important;">
+                    <h2 class="text-left w-100 mb-1 text-shaka-black text-uppercase">Newsletter Subscription</h2>
+                    <p class="mt-1 text-shaka-subtitle text-left w-100 txt-stl" style="padding-right: 7rem;">
                         Subscribe to our newsletter and stay updated for new Shaka arrivals.
                     </p>
                     <div class="mt-3 w-100 subscribe d-flex">
-                        <input type="text" class="w-100" placeholder="Your email address"><button href="#" class="bg-shaka-primary">Subscribe</button>
+                        <input type="text" class="w-100 input-stl" placeholder="Your email address"><button href="#" class="bg-shaka-primary btn-stl">Subscribe</button>
                     </div>
                 </div>
 
