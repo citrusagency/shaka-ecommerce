@@ -117,7 +117,7 @@ class Install extends Command
     protected function createEnvFile()
     {
         try {
-            File::copy('.env.example', '.env');
+            File::copy('.env', '.env');
 
             $default_app_url =  'http://localhost:8000';
             $input_app_url = $this->ask('Please Enter the APP URL : ');

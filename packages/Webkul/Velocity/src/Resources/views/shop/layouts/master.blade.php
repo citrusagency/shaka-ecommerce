@@ -19,15 +19,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <style>
-        .font-shaka-noto-serif{
-            font-family: 'Noto Serif', serif!important;
-        }
         .font-shaka-open-sans {
             font-family: 'Open Sans', sans-serif!important;
         }
 
         * {
-            font-family: 'Open Sans', sans-serif!important;
+            font-family: 'Open Sans', sans-serif;
 
         }
         .material-icons{
@@ -37,7 +34,10 @@
     color: #1197C2!important;
 }
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Noto Serif', serif!important;
+            font-family: 'Open Sans', serif!important;
+            letter-spacing: 2px;
+            font-size: 3rem;
+            text-transform: uppercase;
         }
     </style>
 

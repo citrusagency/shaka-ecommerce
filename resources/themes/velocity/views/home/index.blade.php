@@ -84,7 +84,18 @@
             display: inline-block;
             border: none;
             padding: 0 20px;
+        }
+        .btn-shaka{
+            padding: 10px 16px;
+            text-align: center;
+            border: none;
 
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 22px; /* 137.5% */
+            letter-spacing: 0.48px;
         }
 
         .collection a:hover .titlovi {
@@ -138,8 +149,8 @@
     <script>
         $(".carousel").swipe({
             swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
-                if (direction == 'left') $(this).carousel('next');
-                if (direction == 'right') $(this).carousel('prev');
+                if (direction === 'left') $(this).carousel('next');
+                if (direction === 'right') $(this).carousel('prev');
             },
             allowPageScroll: "vertical"
         });
@@ -169,8 +180,8 @@
                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}" style="background-image: url({{ $slider['image_url'] }});">
                         <div class="container">
                             <p class="text-uppercase" style="letter-spacing: 3px">Shaka & Katarina Zlajić</p>
-                            <h1 class="heading-1 font-weight-normal mb-5">Shop extravagant <br>jewelry and clothes</h1>
-                            <button class="btn bg-shaka-primary btn-lg px-4" style="border-radius: 8px !important; font-weight: 600;">Shop now</button>
+                            <h1 class="heading-1 text-uppercase font-weight-normal mb-5">Shop extravagant <br>jewelry and clothes</h1>
+                            <button class="btn-shaka bg-shaka-primary" style="border-radius: 8px !important; font-weight: 600;">Shop now</button>
                         </div>
                     </div>
                 @endforeach
@@ -179,12 +190,12 @@
             </div>
 
             <!-- Left and right controls -->
-{{--                        <a class="carousel-control-prev" href="#demo" data-slide="prev">--}}
+                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
 {{--                            <span class="carousel-control-prev-icon"></span>--}}
-{{--                        </a>--}}
-{{--                        <a class="carousel-control-next" href="#demo" data-slide="next">--}}
+                        </a>
+                        <a class="carousel-control-next" href="#demo" data-slide="next">
 {{--                            <span class="carousel-control-next-icon"></span>--}}
-{{--                        </a>--}}
+                        </a>
         </div>
 {{--                @include('shop::home.slider')--}}
 {{--                <div class="container">--}}
@@ -273,7 +284,7 @@ line-height: 32px; padding-right:50px !important;">
                         production, animal welfare, environmental protection and careful use of our resources.
                     </p>
                     <div class="mt-5 w-100">
-                        <a href="{{ route("shop.about") }}" class="btn px-4 py-3 rounded-0 bg-shaka-primary" style=" border-radius:8px !important; font-weight: 600; padding: 8px 22px !important; ">Read more</a>
+                        <a href="{{ route("shop.about") }}" class="btn-shaka px-4 py-3 rounded-0 bg-shaka-primary" style=" border-radius:8px !important; font-weight: 600; padding: 8px 22px !important; ">Read more</a>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 opacity-0 order-0 order-md-1 d-none d-md-block">
@@ -309,7 +320,7 @@ line-height: 32px; padding-right:50px !important;">
                         Subscribe to our newsletter and stay updated for new Shaka arrivals.
                     </p>
                     <div class="mt-3 w-100 subscribe d-flex">
-                        <input type="text" class="w-100 input-stl" placeholder="Your email address"><button href="#" class="bg-shaka-primary btn-stl">Subscribe</button>
+                        <input type="text" class="w-100 input-stl" placeholder="Your email address"><button href="#" class="bg-shaka-primary btn-stl btn-shaka">Subscribe</button>
                     </div>
                 </div>
 

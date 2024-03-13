@@ -135,7 +135,7 @@
                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}" style="background-image: url({{ $slider['image_url'] }});">
                         <div class="container">
                             <p class="text-uppercase" style="letter-spacing: 3px">Shaka & Katarina Zlajić</p>
-                            <h1 class="heading-1 font-weight-normal mb-5">Shop extravagant <br>jewelry and clothes</h1>
+                            <h1 class="heading-1 text-uppercase font-weight-normal mb-5">Shop extravagant <br>jewelry and clothes</h1>
                             <button class="btn bg-shaka-primary btn-lg px-5">Shop now</button>
                         </div>
                     </div>
