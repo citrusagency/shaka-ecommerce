@@ -10,13 +10,10 @@
             button {
                 padding: 8px 22px;
                 align-items: center;
-                gap: 16px;
-                border-radius: 8px;
+                border-radius: 8px !important;
                 background: #1197C2;
                 color: #FFF;
                 text-align: center;
-                /* Body Semibold */
-                font-family: Outfit;
                 font-size: 16px;
                 font-style: normal;
                 font-weight: 600;
@@ -24,9 +21,9 @@
                 letter-spacing: 0.48px;
             }
 
-            input {
-                border: transparent 0px;
-                border-radius: 8px;
+            input, textarea {
+                border: transparent 0px !important;
+                border-radius: 8px !important;
             }
 
             label {
@@ -43,13 +40,6 @@
             }
         </style>
     @endpush
-
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script>
-        function onSubmit(token) {
-            document.getElementById("demo-form").submit();
-        }
-    </script>
 
 
     <div class="d-block mt-0 bg-shaka-light" style="position: relative">
@@ -72,12 +62,12 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 pl-md-5">
                                 <div class="body col-12 w-100">
-
                                     <h1 class="fw2 mb-3">Contact</h1>
                                     <p class="mt-2 mb-5 shaka-p">If you need any help or have collaboration on mind,
                                         please reach out via contact form.</p>
                                     <form class="cd-form floating-labels w-100 "
-                                          action="{{ route('shop.contact.send-message') }}" method="post">
+                                          action="{{ route('shop.contact.send-message') }}" method="post"
+                                          id="contactForm">
                                         {{ csrf_field() }}
                                         <div class="row">
                                             <div class="col-sm-12 col-md-6">
@@ -117,20 +107,26 @@
 
                                         <div class="form-group captcha">
                                             <button class="g-recaptcha theme-btn btn-shaka bg-shaka-primary btn mt-4"
-                                                    data-sitekey="reCAPTCHA_site_key"
+                                                    data-sitekey="{{ config('services.recaptcha.site_key') }}"
                                                     data-callback='onSubmit'
                                                     type="submit"
                                                     data-action='submit'>Send a message
                                             </button>
 
+                                            @push('scripts')
+                                                <script>
+                                                    function onSubmit(token) {
+                                                        document.getElementById("contactForm").submit();
+                                                    }
+                                                </script>
+                                            @endpush
+
                                         </div>
                                     </form>
-
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
