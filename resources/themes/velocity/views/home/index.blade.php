@@ -284,7 +284,7 @@ line-height: 32px; padding-right:50px !important;">
                         production, animal welfare, environmental protection and careful use of our resources.
                     </p>
                     <div class="mt-5 w-100">
-                        <a href="{{ route("shop.about") }}" class="btn-shaka px-4 py-3 rounded-0 bg-shaka-primary" style=" border-radius:8px !important; font-weight: 600; padding: 8px 22px !important; ">Read more</a>
+                        <a href="{{ route("shop.about") }}" class="btn rounded-0 bg-shaka-primary" style=" border-radius:8px !important; font-weight: 600; padding: 8px 22px !important; ">Read more</a>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 opacity-0 order-0 order-md-1 d-none d-md-block">

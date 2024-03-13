@@ -49,6 +49,17 @@
             -moz-appearance: none;
             background: #333333;
         }
+
+        .gift_card{
+            font-weight: 500;
+            font-size: 16px;
+            letter-spacing: 2px;
+            line-height: 19px;
+            margin-bottom: 14px !important;
+        }
+        .gift_card:hover{
+            text-decoration: none;
+        }
     </style>
 @endpush
 
@@ -84,6 +95,10 @@
                         @onSaleFilterAdded="addFilters('isSaleable', $event)"
                         @onFilterAdded="addFilters('category', $event)">
                     </filter-attribute-item>
+                </div>
+                <div class="col-4 p-0 m-0"></div>
+                <div class="filter-attributes col-8 p-0 m-0 mb-2">
+                    <a href="{{route("shop.giftCard")}}" class="text-uppercase text-shaka cursor-pointer gift_card">Gift Card</a>
                 </div>
             </div>
             <div class="border border-2 border-top-0 w-100 row m-0 p-0">

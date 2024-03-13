@@ -101,4 +101,9 @@ class ProductController extends Controller
             abort(404);
         }
     }
+
+    public function getGiftCardView()
+    {
+        return view('shop::products.gift-card');
+    }
 }

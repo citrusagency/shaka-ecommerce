@@ -26,11 +26,11 @@
                 </div>
 
                 <div class="modal-footer">
-                    <a href="{{ route('customer.session.index') }}" class="theme-btn bg-shaka-primary fs14 fw6">
+                    <a href="{{ route('customer.session.index') }}" class="theme-btn bg-shaka-primary fs14 fw6" style="font-weight: 600 !important; border-radius:8px !important; ">
                         {{ __('shop::app.header.sign-in') }}
                     </a>
 
-                    <a href="{{ route('customer.register.index') }}" class="theme-btn bg-shaka-primary fs14 fw6">
+                    <a href="{{ route('customer.register.index') }}" class="theme-btn bg-shaka-primary fs14 fw6" style="font-weight: 600 !important; border-radius:8px !important; ">
                         {{ __('shop::app.header.sign-up') }}
                     </a>
                 </div>
