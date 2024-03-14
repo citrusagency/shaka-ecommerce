@@ -22,6 +22,12 @@
             line-height: 151.682%; /* 19.719px */
             text-transform: uppercase;
         }
+        .breadcrumbs-p{
+            color: #777;
+            font-size: 13px;
+            margin-left: 20px;
+            padding-bottom: 10px;
+        }
         .gift-card-contents{
             display: flex;
             flex-direction: column;
@@ -161,6 +167,72 @@
             letter-spacing: 0.48px;
             margin-top: 14px;
         }
+        .section-container{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap:30px;
+            justify-content: center;
+        }
+
+        @media only screen and (max-width: 1220px) {
+            .section-container {
+                flex-direction: column;
+                margin:10px 100px;
+            }
+            .form-content{
+                width: 100%;
+            }
+            .input-field{
+                width: 100%;
+            }
+            .breadcrumbs-p{
+                margin-left: 100px;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .section-container {
+                flex-direction: column;
+                margin:10px auto;
+                flex-wrap: nowrap;
+                padding-inline: 10px;
+            }
+            .image-container > img{
+                max-width: 340px;
+                margin:20px 0;
+            }
+            .gift-card-contents{
+                width: 100%;
+                margin: auto;
+                padding-inline: 13px;
+            }
+            .gift-card-title{
+                font-size: 20px;
+            }
+            .form-container{
+                width: 100%;
+                margin:0;
+                padding:30px 40px;
+            }
+            .form-content{
+                width: 100%;
+            }
+            .input-field{
+                width: 100%;
+            }
+            .breadcrumbs-p{
+                margin-left:15px;
+            }
+            .input-fields{
+                justify-content: space-around;
+                align-items: center;
+            }
+            .btn-submit{
+                margin-bottom: 20px;
+                margin-top: 20px;
+            }
+        }
 
     </style>
 @endpush
@@ -170,13 +242,13 @@
 @stop
 
 @section('content-wrapper')
-    <div class="container py-5" style="margin:auto;">
-        <p style="color: #777; font-size: 13px; margin-left: 20px; padding-bottom: 10px"><span class="breadcrumb-stl" style="margin-right: 6px;">HOME</span> > <span class="breadcrumb-stl" style="margin-inline: 6px;">SHOP</span> > <span class="breadcrumb-stl-main" style="margin-left: 6px;">GIFT CARD</span> </p>
-        <div class="row container justify-content-center col-12">
-            <section class="col-6">
+    <div class="container" style="margin:auto; padding:20px ;">
+        <p class="breadcrumbs-p"><span class="breadcrumb-stl" style="margin-right: 6px;">HOME</span> > <span class="breadcrumb-stl" style="margin-inline: 6px;">SHOP</span> > <span class="breadcrumb-stl-main" style="margin-left: 6px;">GIFT CARD</span> </p>
+        <div class="section-container">
+            <section class="image-container">
                 <img src="{{asset('/images/gift_card.png')}}" alt="Gift Card photo"/>
             </section>
-            <section class="col-6 gift-card-contents">
+            <section class="gift-card-contents">
                 <h6 class="gift-card-title">GIFT CARD</h6>
                 <p class="gift-card-txt p-0 m-0">
                     Getting a gift card from Katarina Zlajic is the simplest way to win presents.  Please make sure you enter the recipient's email address accurately if you are buying a Katarina Zlajic gift card for someone else. If you get it wrong and the Gift Voucher is emailed to someone else who uses it, there’s not much we can do. Before you buy, make sure to double-check!
@@ -202,7 +274,7 @@
             <div class="input-fields">
                 <div class="input-btn">
                     <label></label>
-                    <input class="cursor-pointer" value="100EUR"/>
+                    <input type="button" class="cursor-pointer" value="100EUR"/>
                 </div>
                 <div class="input-btn">
                     <label></label>
