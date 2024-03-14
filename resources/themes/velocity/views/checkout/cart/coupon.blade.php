@@ -14,7 +14,7 @@
                         <div class="control-error">@{{ errorMessage }}</div>
                     </div>
 
-                    <button class="theme-btn light" :disabled="disableButton">{{ __('shop::app.checkout.onepage.apply-coupon') }}</button>
+                    <button class="theme-btn light" style="box-shadow: none !important; border: 2px solid rgba(0,0,0,.12) !important; color:#767676 !important;" :disabled="disableButton">{{ __('shop::app.checkout.onepage.apply-coupon') }}</button>
                 </form>
             </div>
 

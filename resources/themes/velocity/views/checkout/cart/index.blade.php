@@ -69,7 +69,7 @@
                                             if ($product->getTypeInstance()->showQuantityBox()) {
                                                 $showUpdateCartButton = true;
                                             }
-                                                
+
                                             if (is_null ($product->url_key)) {
                                                 if (! is_null($product->parent)) {
                                                     $url_key = $product->parent->url_key;
@@ -194,11 +194,11 @@
 
                                 {!! view_render_event('bagisto.shop.checkout.cart.controls.after', ['cart' => $cart]) !!}
                                 <div class="misc">
-                                    <a
-                                        class="theme-btn light fs16 text-center"
-                                        href="{{ route('shop.home.index') }}">
-                                        {{ __('shop::app.checkout.cart.continue-shopping') }}
-                                    </a>
+{{--                                    <a--}}
+{{--                                        class="theme-btn light fs16 text-center"--}}
+{{--                                        href="{{ route('shop.home.index') }}">--}}
+{{--                                        {{ __('shop::app.checkout.cart.continue-shopping') }}--}}
+{{--                                    </a>--}}
 
                                     <form
                                         method="POST"
@@ -208,20 +208,21 @@
                                         <button
                                             type="submit"
                                             onclick="return confirm('{{ __('shop::app.checkout.cart.confirm-action') }}')"
-                                            class="theme-btn light unset">
+                                            class="theme-btn light unset"
+                                            >
 
                                             {{ __('shop::app.checkout.cart.remove-all-items') }}
                                         </button>
                                     </form>
 
-                                    @if ($showUpdateCartButton)
-                                        <button
-                                            type="submit"
-                                            class="theme-btn light unset">
+{{--                                    @if ($showUpdateCartButton)--}}
+{{--                                        <button--}}
+{{--                                            type="submit"--}}
+{{--                                            class="theme-btn light unset">--}}
 
-                                            {{ __('shop::app.checkout.cart.update-cart') }}
-                                        </button>
-                                    @endif
+{{--                                            {{ __('shop::app.checkout.cart.update-cart') }}--}}
+{{--                                        </button>--}}
+{{--                                    @endif--}}
                                 </div>
 
                                 {!! view_render_event('bagisto.shop.checkout.cart.controls.after', ['cart' => $cart]) !!}

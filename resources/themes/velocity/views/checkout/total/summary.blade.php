@@ -50,13 +50,13 @@
         @endphp
 
         @if (Cart::hasError())
-            <button class="theme-btn text-uppercase col-12 remove-decoration fw6 text-center" disabled>
+            <button class="theme-btn text-uppercase col-12 remove-decoration fw6 text-center rounded-lg" disabled>
                 {{ __('velocity::app.checkout.proceed') }}
             </button>
         @else
             <proceed-to-checkout
                 href="{{ route('shop.checkout.onepage.index') }}"
-                add-class="theme-btn text-uppercase col-12 remove-decoration fw6 text-center"
+                add-class="theme-btn text-uppercase col-12 remove-decoration fw6 text-center rounded-lg"
                 text="{{ __('velocity::app.checkout.proceed') }}"
                 is-minimum-order-completed="{{ $cart->checkMinimumOrder() }}"
                 minimum-order-message="{{ __('shop::app.checkout.cart.minimum-order-message', ['amount' => core()->currency($minimumOrderAmount)]) }}">
