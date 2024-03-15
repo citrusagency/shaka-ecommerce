@@ -129,6 +129,7 @@ return [
             'rule-name' => 'custom-message',
         ],
     ],
+    'recaptcha' => 'Hey!!! :attribute is wrong!',
 
     /*
     |--------------------------------------------------------------------------
