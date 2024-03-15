@@ -2,15 +2,19 @@
 
 namespace RKREZA\Contact\Http\Controllers;
 
+use App\Http\Requests\SendMessageRequest;
+use Biscolab\ReCaptcha\Facades\ReCaptcha;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use RKREZA\Contact\Mail\ContactEmail;
 use RKREZA\Contact\Repositories\ContactRepository as Contact;
+use Webkul\Rule\Helpers\Validator;
 
 class ContactController extends Controller
 {
@@ -70,29 +74,9 @@ class ContactController extends Controller
     // Shop Section
     public function sendMessage()
     {
-        $this->validate(request(), [
-            'name' => 'required',
-            'email' => ['required', 'string', 'min:2', 'max:35'],
-            'message_body' => ['required'],
-            'message_title' => ['required'],
-            'g-recaptcha-response' => ['required', function (string $attribute, mixed $value, Closure $fail) {
-            $g_response = Http::asForm()->post("https://www.google.com/recaptcha/api/siteverify",[
-                'secret' => config('services.recaptcha.secret_key'),
-                'response' => $value,
-                'remoteip' => \request()->ip()
-            ]);
-//            dd($g_response->json());
-                if ($value === 'foo') {
-                    $fail("The {$attribute} is invalid.");
-                }
-            }],
-        ]);
 
         $data = request()->all();
-
-//        dd($data);
-
-
+        dd($data);
         try {
             $contact = $this->contact->create([
                 'name' => $data['name'],
@@ -103,7 +87,6 @@ class ContactController extends Controller
 
             if ($contact) {
                 session()->flash('success', trans('contact_lang::app.response.message-send-success'));
-                // Send email to customer
                 try {
                     Mail::queue(new ContactEmail($data));
                 } catch (\Exception $e) {

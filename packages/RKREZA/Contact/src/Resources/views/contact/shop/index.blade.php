@@ -41,6 +41,18 @@
         </style>
     @endpush
 
+    @push('scripts')
+        <script src="https://www.google.com/recaptcha/api.js?render=6LeKqZgpAAAAACNNUurELLLX20NI2YqFp_mxiaUW"></script>
+
+        <script>
+            function onSubmit(token) {
+                console.log('token', token)
+                // debugger;
+                document.getElementById("contactForm").submit()
+            }
+        </script>
+    @endpush
+
 
     <div class="d-block mt-0 bg-shaka-light" style="position: relative">
 
@@ -69,6 +81,9 @@
                                           action="{{ route('shop.contact.send-message') }}" method="post"
                                           id="contactForm">
                                         {{ csrf_field() }}
+                                        @error('g-recaptcha-response')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                         <div class="row">
                                             <div class="col-sm-12 col-md-6">
                                                 <div class="form-group">
@@ -105,23 +120,23 @@
                                                       id="cd-textarea" required></textarea>
                                         </div>
 
-                                        <div class="form-group captcha">
-                                            <button class="g-recaptcha theme-btn btn-shaka bg-shaka-primary btn mt-4"
-                                                    data-sitekey="{{ config('services.recaptcha.site_key') }}"
-                                                    data-callback='onSubmit'
-                                                    type="submit"
-                                                    data-action='submit'>Send a message
+                                        <div class="form-group captcha ">
+                                            <button
+                                                class="g-recaptcha theme-btn btn-shaka bg-shaka-primary fw1 btn mt-4"
+                                                data-sitekey="{{ config('services.recaptcha.site_key') }}"
+                                                data-callback='onSubmit'
+                                                type="submit"
+                                                data-action='submit'>Send a message
                                             </button>
-
-                                            @push('scripts')
-                                                <script>
-                                                    function onSubmit(token) {
-                                                        document.getElementById("contactForm").submit();
-                                                    }
-                                                </script>
-                                            @endpush
-
                                         </div>
+
+                                        @push('scripts')
+                                            <script>
+                                                function onSubmit(token) {
+                                                    document.getElementById("contactForm").submit();
+                                                }
+                                            </script>
+                                        @endpush
                                     </form>
                                 </div>
                             </div>
