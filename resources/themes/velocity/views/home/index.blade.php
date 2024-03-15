@@ -205,28 +205,28 @@
 {{--                </div>--}}
     </div>
 
-    <div class="bg-shaka-darker py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-0">
-                    <div class="row">
-                        <div class="col-4 d-flex justify-content-center align-items-center flex-column">
-                            <img src="{{ asset('images/vegan.svg') }}" class="" alt="">
-                            <p class="text-white text-center mt-2">Vegan</p>
-                        </div>
-                        <div class="col-4 d-flex justify-content-center align-items-center flex-column">
-                            <img src="{{ asset('images/handmade.svg') }}" alt="">
-                            <p class="text-white text-center mt-2">Handmade</p>
-                        </div>
-                        <div class="col-4 d-flex justify-content-center align-items-center flex-column">
-                            <img src="{{ asset('images/sustainable.svg') }}" alt="">
-                            <p class="text-white text-center mt-2">Sustainable</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <div class="bg-shaka-darker py-4">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-0">--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="col-4 d-flex justify-content-center align-items-center flex-column">--}}
+{{--                            <img src="{{ asset('images/vegan.svg') }}" class="" alt="">--}}
+{{--                            <p class="text-white text-center mt-2">Vegan</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-4 d-flex justify-content-center align-items-center flex-column">--}}
+{{--                            <img src="{{ asset('images/handmade.svg') }}" alt="">--}}
+{{--                            <p class="text-white text-center mt-2">Handmade</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-4 d-flex justify-content-center align-items-center flex-column">--}}
+{{--                            <img src="{{ asset('images/sustainable.svg') }}" alt="">--}}
+{{--                            <p class="text-white text-center mt-2">Sustainable</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
 {{--    <div class="bg-shaka-light py-5">--}}
 {{--        <div class="container">--}}
