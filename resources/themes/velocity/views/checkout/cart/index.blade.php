@@ -209,6 +209,7 @@
                                             type="submit"
                                             onclick="return confirm('{{ __('shop::app.checkout.cart.confirm-action') }}')"
                                             class="theme-btn light unset"
+                                            style="box-shadow: none !important; border: 2px solid rgba(0, 0, 0, 0.12) !important; color: rgb(118, 118, 118) !important;"
                                             >
 
                                             {{ __('shop::app.checkout.cart.remove-all-items') }}
