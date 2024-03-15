@@ -126,7 +126,7 @@
             flex-direction: row;
             align-items: flex-start;
             gap: 24px;
-            flex-wrap: wrap;
+            flex-wrap:nowrap;
             margin: 20px 0;
         }
         .input-field{
@@ -194,6 +194,9 @@
             .breadcrumbs-p{
                 margin-left: 100px;
             }
+            .input-fields{
+                flex-wrap: wrap;
+            }
         }
 
         @media only screen and (max-width: 480px) {
@@ -232,6 +235,7 @@
             .input-fields{
                 justify-content: space-around;
                 align-items: center;
+                flex-wrap: wrap;
             }
             .btn-submit{
                 margin-bottom: 20px;
@@ -249,33 +253,9 @@
         }
 
         .label-chk {
-            display: block;
-            border: 1px solid transparent;
-            display: flex;
-            max-width: 170px;
-            border-radius: 6px;
-            overflow: hidden;
-            background-color: #eee;
-            align-items: center;
-            cursor: pointer;
-            margin: 5px;
-        }
-
-        .label-chk::before {
-            width: 35px;
-            padding: 10px 0;
-            display: block;
-            background-color: #ccc;
-            color: white;
-            font-size: 18px;
-            content: '!';
-            text-align: center;
-        }
-
-        .money::before{
             align-self: center;
             position: relative;
-            width: 100px;
+            width: 110px;
             height: 50px;
             padding:8px 16px;
             font-family: 'Outfit', sans-serif;
@@ -290,22 +270,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-
-        .label-chk.money1::before {
-            content: '100EUR';
-        }
-
-        .label-chk.money2::before {
-            content: '300EUR';
-        }
-
-        .label-chk.money3::before {
-            content: '500EUR';
-        }
-
-        .label-chk.money4::before {
-            content: '1000EUR';
+            flex-wrap:wrap;
         }
 
         .label-chk>.text {
@@ -321,19 +286,17 @@
         .label-chk:hover,
         input:checked+.label-chk {
             border: 1px solid #1197C2;
+            border-radius: 6px;
         }
 
-        .label-chk:hover>.text,
+        .label-chk:hover,
         input:checked+.label-chk>.text {
             color: #1197C2;
         }
 
         input:checked+.label-chk {
-            background-color: white;
-        }
-
-        input:checked+.label-chk::before {
             color: #1197C2;
+            background-color: white;
         }
     </style>
 @endpush
@@ -405,58 +368,58 @@
         </div>
     </div>
     <div class="form-container">
-        <form class="form-content">
+        <form class="form-content" onsubmit="{{route('shop.sendGiftCard')}}" method="POST">
+            @csrf
+            @method("post")
             <h5 class="form-title">Gift Voucher amount</h5>
             <p class="form-desc">Choose a gift card amount, drop in a message and we'll slide it straight into the lucky person's inbox on your chosen day.</p>
-            <div class="input-fields">
+            <div class="input-fields" style="justify-content: space-between; gap:5px;">
                 <div class="input-btn">
                     <input class="hidden" id="chk1" type="radio" name="amount">
-                    <label class="label-chk money money1" for="chk1">
-                    </label>
+                    <label class="label-chk money money1" id="money1" for="chk1">100 EUR</label>
                 </div>
                 <div class="input-btn">
                     <input class="hidden" id="chk2" type="radio" name="amount">
-                    <label class="label-chk money money2" for="chk2">
-                    </label>
+                    <label class="label-chk money money2" id="money2" for="chk2">300 EUR</label>
                 </div>
                 <div class="input-btn">
                     <input class="hidden" id="chk3" type="radio" name="amount">
-                    <label class=" label-chk money money3" for="chk3">
-                    </label>
+                    <label class=" label-chk money money3" id="money3" for="chk3">500 EUR</label>
                 </div>
                 <div class="input-btn">
                     <input class="hidden" id="chk4" type="radio" name="amount">
-                    <label class=" label-chk money money4" for="chk4">
-                    </label>
+                    <label class=" label-chk money money4" id="money4" for="chk4">1000 EUR</label>
                 </div>
+                <label for="gift-amount" class="hidden"></label>
+                <input type="text" class="hidden gift-amount" name="gift-amount" id="gift-amount" value="mooonaay">
             </div>
             <h6 class="form-section-title">To</h6>
             <div class="input-fields">
                 <div class="input-field">
-                    <label class="form-label">Recipient's e-mail address</label>
-                    <input type="email" placeholder="example@mail.com"/>
+                    <label class="form-label" for="recipient-email">Recipient's e-mail address</label>
+                    <input type="email" placeholder="example@mail.com" id="recipient-email" name="recipient-email" />
                 </div>
                 <div class="input-field">
-                    <label class="form-label">Recipient's name</label>
-                    <input type="text" placeholder="Name"/>
+                    <label class="form-label" for="recipient-name">Recipient's name</label>
+                    <input type="text" placeholder="Name" id="recipient-name" name="recipient-name"/>
                 </div>
             </div>
             <h6 class="form-section-title">From</h6>
             <div class="input-fields">
                 <div class="input-field">
-                    <label class="form-label">Your name</label>
-                    <input type="text" placeholder="Name"/>
+                    <label class="form-label" for="sender-name">Your name</label>
+                    <input type="text" placeholder="Name"  name="sender-name" id="sender-name"/>
                 </div>
                 <div class="input-field">
-                    <label class="form-label">Delivery date</label>
-                    <input type="text" class="cursor-pointer" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Choose date"/>
+                    <label class="form-label" for="delivery-date">Delivery date</label>
+                    <input type="text" class="cursor-pointer" id="delivery-date" name="delivery-date" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Choose date"/>
                 </div>
             </div>
             <div>
-                <label style="width:100%" class="form-label">Personal message</label>
-                <textarea class="form-textarea" placeholder="Want to add a note?" rows="5" ></textarea>
+                <label style="width:100%" class="form-label" for="message">Personal message</label>
+                <textarea class="form-textarea" placeholder="Want to add a note?" rows="5" name="message" id="message"></textarea>
             </div>
-            <button class="btn-submit">Pay securely</button>
+            <button type="submit" class="btn-submit">Pay securely</button>
         </form>
     </div>
 @endsection

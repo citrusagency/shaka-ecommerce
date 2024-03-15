@@ -2,6 +2,7 @@
 
 namespace Webkul\Shop\Http\Controllers;
 
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
 use Webkul\Attribute\Repositories\AttributeRepository;
@@ -106,4 +107,17 @@ class ProductController extends Controller
     {
         return view('shop::products.gift-card');
     }
+
+    public function sendGiftCardView(FormRequest $request)
+    {
+        $recipient_name = $request->get('recipient-name');
+        $recipient_email = $request->get('recipient-email');
+        $sender_name = $request->get('sender-name');
+        $delivery_date = $request->get('delivery-date');
+
+        dd($request);
+        //return view('shop::products.gift-card');
+    }
+
+
 }
