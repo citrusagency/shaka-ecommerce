@@ -50,6 +50,19 @@
             text-transform: uppercase;
         }
 
+        .bnt-shaka-primary{
+            color:#1197C2 !important;
+            border-radius: 8px !important;
+            font-size: 16px !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 600 !important;
+            line-height: 22px !important;
+        }
+
+        .bnt-shaka-primary:hover{
+            color:#0A7A9D;
+        }
+
     </style>
 
     {!! view_render_event('bagisto.shop.layout.head') !!}
@@ -114,9 +127,6 @@
                             category-count="{{ $velocityMetaData ? $velocityMetaData->sidebar_category_count : 10 }}"
                             add-class="category-list-container pt10">
                         </sidebar-component>
-
-
-
                     </div>
                 </div>
             </div>
