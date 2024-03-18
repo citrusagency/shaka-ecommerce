@@ -300,8 +300,52 @@
         }
     </style>
 @endpush
+
+@push('css')
+    <style>
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+@endpush
+
 @section('page_title')
-    GIFT CARD
+    Gift Card
 @stop
 
 @section('content-wrapper')
@@ -355,7 +399,7 @@
                                     <path d="M8.09375 6.23438C8.03334 6.23438 7.98438 6.27868 7.98438 6.33333V16.625C7.98438 16.6796 8.03334 16.724 8.09375 16.724H11.5938C11.6541 16.724 11.7031 16.6796 11.7031 16.625V11.0833C11.7031 10.6896 11.8759 10.3121 12.1837 10.0337C12.4913 9.75531 12.9086 9.59896 13.3438 9.59896C13.7789 9.59896 14.1962 9.75531 14.5038 10.0337C14.8116 10.3121 14.9844 10.6896 14.9844 11.0833V16.625C14.9844 16.6796 15.0334 16.724 15.0938 16.724H18.5938C18.6541 16.724 18.7031 16.6796 18.7031 16.625V9.80099C18.7031 7.87985 16.8563 6.37687 14.7436 6.55065C14.0921 6.60423 13.4479 6.75079 12.8463 6.98404L11.7031 7.42731V6.33333C11.7031 6.27868 11.6541 6.23438 11.5938 6.23438H8.09375Z" fill="#1197C2"/>
                                 </svg>
                             </a>
-                            <a href="#">
+                            <a href="" onclick="copyToClipboard()" title="Copy Link">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
                                     <path d="M5.89352 8.6775L4.17852 10.3925C3.4752 11.0958 3.08008 12.0497 3.08008 13.0444C3.08008 14.039 3.4752 14.9929 4.17852 15.6962C4.88184 16.3996 5.83575 16.7947 6.83039 16.7947C7.82504 16.7947 8.77895 16.3996 9.48227 15.6962L11.7673 13.41C12.1914 12.9858 12.5076 12.4661 12.6893 11.8944C12.8709 11.3228 12.9129 10.7159 12.8115 10.1247C12.7101 9.53346 12.4683 8.97521 12.1066 8.49676C11.7448 8.01831 11.2735 7.63362 10.7323 7.375L9.99977 8.1075C9.9254 8.182 9.86073 8.26557 9.80727 8.35625C10.2254 8.47646 10.605 8.70372 10.9084 9.01557C11.2118 9.32742 11.4286 9.71305 11.5373 10.1344C11.646 10.5556 11.6428 10.998 11.5282 11.4177C11.4135 11.8375 11.1913 12.22 10.8835 12.5275L8.59977 14.8125C8.13067 15.2816 7.49443 15.5451 6.83102 15.5451C6.16761 15.5451 5.53137 15.2816 5.06227 14.8125C4.59317 14.3434 4.32963 13.7072 4.32963 13.0437C4.32963 12.3803 4.59317 11.7441 5.06227 11.275L6.05352 10.285C5.91366 9.76091 5.85963 9.21762 5.89352 8.67625V8.6775Z" fill="#1197C2"/>
                                     <path d="M8.23293 6.33999C7.80881 6.76417 7.49263 7.2839 7.31094 7.85555C7.12925 8.42721 7.08733 9.03411 7.18873 9.62532C7.29012 10.2165 7.53185 10.7748 7.89364 11.2532C8.25543 11.7317 8.72671 12.1164 9.26793 12.375L10.2367 11.405C9.81286 11.2913 9.42643 11.0681 9.11622 10.7577C8.80601 10.4474 8.58294 10.0609 8.46944 9.63701C8.35594 9.21315 8.356 8.76688 8.46961 8.34305C8.58322 7.91921 8.80639 7.53275 9.11668 7.22249L11.4004 4.93749C11.8695 4.46838 12.5058 4.20485 13.1692 4.20485C13.8326 4.20485 14.4688 4.46838 14.9379 4.93749C15.407 5.40659 15.6706 6.04283 15.6706 6.70624C15.6706 7.36965 15.407 8.00589 14.9379 8.47499L13.9467 9.46499C14.0867 9.98999 14.1404 10.5337 14.1067 11.0737L15.8217 9.35874C16.525 8.65542 16.9201 7.70151 16.9201 6.70686C16.9201 5.71221 16.525 4.75831 15.8217 4.05499C15.1184 3.35166 14.1644 2.95654 13.1698 2.95654C12.1752 2.95654 11.2212 3.35166 10.5179 4.05499L8.23293 6.33999Z" fill="#1197C2"/>
@@ -375,23 +419,21 @@
             <p class="form-desc">Choose a gift card amount, drop in a message and we'll slide it straight into the lucky person's inbox on your chosen day.</p>
             <div class="input-fields" style="justify-content: space-between; gap:5px;">
                 <div class="input-btn">
-                    <input class="hidden" id="chk1" type="radio" name="amount">
-                    <label class="label-chk money money1" id="money1" for="chk1">100 EUR</label>
+                    <input class="hidden" id="chk1" type="radio" name="amount" value="100">
+                    <label class="label-chk money money1" for="chk1">100 EUR</label>
                 </div>
                 <div class="input-btn">
-                    <input class="hidden" id="chk2" type="radio" name="amount">
-                    <label class="label-chk money money2" id="money2" for="chk2">300 EUR</label>
+                    <input class="hidden" id="chk2" type="radio" name="amount" value="300">
+                    <label class="label-chk money money2" for="chk2">300 EUR</label>
                 </div>
                 <div class="input-btn">
-                    <input class="hidden" id="chk3" type="radio" name="amount">
-                    <label class=" label-chk money money3" id="money3" for="chk3">500 EUR</label>
+                    <input class="hidden" id="chk3" type="radio" name="amount" value="500">
+                    <label class=" label-chk money money3" for="chk3">500 EUR</label>
                 </div>
                 <div class="input-btn">
-                    <input class="hidden" id="chk4" type="radio" name="amount">
-                    <label class=" label-chk money money4" id="money4" for="chk4">1000 EUR</label>
+                    <input class="hidden" id="chk4" type="radio" name="amount" value="1000">
+                    <label class=" label-chk money money4" for="chk4">1000 EUR</label>
                 </div>
-                <label for="gift-amount" class="hidden"></label>
-                <input type="text" class="hidden gift-amount" name="gift-amount" id="gift-amount" value="mooonaay">
             </div>
             <h6 class="form-section-title">To</h6>
             <div class="input-fields">
@@ -419,13 +461,18 @@
                 <label style="width:100%" class="form-label" for="message">Personal message</label>
                 <textarea class="form-textarea" placeholder="Want to add a note?" rows="5" name="message" id="message"></textarea>
             </div>
-            <button type="submit" class="btn-submit">Pay securely</button>
+            <button type="submit" class="btn-submit mt-4" style="height: 50px!important;">Pay securely</button>
         </form>
     </div>
 @endsection
 
 @push('scripts')
     <script>
-
+        function copyToClipboard() {
+            navigator.clipboard.writeText(window.location.href)
+                .catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+        }
     </script>
 @endpush

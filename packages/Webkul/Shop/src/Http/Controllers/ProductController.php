@@ -3,6 +3,8 @@
 namespace Webkul\Shop\Http\Controllers;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
 use Webkul\Attribute\Repositories\AttributeRepository;
@@ -10,6 +12,7 @@ use Webkul\Product\Repositories\ProductAttributeValueRepository;
 use Webkul\Product\Repositories\ProductDownloadableLinkRepository;
 use Webkul\Product\Repositories\ProductDownloadableSampleRepository;
 use Webkul\Product\Repositories\ProductRepository;
+use Webkul\Shop\Mail\GiftCardEmail;
 
 class ProductController extends Controller
 {
@@ -108,15 +111,26 @@ class ProductController extends Controller
         return view('shop::products.gift-card');
     }
 
-    public function sendGiftCardView(FormRequest $request)
+    public function sendGiftCard(FormRequest $request)
     {
-        $recipient_name = $request->get('recipient-name');
-        $recipient_email = $request->get('recipient-email');
-        $sender_name = $request->get('sender-name');
-        $delivery_date = $request->get('delivery-date');
+        $data = $request->only(['recipient-name', 'recipient-email', 'sender-name', 'amount', 'message']);
+        //dd($data['amount']);
 
-        dd($request);
-        //return view('shop::products.gift-card');
+        try {
+            if ($data) {
+                session()->flash('success', trans('contact_lang::app.response.message-send-success'));
+                try {
+                    Mail::queue(new GiftCardEmail($data));
+                } catch (\Exception $e) {
+                    Log::error(
+                        'prepareMail' . $e->getMessage()
+                    );
+                }
+                return redirect()->route('shop.giftCard');
+            }
+        } catch (\Exception $e) {
+            dd("Gift Card email exception", $e);
+        }
     }
 
 
