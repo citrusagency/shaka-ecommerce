@@ -40,19 +40,15 @@
             }
         </style>
     @endpush
-
     @push('scripts')
-        <script src="https://www.google.com/recaptcha/api.js?render=6LeKqZgpAAAAACNNUurELLLX20NI2YqFp_mxiaUW"></script>
+        <script src="https://www.google.com/recaptcha/api.js" async></script>
 
-        <script>
+        <script async>
             function onSubmit(token) {
-                console.log('token', token)
-                // debugger;
-                document.getElementById("contactForm").submit()
+                document.getElementById("contactForm").submit();
             }
         </script>
     @endpush
-
 
     <div class="d-block mt-0 bg-shaka-light" style="position: relative">
 
@@ -120,23 +116,14 @@
                                                       id="cd-textarea" required></textarea>
                                         </div>
 
-                                        <div class="form-group captcha ">
-                                            <button
-                                                class="g-recaptcha theme-btn btn-shaka bg-shaka-primary fw1 btn mt-4"
-                                                data-sitekey="{{ config('services.recaptcha.site_key') }}"
-                                                data-callback='onSubmit'
-                                                type="submit"
-                                                data-action='submit'>Send a message
-                                            </button>
+                                        <div class="form-group captcha g-recaptcha "
+                                             data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}">
                                         </div>
 
-                                        @push('scripts')
-                                            <script>
-                                                function onSubmit(token) {
-                                                    document.getElementById("contactForm").submit();
-                                                }
-                                            </script>
-                                        @endpush
+                                        <button
+                                            class="theme-btn btn-shaka bg-shaka-primary fw1 btn mt-4"
+                                            type="submit"
+                                            data-action='submit'>Send a message </button>
                                     </form>
                                 </div>
                             </div>
@@ -146,5 +133,19 @@
             </div>
         </div>
     </div>
+
+{{--    <script type="text/javascript">--}}
+{{--        $('#contactForm').submit(function(event) {--}}
+{{--            event.preventDefault();--}}
+{{--            grecaptcha.ready(function() {--}}
+{{--                grecaptcha.execute("{{ env('RECAPTCHA_SECRET_KEY') }}", {action: 'subscribe_newsletter'}).then(function(token) {--}}
+
+{{--                    $('#contactForm').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');--}}
+{{--                    $('#contactForm').unbind('submit').submit()--}}
+{{--                });--}}
+{{--            });--}}
+{{--        });--}}
+
+{{--    </script>--}}
 
 @endsection
