@@ -2,6 +2,7 @@
 
 namespace Webkul\Shop\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -114,13 +115,13 @@ class ProductController extends Controller
     public function sendGiftCard(FormRequest $request)
     {
         $data = $request->only(['recipient-name', 'recipient-email', 'sender-name', 'amount', 'message']);
-        //dd($data['amount']);
+        $deliveryDate = Carbon::parse($request->get('delivery-date'));
 
         try {
             if ($data) {
                 session()->flash('success', trans('contact_lang::app.response.message-send-success'));
                 try {
-                    Mail::queue(new GiftCardEmail($data));
+                    Mail::later($deliveryDate, new GiftCardEmail($data));
                 } catch (\Exception $e) {
                     Log::error(
                         'prepareMail' . $e->getMessage()
@@ -129,7 +130,7 @@ class ProductController extends Controller
                 return redirect()->route('shop.giftCard');
             }
         } catch (\Exception $e) {
-            dd("Gift Card email exception", $e);
+            dd("Gift Card email exception: ", $e);
         }
     }
 

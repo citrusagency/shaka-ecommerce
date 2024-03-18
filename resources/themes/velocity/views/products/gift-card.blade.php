@@ -7,7 +7,7 @@
         }
         .breadcrumb-stl{
             color: #777;
-            font-size: 13px;
+            font-size: 15px;
             font-style: normal;
             font-weight: 400;
             line-height: 151.682%;
@@ -16,7 +16,7 @@
         }
         .breadcrumb-stl-main{
             color: #1197C2;
-            font-size: 13px;
+            font-size: 15px;
             font-style: normal;
             font-weight: 700;
             line-height: 151.682%; /* 19.719px */
@@ -24,7 +24,7 @@
         }
         .breadcrumbs-p{
             color: #777;
-            font-size: 13px;
+            font-size: 15px !important;
             margin-left: 20px;
             padding-bottom: 10px;
         }
