@@ -21,9 +21,9 @@
                             </product-card>
                         </div>
 
-                        <div class="col-12 d-flex justify-content-center align-items-center">
-                            <button class="mt-5 btn rounded-0 py-3 px-5 bg-shaka-primary" :disabled="buttonDisabled" @click="getProducts(true)">More items</button>
-                        </div>
+<!--                        <div class="col-12 d-flex justify-content-center align-items-center">
+                                <button class="bg-dark" @click="getProducts(true)">More items</button>
+                            </div>-->
                     </div>
                     <!--                    <carousel-component-->
                     <!--                        :slides-per-page="slidesPerPage"-->

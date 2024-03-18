@@ -19,7 +19,8 @@
 @endphp
 
 @section('page_title')
-    {{ isset($metaTitle) ? $metaTitle : "" }}
+    Home
+{{--    {{ isset($metaTitle) ? $metaTitle : "" }}--}}
 @endsection
 
 @section('head')
@@ -85,18 +86,6 @@
             border: none;
             padding: 0 20px;
         }
-        .btn-shaka{
-            padding: 10px 16px;
-            text-align: center;
-            border: none;
-
-            font-family: 'Outfit', sans-serif;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 22px; /* 137.5% */
-            letter-spacing: 0.48px;
-        }
 
         .collection a:hover .titlovi {
             background-color: #090909!important;
@@ -119,17 +108,24 @@
             padding: 16px !important;
             height: 50px !important;
         }
-        .btn-stl{
-            padding: 8px 22px;
-            border-radius: 0 8px 8px 0;
-            background: #1197C2;
-            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+        .btn-shaka{
+            padding: 10px 16px;
+            text-align: center;
+            border: none;
+
+            font-family: 'Outfit', sans-serif;
             font-size: 16px;
             font-style: normal;
             font-weight: 600;
-            line-height: 22px;
+            line-height: 22px; /* 137.5% */
             letter-spacing: 0.48px;
-            color: #FFF;
+        }
+        .btn-stl{
+            padding: 8px 22px;
+            border-radius: 0 8px 8px 0 !important;
+            background: #1197C2;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+            letter-spacing: 0.48px;
             height: 50px !important;
         }
         .txt-stl{
@@ -181,7 +177,7 @@
                         <div class="container">
                             <p class="text-uppercase" style="letter-spacing: 3px">Shaka & Katarina Zlajić</p>
                             <h1 class="heading-1 text-uppercase font-weight-normal mb-5">Shop extravagant <br>jewelry and clothes</h1>
-                            <button class="btn-shaka bg-shaka-primary" style="border-radius: 8px !important; font-weight: 600;">Shop now</button>
+                            <button class="btn-shaka bg-shaka-primary bnt-shaka-primary">Shop now</button>
                         </div>
                     </div>
                 @endforeach
@@ -284,7 +280,7 @@ line-height: 32px; padding-right:50px !important;">
                         production, animal welfare, environmental protection and careful use of our resources.
                     </p>
                     <div class="mt-5 w-100">
-                        <a href="{{ route("shop.about") }}" class="btn rounded-0 bg-shaka-primary" style=" border-radius:8px !important; font-weight: 600; padding: 8px 22px !important; ">Read more</a>
+                        <a href="{{ route("shop.about") }}" class="btn bg-shaka-primary bnt-shaka-primary" style="padding: 8px 22px !important; ">Read more</a>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 opacity-0 order-0 order-md-1 d-none d-md-block">
@@ -305,22 +301,22 @@ line-height: 32px; padding-right:50px !important;">
         <div class="d-block d-md-none pt-5"></div>
     </div>
 
-    <img src="{{asset('images/homepage4.png')}}" class="w-100 d-block d-md-none" alt=""
-         style="max-height: 730px; object-fit: cover">
-    <div class="">
+    <div class="bg-shaka-light" >
+        <img src="{{asset('images/homepage4.png')}}" class="w-100 d-block d-md-none" alt=""
+             style="max-height: 730px; object-fit: cover">
         <div class="container" style="position:relative;">
             <div class="row ">
                 <div class="col-sm-12 col-md-6 opacity-0 d-none d-md-block">
                     <img src="{{asset('images/homepage4.png')}}" class="w-100" alt=""
                          style="max-height: 730px; object-fit: cover">
                 </div>
-                <div class="align-items-center col-md-6 col-sm-12 d-flex flex-column justify-content-center py-5 sm:" style="padding-top: 6rem!important; padding-bottom: 6rem!important; padding-left:60px !important;">
+                <div class="align-items-center col-md-6 col-sm-12 d-flex flex-column justify-content-center py-5 sm:" style="padding-top: 11rem!important; padding-bottom: 11rem!important; padding-left:60px !important;">
                     <h2 class="text-left w-100 mb-1 text-shaka-black text-uppercase">Newsletter Subscription</h2>
                     <p class="mt-1 text-shaka-subtitle text-left w-100 txt-stl" style="padding-right: 7rem;">
                         Subscribe to our newsletter and stay updated for new Shaka arrivals.
                     </p>
                     <div class="mt-3 w-100 subscribe d-flex">
-                        <input type="text" class="w-100 input-stl" placeholder="Your email address"><button href="#" class="bg-shaka-primary btn-stl btn-shaka">Subscribe</button>
+                        <input type="text" class="w-100 input-stl" placeholder="Your email address"><button href="#" class="bg-shaka-primary btn-stl bnt-shaka-primary">Subscribe</button>
                     </div>
                 </div>
 

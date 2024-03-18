@@ -9,11 +9,30 @@
 
         .progress{
             height: 5px;
-            /* left: 0%;
-            right: 0%; */
             position: absolute;
             border-radius: 5px;
             background-color: #333333;
+        }
+
+        .category-p{
+            color: #232427;
+            font-family: "Open Sans", sans-serif !important;
+            font-size: 16px !important;
+            font-style: normal !important;
+            font-weight: 400 !important;
+            line-height: normal !important;
+            letter-spacing: 3px !important;
+        }
+
+        .option-name{
+            color: #232427;
+            font-family: "Open Sans", sans-serif !important;
+            font-size: 17px !important;
+            font-style: normal !important;
+            line-height: normal !important;
+            letter-spacing: 1px !important;
+            padding-left: 10px;
+            /*border-left: 2px solid black;*/
         }
 
         .range-input{
@@ -73,7 +92,6 @@
 
     {!! view_render_event('bagisto.shop.products.list.layered-nagigation.after') !!}
 </div>
-
 
 
 @push('scripts')
@@ -147,11 +165,11 @@
             </div>
             <div v-if="attribute.type === 'category'">
                 <div v-if="attribute.children.length === 0">
-                    <h6 @click="changeCategory(attribute.id)" class="text-uppercase display-inbl cursor-pointer" >@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
+                    <h6 @click="changeCategory(attribute.id)" class="text-uppercase display-inbl cursor-pointer category-p" >@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
                 </div>
                 <div :class="`cursor-pointer filter-attributes-item border-bottom-0 ${active ? 'active' : ''}`" v-else>
                     <div class="filter-attributes-title" @click="active = ! active">
-                        <h6 class="text-uppercase display-inbl cursor-pointer">@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
+                        <h6 class="text-uppercase display-inbl cursor-pointer category-p" >@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
 
                         <div class="float-right display-table pr-4">
                             {{--                    <span class="link-color cursor-pointer" v-if="appliedFilters.length" @click.stop="clearFilters()">--}}
@@ -176,7 +194,7 @@
                                     {{--                                        v-bind:value="option.id"--}}
                                     {{--                                        v-model="appliedFilters"--}}
                                     {{--                                        @change="addFilter($event)"/>--}}
-                                    <span :class="`${isActiveCategory(option.id) ? 'font-weight-bold' : ''}`">@{{ option.name ? option.name : option.admin_name }}</span>
+                                    <span :class="`${isActiveCategory(option.id) ? 'font-weight-bold' : ''}`" class="option-name">@{{ option.name ? option.name : option.admin_name }}</span>
                                 </div>
                             </li>
                         </ul>
