@@ -68,20 +68,19 @@ class GiftCardRequest extends FormRequest
         return [
             'recipient-name.required' => 'Recipient name is required',
             'recipient-name.string' => 'Recipient name must be a string',
-            'recipient-name.max' => 'Recipient name must be maximum 200 characters',
-            'recipient-name.min' => 'Recipient name must be minimum 2 characters',
+            'recipient-name.max' => 'Must be less than :max characters',
+            'recipient-name.min' => 'Must be more than :min characters',
             'recipient-email.required' => 'Recipient email is required',
             'recipient-email.email' => 'Enter valid email address',
             'sender-name.required' => 'Sender name is required',
             'sender-name.string' => 'Sender name must be a string',
-            'sender-name.max' => 'Sender name must be maximum 200 characters',
-            'sender-name.min' => 'Sender name must be minimum 2 characters',
+            'sender-name.max' => 'Must be less than :max characters',
+            'sender-name.min' => 'Must be more than :min characters',
             'amount.required' => 'Select an amount',
             'delivery-date.required' => 'Delivery date is required',
             'delivery-date.date' => 'Enter valid date',
             'delivery-date.after' => 'Delivery date must be a future date',
-            'message-date.max' => 'Maximum of characters for message is 200',
-//            'recipient-name.required' => __('admin::app.response.already-taken', ['name' => ':attribute']),
+            'message.max' => 'Must be less than :max characters',
         ];
     }
 
