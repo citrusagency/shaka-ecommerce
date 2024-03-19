@@ -2,13 +2,12 @@
 
 namespace Webkul\Shop\Http\Controllers;
 
-use Carbon\Carbon;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
-use Webkul\Attribute\Repositories\AttributeRepository;
+use Webkul\CartRule\Repositories\CartRuleCouponRepository;
+use Webkul\Product\Http\Requests\GiftCardRequest;
 use Webkul\Product\Repositories\ProductAttributeValueRepository;
 use Webkul\Product\Repositories\ProductDownloadableLinkRepository;
 use Webkul\Product\Repositories\ProductDownloadableSampleRepository;
@@ -112,16 +111,27 @@ class ProductController extends Controller
         return view('shop::products.gift-card');
     }
 
-    public function sendGiftCard(FormRequest $request)
+    public function sendGiftCard(GiftCardRequest $request)
     {
         $data = $request->only(['recipient-name', 'recipient-email', 'sender-name', 'amount', 'message']);
-        $deliveryDate = Carbon::parse($request->get('delivery-date'));
+        //$deliveryDate = Carbon::parse($request->get('delivery-date'));
+
+        $couponData = [
+            'coupon_qty'=>1,
+            'code_length'=>14,
+            'code_format'=>'alphanumeric',
+            'code_prefix'=>'',
+            'code_suffix'=>''
+        ];
 
         try {
             if ($data) {
                 session()->flash('success', trans('contact_lang::app.response.message-send-success'));
                 try {
-                    Mail::later($deliveryDate, new GiftCardEmail($data));
+                    $couponCode = CartRuleCouponRepository::generateCoupon($couponData, $data['amount']);
+                    $data['couponCode']=$couponCode;
+
+                    Mail::queue(new GiftCardEmail($data));
                 } catch (\Exception $e) {
                     Log::error(
                         'prepareMail' . $e->getMessage()
@@ -133,6 +143,5 @@ class ProductController extends Controller
             dd("Gift Card email exception: ", $e);
         }
     }
-
 
 }

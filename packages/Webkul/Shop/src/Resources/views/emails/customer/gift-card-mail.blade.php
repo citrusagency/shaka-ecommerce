@@ -21,7 +21,12 @@
                 </p>
                 <p>
                     You have received a Gift Card from <b>{{$data['sender']}}</b>. Here's a <u>Gift Voucher of {{$data['amount']}}€</u> you can put towards your next purchase with us.
+                    Use the coupon code below when checking out your selected products:
                 </p>
+            </div>
+
+            <div style="text-align: center; padding-top: 20px; padding-bottom: 10px; color:#69696a;">
+                <p style="padding-bottom: 5px; display: inline-block;">{{$data['code']}}</p>
             </div>
 
             <div style="padding-top:30px;"></div>
@@ -36,7 +41,9 @@
                             <img style="max-width: 100%; align-self: center" src="{{asset('/images/gift_card.png')}}" alt="Gift Card photo"/>
                         </th>
                         <th style="width: 40%; padding-inline: 50px;">
-                            <b>{{ $data['message'] }}</b>
+                            <i>{{ $data['message']!='' ? $data['message'].',' : 'Best wishes,'}}</i>
+                            <br/><br/>
+                            <i style="text-align: right;">{{ $data['sender']}}</i>
                         </th>
                         <th style="width: 10%;"></th>
                     </tr>

@@ -2,6 +2,8 @@
 
 namespace Webkul\CartRule\Repositories;
 
+use Illuminate\Support\Facades\DB;
+use Webkul\CartRule\Models\CartRuleCoupon;
 use Webkul\Core\Eloquent\Repository;
 
 class CartRuleCouponRepository extends Repository
@@ -23,6 +25,32 @@ class CartRuleCouponRepository extends Repository
     function model(): string
     {
         return 'Webkul\CartRule\Contracts\CartRuleCoupon';
+    }
+
+    /**
+     * Creates one coupon for cart rule (gift-card)
+     *
+     * @param  array  $data
+     * @param  int  $amount
+     * @return string
+     */
+    public static function generateCoupon($data, $amount)
+    {
+        $instance = app(__CLASS__);
+        $cartRule = app('Webkul\CartRule\Repositories\CartRuleRepository')->where(DB::raw('CAST(discount_amount AS UNSIGNED)'), $amount)->firstOrFail();
+        $couponCode = $data['code_prefix'] . $instance->getRandomString($data['code_format'], $data['code_length']) . $data['code_suffix'];
+
+        CartRuleCoupon::query()->create([
+                'cart_rule_id'       => $cartRule->id,
+                'code'               => $couponCode,
+                'usage_limit'        => $cartRule->uses_per_coupon ?? 0,
+                'usage_per_customer' => $cartRule->usage_per_customer ?? 0,
+                'is_primary'         => 0,
+                'expired_at'         => $cartRule->ends_till ?: null,
+            ]
+        );
+
+        return $couponCode;
     }
 
     /**

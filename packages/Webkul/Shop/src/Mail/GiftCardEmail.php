@@ -18,19 +18,6 @@ class GiftCardEmail extends Mailable
     public function __construct(public $dataReceived){
     }
 
-//    public function build(){
-//        $this->from(env('MAIL_FROM_ADDRESS'));
-//        $this->subject('Gift Card');
-//
-//        return $this->view('contact_view::contact.emails.contact-email')
-//            ->with('data', [
-//            'subject' => 'title',
-//            'email'  => 'title',
-//            'name'  => 'title',
-//            'message_body'  => 'title',
-//        ]);
-//    }
-
     /**
      * Build the message.
      *
@@ -38,7 +25,6 @@ class GiftCardEmail extends Mailable
      */
     public function build()
     {
-        //dd($this->dataReceived['amount']);
         return $this->from(core()->getSenderEmailDetails()['email'], core()->getSenderEmailDetails()['name'])
             ->to($this->dataReceived['recipient-email'])
             ->subject("KZ | Gift Card")
@@ -47,7 +33,8 @@ class GiftCardEmail extends Mailable
                 'name' => $this->dataReceived['recipient-name'],
                 'sender'  => $this->dataReceived['sender-name'],
                 'amount'  => $this->dataReceived['amount'],
-                'message' => $this->dataReceived['message']
+                'message' => $this->dataReceived['message'],
+                'code' => $this->dataReceived['couponCode']
             ]);
     }
 }
