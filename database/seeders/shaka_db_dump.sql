@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.36, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: shaka_ecomm_db
+-- Host: 127.0.0.1    Database: shaka_db
 -- ------------------------------------------------------
 -- Server version	8.0.36-0ubuntu0.22.04.1
 
@@ -776,6 +776,7 @@ CREATE TABLE `cart_rule_channels` (
 
 LOCK TABLES `cart_rule_channels` WRITE;
 /*!40000 ALTER TABLE `cart_rule_channels` DISABLE KEYS */;
+INSERT INTO `cart_rule_channels` VALUES (1,1),(2,1),(3,1),(4,1);
 /*!40000 ALTER TABLE `cart_rule_channels` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -865,6 +866,7 @@ CREATE TABLE `cart_rule_customer_groups` (
 
 LOCK TABLES `cart_rule_customer_groups` WRITE;
 /*!40000 ALTER TABLE `cart_rule_customer_groups` DISABLE KEYS */;
+INSERT INTO `cart_rule_customer_groups` VALUES (1,1),(2,1),(3,1),(4,1),(1,2),(2,2),(3,2),(4,2),(1,3),(2,3),(3,3),(4,3);
 /*!40000 ALTER TABLE `cart_rule_customer_groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -957,7 +959,7 @@ CREATE TABLE `cart_rules` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -966,6 +968,7 @@ CREATE TABLE `cart_rules` (
 
 LOCK TABLES `cart_rules` WRITE;
 /*!40000 ALTER TABLE `cart_rules` DISABLE KEYS */;
+INSERT INTO `cart_rules` VALUES (1,'Gift Card 100€','',NULL,NULL,1,1,1,0,0,0,1,'[]',0,0,'by_fixed',100.0000,0,'0',0,0,0,'2024-03-19 13:10:16','2024-03-19 13:12:03'),(2,'Gift Card 300€','',NULL,NULL,1,1,1,0,0,0,1,NULL,0,0,'by_fixed',300.0000,0,'0',0,0,0,'2024-03-19 13:11:51','2024-03-19 13:11:51'),(3,'Gift Card 500€','',NULL,NULL,1,1,1,0,0,0,1,NULL,0,0,'by_fixed',500.0000,0,'0',0,0,0,'2024-03-19 13:12:28','2024-03-19 13:12:28'),(4,'Gift Card 1000€','',NULL,NULL,1,1,1,0,0,0,1,NULL,0,0,'by_fixed',1000.0000,0,'0',0,0,0,'2024-03-19 13:12:51','2024-03-19 13:12:51');
 /*!40000 ALTER TABLE `cart_rules` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3948,4 +3951,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-15 14:20:29
+-- Dump completed on 2024-03-19  9:44:03
