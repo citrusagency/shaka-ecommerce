@@ -180,6 +180,18 @@
             margin:50px auto;
         }
 
+        .error_msg{
+            color: #d14444;
+            font-size: 14px;
+            padding-top: 5px;
+            padding-bottom: 10px;
+            margin-left: 10px;
+            font-family: Outfit, sans-serif;
+            font-style: normal;
+            font-weight: 600;
+            letter-spacing: 0.7px;
+        }
+
         @media only screen and (max-width: 1220px) {
             .section-container {
                 flex-direction: column;
@@ -435,31 +447,61 @@
                     <label class=" label-chk money money4" for="chk4">1000 EUR</label>
                 </div>
             </div>
+            @error('amount')
+                <div class="error_msg" style="text-align: center;">
+                    {{ $message }}
+                </div>
+            @enderror
             <h6 class="form-section-title">To</h6>
             <div class="input-fields">
                 <div class="input-field">
-                    <label class="form-label" for="recipient-email">Recipient's e-mail address</label>
-                    <input type="email" placeholder="example@mail.com" id="recipient-email" name="recipient-email" />
+                    <label class="form-label" for="recipient-name">Recipient's name</label>
+                    <input type="text" placeholder="Name" id="recipient-name" name="recipient-name" value="{{old('recipient-name')}}"/>
+                    @error('recipient-name')
+                    <div class="error_msg">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="input-field">
-                    <label class="form-label" for="recipient-name">Recipient's name</label>
-                    <input type="text" placeholder="Name" id="recipient-name" name="recipient-name"/>
+                    <label class="form-label" for="recipient-email">Recipient's e-mail address</label>
+                    <input type="email" placeholder="example@mail.com" id="recipient-email" name="recipient-email" value="{{old('recipient-email')}}"/>
+                    @error('recipient-email')
+                    <div class="error_msg">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
             </div>
             <h6 class="form-section-title">From</h6>
             <div class="input-fields">
                 <div class="input-field">
                     <label class="form-label" for="sender-name">Your name</label>
-                    <input type="text" placeholder="Name"  name="sender-name" id="sender-name"/>
+                    <input type="text" placeholder="Name"  name="sender-name" id="sender-name" value="{{old('sender-name')}}"/>
+                    @error('sender-name')
+                    <div class="error_msg">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="input-field">
                     <label class="form-label" for="delivery-date">Delivery date</label>
-                    <input type="text" class="cursor-pointer" id="delivery-date" name="delivery-date" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Choose date"/>
+                    <input type="text" class="cursor-pointer" id="delivery-date" name="delivery-date" value="{{old('delivery-date')}}" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Choose date"/>
+                    @error('delivery-date')
+                    <div class="error_msg">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
             </div>
             <div>
                 <label style="width:100%" class="form-label" for="message">Personal message</label>
-                <textarea class="form-textarea" placeholder="Want to add a note?" rows="5" name="message" id="message"></textarea>
+                <textarea class="form-textarea" placeholder="Want to add a note?" rows="5" name="message" id="message">{{old('message')}}</textarea>
+                @error('message')
+                <div class="error_msg">
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
             <button type="submit" class="btn-submit mt-4" style="height: 50px!important;">Pay securely</button>
         </form>
