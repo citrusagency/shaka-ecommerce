@@ -185,11 +185,15 @@
             font-size: 14px;
             padding-top: 5px;
             padding-bottom: 10px;
-            margin-left: 10px;
+            margin-left: 5px;
             font-family: Outfit, sans-serif;
             font-style: normal;
             font-weight: 600;
             letter-spacing: 0.7px;
+        }
+
+        .error_inp{
+            border: 1px solid #d14444 !important;
         }
 
         @media only screen and (max-width: 1220px) {
@@ -431,32 +435,32 @@
             <p class="form-desc">Choose a gift card amount, drop in a message and we'll slide it straight into the lucky person's inbox on your chosen day.</p>
             <div class="input-fields" style="justify-content: space-between; gap:5px;">
                 <div class="input-btn">
-                    <input class="hidden" id="chk1" type="radio" name="amount" value="100">
-                    <label class="label-chk money money1" for="chk1">100 EUR</label>
+                    <input class="hidden" id="chk1" type="radio" name="amount" value="100" onclick="removeErrorLabels(this)">
+                    <label class="label-chk money money1 @error('amount') error_inp @enderror" for="chk1" >100 EUR</label>
                 </div>
                 <div class="input-btn">
-                    <input class="hidden" id="chk2" type="radio" name="amount" value="300">
-                    <label class="label-chk money money2" for="chk2">300 EUR</label>
+                    <input class="hidden" id="chk2" type="radio" name="amount" value="300" onclick="removeErrorLabels(this)">
+                    <label class="label-chk money money2 @error('amount') error_inp @enderror" for="chk2" >300 EUR</label>
                 </div>
                 <div class="input-btn">
-                    <input class="hidden" id="chk3" type="radio" name="amount" value="500">
-                    <label class=" label-chk money money3" for="chk3">500 EUR</label>
+                    <input class="hidden" id="chk3" type="radio" name="amount" value="500" onclick="removeErrorLabels(this)">
+                    <label class=" label-chk money money3 @error('amount') error_inp @enderror" for="chk3" >500 EUR</label>
                 </div>
                 <div class="input-btn">
-                    <input class="hidden" id="chk4" type="radio" name="amount" value="1000">
-                    <label class=" label-chk money money4" for="chk4">1000 EUR</label>
+                    <input class="hidden" id="chk4" type="radio" name="amount" value="1000" onclick="removeErrorLabels(this)">
+                    <label class=" label-chk money money4 @error('amount') error_inp @enderror" for="chk4" >1000 EUR</label>
                 </div>
             </div>
             @error('amount')
-                <div class="error_msg" style="text-align: center;">
+                <div class="error_msg" id="radio-btns" style="text-align: center;">
                     {{ $message }}
                 </div>
             @enderror
             <h6 class="form-section-title">To</h6>
             <div class="input-fields">
                 <div class="input-field">
-                    <label class="form-label" for="recipient-name">Recipient's name</label>
-                    <input type="text" placeholder="Name" id="recipient-name" name="recipient-name" value="{{old('recipient-name')}}"/>
+                    <label class="form-label" for="recipient-name">Recipient's name*</label>
+                    <input type="text" placeholder="Name" id="recipient-name" name="recipient-name" value="{{old('recipient-name')}}" class="@error('recipient-name') error_inp @enderror" oninput="removeErrorClass(this)"/>
                     @error('recipient-name')
                     <div class="error_msg">
                         {{ $message }}
@@ -464,8 +468,8 @@
                     @enderror
                 </div>
                 <div class="input-field">
-                    <label class="form-label" for="recipient-email">Recipient's e-mail address</label>
-                    <input type="email" placeholder="example@mail.com" id="recipient-email" name="recipient-email" value="{{old('recipient-email')}}"/>
+                    <label class="form-label" for="recipient-email">Recipient's e-mail address*</label>
+                    <input type="email" placeholder="example@mail.com" id="recipient-email" name="recipient-email" value="{{old('recipient-email')}}" class="@error('recipient-email') error_inp @enderror" oninput="removeErrorClass(this)"/>
                     @error('recipient-email')
                     <div class="error_msg">
                         {{ $message }}
@@ -476,8 +480,8 @@
             <h6 class="form-section-title">From</h6>
             <div class="input-fields">
                 <div class="input-field">
-                    <label class="form-label" for="sender-name">Your name</label>
-                    <input type="text" placeholder="Name"  name="sender-name" id="sender-name" value="{{old('sender-name')}}"/>
+                    <label class="form-label" for="sender-name">Your name*</label>
+                    <input type="text" placeholder="Name"  name="sender-name" id="sender-name" value="{{old('sender-name')}}" class="@error('sender-name') error_inp @enderror" oninput="removeErrorClass(this)"/>
                     @error('sender-name')
                     <div class="error_msg">
                         {{ $message }}
@@ -485,8 +489,8 @@
                     @enderror
                 </div>
                 <div class="input-field">
-                    <label class="form-label" for="delivery-date">Delivery date</label>
-                    <input type="text" class="cursor-pointer" id="delivery-date" name="delivery-date" value="{{old('delivery-date')}}" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Choose date"/>
+                    <label class="form-label" for="delivery-date">Delivery date*</label>
+                    <input type="text" class="cursor-pointer @error('delivery-date') error_inp @enderror" id="delivery-date" name="delivery-date" value="{{old('delivery-date')}}" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Choose date" onfocusin="removeErrorClass(this)"/>
                     @error('delivery-date')
                     <div class="error_msg">
                         {{ $message }}
@@ -496,7 +500,7 @@
             </div>
             <div>
                 <label style="width:100%" class="form-label" for="message">Personal message</label>
-                <textarea class="form-textarea" placeholder="Want to add a note?" rows="5" name="message" id="message">{{old('message')}}</textarea>
+                <textarea class="form-textarea @error('message') error_inp @enderror" placeholder="Want to add a note?" rows="5" name="message" id="message" oninput="removeErrorClass(this)">{{old('message')}}</textarea>
                 @error('message')
                 <div class="error_msg">
                     {{ $message }}
@@ -510,6 +514,22 @@
 
 @push('scripts')
     <script>
+        function removeErrorClass(input) {
+            input.nextElementSibling.textContent = '';
+            input.classList.remove('error_inp');
+        }
+
+        function removeErrorLabels(selectedLabel) {
+            const labels = document.querySelectorAll('.label-chk');
+            const errorMessage = document.querySelector('#radio-btns');
+
+            labels.forEach(function(label) {
+                label.classList.remove('error_inp');
+            });
+
+            errorMessage.textContent = '';
+        }
+
         function copyToClipboard() {
             navigator.clipboard.writeText(window.location.href)
                 .catch(err => {
