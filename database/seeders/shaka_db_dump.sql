@@ -56,6 +56,15 @@ CREATE TABLE `addresses` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `addresses`
+--
+
+LOCK TABLES `addresses` WRITE;
+/*!40000 ALTER TABLE `addresses` DISABLE KEYS */;
+/*!40000 ALTER TABLE `addresses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `admin_password_resets`
 --
 
@@ -624,7 +633,6 @@ CREATE TABLE `cart` (
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
-INSERT INTO `cart` VALUES (1,NULL,NULL,NULL,NULL,NULL,0,1,1.0000,NULL,'USD','USD','USD','USD',49.9900,49.9900,49.9900,49.9900,0.0000,0.0000,0.0000,0.0000,NULL,1,1,NULL,NULL,1,'2023-01-29 17:41:33','2023-01-29 17:41:33',''),(2,'mare.sampbn@gmail.com','Marko','Pejanovic','free_free',NULL,0,1,1.0000,NULL,'USD','USD','USD','USD',49.9900,49.9900,49.9900,49.9900,0.0000,0.0000,0.0000,0.0000,NULL,0,0,NULL,1,1,'2023-01-29 17:42:01','2023-01-29 17:43:00',''),(3,'mare.sampbn@gmail.com','Marko','Pejanovic','flatrate_flatrate',NULL,0,1,3.0000,NULL,'USD','USD','USD','USD',169.9700,169.9700,149.9700,149.9700,0.0000,0.0000,0.0000,0.0000,NULL,0,1,NULL,1,1,'2023-02-16 13:28:36','2023-02-18 22:04:29',''),(4,NULL,NULL,NULL,NULL,NULL,0,1,1.0000,NULL,'USD','USD','USD','USD',49.9900,49.9900,49.9900,49.9900,0.0000,0.0000,0.0000,0.0000,NULL,1,1,NULL,NULL,1,'2023-02-16 13:34:32','2023-02-16 13:34:32','');
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -702,6 +710,15 @@ CREATE TABLE `cart_items` (
   CONSTRAINT `cart_items_tax_category_id_foreign` FOREIGN KEY (`tax_category_id`) REFERENCES `tax_categories` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cart_items`
+--
+
+LOCK TABLES `cart_items` WRITE;
+/*!40000 ALTER TABLE `cart_items` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cart_items` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `cart_payment`
@@ -986,7 +1003,7 @@ CREATE TABLE `cart_shipping_rates` (
 
 LOCK TABLES `cart_shipping_rates` WRITE;
 /*!40000 ALTER TABLE `cart_shipping_rates` DISABLE KEYS */;
-INSERT INTO `cart_shipping_rates` VALUES (7,'flatrate','Flat Rate','flatrate_flatrate','Flat Rate','Flat Rate Shipping',10,10,2,'2023-01-29 17:42:20','2023-01-29 17:42:20',0.0000,0.0000,1),(8,'free','Free Shipping','free_free','Free Shipping','Free Shipping',0,0,2,'2023-01-29 17:42:20','2023-01-29 17:42:25',0.0000,0.0000,1),(19,'flatrate','Flat Rate','flatrate_flatrate','Flat Rate','Flat Rate Shipping',20,20,7,'2023-02-16 18:22:20','2023-02-18 22:04:29',0.0000,0.0000,1),(20,'free','Free Shipping','free_free','Free Shipping','Free Shipping',0,0,7,'2023-02-16 18:22:20','2023-02-16 18:22:20',0.0000,0.0000,1);
+INSERT INTO `cart_shipping_rates` VALUES (1,'flatrate','Flat Rate','flatrate_flatrate','Flat Rate','Flat Rate Shipping',10,10,2,'2023-01-29 17:42:20','2023-01-29 17:42:20',0.0000,0.0000,1),(2,'free','Free Shipping','free_free','Free Shipping','Free Shipping',0,0,2,'2023-01-29 17:42:20','2023-01-29 17:42:25',0.0000,0.0000,1);
 /*!40000 ALTER TABLE `cart_shipping_rates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1839,7 +1856,7 @@ CREATE TABLE `customers` (
   UNIQUE KEY `customers_api_token_unique` (`api_token`),
   KEY `customers_customer_group_id_foreign` (`customer_group_id`),
   CONSTRAINT `customers_customer_group_id_foreign` FOREIGN KEY (`customer_group_id`) REFERENCES `customer_groups` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1848,6 +1865,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
+INSERT INTO `customers` VALUES (1,'Citrus','Codes',NULL,NULL,'test@gmail.com',NULL,1,'$2y$10$zApON49ulZdRQX34.ngG5OVmC2A1LaGXqCUdKICoG0/8Xmj5LC/RC','jNRyRItBQdGoxSE3z5sEZ2281Ti4hR5fDirZfEvu6GyNYpbGpnrVV9WdCdpwddToCsqEGz3o9OgR8tUX',2,0,NULL,'2024-03-20 17:58:43','2024-03-20 17:58:43',1,0,'70911a6f295b52acc2dabf651b751fd5',NULL,NULL);
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3931,4 +3949,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-19  9:44:03
+-- Dump completed on 2024-03-20 14:29:17
