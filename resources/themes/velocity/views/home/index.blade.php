@@ -98,7 +98,6 @@
         .input-stl{
             border-radius: 8px 0 0 8px;
             border:1px solid #DADADA !important;
-            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
             color: #777;
             font-size: 14px;
             font-style: normal;
@@ -124,7 +123,6 @@
             padding: 8px 22px;
             border-radius: 0 8px 8px 0 !important;
             background: #1197C2;
-            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
             letter-spacing: 0.48px;
             height: 50px !important;
         }
@@ -135,6 +133,32 @@
             line-height: 32px;
             padding-right: 0 !important;
         }
+
+        .news-letter{
+            padding-top: 11rem!important;
+            padding-bottom: 11rem!important;
+            padding-left:60px !important;
+        }
+
+        @media only screen and (max-width: 1220px) {
+            .news-letter{
+                padding:50px 15px !important;
+            }
+            .img-mobile{
+                height: 500px;
+            }
+        }
+
+
+        @media only screen and (max-width: 480px) {
+            .news-letter{
+                padding:50px 15px !important;
+            }
+            .img-mobile{
+                height: 300px;
+            }
+        }
+
     </style>
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
@@ -267,7 +291,7 @@
     <div class="d-block d-md-none mt-5"></div>
     <div class="bg-shaka-light">
         <img src="{{asset('images/homepage3.png')}}" class="w-100 d-block d-md-none" alt=""
-             style="max-height: 730px; object-fit: cover">
+             style="max-height: 730px; object-fit: cover;">
         <div class="container mt-5" style="position:relative;">
             <div class="row ">
                 <div class="align-items-center col-md-6 col-sm-12 d-flex flex-column justify-content-center order-md-0 order-1">
@@ -301,16 +325,16 @@ line-height: 32px; padding-right:50px !important;">
         <div class="d-block d-md-none pt-5"></div>
     </div>
 
-    <div class="bg-shaka-light" >
-        <img src="{{asset('images/homepage4.png')}}" class="w-100 d-block d-md-none" alt=""
-             style="max-height: 730px; object-fit: cover">
+    <div>
+        <img src="{{asset('images/homepage4.png')}}" class="w-100 d-block d-md-none img-mobile" alt=""
+             style="max-height: 730px; object-fit: cover;">
         <div class="container" style="position:relative;">
             <div class="row ">
                 <div class="col-sm-12 col-md-6 opacity-0 d-none d-md-block">
                     <img src="{{asset('images/homepage4.png')}}" class="w-100" alt=""
                          style="max-height: 730px; object-fit: cover">
                 </div>
-                <div class="align-items-center col-md-6 col-sm-12 d-flex flex-column justify-content-center py-5 sm:" style="padding-top: 11rem!important; padding-bottom: 11rem!important; padding-left:60px !important;">
+                <div class="align-items-center col-md-6 col-sm-12 d-flex flex-column justify-content-center news-letter">
                     <h2 class="text-left w-100 mb-1 text-shaka-black text-uppercase">Newsletter Subscription</h2>
                     <p class="mt-1 text-shaka-subtitle text-left w-100 txt-stl" style="padding-right: 7rem;">
                         Subscribe to our newsletter and stay updated for new Shaka arrivals.
