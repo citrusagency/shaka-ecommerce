@@ -14,23 +14,15 @@
     </div>
 
     @guest('customer')
-        <div class="dropdown-list" style="width: 290px; margin-top: 262px;
-    margin-left: -253px;">
+        <div class="dropdown-list" style="width: 290px; margin-top: 150px;
+    margin-left: -253px; background-color: transparent !important;">
             <div class="modal-content dropdown-container">
-                <div class="modal-header no-border pb0">
-                    <label class="fs18 text-shaka">{{ __('shop::app.header.title') }}</label>
-                </div>
-
-                <div class="fs14 content">
-                    <p class="no-margin">{{ __('shop::app.header.dropdown-text') }}</p>
-                </div>
-
-                <div class="modal-footer">
-                    <a href="{{ route('customer.session.index') }}" class="theme-btn bg-shaka-primary fs14 fw6">
+                <div class="modal-footer justify-content-around">
+                    <a href="{{ route('customer.session.index') }}" class="outline-btn bnt-shaka-primary" >
                         {{ __('shop::app.header.sign-in') }}
                     </a>
 
-                    <a href="{{ route('customer.register.index') }}" class="theme-btn bg-shaka-primary fs14 fw6">
+                    <a href="{{ route('customer.register.index') }}" class="theme-btn bnt-shaka-primary" >
                         {{ __('shop::app.header.sign-up') }}
                     </a>
                 </div>

@@ -58,10 +58,22 @@
             font-family: 'Outfit', sans-serif !important;
             font-weight: 600 !important;
             line-height: 22px !important;
+            padding: 8px 22px !important;
         }
 
         .bnt-shaka-primary:hover{
             color:#0A7A9D;
+        }
+
+        .outline-btn{
+            color:#0A7A9D !important;
+            background-color: #fff !important;
+            border: 2px solid #0A7A9D !important;
+        }
+
+        .outline-btn:hover{
+            background-color: rgba(183, 183, 183, 0.33) !important;
+            text-decoration: none;
         }
 
         /* ------------ FOOTER STYLES ------------ */
@@ -101,6 +113,7 @@
             font-weight: 300;
             line-height: normal;
         }
+
         @media only screen and (max-width: 500px){
             .footer-text{
                 font-size: 14px;
