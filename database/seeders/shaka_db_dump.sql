@@ -56,16 +56,6 @@ CREATE TABLE `addresses` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `addresses`
---
-
-LOCK TABLES `addresses` WRITE;
-/*!40000 ALTER TABLE `addresses` DISABLE KEYS */;
-INSERT INTO `addresses` VALUES (1,'cart_billing',1,2,NULL,'Marko','Pejanovic',NULL,'Marko Pejanovic','VI Crnogorska T10',NULL,'81400','Niksic','Montenegro','ME','mare.sampbn@gmail.com','069592736',NULL,0,NULL,'2023-01-29 17:42:15','2023-01-29 17:42:15'),(2,'cart_shipping',1,2,NULL,'Marko','Pejanovic',NULL,'Marko Pejanovic','VI Crnogorska T10',NULL,'81400','Niksic','Montenegro','ME','mare.sampbn@gmail.com','069592736',NULL,0,NULL,'2023-01-29 17:42:15','2023-01-29 17:42:15'),(3,'customer',1,NULL,NULL,'Marko','Pejanovic',NULL,'Marko Pejanovic','VI Crnogorska T10',NULL,'81400','Niksic','Montenegro','ME','mare.sampbn@gmail.com','069592736',NULL,0,NULL,'2023-01-29 17:42:17','2023-01-29 17:42:17'),(4,'order_shipping',NULL,NULL,1,'Marko','Pejanovic',NULL,'Marko Pejanovic','VI Crnogorska T10',NULL,'81400','Niksic','Montenegro','ME','mare.sampbn@gmail.com','069592736',NULL,0,NULL,'2023-01-29 17:43:00','2023-01-29 17:43:00'),(5,'order_billing',NULL,NULL,1,'Marko','Pejanovic',NULL,'Marko Pejanovic','VI Crnogorska T10',NULL,'81400','Niksic','Montenegro','ME','mare.sampbn@gmail.com','069592736',NULL,0,NULL,'2023-01-29 17:43:00','2023-01-29 17:43:00'),(6,'cart_billing',1,3,NULL,'Marko','Pejanovic',NULL,'Marko Pejanovic','VI Crnogorska T10',NULL,'81400','Niksic','Montenegro','ME','mare.sampbn@gmail.com','069592736',NULL,0,NULL,'2023-02-16 13:31:53','2023-02-16 13:31:53'),(7,'cart_shipping',1,3,NULL,'Marko','Pejanovic',NULL,'Marko Pejanovic','VI Crnogorska T10',NULL,'81400','Niksic','Montenegro','ME','mare.sampbn@gmail.com','069592736',NULL,0,NULL,'2023-02-16 13:31:53','2023-02-16 13:31:53');
-/*!40000 ALTER TABLE `addresses` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `admin_password_resets`
 --
 
@@ -712,16 +702,6 @@ CREATE TABLE `cart_items` (
   CONSTRAINT `cart_items_tax_category_id_foreign` FOREIGN KEY (`tax_category_id`) REFERENCES `tax_categories` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cart_items`
---
-
-LOCK TABLES `cart_items` WRITE;
-/*!40000 ALTER TABLE `cart_items` DISABLE KEYS */;
-INSERT INTO `cart_items` VALUES (1,1,'1','simple','Smolo',NULL,1.0000,1.0000,1.0000,49.9900,49.9900,49.9900,49.9900,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,'{\"_token\": \"XvTIbYDyIvyGPL4K6JuHOM2pXiTAEL9n6ovAMIKK\", \"quantity\": 1, \"product_id\": \"1\"}',NULL,1,1,NULL,'2023-01-29 17:41:33','2023-01-29 17:41:33',NULL,''),(2,1,'1','simple','Smolo',NULL,1.0000,1.0000,1.0000,49.9900,49.9900,49.9900,49.9900,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,'{\"_token\": \"XvTIbYDyIvyGPL4K6JuHOM2pXiTAEL9n6ovAMIKK\", \"quantity\": 1, \"product_id\": \"1\"}',NULL,1,2,NULL,'2023-01-29 17:42:01','2023-01-29 17:42:25',NULL,''),(3,3,'1','simple','Smolo',NULL,1.0000,3.0000,3.0000,49.9900,49.9900,149.9700,149.9700,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,'{\"_token\": \"z1qrXiNEvrBsDvYyQpnGuj6srz6rQbaKckHD9uN4\", \"quantity\": 3, \"product_id\": \"1\"}',NULL,1,3,NULL,'2023-02-16 13:28:36','2023-02-18 22:04:29',NULL,''),(4,1,'1','simple','Smolo',NULL,1.0000,1.0000,1.0000,49.9900,49.9900,49.9900,49.9900,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,'{\"_token\": \"w6LlGvMKGLKtxC0FAp9rqI89vUXlBK6AoFpWWyp4\", \"quantity\": 1, \"product_id\": \"1\"}',NULL,1,4,NULL,'2023-02-16 13:34:32','2023-02-16 13:34:32',NULL,'');
-/*!40000 ALTER TABLE `cart_items` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `cart_payment`
