@@ -64,6 +64,61 @@
             color:#0A7A9D;
         }
 
+        /* ------------ FOOTER STYLES ------------ */
+        .footer-con{
+            padding:50px 260px !important;
+        }
+        .footer-flex{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .footer-col{
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            align-items: left;
+        }
+        .made-by{
+            color: #a1a1a1 !important;
+            text-align: right;
+            font-weight: 300;
+            line-height: normal;
+        }
+        .citrus-codes{
+            color: #1197C2 !important;
+            font-weight: 600;
+            line-height: 22px;
+            letter-spacing: 0.48px;
+        }
+        .footer-text{
+            font-size: 16px;
+            font-style: normal;
+            font-family: Outfit, sans-serif;
+        }
+        .footer-links{
+            color: #FFF;
+            font-weight: 300;
+            line-height: normal;
+        }
+        @media only screen and (max-width: 500px){
+            .footer-text{
+                font-size: 14px;
+                font-weight: 400 !important;
+            }
+            .footer-con{
+                padding:40px 16px 24px 16px !important;
+            }
+            .footer-flex{
+                display: flex;
+                flex-direction: column;
+            }
+            .footer-col{
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
     </style>
 
     {!! view_render_event('bagisto.shop.layout.head') !!}

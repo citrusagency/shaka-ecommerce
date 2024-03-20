@@ -157,6 +157,12 @@
             .img-mobile{
                 height: 300px;
             }
+            .heading-mbl{
+                font-size: 32px !important;
+            }
+            .subtitle-mbl{
+                font-size: 14px !important;
+            }
         }
 
     </style>
@@ -199,8 +205,8 @@
                 @foreach($sliderData as $slider)
                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}" style="background-image: url({{ $slider['image_url'] }});">
                         <div class="container">
-                            <p class="text-uppercase" style="letter-spacing: 3px">Shaka & Katarina Zlajić</p>
-                            <h1 class="heading-1 text-uppercase font-weight-normal mb-5">Shop extravagant <br>jewelry and clothes</h1>
+                            <p class="text-uppercase subtitle-mbl" style="letter-spacing: 3px">Katarina Zlajić</p>
+                            <h1 class="heading-1 text-uppercase font-weight-normal mb-5 heading-mbl">Shop extravagant <br>jewelry</h1>
                             <button class="btn-shaka bg-shaka-primary bnt-shaka-primary">Shop now</button>
                         </div>
                     </div>
