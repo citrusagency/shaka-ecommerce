@@ -4,6 +4,7 @@ namespace Webkul\Customer\Http\Controllers;
 
 use Cookie;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Session;
 use Webkul\Customer\Http\Requests\CustomerLoginRequest;
 
 class SessionController extends Controller
@@ -32,6 +33,7 @@ class SessionController extends Controller
      */
     public function show()
     {
+        Session::put('previous_url', url()->previous());
         return auth()->guard('customer')->check()
             ? redirect()->route('customer.profile.index')
             : view($this->_config['view']);
@@ -41,10 +43,11 @@ class SessionController extends Controller
      * Show the form for creating a new resource.
      *
      * @param  \Webkul\Customer\Http\Requests\CustomerLoginRequest $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function create(CustomerLoginRequest $request)
     {
+        $previousUrl = Session::get('previous_url');
         $request->validated();
 
         if (! auth()->guard('customer')->attempt($request->only(['email', 'password']))) {
@@ -78,14 +81,14 @@ class SessionController extends Controller
          */
         Event::dispatch('customer.after.login', $request->get('email'));
 
-        return redirect()->route($this->_config['redirect']);
+        return redirect()->intended($previousUrl ?? $this->_config['redirect']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
@@ -93,6 +96,6 @@ class SessionController extends Controller
 
         Event::dispatch('customer.after.logout', $id);
 
-        return redirect()->route($this->_config['redirect']);
+        return redirect()->route('shop.home.index');
     }
 }

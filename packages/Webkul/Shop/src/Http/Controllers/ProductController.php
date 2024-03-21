@@ -108,6 +108,9 @@ class ProductController extends Controller
 
     public function getGiftCardView()
     {
+        if (! auth()->guard('customer')->check()) {
+            return redirect()->route('customer.session.index');
+        }
         return view('shop::products.gift-card');
     }
 
