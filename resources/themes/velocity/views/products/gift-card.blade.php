@@ -462,7 +462,7 @@
             <h6 class="form-section-title">To</h6>
             <div class="input-fields">
                 <div class="input-field">
-                    <label class="form-label" for="recipient-name">Recipient's name*</label>
+                    <label class="form-label" for="recipient-name">Recipient's name<span style="color:#db4e4e;">*</span></label>
                     <input type="text" placeholder="Name" id="recipient-name" name="recipient-name" value="{{old('recipient-name')}}" class="@error('recipient-name') error_inp @enderror" oninput="removeErrorClass(this)"/>
                     @error('recipient-name')
                     <div class="error_msg">
@@ -471,7 +471,7 @@
                     @enderror
                 </div>
                 <div class="input-field">
-                    <label class="form-label" for="recipient-email">Recipient's e-mail address*</label>
+                    <label class="form-label" for="recipient-email">Recipient's e-mail address<span style="color:#db4e4e;">*</span></label>
                     <input type="email" placeholder="example@mail.com" id="recipient-email" name="recipient-email" value="{{old('recipient-email')}}" class="@error('recipient-email') error_inp @enderror" oninput="removeErrorClass(this)"/>
                     @error('recipient-email')
                     <div class="error_msg">
@@ -483,7 +483,7 @@
             <h6 class="form-section-title">From</h6>
             <div class="input-fields">
                 <div class="input-field">
-                    <label class="form-label" for="sender-name">Your name*</label>
+                    <label class="form-label" for="sender-name">Your name<span style="color:#db4e4e;">*</span></label>
                     <input type="text" placeholder="Name"  name="sender-name" id="sender-name" value="{{old('sender-name')}}" class="@error('sender-name') error_inp @enderror" oninput="removeErrorClass(this)"/>
                     @error('sender-name')
                     <div class="error_msg">
@@ -492,7 +492,7 @@
                     @enderror
                 </div>
                 <div class="input-field">
-                    <label class="form-label" for="delivery-date">Delivery date*</label>
+                    <label class="form-label" for="delivery-date">Delivery date<span style="color:#db4e4e;">*</span></label>
                     <input type="text" class="cursor-pointer @error('delivery-date') error_inp @enderror" id="delivery-date" name="delivery-date" value="{{old('delivery-date')}}" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Choose date" onfocusin="removeErrorClass(this)"/>
                     @error('delivery-date')
                     <div class="error_msg">
