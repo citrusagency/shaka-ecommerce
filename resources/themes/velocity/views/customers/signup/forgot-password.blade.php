@@ -8,26 +8,16 @@
     <div class="auth-content form-container">
         <div class="container">
             <div class="col-lg-10 col-md-12 offset-lg-1">
-                <div class="heading">
-                    <h2 class="fs30 fw2 font-shaka">
-                        {{ __('velocity::app.customer.forget-password.forgot-password')}}
-                    </h2>
-
-                    <a href="{{ route('customer.session.index') }}" class="btn-new-customer">
-                        <button type="button" class="theme-btn  light text-shaka" style="color: #1197C2!important">
-                            {{  __('velocity::app.customer.signup-form.login') }}
-                        </button>
-                    </a>
+                <div class="mt-5 heading text-center">
+                    <h1 class="fs30 fw2">
+                        Forgot your password?
+                    </h1>
+                    <p class="fs16  shaka-p text-center" >
+                        No worries, we'll send you a recovery link
+                    </p>
                 </div>
 
-                <div class="body col-12 border-0 px-0 pt-0">
-{{--                    <h3 class="fw6">--}}
-{{--                        {{ __('velocity::app.customer.forget-password.recover-password')}}--}}
-{{--                    </h3>--}}
-
-                    <p class="fs16">
-                        {{ __('velocity::app.customer.forget-password.recover-password-text')}}
-                    </p>
+                <div class="container border-0 px-0 pt-0">
 
                     {!! view_render_event('bagisto.shop.customers.forget_password.before') !!}
 
@@ -40,31 +30,33 @@
 
                         {!! view_render_event('bagisto.shop.customers.forget_password_form_controls.before') !!}
 
-                        <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']">
-                            <label for="email" class="mandatory label-style">
-                                {{ __('shop::app.customer.forgot-password.email') }}
+                        <div class="control-group my-4" :class="[errors.has('email') ? 'has-error' : '']">
+                            <label for="email">
+                                E-mail address
                             </label>
 
                             <input
                                 type="email"
                                 name="email"
-                                class="form-style"
-                                v-validate="'required|email'" />
+                                class="form-style login-input"
+                                placeholder="Email"
+                                v-validate="'required|email'"/>
 
-                            <span class="control-error" v-if="errors.has('email')" v-text="errors.first('email')"></span>
-                        </div>
-
-                        <div class="control-group">
-
-                            {!! Captcha::render() !!}
-
+                            <p class="control-error mt-3" v-if="errors.has('email')"
+                               v-text="errors.first('email')"></p>
                         </div>
 
                         {!! view_render_event('bagisto.shop.customers.forget_password_form_controls.after') !!}
 
-                        <button class="theme-btn bg-shaka-primary" type="submit">
-                            {{ __('shop::app.customer.forgot-password.submit') }}
+                        <button class="theme-btn bg-shaka-primary w-100" type="submit">
+                            Get a recovery link
                         </button>
+                        <div class="text-center mb-5">
+                            <a href="{{ route('customer.session.index') }}">
+                                Sign in
+                            </a>
+                        </div>
+
                     </form>
 
                     {!! view_render_event('bagisto.shop.customers.forget_password.after') !!}
@@ -73,9 +65,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-
-{!! Captcha::renderJS() !!}
-
-@endpush

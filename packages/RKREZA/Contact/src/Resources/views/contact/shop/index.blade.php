@@ -145,18 +145,5 @@
         </div>
     </div>
 
-{{--    <script type="text/javascript">--}}
-{{--        $('#contactForm').submit(function(event) {--}}
-{{--            event.preventDefault();--}}
-{{--            grecaptcha.ready(function() {--}}
-{{--                grecaptcha.execute("{{ env('RECAPTCHA_SECRET_KEY') }}", {action: 'subscribe_newsletter'}).then(function(token) {--}}
-
-{{--                    $('#contactForm').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');--}}
-{{--                    $('#contactForm').unbind('submit').submit()--}}
-{{--                });--}}
-{{--            });--}}
-{{--        });--}}
-
-{{--    </script>--}}
 
 @endsection

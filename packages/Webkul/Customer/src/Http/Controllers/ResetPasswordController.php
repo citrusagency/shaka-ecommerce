@@ -47,7 +47,7 @@ class ResetPasswordController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function store()
     {
@@ -65,7 +65,7 @@ class ResetPasswordController extends Controller
             );
 
             if ($response == Password::PASSWORD_RESET) {
-                return redirect()->route($this->_config['redirect']);
+                return view('shop::customers.signup.password-reset-notice');
             }
 
             return back()

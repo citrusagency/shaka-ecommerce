@@ -29,6 +29,11 @@
 
     <div class="account-table-content profile-page-content">
         <div class="table">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <table>
                 <tbody>
                     {!! view_render_event('bagisto.shop.customers.account.profile.view.table.before', ['customer' => $customer]) !!}

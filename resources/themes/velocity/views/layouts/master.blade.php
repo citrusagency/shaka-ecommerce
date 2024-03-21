@@ -18,23 +18,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            font-family: 'Open Sans', sans-serif;
-
-        }
-        p, a{
-            font-size: 18px!important;
-            line-height: 32px!important;
-            font-family: "Outfit", sans-serif!important;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Open Sans', serif;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-    </style>
 
     {!! view_render_event('bagisto.shop.layout.head') !!}
 
@@ -58,7 +41,7 @@
 {!! view_render_event('bagisto.shop.layout.body.before') !!}
 
 {{-- main app --}}
-<div id="app" class="">
+<div id="app">
     <product-quick-view v-if="$root.quickView"></product-quick-view>
 
     <div class="main-container-wrapper">
