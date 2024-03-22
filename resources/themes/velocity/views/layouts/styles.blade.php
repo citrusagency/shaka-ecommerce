@@ -56,9 +56,6 @@
         border-radius: 8px !important;
         padding: 1.5rem 1rem !important;
     }
-    input, textarea::placeholder{
-        -webkit-text-fill-color: black;
-    }
 
     label {
         color: #777;

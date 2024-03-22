@@ -12,7 +12,7 @@
             <div class="container">
                 <div class="col-lg-10 col-md-12 offset-lg-1 py-3 justify-content-center">
                     <div class="heading text-center">
-                        <h1 class="fs30 fw2 font-shaka">
+                        <h1 class="fs30 fw2">
                             Sign in
                         </h1>
                     </div>

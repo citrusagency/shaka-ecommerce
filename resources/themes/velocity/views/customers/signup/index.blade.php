@@ -12,7 +12,7 @@
         <div class="container">
             <div class="col-lg-10 col-md-12 offset-lg-1 py-5">
                 <div class="body col-12 border-0 p-0">
-                    <h1 class="fw2 font-shaka text-center">
+                    <h1 class="fw2 text-center">
                         Create an account
                     </h1>
 

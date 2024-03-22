@@ -12,7 +12,7 @@
             <div class="container">
                 <div class="col-lg-10 col-md-12 offset-lg-1 text-center">
                     <div class="heading">
-                        <h2 class="fs30 fw2 font-shaka">
+                        <h2 class="fs30 fw2">
                             {{ __('shop::app.customer.reset-password.title')}}
                         </h2>
                     </div>
