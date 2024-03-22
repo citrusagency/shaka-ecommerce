@@ -10,14 +10,14 @@
     {!! view_render_event('bagisto.shop.customers.reset_password.before') !!}
         <div class="auth-content form-container">
             <div class="container">
-                <div class="col-lg-10 col-md-12 offset-lg-1">
+                <div class="col-lg-10 col-md-12 offset-lg-1 text-center">
                     <div class="heading">
                         <h2 class="fs30 fw2 font-shaka">
                             {{ __('shop::app.customer.reset-password.title')}}
                         </h2>
                     </div>
 
-                    <div class="body col-12 p-0 border-0">
+                    <div class="text-left body col-12 p-0 border-0">
 
                         {!! view_render_event('bagisto.shop.customers.forget_password.before') !!}
 
@@ -33,7 +33,7 @@
                             {!! view_render_event('bagisto.shop.customers.forget_password_form_controls.before') !!}
 
                             <div :class="`form-group ${errors.has('email') ? 'has-error' : ''}`">
-                                <label for="email" class="required label-style mandatory">
+                                <label for="email" class="">
                                     {{ __('shop::app.customer.reset-password.email') }}
                                 </label>
 
@@ -41,40 +41,46 @@
                                     id="email"
                                     type="text"
                                     name="email"
-                                    class="form-style"
+                                    placeholder="Email"
+                                    class="form-style login-input"
                                     value="{{ old('email') }}"
                                     v-validate="'required|email'" />
-
-                                <span class="control-error" v-if="errors.has('email')" v-text="errors.first('email')"></span>
+                                <p class="control-error" v-if="errors.has('email')" v-text="errors.first('email')"></p>
                             </div>
 
                             <div :class="`form-group ${errors.has('password') ? 'has-error' : ''}`">
-                                <label for="password" class="required label-style mandatory">
-                                    {{ __('shop::app.customer.reset-password.password') }}
+                                <label for="password" class="">
+                                    New password
                                 </label>
 
                                 <input
                                     ref="password"
-                                    class="form-style"
+                                    placeholder="New Password"
+                                    class="form-style login-input password"
                                     name="password"
                                     type="password"
                                     v-validate="'required|min:6'" />
 
-                                <span class="control-error" v-if="errors.has('password')" v-text="errors.first('password')"></span>
+                                <p class="control-error" v-if="errors.has('password')" v-text="errors.first('password')"></p>
                             </div>
 
                             <div :class="`form-group ${errors.has('confirm_password') ? 'has-error' : ''}`">
-                                <label for="confirm_password" class="required label-style mandatory">
-                                    {{ __('shop::app.customer.reset-password.confirm-password') }}
+                                <label for="confirm_password" class="">
+                                    Confirm password
                                 </label>
 
                                 <input
                                     type="password"
-                                    class="form-style"
+                                    placeholder="New Password"
+                                    class="form-style login-input password"
                                     name="password_confirmation"
                                     v-validate="'required|min:6|confirmed:password'" />
 
-                                <span class="control-error" v-if="errors.has('password_confirmation')" v-text="errors.first('password_confirmation')"></span>
+                                <p class="control-error" v-if="errors.has('password_confirmation')" v-text="errors.first('password_confirmation')"></p>
+                            </div>
+
+                            <div class="control-group">
+                                <input type="checkbox" onclick="showPassword()">Show Password
                             </div>
 
                             {!! view_render_event('bagisto.shop.customers.forget_password_form_controls.after') !!}
@@ -93,3 +99,24 @@
     {!! view_render_event('bagisto.shop.customers.reset_password.before') !!}
 </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(function(){
+            $(":input[name=email]").focus();
+        });
+
+        function showPassword() {
+            let passwords = document.querySelectorAll('.password');
+            const passwordArray = Array.from(passwords);
+            passwordArray.forEach(function (element) {
+                if (element.type === "password") {
+                    element.type = "text";
+                } else {
+                    element.type = "password";
+                }
+            });
+        }
+    </script>
+
+@endpush

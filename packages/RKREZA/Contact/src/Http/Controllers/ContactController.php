@@ -72,10 +72,19 @@ class ContactController extends Controller
     }
 
     // Shop Section
-    public function sendMessage()
+    public function sendMessage(Request $request)
     {
-
+        $request -> validate([
+            'g-recaptcha-response' => ['required',function (string $attribute,mixed $value, Closure $fail){
+                $g_response = Http::asForm()->post("https://www.google.com/recaptcha/api/siteverify",[
+                    'secret' => env('RECAPTCHA_SITE_KEY'),
+                    'response' => $value,
+                    'remoteip' => \request()->ip(),
+                ]);
+            }],
+        ]);
         $data = request()->all();
+
         try {
             $contact = $this->contact->create([
                 'name' => $data['name'],
