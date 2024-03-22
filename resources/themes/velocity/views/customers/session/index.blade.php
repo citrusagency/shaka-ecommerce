@@ -60,11 +60,14 @@
                                     placeholder="Password"
                                     data-vv-as="&quot;{{ __('shop::app.customer.login-form.password') }}&quot;" />
                                 <p class="control-error" v-if="errors.has('password')" v-text="errors.first('password')"></p>
-                                <input type="checkbox" onclick="myFunction()" id="showPassword" class="show-password shaka-checkbox"> {{ __('shop::app.customer.login-form.show-password') }}
+                                <div style="margin-top: 10px;">
+                                    <input type="checkbox" onclick="myFunction()" id="showPassword" class="shaka-checkbox">
+                                    <span>{{ __('shop::app.customer.login-form.show-password') }}</span>
 
-                                <a href="{{ route('customer.forgot-password.create') }}" class=" show-password float-right">
-                                    {{ __('shop::app.customer.login-form.forgot_pass') }}
-                                </a>
+                                    <a href="{{ route('customer.forgot-password.create') }}" class="float-right" style="padding:0 !important;line-height: 18px !important;">
+                                        {{ __('shop::app.customer.login-form.forgot_pass') }}
+                                    </a>
+                                </div>
 
                                 <div>
                                     @if (Cookie::has('enable-resend'))

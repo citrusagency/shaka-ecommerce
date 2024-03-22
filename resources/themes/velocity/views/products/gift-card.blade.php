@@ -274,7 +274,7 @@
         .label-chk {
             align-self: center;
             position: relative;
-            width: 110px;
+            width: 120px;
             height: 50px;
             padding:8px 16px;
             font-family: 'Outfit', sans-serif;
@@ -462,7 +462,7 @@
             <h6 class="form-section-title">To</h6>
             <div class="input-fields">
                 <div class="input-field">
-                    <label class="form-label" for="recipient-name">Recipient's name<span style="color:#db4e4e;">*</span></label>
+                    <label class="form-label" for="recipient-name">Recipient's name<span style="color:#db4e4e; ">*</span></label>
                     <input type="text" placeholder="Name" id="recipient-name" name="recipient-name" value="{{old('recipient-name')}}" class="@error('recipient-name') error_inp @enderror" oninput="removeErrorClass(this)"/>
                     @error('recipient-name')
                     <div class="error_msg">
