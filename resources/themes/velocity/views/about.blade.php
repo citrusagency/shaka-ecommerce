@@ -1,7 +1,7 @@
 @extends('shop::layouts.master')
 
 @section('page_title')
-    Shaka | About the label
+    About the label
 @endsection
 
 @section('content-wrapper')
@@ -89,7 +89,7 @@
 
             <div class="row ">
                 <div
-                    class="align-items-center p-shaka-about-2 col-md-6 col-sm-12 d-flex flex-column justify-content-center p-5">
+                    class="align-items-center p-shaka-about-2 col-md-6 col-sm-12 d-flex flex-column justify-content-center p-5" style="padding-top:8em !important;">
                     <p style="font-size: 16px">
                         The great driver of her creative process is the nature and the material she chooses to make the
                         pieces. She gives special importance to colors and shapes for the final look of subtlety and

@@ -1,51 +1,43 @@
 <div class="bg-shaka-black2">
-    <div class="container p-5">
-        <div class="row">
-            <div class="col-md-4 col-6 py-5 offset-md-0">
+    <div class="footer-con">
+        <div class="footer-flex">
+            <div class="col footer-col">
                 {!! file_get_contents(public_path('/images/logo.svg')) !!}
                 <p class="text-shaka-subtitle my-4">Based in Montenegro</p>
-                <a href="#" target="_blank"><img src="{{ asset('images/facebook-logo.svg') }}" alt=""></a>
-                <a href="#" class="ml-3" target="_blank"><img src="{{ asset('images/instagram-logo.svg') }}" alt=""></a>
+                <div>
+                    <a href="#" class="ml-3" target="_blank"><img style="height: 25px !important;" src="{{ asset('images/instagram-logo.svg') }}" alt=""></a>
+                    <a href="#" class="ml-5" target="_blank"><img style="height: 25px !important;" src="{{ asset('images/facebook-logo.svg') }}" alt=""></a>
+                </div>
             </div>
-            <div class="col-md-8 col-sm-12 py-md-5 py-2">
-                <div class="row">
-                    <div class="d-sm-block d-md-none mb-5" style="border-top: 1px solid rgba(255,255,255,0.2); width: 200%"></div>
-
-                    <div class="col-md-4 col-6">
-                        <div><a href="#" class="text-shaka-subtitle">Home</a></div>
-                        <div class="mt-3"><a href="#" class="text-shaka-subtitle">Shop</a></div>
+            <hr style="height:1px; background-color:rgba(218,218,218,0.3); margin:30px 0; border-radius: 40%;"/>
+            <div class="col">
+                <div class="row justify-content-between">
+                    <div class="col">
+                        <div><a href="#" class="footer-links footer-text">Home</a></div>
+                        <div class="mt-3"><a href="#" class="footer-links footer-text">Shop</a></div>
+                        <div class="mt-3"><a href="#" class="footer-links footer-text">About</a></div>
+                        <div class="mt-3"><a href="#" class="footer-links footer-text">Contact</a></div>
                     </div>
-                    <div class="col-md-4 col-6">
-                        <!-- <div><a href="#" class="text-shaka-subtitle">Behind the scenes</a></div> -->
-                        <div><a href="#" class="text-shaka-subtitle">About</a></div>
-                        <div class="mt-3"><a href="#" class="text-shaka-subtitle">Contact</a></div>
-                    </div>
-                    <div class="d-sm-block d-md-none mt-5" style="border-top: 1px solid rgba(255,255,255,0.2); width: 200%"></div>
-                    <div class="col-md-4 col-12 mt-5 mt-md-0">
-                        <div><a href="{{ route('shop.terms-conditions') }}" class="text-shaka-subtitle">Terms and Conditions</a></div>
-                        <div class="mt-3"><a href="{{ route('shop.privacy-policy') }}" class="text-shaka-subtitle">Privacy Policy</a></div>
-                        <div class="mt-3"><a href="#" class="text-shaka-subtitle">FAQ</a></div>
-                        <div class="mt-3"><a href="{{ route('shop.returns') }}" class="text-shaka-subtitle">Returns</a></div>
+                    <div class="col">
+                        <div><a href="{{ route('shop.terms-conditions') }}"  class="footer-links footer-text">Terms and Conditions</a></div>
+                        <div class="mt-3"><a href="{{ route('shop.privacy-policy') }}"  class="footer-links footer-text">Privacy Policy</a></div>
+                        <div class="mt-3"><a href="{{ route('shop.returns') }}"  class="footer-links footer-text">Returns</a></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-<div class="bg-shaka-black2" style="border-top: 1px solid rgba(255,255,255,0.2);">
-    <div class="container p-4">
-        <div class="row footer-statics no-margin ">
-            <div class="col-6 text-left text-white">
-                © {{ date('Y') }} Katarina Zlajić
-
+        <hr style="height:1px; background-color:rgba(218,218,218,0.3); margin:30px 0; border-radius: 40%;"/>
+        <div class="row no-margin">
+            <div class="col-6 text-left footer-text text-shaka-subtitle">
+                Katarina Zlajić, {{ date('Y') }}
             </div>
             <div class="col-6">
-                <span class="author float-right text-white">
-            Made with ♡ by D.
-        </span>
+                <span class="float-right made-by footer-text text-shaka-subtitle">
+                    Made by <span class="citrus-codes footer-text">Citrus Codes</span>
+                </span>
             </div>
         </div>
     </div>
 </div>
+
 

@@ -84,7 +84,7 @@ class ContactController extends Controller
             }],
         ]);
         $data = request()->all();
-//        dd($data);
+
         try {
             $contact = $this->contact->create([
                 'name' => $data['name'],

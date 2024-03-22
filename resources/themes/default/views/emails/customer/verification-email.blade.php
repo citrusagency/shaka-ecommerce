@@ -1,26 +1,26 @@
 @component('shop::emails.layouts.master')
 
-    <div>
-        <div style="text-align: center;">
-            <a href="{{ config('app.url') }}">
-                @include ('shop::emails.layouts.logo')
-            </a>
-        </div>
+    <p class="dear-customer">
+        {{ __('shop::app.mail.customer.registration.dear', ['customer_name' => $data['first_name']. ' ' .$data['last_name']]) }},
+    </p>
 
-        <div  style="font-size:16px; color:#242424; font-weight:600; margin-top: 60px; margin-bottom: 15px">
-                {!! __('shop::app.mail.customer.verification.heading') !!}
-        </div>
+    <p  class="ver-heading">
+        {!! __('shop::app.mail.customer.verification.heading') !!}
+    </p>
 
-        <div>
-            {!! __('shop::app.mail.customer.verification.summary') !!}
-        </div>
+    <p class="p-text w-pd">
+        {!! __('shop::app.mail.customer.verification.summary') !!}
+    </p>
 
-        <div  style="margin-top: 40px; text-align: center">
-            <a href="{{ route('customer.verify', $data['token']) }}" style="font-size: 16px;
-            color: #FFFFFF; text-align: center; background: #0031F0; padding: 10px 100px;text-decoration: none;">
-                {!! __('shop::app.mail.customer.verification.verify') !!}
-            </a>
-        </div>
-    </div>
+    <p  class="center-container">
+        <a href="{{ route('customer.verify', $data['token']) }}">
+            {!! __('shop::app.mail.customer.verification.verify') !!}
+        </a>
+    </p>
+
+    <p class="p-text">
+        {{ __('shop::app.mail.customer.registration.thanks') }}
+    </p>
+
 
 @endcomponent

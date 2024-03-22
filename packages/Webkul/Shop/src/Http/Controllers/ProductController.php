@@ -2,14 +2,17 @@
 
 namespace Webkul\Shop\Http\Controllers;
 
-use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
-use Webkul\Attribute\Repositories\AttributeRepository;
+use Webkul\CartRule\Repositories\CartRuleCouponRepository;
+use Webkul\Product\Http\Requests\GiftCardRequest;
 use Webkul\Product\Repositories\ProductAttributeValueRepository;
 use Webkul\Product\Repositories\ProductDownloadableLinkRepository;
 use Webkul\Product\Repositories\ProductDownloadableSampleRepository;
 use Webkul\Product\Repositories\ProductRepository;
+use Webkul\Shop\Mail\GiftCardEmail;
 
 class ProductController extends Controller
 {
@@ -105,19 +108,43 @@ class ProductController extends Controller
 
     public function getGiftCardView()
     {
+        if (! auth()->guard('customer')->check()) {
+            return redirect()->route('customer.session.index');
+        }
         return view('shop::products.gift-card');
     }
 
-    public function sendGiftCardView(FormRequest $request)
+    public function sendGiftCard(GiftCardRequest $request)
     {
-        $recipient_name = $request->get('recipient-name');
-        $recipient_email = $request->get('recipient-email');
-        $sender_name = $request->get('sender-name');
-        $delivery_date = $request->get('delivery-date');
+        $data = $request->only(['recipient-name', 'recipient-email', 'sender-name', 'amount', 'message']);
+        //$deliveryDate = Carbon::parse($request->get('delivery-date'));
 
-        dd($request);
-        //return view('shop::products.gift-card');
+        $couponData = [
+            'coupon_qty'=>1,
+            'code_length'=>14,
+            'code_format'=>'alphanumeric',
+            'code_prefix'=>'',
+            'code_suffix'=>''
+        ];
+
+        try {
+            if ($data) {
+                session()->flash('success', trans('contact_lang::app.response.message-send-success'));
+                try {
+                    $couponCode = CartRuleCouponRepository::generateCoupon($couponData, $data['amount']);
+                    $data['couponCode']=$couponCode;
+
+                    Mail::queue(new GiftCardEmail($data));
+                } catch (\Exception $e) {
+                    Log::error(
+                        'prepareMail' . $e->getMessage()
+                    );
+                }
+                return redirect()->route('shop.giftCard');
+            }
+        } catch (\Exception $e) {
+            dd("Gift Card email exception: ", $e);
+        }
     }
-
 
 }

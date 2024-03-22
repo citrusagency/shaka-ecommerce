@@ -1,7 +1,7 @@
 @extends('shop::layouts.master')
 
 @section('page_title')
-    Shaka | Terms and conditions
+    KZ | Terms and conditions
 @endsection
 
 @section('content-wrapper')
