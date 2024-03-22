@@ -31,12 +31,17 @@
             }
 
             .shaka-p {
-                font-family: Outfit;
-                font-size: 16px;
+                font-family: "Outfit",sans-serif;
+                font-size: 18px;
                 font-style: normal;
                 color: #777777;
                 font-weight: 300;
-                line-height: normal;
+                line-height: 32px;
+            }
+
+            .shaka-checkbox{
+                width: 20px;
+                height: 20px;
             }
         </style>
     @endpush
@@ -80,6 +85,7 @@
                                         @error('g-recaptcha-response')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
+
                                         <div class="row">
                                             <div class="col-sm-12 col-md-6">
                                                 <div class="form-group">
@@ -118,6 +124,11 @@
 
                                         <div class="form-group captcha g-recaptcha "
                                              data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}">
+                                        </div>
+
+                                        <div class="form-group contact-checkbox">
+                                            <input type="checkbox" name="" class="shaka-checkbox contact-checkbox" id="" required> <span class="shaka-p">By checking this box, I agree to the <a
+                                                    href="/privacy-policy" target="_blank">Privacy Policy</a> </span>
                                         </div>
 
                                         <button

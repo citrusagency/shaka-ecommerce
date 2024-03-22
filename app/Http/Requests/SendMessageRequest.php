@@ -29,9 +29,10 @@ class SendMessageRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required',
-            'message_body' => ['required'],
-            'message_title' => ['required'],
-            'g-recaptcha-response' => ['required', new ReCaptcha]
+            'message_title' => 'required',
+            'message_body' => 'required',
+            'g-recaptcha-response' => ['required', new ReCaptcha],
+            'contact-checkbox' =>'required'
           ];
     }
 }
