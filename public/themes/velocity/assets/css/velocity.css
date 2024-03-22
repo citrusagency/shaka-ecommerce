@@ -2424,12 +2424,17 @@ button[disabled] {
 }
 
 .cart-details .cart-content .cart-item-list .wishlist-icon {
-    display: inline;
-    margin: 0
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:10px;
+    margin: 0;
 }
 
 .cart-details .cart-content .product-details-content {
-    padding-left: 20px
+    padding-left: 20px;
 }
 
 .cart-details .cart-content .product-details-content .row {
@@ -2464,13 +2469,11 @@ button[disabled] {
 
 .cart-details .cart-content .product-details-content .item-actions .d-inline-block .material-icons {
     float: left;
-    margin-left: -2px;
-    margin-right: 5px
+    margin:auto;
 }
 
 .cart-details .cart-content .product-details-content .item-actions .d-inline-block .rango-delete {
     float: left;
-    margin-left: -2px
 }
 
 .cart-details .cart-content .product-quantity .quantity {
@@ -2495,6 +2498,10 @@ button[disabled] {
 
 .cart-details .coupon-container .control-error {
     padding: 10px 0
+}
+
+.remove-icon{
+    padding: 5px 0;
 }
 
 @media only screen and (max-width: 375px) {
@@ -4044,6 +4051,14 @@ button[disabled] {
 
     .cart-details .cart-content .product-price.col-1 .card-current-price.fw6, .cart-details .cart-content .product-price.col-1 .product-detail .right .info .card-current-price.price, .cart-details .cart-content .product-price.col-1 .product-detail .right .info h2.card-current-price, .cart-details .cart-content .product-price.col-1 .product-detail .right h3.card-current-price, .cart-details .cart-content .product-price.col-1 .product-detail .right h4.card-current-price, .product-detail .right .cart-details .cart-content .product-price.col-1 h3.card-current-price, .product-detail .right .cart-details .cart-content .product-price.col-1 h4.card-current-price, .product-detail .right .info .cart-details .cart-content .product-price.col-1 .card-current-price.price, .product-detail .right .info .cart-details .cart-content .product-price.col-1 h2.card-current-price {
         float: right
+    }
+
+    .cart-details .cart-content .cart-item-list .wishlist-icon{
+        display: flex;
+        flex-direction: column;
+    }
+    .remove-icon{
+        padding: 20px 0;
     }
 }
 
@@ -7928,7 +7943,7 @@ header .dropdown-menu-large .dropdown-content .item .item-image .material-icons 
     font-size: 16px;
     left: -6px;
     position: absolute;
-    top: -6px
+    top: -6px;
 }
 
 header .dropdown-menu-large .dropdown-content .item .item-image .thumbnail {

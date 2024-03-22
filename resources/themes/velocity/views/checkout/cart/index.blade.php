@@ -152,14 +152,14 @@
                                                         @endif
                                                     @endauth
 
-                                                    <div class="d-inline-block">
+                                                    <div class="d-inline-block remove-icon">
                                                         <a
                                                             class="unset"
                                                             href="{{ route('shop.checkout.cart.remove', ['id' => $item->id]) }}"
                                                             @click="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">
 
-                                                            <span class="rango-delete fs24"></span>
-                                                            <span class="align-vertical-super">{{ __('shop::app.checkout.cart.remove') }}</span>
+                                                            <span class="rango-delete fs24" style="margin-top:5px;"></span>
+                                                            <span>{{ __('shop::app.checkout.cart.remove') }}</span>
                                                         </a>
                                                     </div>
                                                 </div>
