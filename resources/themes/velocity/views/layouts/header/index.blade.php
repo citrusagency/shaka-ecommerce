@@ -12,8 +12,7 @@
             <div class="row gap-4">
                 <a href="/" class="text-white text-uppercase  {{ request()->is('/') ? 'active-route' : '' }}">Home</a>
                 <a href="{{ route('shop.getAllProducts') }}" class="text-white text-uppercase  {{ request()->is('shop') ? 'active-route' : '' }} ml-5">Shop</a>
-                <a href="{{ route("shop.about") }}" class="text-white text-uppercase  {{ request()->is('shop.about') ? 'active-route' : '' }} ml-5">About</a>
-                <!-- <a href="{{ route("shop.behind-the-scenes") }}" class="text-white text-uppercase  {{ request()->is('behind-the-scenes') ? 'active-route' : '' }} ml-5">Behind the scenes</a> -->
+                <a href="{{ route("shop.about") }}" class="text-white text-uppercase  {{ request()->is('about') ? 'active-route' : '' }} ml-5">About</a>
                 <a href="{{ route("shop.contact.index") }}" class="text-white  text-uppercase {{ request()->is('contact') ? 'active-route' : '' }} ml-5">Contact</a>
             </div>
 

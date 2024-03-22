@@ -81,9 +81,6 @@
                             category-count="{{ $velocityMetaData ? $velocityMetaData->sidebar_category_count : 10 }}"
                             add-class="category-list-container pt10">
                         </sidebar-component>
-
-
-
                     </div>
                 </div>
             </div>

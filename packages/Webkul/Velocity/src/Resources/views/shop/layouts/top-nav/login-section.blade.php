@@ -79,7 +79,6 @@
 
                             @method('DELETE')
                         </form>
-
                         <a
                             class="unset"
                             href="{{ route('customer.session.destroy') }}"
