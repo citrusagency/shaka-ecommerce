@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ReCaptcha;
 use Closure;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Http;
@@ -30,7 +31,7 @@ class SendMessageRequest extends FormRequest
             'email' => 'required',
             'message_body' => ['required'],
             'message_title' => ['required'],
-            'g-recaptcha-response' => ['required', new RecaptchaRule()],
+            'g-recaptcha-response' => ['required', new ReCaptcha]
           ];
     }
 }
