@@ -25,13 +25,20 @@
 
     * {
         font-family: 'Open Sans', sans-serif;
-
     }
 
     p, a, button {
         font-size: 18px !important;
         line-height: 32px !important;
         font-family: "Outfit", sans-serif !important;
+    }
+
+    .header-a{
+        text-transform: uppercase;
+        font-size: 14px !important;
+        font-style: normal;
+        font-weight: 600;
+        letter-spacing: 1.4px;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -55,9 +62,6 @@
         border: transparent 0px !important;
         border-radius: 8px !important;
         padding: 1.5rem 1rem !important;
-    }
-    input, textarea::placeholder{
-        -webkit-text-fill-color: black;
     }
 
     label {

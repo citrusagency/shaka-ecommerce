@@ -51,7 +51,7 @@
                         <button class="theme-btn bg-shaka-primary w-100" type="submit">
                             Get a recovery link
                         </button>
-                        <div class="text-center mb-5">
+                        <div class="text-center mb-5 pt-2">
                             <a href="{{ route('customer.session.index') }}">
                                 Sign in
                             </a>
