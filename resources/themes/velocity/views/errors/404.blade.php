@@ -1,7 +1,7 @@
 @extends('shop::layouts.master')
 
 @section('page_title')
-    Shaka | About the label
+    Shaka | 404
 @endsection
 
 @section('content-wrapper')

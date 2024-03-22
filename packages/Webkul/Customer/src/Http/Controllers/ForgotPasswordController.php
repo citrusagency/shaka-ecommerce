@@ -40,7 +40,7 @@ class ForgotPasswordController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CustomerForgotPasswordRequest $request)
     {
@@ -66,7 +66,7 @@ class ForgotPasswordController extends Controller
             return redirect()->back();
         } catch (\Exception $e) {
             report($e);
-            
+
             session()->flash('error', trans($e->getMessage()));
 
             return redirect()->back();

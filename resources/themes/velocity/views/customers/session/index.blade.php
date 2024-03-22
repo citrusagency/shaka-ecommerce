@@ -10,29 +10,14 @@
         {!! view_render_event('bagisto.shop.customers.login.before') !!}
 
             <div class="container">
-                <div class="col-lg-10 col-md-12 offset-lg-1 py-5">
-                    <div class="heading">
-                        <h2 class="fs30 fw2 font-shaka">
+                <div class="col-lg-10 col-md-12 offset-lg-1 py-3 justify-content-center">
+                    <div class="heading text-center">
+                        <h1 class="fs30 fw2 font-shaka">
                             Sign in
-                        </h2>
-
-                        <a href="{{ route('customer.register.index') }}" class="btn-new-customer">
-                            <button type="button" class="theme-btn light" style="color: #1197C2!important">
-                                {{ __('velocity::app.customer.login-form.sign-up')}}
-                            </button>
-                        </a>
+                        </h1>
                     </div>
 
-                    <div class="body col-12 border-0 p-0">
-                        <div class="form-header">
-{{--                            <h3 class="fw6">--}}
-{{--                                {{ __('velocity::app.customer.login-form.registered-user')}}--}}
-{{--                            </h3>--}}
-
-{{--                            <p class="fs16">--}}
-{{--                                {{ __('velocity::app.customer.login-form.form-login-text')}}--}}
-{{--                            </p>--}}
-                        </div>
+                    <div class="container border-0 p-0">
 
                         <form
                             method="POST"
@@ -44,42 +29,44 @@
                             {!! view_render_event('bagisto.shop.customers.login_form_controls.before') !!}
 
                             <div class="form-group" :class="[errors.has('email') ? 'has-error' : '']">
-                                <label for="email" class="mandatory label-style">
+                                <label for="email">
                                     {{ __('shop::app.customer.login-form.email') }}
                                 </label>
 
                                 <input
                                     type="text"
-                                    class="form-style"
+                                    class="form-style login-input"
                                     name="email"
                                     v-validate="'required|email'"
                                     value="{{ old('email') }}"
+                                    placeholder="Email"
                                     data-vv-as="&quot;{{ __('shop::app.customer.login-form.email') }}&quot;" />
 
-                                <span class="control-error" v-if="errors.has('email')" v-text="errors.first('email')"></span>
+                                <p class="control-error" v-if="errors.has('email')" v-text="errors.first('email')"></p>
                             </div>
 
                             <div class="form-group" :class="[errors.has('password') ? 'has-error' : '']">
-                                <label for="password" class="mandatory label-style">
+                                <label for="password">
                                     {{ __('shop::app.customer.login-form.password') }}
                                 </label>
 
                                 <input
                                     type="password"
-                                    class="form-style"
+                                    class="form-style login-input"
                                     name="password"
                                     id="password"
                                     v-validate="'required'"
                                     value="{{ old('password') }}"
+                                    placeholder="Password"
                                     data-vv-as="&quot;{{ __('shop::app.customer.login-form.password') }}&quot;" />
-                                <input type="checkbox" onclick="myFunction()" id="shoPassword" class="show-password"> {{ __('shop::app.customer.login-form.show-password') }}
-                                <span class="control-error" v-if="errors.has('password')" v-text="errors.first('password')"></span>
+                                <p class="control-error" v-if="errors.has('password')" v-text="errors.first('password')"></p>
+                                <input type="checkbox" onclick="myFunction()" id="showPassword" class="show-password shaka-checkbox"> {{ __('shop::app.customer.login-form.show-password') }}
 
                                 <a href="{{ route('customer.forgot-password.create') }}" class=" show-password float-right">
                                     {{ __('shop::app.customer.login-form.forgot_pass') }}
                                 </a>
 
-                                <div class="mt10">
+                                <div>
                                     @if (Cookie::has('enable-resend'))
                                         @if (Cookie::get('enable-resend') == true)
                                             <a href="{{ route('customer.resend.verification-email', Cookie::get('email-for-resend')) }}">{{ __('shop::app.customer.login-form.resend-verification') }}</a>
@@ -88,16 +75,14 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-
-                                {!! Captcha::render() !!}
-
-                            </div>
-
                             {!! view_render_event('bagisto.shop.customers.login_form_controls.after') !!}
 
-                            <input class="theme-btn bg-shaka-primary" type="submit" value="{{ __('shop::app.customer.login-form.button_title') }}">
-
+                            <button class="theme-btn bg-shaka-primary w-100"  type="submit"> {{ __('shop::app.customer.login-form.button_title') }} </button>
+                            <p class="text-center mt-3">
+                                Don't have an account? <a href="{{ route('customer.register.index') }}" class="btn-new-customer">
+                                    {{ __('velocity::app.customer.login-form.sign-up')}}
+                                </a>
+                            </p>
                         </form>
                     </div>
                 </div>
@@ -108,9 +93,6 @@
 @endsection
 
 @push('scripts')
-
-{!! Captcha::renderJS() !!}
-
 <script>
     $(function(){
         $(":input[name=email]").focus();
@@ -124,7 +106,6 @@
                 x.type = "password";
             }
         }
-
     </script>
 
 @endpush
