@@ -189,13 +189,13 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
                     /**
                      * Downloadable products.
                      */
-                    Route::get('downloadable-products', [DownloadableProductController::class, 'index'])->defaults('_config', [
-                        'view' => 'shop::customers.account.downloadable_products.index',
-                    ])->name('customer.downloadable_products.index');
-
-                    Route::get('downloadable-products/download/{id}', [DownloadableProductController::class, 'download'])->defaults('_config', [
-                        'view' => 'shop::customers.account.downloadable_products.index',
-                    ])->name('customer.downloadable_products.download');
+//                    Route::get('downloadable-products', [DownloadableProductController::class, 'index'])->defaults('_config', [
+//                        'view' => 'shop::customers.account.downloadable_products.index',
+//                    ])->name('customer.downloadable_products.index');
+//
+//                    Route::get('downloadable-products/download/{id}', [DownloadableProductController::class, 'download'])->defaults('_config', [
+//                        'view' => 'shop::customers.account.downloadable_products.index',
+//                    ])->name('customer.downloadable_products.download');
 
                     /**
                      * Reviews.
@@ -204,13 +204,13 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
                         'view' => 'shop::customers.account.reviews.index',
                     ])->name('customer.reviews.index');
 
-                    Route::delete('reviews/delete/{id}', [ReviewController::class, 'destroy'])->defaults('_config', [
-                        'redirect' => 'customer.reviews.index',
-                    ])->name('customer.review.delete');
-
-                    Route::delete('reviews/all-delete', [ReviewController::class, 'deleteAll'])->defaults('_config', [
-                        'redirect' => 'customer.reviews.index',
-                    ])->name('customer.review.deleteall');
+//                    Route::delete('reviews/delete/{id}', [ReviewController::class, 'destroy'])->defaults('_config', [
+//                        'redirect' => 'customer.reviews.index',
+//                    ])->name('customer.review.delete');
+//
+//                    Route::delete('reviews/all-delete', [ReviewController::class, 'deleteAll'])->defaults('_config', [
+//                        'redirect' => 'customer.reviews.index',
+//                    ])->name('customer.review.deleteall');
                 });
             });
         });

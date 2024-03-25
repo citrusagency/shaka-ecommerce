@@ -17,11 +17,6 @@ return [
         'route' =>'customer.address.index',
         'sort'  => 2,
     ], [
-        'key'   => 'account.reviews',
-        'name'  => 'shop::app.layouts.reviews',
-        'route' =>'customer.reviews.index',
-        'sort'  => 3,
-    ], [
         'key'   => 'account.wishlist',
         'name'  => 'shop::app.layouts.wishlist',
         'route' =>'customer.wishlist.index',
@@ -36,12 +31,7 @@ return [
         'name'  => 'shop::app.layouts.orders',
         'route' =>'customer.orders.index',
         'sort'  => 6,
-    ], [
-        'key'   => 'account.downloadables',
-        'name'  => 'shop::app.layouts.downloadable-products',
-        'route' =>'customer.downloadable_products.index',
-        'sort'  => 7,
-    ]
+    ],
 ];
 
 ?>
