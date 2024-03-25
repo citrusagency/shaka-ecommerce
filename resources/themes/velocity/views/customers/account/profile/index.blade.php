@@ -19,8 +19,8 @@
         </span>
 
         <span class="account-action">
-            <a href="{{ route('customer.profile.edit') }}" class="theme-btn light unset float-right">
-                {{ __('shop::app.customer.account.profile.index.edit') }}
+            <a href="{{ route('customer.profile.edit') }}" class="btn text-white unset float-right">
+                Edit profile
             </a>
         </span>
     </div>
@@ -55,22 +55,6 @@
                     {!! view_render_event('bagisto.shop.customers.account.profile.view.table.last_name.after', ['customer' => $customer]) !!}
 
                     <tr>
-                        <td>{{ __('shop::app.customer.account.profile.gender') }}</td>
-
-                        <td>{{ $customer->gender ?? '-' }}</td>
-                    </tr>
-
-                    {!! view_render_event('bagisto.shop.customers.account.profile.view.table.gender.after', ['customer' => $customer]) !!}
-
-                    <tr>
-                        <td>{{ __('shop::app.customer.account.profile.dob') }}</td>
-
-                        <td>{{ $customer->date_of_birth ?? '-' }}</td>
-                    </tr>
-
-                    {!! view_render_event('bagisto.shop.customers.account.profile.view.table.date_of_birth.after', ['customer' => $customer]) !!}
-
-                    <tr>
                         <td>{{ __('shop::app.customer.account.profile.email') }}</td>
 
                         <td>{{ $customer->email }}</td>
@@ -84,7 +68,7 @@
         <button
             type="submit"
             class="theme-btn mb20" onclick="window.showDeleteProfileModal();">
-            {{ __('shop::app.customer.account.address.index.delete') }}
+            Delete account
         </button>
 
         <div id="deleteProfileForm" class="d-none">
