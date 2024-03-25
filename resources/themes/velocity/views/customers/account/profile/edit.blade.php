@@ -49,81 +49,6 @@
             </div>
 
             {!! view_render_event('bagisto.shop.customers.account.profile.edit.last_name.after', ['customer' => $customer]) !!}
-
-            <div :class="`row ${errors.has('gender') ? 'has-error' : ''}`">
-                <label class="col-12 mandatory">
-                    {{ __('shop::app.customer.account.profile.gender') }}
-                </label>
-
-                <div class="col-12">
-                    <select
-                        name="gender"
-                        v-validate="'required'"
-                        class="control styled-select"
-                        data-vv-as="&quot;{{ __('shop::app.customer.account.profile.gender') }}&quot;">
-
-                        <option value=""
-                            @if ($customer->gender == "")
-                                selected="selected"
-                            @endif>
-                            {{ __('admin::app.customers.customers.select-gender') }}
-                        </option>
-
-                        <option value="Other"
-                            @if ($customer->gender == "Other")
-                                selected="selected"
-                            @endif>
-                            {{ __('velocity::app.shop.gender.other') }}
-                        </option>
-
-                        <option
-                            value="Male"
-                            @if ($customer->gender == "Male")
-                                selected="selected"
-                            @endif>
-                            {{ __('velocity::app.shop.gender.male') }}
-                        </option>
-
-                        <option
-                            value="Female"
-                            @if ($customer->gender == "Female")
-                                selected="selected"
-                            @endif>
-                            {{ __('velocity::app.shop.gender.female') }}
-                        </option>
-                    </select>
-
-                    <div class="select-icon-container">
-                        <span class="select-icon rango-arrow-down"></span>
-                    </div>
-
-                    <span class="control-error" v-if="errors.has('gender')" v-text="errors.first('gender')"></span>
-                </div>
-            </div>
-
-            {!! view_render_event('bagisto.shop.customers.account.profile.edit.gender.after', ['customer' => $customer]) !!}
-
-            <div :class="`row ${errors.has('date_of_birth') ? 'has-error' : ''}`">
-                <label class="col-12">
-                    {{ __('shop::app.customer.account.profile.dob') }}
-                </label>
-
-                <div class="col-12">
-                    <date id="date-of-birth">
-                        <input
-                            type="date"
-                            name="date_of_birth"
-                            placeholder="yyyy/mm/dd"
-                            value="{{ old('date_of_birth') ?? $customer->date_of_birth }}"
-                            v-validate="" data-vv-as="&quot;{{ __('shop::app.customer.account.profile.dob') }}&quot;" />
-                    </date>
-
-                    <span class="control-error" v-if="errors.has('date_of_birth')" v-text="errors.first('date_of_birth')"></span>
-                </div>
-            </div>
-
-            {!! view_render_event('bagisto.shop.customers.account.profile.edit.date_of_birth.after', ['customer' => $customer]) !!}
-
             <div class="row">
                 <label class="col-12 mandatory">
                     {{ __('shop::app.customer.account.profile.email') }}
@@ -149,25 +74,6 @@
             </div>
 
             {!! view_render_event('bagisto.shop.customers.account.profile.edit.phone.after', ['customer' => $customer]) !!}
-
-            <div class="row image-container {!! $errors->has('image.*') ? 'has-error' : '' !!}">
-                <label class="col-12">
-                    {{ __('admin::app.catalog.categories.image') }}
-                </label>
-
-                <div class="col-12">
-                    <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="image" :multiple="false" :images='"{{ $customer->image_url }}"'></image-wrapper>
-
-                    <span class="control-error" v-if="{!! $errors->has('image.*') !!}">
-                        @foreach ($errors->get('image.*') as $key => $message)
-                            @php echo str_replace($key, 'Image', $message[0]); @endphp
-                        @endforeach
-                    </span>
-                </div>
-            </div>
-
-            {!! view_render_event('bagisto.shop.customers.account.profile.edit.image.after', ['customer' => $customer]) !!}
-
             <div class="row">
                 <label class="col-12">
                     {{ __('velocity::app.shop.general.enter-current-password') }}
@@ -224,7 +130,7 @@
             <button
                 type="submit"
                 class="theme-btn mb20">
-                {{ __('velocity::app.shop.general.update') }}
+                Save
             </button>
         </div>
     </form>
