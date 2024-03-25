@@ -200,9 +200,9 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
                     /**
                      * Reviews.
                      */
-                    Route::get('reviews', [CustomerController::class, 'reviews'])->defaults('_config', [
-                        'view' => 'shop::customers.account.reviews.index',
-                    ])->name('customer.reviews.index');
+//                    Route::get('reviews', [CustomerController::class, 'reviews'])->defaults('_config', [
+//                        'view' => 'shop::customers.account.reviews.index',
+//                    ])->name('customer.reviews.index');
 
 //                    Route::delete('reviews/delete/{id}', [ReviewController::class, 'destroy'])->defaults('_config', [
 //                        'redirect' => 'customer.reviews.index',

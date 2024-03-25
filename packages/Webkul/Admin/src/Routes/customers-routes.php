@@ -87,29 +87,29 @@ Route::group(['middleware' => ['web', 'admin'], 'prefix' => config('app.admin_ur
     /**
      * Customer's reviews routes.
      */
-//    Route::get('reviews', [ReviewController::class, 'index'])->defaults('_config', [
-//        'view' => 'admin::customers.reviews.index',
-//    ])->name('admin.customer.review.index');
-//
-//    Route::get('reviews/edit/{id}', [ReviewController::class, 'edit'])->defaults('_config', [
-//        'view' => 'admin::customers.reviews.edit',
-//    ])->name('admin.customer.review.edit');
-//
-//    Route::put('reviews/edit/{id}', [ReviewController::class, 'update'])->defaults('_config', [
-//        'redirect' => 'admin.customer.review.index',
-//    ])->name('admin.customer.review.update');
-//
-//    Route::post('reviews/delete/{id}', [ReviewController::class, 'destroy'])->defaults('_config', [
-//        'redirect' => 'admin.customer.review.index',
-//    ])->name('admin.customer.review.delete');
-//
-//    Route::post('reviews/massdestroy', [ReviewController::class, 'massDestroy'])->defaults('_config', [
-//        'redirect' => 'admin.customer.review.index',
-//    ])->name('admin.customer.review.massdelete');
-//
-//    Route::post('reviews/massupdate', [ReviewController::class, 'massUpdate'])->defaults('_config', [
-//        'redirect' => 'admin.customer.review.index',
-//    ])->name('admin.customer.review.massupdate');
+    Route::get('reviews', [ReviewController::class, 'index'])->defaults('_config', [
+        'view' => 'admin::customers.reviews.index',
+    ])->name('admin.customer.review.index');
+
+    Route::get('reviews/edit/{id}', [ReviewController::class, 'edit'])->defaults('_config', [
+        'view' => 'admin::customers.reviews.edit',
+    ])->name('admin.customer.review.edit');
+
+    Route::put('reviews/edit/{id}', [ReviewController::class, 'update'])->defaults('_config', [
+        'redirect' => 'admin.customer.review.index',
+    ])->name('admin.customer.review.update');
+
+    Route::post('reviews/delete/{id}', [ReviewController::class, 'destroy'])->defaults('_config', [
+        'redirect' => 'admin.customer.review.index',
+    ])->name('admin.customer.review.delete');
+
+    Route::post('reviews/massdestroy', [ReviewController::class, 'massDestroy'])->defaults('_config', [
+        'redirect' => 'admin.customer.review.index',
+    ])->name('admin.customer.review.massdelete');
+
+    Route::post('reviews/massupdate', [ReviewController::class, 'massUpdate'])->defaults('_config', [
+        'redirect' => 'admin.customer.review.index',
+    ])->name('admin.customer.review.massupdate');
 
     /**
      * Customer groups routes.
