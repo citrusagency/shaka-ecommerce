@@ -18,7 +18,7 @@
             {{ __('shop::app.customer.account.profile.index.title') }}
         </span>
 
-        <span class="account-action">
+        <span class="account-action border">
             <a href="{{ route('customer.profile.edit') }}" class="btn text-white unset float-right">
                 Edit profile
             </a>
@@ -28,36 +28,36 @@
     {!! view_render_event('bagisto.shop.customers.account.profile.view.before', ['customer' => $customer]) !!}
 
     <div class="account-table-content profile-page-content">
-        <div class="table">
+        <div class="table-striped col-lg-4 col-md-6 col-sm-12">
             @if (session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
                 </div>
             @endif
-            <table>
+            <table class="table">
                 <tbody>
                     {!! view_render_event('bagisto.shop.customers.account.profile.view.table.before', ['customer' => $customer]) !!}
 
-                    <tr>
-                        <td>{{ __('shop::app.customer.account.profile.fname') }}</td>
+                    <tr class="row">
+                        <td class="col-3">{{ __('shop::app.customer.account.profile.fname') }}</td>
 
-                        <td>{{ $customer->first_name }}</td>
+                        <td class="col-5">{{ $customer->first_name }}</td>
                     </tr>
 
                     {!! view_render_event('bagisto.shop.customers.account.profile.view.table.first_name.after', ['customer' => $customer]) !!}
 
-                    <tr>
-                        <td>{{ __('shop::app.customer.account.profile.lname') }}</td>
+                    <tr class="row">
+                        <td class="col-3">{{ __('shop::app.customer.account.profile.lname') }}</td>
 
-                        <td>{{ $customer->last_name }}</td>
+                        <td class="col-5">{{ $customer->last_name }}</td>
                     </tr>
 
                     {!! view_render_event('bagisto.shop.customers.account.profile.view.table.last_name.after', ['customer' => $customer]) !!}
 
-                    <tr>
-                        <td>{{ __('shop::app.customer.account.profile.email') }}</td>
+                    <tr class="row">
+                        <td class="col-3">{{ __('shop::app.customer.account.profile.email') }}</td>
 
-                        <td>{{ $customer->email }}</td>
+                        <td class="col-5">{{ $customer->email }}</td>
                     </tr>
 
                     {!! view_render_event('bagisto.shop.customers.account.profile.view.table.after', ['customer' => $customer]) !!}
@@ -67,7 +67,7 @@
 
         <button
             type="submit"
-            class="theme-btn mb20" onclick="window.showDeleteProfileModal();">
+            class="theme-btn mt-3" onclick="window.showDeleteProfileModal();">
             Delete account
         </button>
 

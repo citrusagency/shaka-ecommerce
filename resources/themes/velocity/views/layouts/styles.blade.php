@@ -89,5 +89,20 @@
         height: 20px;
         outline: none;
     }
+
+    /*~~~~~~~~~~~~~~~~~ profile css ~~~~~~~~~~~~~~~~*/
+
+    .profile-input{
+        border-radius: 8px!important;
+        padding: 1.2rem 1rem!important;
+    }
+    .profile-input:focus{
+        border: solid #757575 1px!important;
+    }
+    .profile-form{
+        padding: 10px;
+        /*background-color: rebeccapurple;*/
+    }
+
 </style>
 
