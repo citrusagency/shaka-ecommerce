@@ -49,7 +49,7 @@
 
     <script type="text/x-template" id="category-template">
         <section class="container-fluidvelocity-divide-page category-page-wrapper pb-5">
-            <div class="row">
+            <div class="row" style="width:100%; margin:0;">
                 {{--            {!! view_render_event('bagisto.shop.productOrCategory.index.before', ['category' => $category]) !!}--}}
 
                 {{--            @if (true)--}}
@@ -58,7 +58,7 @@
                 </div>
                 {{--            @endif--}}
 
-                <div class="col-12 col-md-8 container right">
+                <div class="col-12 col-md-8 container right" style="padding:0 10px; width: 100%;">
                     <div class="row remove-padding-margin">
                         <div class="pl0 col-12">
                             {{--                        <h2 class="fw6 mb10">{{ $category->name }}</h2>--}}
