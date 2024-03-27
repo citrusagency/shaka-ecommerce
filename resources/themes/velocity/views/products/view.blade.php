@@ -101,10 +101,10 @@
             gap: 1rem;
             display: flex;
             flex-direction: row;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
             align-content: flex-end;
             align-items: flex-end;
-            justify-content: flex-start;
+            justify-content: space-between;
         }
         body {
             overflow-x: hidden!important;
@@ -223,7 +223,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="quantity py-2">
+                                            <div class="quantity py-4 md:py-2">
                                                 {!! view_render_event('bagisto.shop.products.view.quantity.before', ['product' => $product]) !!}
 
                                                 @if ($product->getTypeInstance()->showQuantityBox())
