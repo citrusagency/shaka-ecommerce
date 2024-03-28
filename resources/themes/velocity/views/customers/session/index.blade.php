@@ -10,16 +10,17 @@
         {!! view_render_event('bagisto.shop.customers.login.before') !!}
 
             <div class="container">
-                <div class="col-lg-10 col-md-12 offset-lg-1 py-3 justify-content-center">
+                <div class="col-lg-10 col-md-12 col-sm-12 offset-lg-1 py-3 justify-content-center">
                     <div class="heading text-center">
                         <h1 class="fs30 fw2">
                             Sign in
                         </h1>
                     </div>
 
-                    <div class="container border-0 p-0">
+                    <div class="border-0 p-0">
 
                         <form
+                            class="login-form p-4"
                             method="POST"
                             action="{{ route('customer.session.create') }}"
                             @submit.prevent="onSubmit">
