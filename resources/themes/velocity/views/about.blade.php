@@ -4,6 +4,20 @@
     About the label
 @endsection
 
+@push('css')
+    <style type="text/css">
+        .section-padding{
+            padding-top:8em !important;
+        }
+        @media (max-width: 600px) {
+            .section-padding{
+                padding-top:3em !important;
+                padding-bottom:3em !important;
+            }
+        }
+    </style>
+@endpush
+
 @section('content-wrapper')
 
     <div class="about-content text-white">
@@ -89,7 +103,7 @@
 
             <div class="row ">
                 <div
-                    class="align-items-center p-shaka-about-2 col-md-6 col-sm-12 d-flex flex-column justify-content-center p-5" style="padding-top:8em !important;">
+                    class="align-items-center p-shaka-about-2 col-md-6 col-sm-12 d-flex flex-column justify-content-center section-padding">
                     <p style="font-size: 16px">
                         The great driver of her creative process is the nature and the material she chooses to make the
                         pieces. She gives special importance to colors and shapes for the final look of subtlety and

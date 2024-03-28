@@ -2,6 +2,8 @@
 
 <script type="text/javascript" src="{{ asset(mix('/js/velocity-core.js', 'themes/velocity/assets')) }}"></script>
 
+<script type="text/javascript" src="{{ asset(mix('/js/velocity.js', 'themes/velocity/assets')) }}"></script>
+
 <script type="text/javascript" src="{{ asset(mix('/js/components.js', 'themes/velocity/assets')) }}"></script>
 
 <script type="text/javascript">

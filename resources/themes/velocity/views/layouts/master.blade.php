@@ -75,7 +75,9 @@
 
         /* ------------ FOOTER STYLES ------------ */
         .footer-con{
-            padding:50px 260px !important;
+            padding:50px 30px !important;
+            max-width: 1300px;
+            margin-inline: auto;
         }
         .footer-flex{
             display: flex;

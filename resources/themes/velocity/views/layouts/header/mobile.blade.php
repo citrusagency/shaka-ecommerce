@@ -19,25 +19,14 @@
 
     {{-- this is default content if js is not loaded --}}
     <div class="row">
-        <div class="col-6">
+        <div class="col-1" style="padding: 20px 10px;">
             <div class="hamburger-wrapper">
                 <i class="rango-toggle hamburger"></i>
             </div>
-
-            <a class="left" href="{{ route('shop.home.index') }}" aria-label="Logo">
-                {!! file_get_contents(public_path('/images/logo.svg')) !!}
-            </a>
         </div>
-
-        <div class="right-vc-header col-6">
-            <a class="unset cursor-pointer">
-                <i class="material-icons">search</i>
-            </a>
-            <a href="{{ route('shop.checkout.cart.index') }}" class="unset">
-                <i class="material-icons text-down-3">shopping_cart</i>
-                <div class="badge-wrapper">
-                    <span class="badge">{{ $cartItemsCount }}</span>
-                </div>
+        <div class="col-2" style="padding:10px 20px;">
+            <a class="left" href="{{ route('shop.home.index') }}" aria-label="Logo" >
+                {!! file_get_contents(public_path('/images/logo_mobile_white.svg')) !!}
             </a>
         </div>
     </div>
@@ -188,7 +177,7 @@
 
     <template v-slot:logo>
         <a class="left ml-5" href="{{ route('shop.home.index') }}" aria-label="Logo">
-            {!! file_get_contents(public_path('/images/logo.svg')) !!}
+            {!! file_get_contents(public_path('/images/logo_mobile_white.svg')) !!}
         </a>
     </template>
 

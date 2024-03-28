@@ -53,7 +53,7 @@ class GiftCardRequest extends FormRequest
             'recipient-email'=>['required', 'email'],
             'sender-name'=>['required', 'string', 'max:200', 'min:2'],
             'amount'=>['required'],
-            'delivery-date'=>['required','date','after:now'],
+            'delivery-date'=>['required','date','after_or_equal:today'],
             'message'=>['nullable', 'max:200']
         ];
     }
@@ -79,7 +79,7 @@ class GiftCardRequest extends FormRequest
             'amount.required' => 'Select an amount',
             'delivery-date.required' => 'Delivery date is required',
             'delivery-date.date' => 'Enter valid date',
-            'delivery-date.after' => 'Delivery date must be a future date',
+            'delivery-date.after_or_equal' => 'Delivery date must be today or future date',
             'message.max' => 'Must be less than :max characters',
         ];
     }
