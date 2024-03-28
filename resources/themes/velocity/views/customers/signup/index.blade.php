@@ -132,7 +132,7 @@
                         </div>
 
                         <div class="control-group">
-                            <input type="checkbox" onclick="showPassword()">Show Password
+                            <input type="checkbox" class="shaka-checkbox" onclick="showPassword()">Show Password
                         </div>
 
                         {!! view_render_event('bagisto.shop.customers.signup_form_controls.password_confirmation.after') !!}

@@ -113,12 +113,6 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="{{ route('customer.reviews.index') }}" class="unset">
-                        <i class="icon reviews text-down-3"></i>
-                        <span>{{ __('velocity::app.shop.general.reviews') }}</span>
-                    </a>
-                </li>
 
                 @if (core()->getConfigData('general.content.shop.wishlist_option'))
                     <li>

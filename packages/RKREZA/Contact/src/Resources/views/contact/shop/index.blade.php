@@ -31,18 +31,24 @@
             }
 
             .shaka-p {
-                font-family: "Outfit",sans-serif;
+                font-family: "Outfit", sans-serif;
                 font-size: 18px;
                 font-style: normal;
-                color: #777777;
+                color: #777;
                 font-weight: 300;
                 line-height: 32px;
             }
 
-            .shaka-checkbox{
+            input[type='checkbox'].shaka-checkbox {
                 width: 20px;
                 height: 20px;
+                outline: transparent;
+                border-radius: 100px;
+                accent-color: #1197c2;
             }
+
+
+
         </style>
     @endpush
     @push('scripts')
@@ -89,7 +95,7 @@
                                         <div class="row">
                                             <div class="col-sm-12 col-md-6">
                                                 <div class="form-group">
-                                                    <label class="cd-label mb-2" for="cd-name"><b>Name</b></label>
+                                                    <label class="cd-label mb-2" for="cd-name">Name</label>
                                                     <input class="text-input form-style py-4"
                                                            placeholder="Name..." type="text" name="name"
                                                            id="cd-name" required>
@@ -98,7 +104,7 @@
                                             <div class="col-sm-12 col-md-6">
                                                 <div class="form-group">
                                                     <label class="cd-label mb-2"
-                                                           for="cd-email"><b>E-mail address</b></label>
+                                                           for="cd-email">E-mail address</label>
                                                     <input class="text-input form-style py-4"
                                                            placeholder="Email..." type="email" name="email"
                                                            id="cd-email" required>
@@ -108,15 +114,15 @@
 
                                         <div class="form-group mt-4">
                                             <label class="cd-label mb-2"
-                                                   for="cd-message_title"><b>Subject</b></label>
+                                                   for="cd-message_title">Subject</label>
                                             <input class="text-input form-style py-4"
                                                    placeholder="Subject..." type="text" name="message_title"
                                                    id="cd-message_title" required>
                                         </div>
 
                                         <div class="form-group mt-5">
-                                            <label class="cd-label mb-2" for="cd-textarea"><b>Your
-                                                    message</b></label>
+                                            <label class="cd-label mb-2" for="cd-textarea">Your
+                                                message</label>
                                             <textarea class="message form-control"
                                                       placeholder="Message..." name="message_body" rows="10"
                                                       id="cd-textarea" required></textarea>
@@ -127,14 +133,16 @@
                                         </div>
 
                                         <div class="form-group contact-checkbox">
-                                            <input type="checkbox" name="" class="shaka-checkbox contact-checkbox" id="" required> <span class="shaka-p">By checking this box, I agree to the <a
+                                            <input type="checkbox" name="" class="shaka-checkbox contact-checkbox" id=""
+                                                   required> <span class="shaka-p">By checking this box, I agree to the <a
                                                     href="/privacy-policy" target="_blank">Privacy Policy</a> </span>
                                         </div>
 
                                         <button
                                             class="theme-btn btn-shaka bg-shaka-primary fw1 btn mt-4"
                                             type="submit"
-                                            data-action='submit'>Send a message </button>
+                                            data-action='submit'>Send a message
+                                        </button>
                                     </form>
                                 </div>
                             </div>
@@ -144,6 +152,5 @@
             </div>
         </div>
     </div>
-
 
 @endsection

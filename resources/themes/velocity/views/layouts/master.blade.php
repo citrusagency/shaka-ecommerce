@@ -25,6 +25,13 @@
             line-height: 32px!important;
             font-family: "Outfit", sans-serif!important;
         }
+         input[type='checkbox'].shaka-checkbox {
+             width: 20px;
+             height: 20px;
+             outline: transparent;
+             border-radius: 100px;
+             accent-color: #1197c2;
+         }
 
         .material-icons{
             font-family: 'Material Icons'!important;
@@ -49,6 +56,7 @@
             line-height: 22px !important;
             padding: 8px 22px !important;
         }
+
 
         .bnt-shaka-primary:hover{
             color:#0A7A9D;
