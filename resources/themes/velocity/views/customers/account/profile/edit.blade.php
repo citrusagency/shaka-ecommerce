@@ -55,6 +55,7 @@
                 {!! view_render_event('bagisto.shop.customers.account.profile.edit.last_name.after', ['customer' => $customer]) !!}
             </div>
 
+
             <div class="row">
 
                 <div class="col-lg-6 col-md-10 col-sm-12">
@@ -92,6 +93,7 @@
                     <div :class="` col-12 ${errors.has('oldpassword') ? 'has-error' : ''}`">
                         <input class="profile-input form-control" value="" name="oldpassword" type="password"/>
                     </div>
+
                 </div>
 
                 {!! view_render_event('bagisto.shop.customers.account.profile.edit.oldpassword.after', ['customer' => $customer]) !!}

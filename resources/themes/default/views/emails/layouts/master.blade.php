@@ -70,6 +70,18 @@
                 border:none;
                 border-radius: 6px;
             }
+            .message-container{
+                padding-left: 30px;
+                border-left: 3px solid rgba(35, 36, 39, 0.63);
+                border-radius: 1.5%;
+                margin-bottom: 40px;
+            }
+            .message-container > div{
+                padding: 5px 0;
+            }
+            .message-container > div > span{
+                padding-left: 5px;
+            }
             .by-author{
                 font-size:16px;
                 padding-bottom:60px;
