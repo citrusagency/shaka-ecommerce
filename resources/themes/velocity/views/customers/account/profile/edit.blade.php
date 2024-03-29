@@ -29,8 +29,8 @@
                 </label>
 
 
-                <input value="{{ $customer->first_name }}" class="profile-input form-control" name="first_name"
-                       type="text" v-validate="'required'"
+                <input value="{{ $customer->first_name }}" class="profile-control-input profile-input form-control" name="first_name"
+                       type="text" v-validate="'required'" id="first_name"
                        data-vv-as="&quot;{{ __('shop::app.customer.account.profile.fname') }}&quot;"/>
                 <span class="control-error" v-if="errors.has('first_name')"
                       v-text="errors.first('first_name')"></span>
@@ -43,7 +43,7 @@
                     {{ __('shop::app.customer.account.profile.lname') }}
                 </label>
 
-                <input value="{{ $customer->last_name }}" class="profile-input form-control" name="last_name"
+                <input value="{{ $customer->last_name }}" class="profile-control-input profile-input form-control" name="last_name"
                        type="text" v-validate="'required'"
                        data-vv-as="&quot;{{ __('shop::app.customer.account.profile.lname') }}&quot;"/>
                 <span class="control-error" v-if="errors.has('last_name')"
@@ -53,30 +53,30 @@
             {!! view_render_event('bagisto.shop.customers.account.profile.edit.last_name.after', ['customer' => $customer]) !!}
 
 
-            <div class="col-lg-6 col-md-10 col-sm-12">
+            <div class="col-lg-6 col-md-10 col-sm-12 form-group">
                 <label class="mandatory form-label">
                     {{ __('shop::app.customer.account.profile.email') }}
                 </label>
 
-                <input class="profile-input form-control" value="{{ $customer->email }}" name="email" type="text"
+                <input class="profile-control-input profile-input form-control" value="{{ $customer->email }}" name="email" type="text"
                        v-validate="'required'"/>
                 <span class="control-error" v-if="errors.has('email')" v-text="errors.first('email')"></span>
             </div>
             {!! view_render_event('bagisto.shop.customers.account.profile.edit.email.after', ['customer' => $customer]) !!}
 
-            <div class="col-lg-6 col-md-10 col-sm-12">
+            <div class="col-lg-6 col-md-10 col-sm-12 form-group">
                 <label class="form-label">
                     {{ __('shop::app.customer.account.profile.phone') }}
                 </label>
 
-                <input class="profile-input form-control"
+                <input class="profile-control-input profile-input form-control"
                        value="{{ old('phone') ?? $customer->phone }}" name="phone" type="text"/>
                 <span class="control-error" v-if="errors.has('phone')" v-text="errors.first('phone')"></span>
             </div>
             {!! view_render_event('bagisto.shop.customers.account.profile.edit.phone.after', ['customer' => $customer]) !!}
 
 
-            <div class="mt-5 col-lg-6 col-md-10 col-sm-12">
+            <div class="mt-5 col-lg-6 col-md-10 col-sm-12 form-group">
                 <h4 class="">Change your password</h4>
                 <div class="">
                     <label class="form-label">
@@ -138,10 +138,10 @@
                 {!! view_render_event('bagisto.shop.customers.account.profile.edit_form_controls.after', ['customer' => $customer]) !!}
 
                 <div class="my-5">
-
                     <button
                         type="submit"
-                        class="display-block theme-btn col-lg-3 col-md-10 col-sm-12 mt-5 mb20">
+                        id="submitBtn"
+                        class="display-block theme-btn col-lg-3 col-md-10 col-sm-12 mt-5 mb20" disabled>
                         Save
                     </button>
 
@@ -151,14 +151,10 @@
                         Delete account
                     </button>
                 </div>
-
             </div>
         </div>
-
-
-
-
     </form>
+
     <div id="deleteProfileForm" class="d-none">
         <form method="POST" action="{{ route('customer.profile.destroy') }}" @submit.prevent="onSubmit">
             @csrf
@@ -197,6 +193,19 @@
 
     @push('scripts')
         <script>
+            $(document).ready(function(){
+                let name = $('.profile-control-input');
+
+                name.each(function() {
+                    $(this).on('input', function () {
+                        let phpName = "{{ $customer->first_name }}"
+                        if ($(this).val() !== phpName) {
+                            $('#submitBtn').prop('disabled', false);
+                        }
+                    });
+                })
+            })
+
             /**
              * Show delete profile modal.
              */
@@ -205,6 +214,8 @@
 
                 window.app.showModal('deleteProfile');
             }
+
+
         </script>
     @endpush
 
