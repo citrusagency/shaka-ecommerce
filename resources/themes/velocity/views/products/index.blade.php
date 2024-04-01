@@ -5,7 +5,7 @@
 
 @section('page_title')
     Shop
-{{--        {{ trim($category->meta_title) != "" ? $category->meta_title : $category->name }}--}}
+    {{--        {{ trim($category->meta_title) != "" ? $category->meta_title : $category->name }}--}}
 @stop
 
 {{--@section('seo')--}}
@@ -59,27 +59,27 @@
                 {{--            @endif--}}
 
                 <div class="col-12 col-md-8 container right" style="padding:0 10px; width: 100%;">
-                    <div class="row remove-padding-margin">
-                        <div class="pl0 col-12">
-                            {{--                        <h2 class="fw6 mb10">{{ $category->name }}</h2>--}}
+                    {{--                    <div class="row remove-padding-margin">--}}
+                    {{--                        <div class="pl0 col-12">--}}
+                    {{--                                                    <h2 class="fw6 mb10">{{ $category->name }}</h2>--}}
 
-                            @if ($isDescriptionDisplayMode)
-                                {{--                            @if ($category->description)--}}
-                                {{--                                <div class="category-description">--}}
-                                {{--                                    {!! $category->description !!}--}}
-                                {{--                                </div>--}}
-                                {{--                            @endif--}}
-                            @endif
-                        </div>
+                    {{--                            @if ($isDescriptionDisplayMode)--}}
+                    {{--                                                            @if ($category->description)--}}
+                    {{--                                                                <div class="category-description">--}}
+                    {{--                                                                    {!! $category->description !!}--}}
+                    {{--                                                                </div>--}}
+                    {{--                                                            @endif--}}
+                    {{--                            @endif--}}
+                    {{--                        </div>--}}
 
-                        <div class="col-12 no-padding">
-                            <div class="hero-image">
-                                {{--                            @if (!is_null($category->image))--}}
-                                {{--                                <img class="logo" src="{{ $category->image_url }}" alt="" width="20" height="20" />--}}
-                                {{--                            @endif--}}
-                            </div>
-                        </div>
-                    </div>
+                    {{--                        <div class="col-12 no-padding">--}}
+                    {{--                            <div class="hero-image">--}}
+                    {{--                                                            @if (!is_null($category->image))--}}
+                    {{--                                                                <img class="logo" src="{{ $category->image_url }}" alt="" width="20" height="20" />--}}
+                    {{--                                                            @endif--}}
+                    {{--                            </div>--}}
+                    {{--                        </div>--}}
+                    {{--                    </div>--}}
 
 
                     <div class="filters-container">
@@ -88,12 +88,11 @@
                         </template>
                     </div>
 
-                    <div
-                        class="category-block"
-                    {{--                        @if ($category->display_mode == 'description_only')--}}
-                    {{--                            style="width: 100%"--}}
-                    {{--                        @endif>--}}
-
+                    {{--                    <div class="category-block">--}}
+                    {{--                                            @if ($category->display_mode == 'description_only')--}}
+                    {{--                                                style="width: 100%"--}}
+                    {{--                                            @endif>--}}
+                    {{--                                        </div>--}}
                     <shimmer-component v-if="isLoading" shimmer-count="4"></shimmer-component>
 
                     <template v-else-if="products.length > 0">
@@ -129,10 +128,8 @@
                         <p>{{ __('shop::app.products.empty') }}</p>
                     </div>
                 </div>
-
             </div>
-            </div>
-            {{--            {!! view_render_event('bagisto.shop.productOrCategory.index.after', ['category' => $category]) !!}--}}
+            {{--                        {!! view_render_event('bagisto.shop.productOrCategory.index.after', ['category' => $category]) !!}--}}
         </section>
     </script>
 
