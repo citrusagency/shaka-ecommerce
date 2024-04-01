@@ -106,30 +106,32 @@
             align-items: flex-end;
             justify-content: space-between;
         }
+
         body {
-            overflow-x: hidden!important;
+            overflow-x: hidden !important;
         }
+
         .titlebaby1 .titlebaby div h2 {
-            font-weight: 400!important;
-            font-size: 1.8rem!important;
+            font-weight: 400 !important;
+            font-size: 1.8rem !important;
         }
+
         .galop {
-            background-color: #FAFAFA!important;
+            background-color: #FAFAFA !important;
             display: grid;
             place-items: center;
         }
 
-        .quantity .actions .add-to-cart-btn button.notify-available{
-            background: #B84626!important;
-            color: #fff!important;
-            border-radius: 5px!important;
-            border: none!important;
+        .quantity .actions .add-to-cart-btn button.notify-available {
+            background: #B84626 !important;
+            color: #fff !important;
+            border-radius: 5px !important;
+            border: none !important;
         }
     </style>
 @endpush
 
 @section('content-wrapper')
-{{--    {{ dd($relatedProducts) }}--}}
     <div class="container pt-4">
         <p>HOME > SHOP > {{ $product->name }}</p>
         {!! view_render_event('bagisto.shop.products.view.before', ['product' => $product]) !!}
@@ -137,7 +139,6 @@
             <section class="col-12 product-detail">
                 <div class="layouter">
                     <product-view>
-
                         <div class="form-container">
                             @csrf()
 
@@ -153,8 +154,8 @@
                                 <div class="right col-lg-7 col-md-6">
                                     {{-- product-info-section --}}
                                     <div class="info">
-                                        <h2 class="col-12 pb-0 mb-0 font-shaka-noto-serif"
-                                            style="font-weight: 400!important;font-size: 2rem; line-height: 1.9rem;">{{ $product->name }}</h2>
+                                        <h2 class="col-12 pb-0 mb-0"
+                                            style="font-weight: 400!important;font-size: 2rem; line-height: 1.9rem;"> {{ $product->name }}</h2>
 
                                         {{--                                        @if ($total)--}}
                                         {{--                                            <div class="reviews col-lg-12">--}}
@@ -192,7 +193,6 @@
 
                                         @include ('shop::products.view.description')
 
-
                                         @if (count($product->getTypeInstance()->getCustomerGroupPricingOffers()) > 0)
                                             <div class="col-12">
                                                 @foreach ($product->getTypeInstance()->getCustomerGroupPricingOffers() as $offers)
@@ -229,8 +229,8 @@
                                                 @if ($product->getTypeInstance()->showQuantityBox())
                                                     <div class="col-12 actions">
                                                         @if($product->isSaleable())
-                                                        <quantity-changer
-                                                            quantity-text="{{ __('shop::app.products.quantity') }}"></quantity-changer>
+                                                            <quantity-changer
+                                                                quantity-text="{{ __('shop::app.products.quantity') }}"></quantity-changer>
                                                         @endif
                                                         <div>
                                                             @if (core()->getConfigData('catalog.products.storefront.buy_now_button_display'))
@@ -260,10 +260,8 @@
                                                         @include('shop::products.wishlist-product', [
                                                             'addClass' => $addWishlistClass ?? ''
                                                         ])
-
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
 
@@ -271,46 +269,46 @@
                                         <div class="details-section py-2">
                                             <p>CATEGORY:
                                                 <span class="text-uppercase text-shaka-primary">
-            {{ $product->product->categories->implode('name', ', ') }}
-        </span>
+                                                    {{ $product->product->categories->implode('name', ', ') }}
+                                                </span>
                                             </p>
                                             <div class="pt-3 d-flex align-content-center"
                                                  style="display: flex!important; align-items: flex-end;">
                                                 <p>SHARE THIS PRODUCT:</p>
                                                 <div class="d-flex gap-2" style="gap: 10px">
-            <span>
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::fullUrl()) }}"
-                   target="_blank">
-                    <img src="{{asset('images/Facebook.svg')}}" alt="">
-                </a>
-            </span>
                                                     <span>
-                <a href="fb-messenger://share?link={{ urlencode(Request::fullUrl()) }}" target="_blank">
-                    <img src="{{asset('images/Messenger.svg')}}" alt="">
-                </a>
-            </span>
+                                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::fullUrl()) }}"
+                                                           target="_blank">
+                                                            <img src="{{asset('images/Facebook.svg')}}" alt="">
+                                                        </a>
+                                                    </span>
                                                     <span>
-                <a href="https://twitter.com/share?url={{ urlencode(Request::fullUrl()) }}&text={{ $product->name }}&via=YourTwitterUsername"
-                   target="_blank">
-                    <img src="{{asset('images/Twitter.svg')}}" alt="">
-                </a>
-            </span>
+                                                        <a href="fb-messenger://share?link={{ urlencode(Request::fullUrl()) }}"
+                                                           target="_blank">
+                                                            <img src="{{asset('images/Messenger.svg')}}" alt="">
+                                                        </a>
+                                                    </span>
                                                     <span>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(Request::fullUrl()) }}&title={{ $product->name }}&source={{ config('app.url') }}"
-                   target="_blank">
-                    <img src="{{asset('images/Linkedin.svg')}}" alt="">
-                </a>
-            </span>
+                                                        <a href="https://twitter.com/share?url={{ urlencode(Request::fullUrl()) }}&text={{ $product->name }}&via=YourTwitterUsername"
+                                                           target="_blank">
+                                                            <img src="{{asset('images/Twitter.svg')}}" alt="">
+                                                        </a>
+                                                    </span>
                                                     <span>
-                <a href="#"
-                   onclick="event.preventDefault(); navigator.clipboard.writeText('{{ Request::fullUrl() }}'); alert('Link copied to clipboard!');">
-                    <img src="{{asset('images/Link45deg.svg')}}" alt="">
-                </a>
-            </span>
+                                                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(Request::fullUrl()) }}&title={{ $product->name }}&source={{ config('app.url') }}"
+                                                           target="_blank">
+                                                            <img src="{{asset('images/Linkedin.svg')}}" alt="">
+                                                        </a>
+                                                    </span>
+                                                    <span>
+                                                        <a href="#"
+                                                           onclick="event.preventDefault(); navigator.clipboard.writeText('{{ Request::fullUrl() }}'); alert('Link copied to clipboard!');">
+                                                            <img src="{{asset('images/Link45deg.svg')}}" alt="">
+                                                        </a>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
-
 
                                         {{--                                        @include ('shop::products.view.configurable-options')--}}
 
@@ -334,56 +332,49 @@
                                         {{--                                                'showCompare' => core()->getConfigData('general.content.shop.compare_option') == "1"--}}
                                         {{--                                                                ? true : false,--}}
                                         {{--                                            ])--}}
-                                        {{--                                        </div>--}}
+                                        {{--                                    </div>--}}
                                     </div>
 
-                                    {{--                                    @include ('shop::products.view.short-description')--}}
-
-
+                                    @include ('shop::products.view.short-description')
 
                                     {{-- product long description --}}
-                                    {{--                                    @include ('shop::products.view.description')--}}
+{{--                                    @include ('shop::products.view.description')--}}
 
                                     {{-- reviews count --}}
-                                    {{--                                    @include ('shop::products.view.reviews', ['accordian' => true])--}}
+                                    {{-- @include ('shop::products.view.reviews', ['accordian' => true])--}}
                                 </div>
                             </div>
                         </div>
                     </product-view>
-
                 </div>
-
-
-
             </section>
-            @if($product->product->washing_tips || $product->product->specifications || $product->product->delivery)
-            <div class="specs w-100 mt-5">
-                <product-specs :product="{{ $product }}"></product-specs>
-            </div>
-            @endif
-
-            @if($product->product->galop_sticker)
-                <div class="galop w-100 mt-5 py-5">
-                    <img src="{{asset("images/galop.png")}}" alt="">
-                </div>
+        </div>
+    </div>
+            <section class="col-12">
+                @if($product->product->washing_tips || $product->product->specifications || $product->product->delivery)
+                    <div class="specs w-100 mt-5">
+                        <product-specs :product="{{ $product }}"></product-specs>
+                    </div>
                 @endif
+            </section>
+            <section class="col-12">
+                @if($product->product->galop_sticker)
+                    <div class="galop w-100 mt-5 py-5">
+                        <img src="{{asset("images/galop.png")}}" alt="">
+                    </div>
+                @endif
+            </section>
 
             <div class="related-products mt-5">
                 @if($relatedProducts->count())
-                <div class="bg-shaka-light py-5" style="    width: 121%;
-    margin-left: -10%;
-    padding-left: 10%;
-    overflow: hidden;">
-
-                @include('shop::products.view.related-products', ['relatedProducts' => $relatedProducts])
-                </div>
+                    <div class="bg-shaka-light py-5" style="width: 121%; margin-left: -10%; padding-left: 10%;overflow: hidden;">
+                        @include('shop::products.view.related-products', ['relatedProducts' => $relatedProducts])
+                    </div>
                 @endif
                 @include('shop::products.view.up-sells')
             </div>
 
-        </div>
-        {!! view_render_event('bagisto.shop.products.view.after', ['product' => $product]) !!}
-    </div>
+    {{--    {!! view_render_event('bagisto.shop.products.view.after', ['product' => $product]) !!}--}}
 @endsection
 
 @push('scripts')
