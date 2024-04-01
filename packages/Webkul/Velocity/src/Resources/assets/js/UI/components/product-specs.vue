@@ -1,19 +1,19 @@
 <template>
     <div class="w-100">
-        <div class="tabs font-shaka-noto-serif">
-            <div class="tab font-shaka-noto-serif"
+        <div class="tabs ">
+            <div class="tab "
                  v-if="product.product.specifications"
                  :class="{ active: activeTab === 'specifications' }"
                  @click="activeTab = 'specifications'">
                 Specifications
             </div>
-            <div class="tab font-shaka-noto-serif"
+            <div class="tab "
                  v-if="product.product.washing_tips"
                  :class="{ active: activeTab === 'washingtips' }"
                  @click="activeTab = 'washingtips'">
                 Washing tips
             </div>
-            <div class="tab font-shaka-noto-serif"
+            <div class="tab "
                  v-if="product.product.delivery"
                  :class="{ active: activeTab === 'delivery' }"
                  @click="activeTab = 'delivery'">
@@ -21,13 +21,13 @@
             </div>
         </div>
 
-        <div class="tab-content font-shaka-open-sans" v-if="activeTab === 'specifications'" v-html="product.product.specifications">
+        <div class="tab-content" v-if="activeTab === 'specifications'" v-html="product.product.specifications">
         </div>
 
-        <div class="tab-content font-shaka-open-sans" v-if="activeTab === 'washingtips'" v-html="product.product.washing_tips">
+        <div class="tab-content" v-if="activeTab === 'washingtips'" v-html="product.product.washing_tips">
         </div>
 
-        <div class="tab-content font-shaka-open-sans" v-if="activeTab === 'delivery'" v-html="product.product.delivery">
+        <div class="tab-content" v-if="activeTab === 'delivery'" v-html="product.product.delivery">
         </div>
     </div>
 </template>
@@ -50,9 +50,6 @@
     font-size: 1.5em;
     position: relative;
     cursor: pointer;
-    &.font-shaka-noto-serif {
-        // Styles for this class
-    }
 
     &:last-child {
         margin-right: 0;
