@@ -35,7 +35,7 @@ class ProductsCategoriesProxyController extends Controller
         $productImage = ProductImage::getProductBaseImage($product, $galleryImages)['medium_image_url'];
 
         $largeProductImageName = 'large-product-placeholder.png';
-        $mediumProductImageName = 'meduim-product-placeholder.png';
+        $mediumProductImageName = 'medium-product-placeholder.png';
 
         if (strpos($productImage, $mediumProductImageName) > -1) {
             $productImageNameCollection = explode('/', $productImage);
