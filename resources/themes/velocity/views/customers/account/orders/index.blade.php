@@ -5,10 +5,8 @@
 @endsection
 
 @section('page-detail-wrapper')
-    <div class="account-head mb-10">
-        <span class="account-heading">
+    <div class="profile-content-title">
             {{ __('shop::app.customer.account.order.index.title') }}
-        </span>
     </div>
 
     {!! view_render_event('bagisto.shop.customers.account.orders.list.before') !!}

@@ -23,7 +23,7 @@
                         {{ ($product->type == 'booking') ?  __('shop::app.products.book-now') :  __('shop::app.products.add-to-cart') }}
                     </button>
                 @else
-                    <button>marko</button>
+                    <button>Notify me when available</button>
                 @endif
             @elseif(isset($addToCartForm) && ! $addToCartForm)
                 <form
@@ -71,23 +71,22 @@
                     btn-text="{{ (! isset($moveToCart) && $product->type == 'booking') ?  __('shop::app.products.book-now') : $btnText ?? __('shop::app.products.add-to-cart') }}">
                     </add-to-cart>
                 @else
-                    <button class="btn btn-add-to-cart available text-uppercase font-shaka-open-sans" style="font-size: 12px;
+                    <button class="{{ $addToCartBtnClass ?? '' }}" style="font-size: 16px!important;
+                    width: 100%;
                     background-color: transparent!important;
                     border: none!important;
                     text-align: left;
-                    font-weight: 700;
+                    font-weight: 500; line-height: 24px;
                     /*text-decoration: underline;*/
-                    ">let me know when available</button>
+                    ">Notify me when available</button>
                 @endif
             @endif
         </div>
     </div>
     <div class="col-4 p-0 pr-2">
-
         @include('shop::products.wishlist', [
             'addClass' => $addWishlistClass ?? ''
         ])
-
     </div>
 </div>
 
