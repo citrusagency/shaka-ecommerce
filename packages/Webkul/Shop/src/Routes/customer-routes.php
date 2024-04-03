@@ -119,12 +119,12 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
                      * Profile.
                      */
                     Route::get('profile', [CustomerController::class, 'index'])->defaults('_config', [
-                        'view' => 'shop::customers.account.profile.index',
+                        'view' => 'shop::customers.account.profile.edit',
                     ])->name('customer.profile.index');
 
-                    Route::get('profile/edit', [CustomerController::class, 'edit'])->defaults('_config', [
-                        'view' => 'shop::customers.account.profile.edit',
-                    ])->name('customer.profile.edit');
+//                    Route::get('profile/edit', [CustomerController::class, 'edit'])->defaults('_config', [
+//                        'view' => 'shop::customers.account.profile.edit',
+//                    ])->name('customer.profile.edit');
 
                     Route::post('profile/edit', [CustomerController::class, 'update'])->defaults('_config', [
                         'redirect' => 'customer.profile.index',
