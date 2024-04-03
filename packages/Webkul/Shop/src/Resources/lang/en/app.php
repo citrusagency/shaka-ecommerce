@@ -353,6 +353,7 @@ return [
                 'page-title'           => 'Wishlist',
                 'title'                => 'Wishlist',
                 'deleteall'            => 'Delete All',
+                'removeall'            => 'Remove all items',
                 'confirm-delete-all'   => 'Are you sure you want to delete all wishlist?',
                 'moveall'              => 'Move All Products To Cart',
                 'move-to-cart'         => 'Move To Cart',

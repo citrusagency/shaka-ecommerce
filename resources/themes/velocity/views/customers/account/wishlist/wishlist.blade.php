@@ -6,15 +6,52 @@
     {{ __('shop::app.customer.account.wishlist.page-title') }}
 @endsection
 
+@push('css')
+    <style type="text/css">
+        .wishlist-cont{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: left;
+            align-items: flex-start;
+            gap:24px;
+        }
+        .remove-btn{
+            margin-top:5px;
+            background-color: #efefef;
+            border-radius: 50%;
+            padding: 3px 8px;
+            color:black !important;
+            border: none;
+        }
+        .remove-btn:hover{
+            background-color: #cecece;
+        }
+        .add-to-bag-link{
+            padding: 8px;
+            display: inline;
+        }
+
+        @media (max-width: 992px){
+            .wishlist-cont{
+                justify-content: space-evenly;
+            }
+        }
+
+    </style>
+@endpush
+
 @section('page-detail-wrapper')
-    <div class="account-head">
-        <span class="account-heading">{{ __('shop::app.customer.account.wishlist.title') }}</span>
+    <div class="account-head page-title-container">
+        <div class="profile-content-title">
+            {{ __('shop::app.customer.account.wishlist.title') }}
+        </div>
 
         @if (count($items))
-            <span class="account-action d-inline-flex">
+            <span class="kz-link">
                 <form id="remove-all-wishlist" class="d-none" action="{{ route('customer.wishlist.removeall') }}" method="POST">
                     @method('DELETE')
-
                     @csrf
                 </form>
 
@@ -25,15 +62,13 @@
                         onclick="window.showShareWishlistModal();">
                         {{ __('shop::app.customer.account.wishlist.share') }}
                     </a>
-
-                    &nbsp;
                 @endif
 
                 <a
-                    class="remove-decoration theme-btn light"
+                    class="remove-decoration" style="color:#1197C2; font-weight: 500;"
                     href="javascript:void(0);"
                     onclick="window.deleteAllWishlist();">
-                    {{ __('shop::app.customer.account.wishlist.deleteall') }}
+                    {{ __('shop::app.customer.account.wishlist.removeall') }}
                 </a>
             </span>
         @endif
@@ -41,23 +76,97 @@
 
     {!! view_render_event('bagisto.shop.customers.account.wishlist.list.before', ['wishlist' => $items]) !!}
 
-    <div class="wishlist-container">
-        @if ($items->count())
-            @foreach ($items as $item)
-                @include ('shop::customers.account.wishlist.wishlist-product', [
-                    'item' => $item,
-                    'visibility' => $isSharingEnabled
-                ])
-            @endforeach
+    <div class="wishlist-cont">
+        <div>
+            @if ($items->count())
+                @foreach ($items as $item)
+                    @include ('shop::customers.account.wishlist.wishlist-product', [
+                        'item' => $item,
+                        'visibility' => $isSharingEnabled
+                    ])
+                @endforeach
 
-            <div>
-                {{ $items->links()  }}
-            </div>
-        @else
-            <div class="empty">
-                {{ __('customer::app.wishlist.empty') }}
-            </div>
-        @endif
+{{--                <div>--}}
+{{--                    {{ $items->links()  }}--}}
+{{--                </div>--}}
+            @else
+                <div class="empty">
+                    {{ __('customer::app.wishlist.empty') }}
+                </div>
+            @endif
+        </div>
+        <div>
+            @if ($items->count())
+                @foreach ($items as $item)
+                    @include ('shop::customers.account.wishlist.wishlist-product', [
+                        'item' => $item,
+                        'visibility' => $isSharingEnabled
+                    ])
+                @endforeach
+
+                {{--                <div>--}}
+                {{--                    {{ $items->links()  }}--}}
+                {{--                </div>--}}
+            @else
+                <div class="empty">
+                    {{ __('customer::app.wishlist.empty') }}
+                </div>
+            @endif
+        </div>
+        <div>
+            @if ($items->count())
+                @foreach ($items as $item)
+                    @include ('shop::customers.account.wishlist.wishlist-product', [
+                        'item' => $item,
+                        'visibility' => $isSharingEnabled
+                    ])
+                @endforeach
+
+                {{--                <div>--}}
+                {{--                    {{ $items->links()  }}--}}
+                {{--                </div>--}}
+            @else
+                <div class="empty">
+                    {{ __('customer::app.wishlist.empty') }}
+                </div>
+            @endif
+        </div>
+        <div>
+            @if ($items->count())
+                @foreach ($items as $item)
+                    @include ('shop::customers.account.wishlist.wishlist-product', [
+                        'item' => $item,
+                        'visibility' => $isSharingEnabled
+                    ])
+                @endforeach
+
+                {{--                <div>--}}
+                {{--                    {{ $items->links()  }}--}}
+                {{--                </div>--}}
+            @else
+                <div class="empty">
+                    {{ __('customer::app.wishlist.empty') }}
+                </div>
+            @endif
+        </div>
+        <div>
+            @if ($items->count())
+                @foreach ($items as $item)
+                    @include ('shop::customers.account.wishlist.wishlist-product', [
+                        'item' => $item,
+                        'visibility' => $isSharingEnabled
+                    ])
+                @endforeach
+
+                {{--                <div>--}}
+                {{--                    {{ $items->links()  }}--}}
+                {{--                </div>--}}
+            @else
+                <div class="empty">
+                    {{ __('customer::app.wishlist.empty') }}
+                </div>
+            @endif
+        </div>
     </div>
 
     @if($isSharingEnabled)
@@ -137,7 +246,7 @@
                             >
                                 {{ __('shop::app.customer.account.wishlist.copy') }}
                             </button>
-                        </div> 
+                        </div>
                     </div>
 
                     <p class="alert alert-danger" v-else>
