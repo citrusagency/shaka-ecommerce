@@ -5,8 +5,8 @@
 @endsection
 
 @section('page-detail-wrapper')
-    <div class="account-head mb-15">
-        <h4 class="account-heading">{{ __('shop::app.customer.account.profile.index.title') }}</h4>
+    <div class="profile-content-title">
+        {{ __('shop::app.customer.account.profile.index.title') }}
     </div>
 
     {!! view_render_event('bagisto.shop.customers.account.profile.edit.before', ['customer' => $customer]) !!}
