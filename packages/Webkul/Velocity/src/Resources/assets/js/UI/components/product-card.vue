@@ -79,7 +79,7 @@
     <!--                :data-src="product.image || product.product_image"-->
     <!--                class="card-img-top lzy_img w-100"-->
     <!--                :onerror="`this.src='${this.$root.baseUrl}/vendor/webkul/ui/assets/images/product/large-product-placeholder.png'`" />-->
-    <!--                &lt;!&ndash; :src="`${$root.baseUrl}/vendor/webkul/ui/assets/images/product/meduim-product-placeholder.png`" /> &ndash;&gt;-->
+    <!--                &lt;!&ndash; :src="`${$root.baseUrl}/vendor/webkul/ui/assets/images/product/medium-product-placeholder.png`" /> &ndash;&gt;-->
 
     <!--            <product-quick-view-btn :quick-view-details="product"></product-quick-view-btn>-->
     <!--        </a>-->
