@@ -1,5 +1,26 @@
-<div class="col-12 lg-card-container list-card product-card row">
-    <div class="product-image">
+@push('css')
+    <style type="text/css">
+        .wishcard-title{
+            color: #232427;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            letter-spacing: 0.64px;
+        }
+        .product-price-kz{
+            color: #777;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 22px;
+            letter-spacing: 0.48px;
+        }
+    </style>
+@endpush
+
+<div class="lg-card-container product-card" >
+    <div class="product-image" style=" position: relative !important;">
         @php
             $image = $item->product->getTypeInstance()->getBaseImage($item);
         @endphp
@@ -7,24 +28,29 @@
         <a
             title="{{ $item->product->name }}"
             href="{{ route('shop.productOrCategory.index', $item->product->url_key) }}">
-
             <img
                 src="{{ $image['medium_image_url'] }}"
                 :onerror="`this.src='${this.$root.baseUrl}/vendor/webkul/ui/assets/images/product/large-product-placeholder.png'`" alt="" />
-
-                <div class="quick-view-in-list">
-            </div>
+                {{--            <div class="quick-view-in-list">--}}
+                {{--            </div>--}}
         </a>
+        <div class="remove-icon" style="position: absolute !important;bottom:0; right:0; margin:10px;">
+            <form id="wishlist-{{ $item->id }}" action="{{ route('customer.wishlist.remove', $item->id) }}" method="POST">
+                @method('DELETE')
+                <button class="rango-delete fs24 remove-btn"></button>
+                @csrf
+            </form>
+        </div>
     </div>
 
     <div class="product-information">
         <div class="p-2">
-            <div class="product-name">
+            <div class="m-0 p-0">
                 <a
                     href="{{ route('shop.productOrCategory.index', $item->product->url_key) }}"
                     title="{{ $item->product->name }}" class="unset">
 
-                    <span class="fs16">{{ $item->product->name }}</span>
+                    <span class="wishcard-title">{{ $item->product->name }}</span>
 
 
                     @if (isset($item->additional['attributes']))
@@ -47,33 +73,34 @@
                 @endif
             </div>
 
-            <div class="product-price">
+            <div class="m-0 p-0">
                 @include ('shop::products.price', ['product' => $item->product])
             </div>
 
-            <div class="cart-wish-wrap mt5">
-                @if ($visibility ?? false)
-                    <div class="mb-2">
-                        <span class="fs16">
-                            {{ __('shop::app.customer.account.wishlist.visibility') }} :
-
-                            <span class="badge {{ $item->shared ? 'badge-success' : 'badge-danger' }}">
-                                {{ $item->shared ? __('shop::app.customer.account.wishlist.public') : __('shop::app.customer.account.wishlist.private') }}
-                            </span>
-                        </span>
-                    </div>
-                @endif
-
-                <div>
-                    @include('shop::products.add-to-cart', [
-                        'reloadPage'        => true,
-                        'addWishlistClass'  => 'pl10',
-                        'product'           => $item->product,
-                        'addToCartBtnClass' => 'medium-padding',
-                        'showCompare'       => false
-                    ])
-                </div>
+            <div class="m-0 p-0">
+                <a style="display: flex !important; padding: 8px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#1197C2"/>
+                    </svg>
+                    <span class="kz-link">Add to bag</span>
+                </a>
             </div>
+
+            {{--                <a--}}
+            {{--                    class="unset"--}}
+            {{--                    href="{{ route('customer.wishlist.remove', ['id' => $item->product->id]) }}">--}}
+            {{--                    --}}
+            {{--                </a>--}}
+
+            {{--            <div>--}}
+            {{--                @include('shop::products.add-to-cart', [--}}
+            {{--                    'reloadPage'        => true,--}}
+            {{--                    'addWishlistClass'  => 'pl10',--}}
+            {{--                    'product'           => $item->product,--}}
+            {{--                    'addToCartBtnClass' => 'medium-padding',--}}
+            {{--                    'showCompare'       => false--}}
+            {{--                ])--}}
+            {{--            </div>--}}
         </div>
     </div>
 </div>

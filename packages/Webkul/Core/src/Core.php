@@ -648,7 +648,7 @@ class Core
      * @param  string (optional)  $currencyCode
      * @return string
      */
-    public function formatPrice($price, $currencyCode = null)
+    public function formatPrice($price, $currencyCode = null):string
     {
         if (is_null($price)) {
             $price = 0;
@@ -662,15 +662,18 @@ class Core
 
         if ($symbol = $currency->symbol) {
             if ($this->currencySymbol($currency) == $symbol) {
-                return $formatter->formatCurrency($price, $currency->code);
+                return $this->moveCurrencyToEnd($formatter->formatCurrency($price, $currency->code));
             }
-
             $formatter->setSymbol(\NumberFormatter::CURRENCY_SYMBOL, $symbol);
 
             return $formatter->format($this->convertPrice($price));
         }
 
-        return $formatter->formatCurrency($price, $currency->code);
+        return $this->moveCurrencyToEnd($formatter->formatCurrency($price, $currency->code));
+    }
+
+    public function moveCurrencyToEnd($formedCurrency):string{
+        return $result = substr($formedCurrency, 3).substr($formedCurrency,0,3);
     }
 
     /**

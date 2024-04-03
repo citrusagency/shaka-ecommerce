@@ -29,8 +29,8 @@
     }
 
     .main-container-wrapper .product-card .product-image img {
-        max-width: 100%;
-        height: 260px;
+        width: 274px;
+        height: 318px;
         object-fit: cover;
     }
 </style>
