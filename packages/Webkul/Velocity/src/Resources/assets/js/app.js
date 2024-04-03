@@ -54,6 +54,7 @@ Vue.component('mini-cart-button', () => import('@components/mini-cart-button'));
 Vue.component('mini-cart', () => import('@components/mini-cart'));
 Vue.component('modal-component', () => import('@components/modal'));
 Vue.component('add-to-cart', () => import('@components/add-to-cart'));
+Vue.component('add-to-bag', () => import('@components/add-to-bag'));
 Vue.component('star-ratings', () => import('@components/star-rating'));
 Vue.component('quantity-btn', () => import('@components/quantity-btn'));
 Vue.component('quantity-changer', () => import('@components/quantity-changer'));
