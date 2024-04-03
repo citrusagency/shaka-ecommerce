@@ -14,9 +14,9 @@
 
 @section('page-detail-wrapper')
     <div class="account-head mb-0">
-        <span class="account-heading">
+        <div class="profile-content-title">
             {{ __('shop::app.customer.account.profile.index.title') }}
-        </span>
+        </div>
 
         <span class="account-action border">
             <a href="{{ route('customer.profile.edit') }}" class="btn text-white unset float-right">

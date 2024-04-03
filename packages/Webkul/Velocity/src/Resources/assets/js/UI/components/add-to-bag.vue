@@ -1,33 +1,24 @@
 <template>
-    <form method="POST" @submit.prevent="addToCart">
-
-        <!-- for move to cart from wishlist -->
-        <a
-            :href="wishlistMoveRoute"
-            :disabled="isButtonEnable == 'false' || isButtonEnable == false"
-            :class="`btn btn-add-to-cart ${addClassToBtn}`"
-            v-if="moveToCart"
-            >
-
-<!--            <i class="material-icons text-down-3" v-if="showCartIcon">shopping_cart</i>-->
-
-            <span class="fs14 fw6 text-uppercase text-up-4" v-text="btnText"></span>
-        </a>
-￼
-        <!-- for add to cart -->
+    <form method="POST" @submit.prevent="addToCart" class="m-0 p-0">
         <button
             type="submit"
             :disabled="isButtonEnable == 'false' || isButtonEnable == false"
             class="btn bg-transparent text-white atc-btn"
+            style="display: flex !important; padding: 8px;"
             >
-
-<!--            <i class="material-icons text-down-3" v-if="showCartIcon">shopping_cart</i>-->
-
-            <span class="fs14 fw6 text-uppercase text-up-4" v-text="btnText"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#1197C2"/>
+            </svg>
+            <span :class="`${addClassToBtn}`"  v-text="btnText"></span>
         </button>
-
     </form>
 </template>
+
+<style type="text/css">
+    .add-to-bag-btn{
+        color: red;
+    }
+</style>
 
 <script>
     export default {

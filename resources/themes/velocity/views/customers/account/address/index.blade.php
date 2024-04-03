@@ -11,10 +11,10 @@
         </a>
     @endif
 
-    <div class="account-head mt-3">
-        <span class="account-heading">
+    <div>
+        <div class="profile-content-title">
             {{ __('shop::app.customer.account.address.index.title') }}
-        </span>
+        </div>
 
         @if (! $addresses->isEmpty())
             <span class="account-action">
@@ -33,7 +33,7 @@
             @else
                 <div class="row address-holder no-padding">
                     @foreach ($addresses as $address)
-                        <div class="col-lg-4 col-md-6 col-xs-12">
+                        <div >
                             <div class="card m-1">
                                 <div class="card-body">
                                     <h5 class="card-title fw6">{{ $address->first_name }} {{ $address->last_name }}</h5>

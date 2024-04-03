@@ -78,29 +78,13 @@
             </div>
 
             <div class="m-0 p-0">
-                <a style="display: flex !important; padding: 8px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#1197C2"/>
-                    </svg>
-                    <span class="kz-link">Add to bag</span>
-                </a>
+                @include('shop::products.add-to-bag', [
+                    'reloadPage'        => true,
+                    'product'           => $item->product,
+                    'addClassToBtn'     => 'kz-link',
+                    'showCompare'       => false,
+                ])
             </div>
-
-            {{--                <a--}}
-            {{--                    class="unset"--}}
-            {{--                    href="{{ route('customer.wishlist.remove', ['id' => $item->product->id]) }}">--}}
-            {{--                    --}}
-            {{--                </a>--}}
-
-            {{--            <div>--}}
-            {{--                @include('shop::products.add-to-cart', [--}}
-            {{--                    'reloadPage'        => true,--}}
-            {{--                    'addWishlistClass'  => 'pl10',--}}
-            {{--                    'product'           => $item->product,--}}
-            {{--                    'addToCartBtnClass' => 'medium-padding',--}}
-            {{--                    'showCompare'       => false--}}
-            {{--                ])--}}
-            {{--            </div>--}}
         </div>
     </div>
 </div>

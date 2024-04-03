@@ -77,15 +77,16 @@
     {!! view_render_event('bagisto.shop.customers.account.wishlist.list.before', ['wishlist' => $items]) !!}
 
     <div class="wishlist-cont">
-        <div>
             @if ($items->count())
-                @foreach ($items as $item)
-                    @include ('shop::customers.account.wishlist.wishlist-product', [
-                        'item' => $item,
-                        'visibility' => $isSharingEnabled
-                    ])
-                @endforeach
 
+                @foreach ($items as $item)
+                    <div>
+                        @include ('shop::customers.account.wishlist.wishlist-product', [
+                            'item' => $item,
+                            'visibility' => $isSharingEnabled
+                        ])
+                    </div>
+                @endforeach
 {{--                <div>--}}
 {{--                    {{ $items->links()  }}--}}
 {{--                </div>--}}
@@ -94,7 +95,6 @@
                     {{ __('customer::app.wishlist.empty') }}
                 </div>
             @endif
-        </div>
     </div>
 
     @if($isSharingEnabled)
