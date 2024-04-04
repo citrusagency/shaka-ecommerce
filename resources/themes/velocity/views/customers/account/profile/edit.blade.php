@@ -5,14 +5,14 @@
 @endsection
 
 @section('page-detail-wrapper')
-    <div class="profile-content-title">
+    <div class="profile-content-title float-left">
         {{ __('shop::app.customer.account.profile.index.title') }}
     </div>
 
     {!! view_render_event('bagisto.shop.customers.account.profile.edit.before', ['customer' => $customer]) !!}
 
     <form
-        class="profile-form"
+        class="profile-form mt-5"
         method="POST"
         @submit.prevent="onSubmit"
         action="{{ route('customer.profile.store') }}"
@@ -22,135 +22,154 @@
             @csrf
             {!! view_render_event('bagisto.shop.customers.account.profile.edit_form_controls.before', ['customer' => $customer]) !!}
 
-
-            <div :class="`col-lg-6 col-md-10 col-sm-12 form-group ${errors.has('first_name') ? 'has-error' : ''}`">
-                <label class="mandatory form-label">
-                    {{ __('shop::app.customer.account.profile.fname') }}
-                </label>
-
-
-                <input value="{{ $customer->first_name }}" class="profile-control-input profile-input form-control" name="first_name"
-                       type="text" v-validate="'required'" id="first_name"
-                       data-vv-as="&quot;{{ __('shop::app.customer.account.profile.fname') }}&quot;"/>
-                <span class="control-error" v-if="errors.has('first_name')"
-                      v-text="errors.first('first_name')"></span>
-
-            </div>
-            {!! view_render_event('bagisto.shop.customers.account.profile.edit.first_name.after', ['customer' => $customer]) !!}
-
-            <div :class="`col-lg-6 col-md-10 col-sm-12 form-group ${errors.has('last_name') ? 'has-error' : ''}`">
-                <label class="mandatory form-label">
-                    {{ __('shop::app.customer.account.profile.lname') }}
-                </label>
-
-                <input value="{{ $customer->last_name }}" class="profile-control-input profile-input form-control" name="last_name"
-                       type="text" v-validate="'required'"
-                       data-vv-as="&quot;{{ __('shop::app.customer.account.profile.lname') }}&quot;"/>
-                <span class="control-error" v-if="errors.has('last_name')"
-                      v-text="errors.first('last_name')"></span>
-
-            </div>
-            {!! view_render_event('bagisto.shop.customers.account.profile.edit.last_name.after', ['customer' => $customer]) !!}
+            <div class="border rounded p-3 col-12 d-lg-flex d-sm-block">
+                <div class="col-lg-6 col-md-12">
+                    <div :class="`form-group ${errors.has('first_name') ? 'has-error' : ''}`">
+                        <label class="mandatory form-label">
+                            {{ __('shop::app.customer.account.profile.fname') }}
+                        </label>
 
 
-            <div class="col-lg-6 col-md-10 col-sm-12 form-group">
-                <label class="mandatory form-label">
-                    {{ __('shop::app.customer.account.profile.email') }}
-                </label>
+                        <input value="{{ $customer->first_name }}"
+                               class="profile-control-input profile-input form-control"
+                               name="first_name"
+                               type="text" v-validate="'required'" id="first_name"
+                               data-vv-as="&quot;{{ __('shop::app.customer.account.profile.fname') }}&quot;"/>
+                        <span class="control-error" v-if="errors.has('first_name')"
+                              v-text="errors.first('first_name')"></span>
 
-                <input class="profile-control-input profile-input form-control" value="{{ $customer->email }}" name="email" type="text"
-                       v-validate="'required'"/>
-                <span class="control-error" v-if="errors.has('email')" v-text="errors.first('email')"></span>
-            </div>
-            {!! view_render_event('bagisto.shop.customers.account.profile.edit.email.after', ['customer' => $customer]) !!}
-
-            <div class="col-lg-6 col-md-10 col-sm-12 form-group">
-                <label class="form-label">
-                    {{ __('shop::app.customer.account.profile.phone') }}
-                </label>
-
-                <input class="profile-control-input profile-input form-control"
-                       value="{{ old('phone') ?? $customer->phone }}" name="phone" type="text"/>
-                <span class="control-error" v-if="errors.has('phone')" v-text="errors.first('phone')"></span>
-            </div>
-            {!! view_render_event('bagisto.shop.customers.account.profile.edit.phone.after', ['customer' => $customer]) !!}
-
-
-            <div class="mt-5 col-lg-6 col-md-10 col-sm-12 form-group">
-                <h4 class="">Change your password</h4>
-                <div class="">
-                    <label class="form-label">
-                        {{ __('velocity::app.shop.general.enter-current-password') }}
-                    </label>
-
-                    <div :class="`${errors.has('oldpassword') ? 'has-error' : ''}`">
-                        <input class="profile-input form-control" value="" name="oldpassword" type="password"/>
                     </div>
+                    {!! view_render_event('bagisto.shop.customers.account.profile.edit.first_name.after', ['customer' => $customer]) !!}
+
+                    <div :class="`form-group ${errors.has('last_name') ? 'has-error' : ''}`">
+                        <label class="mandatory form-label">
+                            {{ __('shop::app.customer.account.profile.lname') }}
+                        </label>
+
+                        <input value="{{ $customer->last_name }}"
+                               class="profile-control-input profile-input form-control"
+                               name="last_name"
+                               type="text" v-validate="'required'"
+                               data-vv-as="&quot;{{ __('shop::app.customer.account.profile.lname') }}&quot;"/>
+                        <span class="control-error" v-if="errors.has('last_name')"
+                              v-text="errors.first('last_name')"></span>
+
+                    </div>
+                    {!! view_render_event('bagisto.shop.customers.account.profile.edit.last_name.after', ['customer' => $customer]) !!}
 
                 </div>
 
-                {!! view_render_event('bagisto.shop.customers.account.profile.edit.oldpassword.after', ['customer' => $customer]) !!}
 
-                <div class="">
-                    <label class="form-label">
-                        {{ __('velocity::app.shop.general.new-password') }}
-                    </label>
+                <div class="col-lg-6 col-md-12">
+                    <div class="form-group">
+                        <label class="mandatory form-label">
+                            {{ __('shop::app.customer.account.profile.email') }}
+                        </label>
 
-                    <div :class="`${errors.has('password') ? 'has-error' : ''}`">
-                        <input
-                            class="profile-input form-control"
-                            name="password"
-                            ref="password"
-                            type="password"
-                            v-validate="'min:6'"/>
+                        <input class="profile-control-input profile-input form-control" value="{{ $customer->email }}"
+                               name="email" type="text"
+                               v-validate="'required'"/>
+                        <span class="control-error" v-if="errors.has('email')" v-text="errors.first('email')"></span>
+                    </div>
+                    {!! view_render_event('bagisto.shop.customers.account.profile.edit.email.after', ['customer' => $customer]) !!}
 
-                        <span class="control-error" v-if="errors.has('password')"
-                              v-text="errors.first('password')"></span>
+                    <div class="form-group">
+                        <label class="form-label">
+                            {{ __('shop::app.customer.account.profile.phone') }}
+                        </label>
+
+                        <input class="profile-control-input profile-input form-control"
+                               value="{{ old('phone') ?? $customer->phone }}" name="phone" type="text"/>
+                        <span class="control-error" v-if="errors.has('phone')" v-text="errors.first('phone')"></span>
+                    </div>
+                    {!! view_render_event('bagisto.shop.customers.account.profile.edit.phone.after', ['customer' => $customer]) !!}
+                </div>
+            </div>
+
+            {{--           ~~~~~~~~~~~~~~~~~~~~~ PASSWORD ~~~~~~~~~~~~~~~~~~~~~--}}
+
+            <div class="card border rounded  mt-4 d-lg-flex d-sm-block">
+                <p class="card-header">Change password</p>
+                <div class="card-body d-lg-flex">
+                    <div class="col-lg-6 col-md-12 form-group">
+
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label class="form-label">
+                                    Current password
+                                </label>
+
+                                <div :class="`${errors.has('oldpassword') ? 'has-error' : ''}`">
+                                    <input class="profile-input form-control password" value="" name="oldpassword"
+                                           type="password"/>
+                                </div>
+
+                            </div>
+
+                            {!! view_render_event('bagisto.shop.customers.account.profile.edit.oldpassword.after', ['customer' => $customer]) !!}
+
+                            <div class="">
+                                <label class="form-label">
+                                    {{ __('velocity::app.shop.general.new-password') }}
+                                </label>
+
+                                <div :class="`${errors.has('password') ? 'has-error' : ''}`">
+                                    <input
+                                        class="profile-control-input profile-input form-control password"
+                                        name="password"
+                                        ref="password"
+                                        type="password"
+                                        v-validate="'min:6'"/>
+
+                                    <span class="control-error" v-if="errors.has('password')"
+                                          v-text="errors.first('password')"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-row col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <label class="form-label">
+                                {{ __('velocity::app.shop.general.confirm-new-password') }}
+                            </label>
+
+                            <div
+                                :class="`${errors.has('password_confirmation') ? 'has-error' : ''}`">
+                                <input class="profile-control-input profile-input form-control password" value=""
+                                       name="password_confirmation"
+                                       type="password"
+                                       v-validate="'min:6|confirmed:password'" data-vv-as="confirm password"/>
+
+                                <span class="control-error" v-if="errors.has('password_confirmation')"
+                                      v-text="errors.first('password_confirmation')"></span>
+                            </div>
+                        </div>
+                        <div class="form-group align-self-auto" style="margin-top: 65px">
+                            <input type="checkbox" onclick="showPassword()" class="shaka-checkbox" name="" id="">
+                            <span>Show Password</span>
+                        </div>
                     </div>
                 </div>
+
 
                 {!! view_render_event('bagisto.shop.customers.account.profile.edit.password.after', ['customer' => $customer]) !!}
-
-                <div class="">
-                    <label class="form-label">
-                        {{ __('velocity::app.shop.general.confirm-new-password') }}
-                    </label>
-
-                    <div
-                        :class="` ${errors.has('password_confirmation') ? 'has-error' : ''}`">
-                        <input class="profile-input form-control" value="" name="password_confirmation" type="password"
-                               v-validate="'min:6|confirmed:password'" data-vv-as="confirm password"/>
-
-                        <span class="control-error" v-if="errors.has('password_confirmation')"
-                              v-text="errors.first('password_confirmation')"></span>
-                    </div>
-                </div>
-
-                @if (core()->getConfigData('customer.settings.newsletter.subscription'))
-                    <div class="control-group">
-                        <input type="checkbox" id="checkbox2" name="subscribed_to_news_letter"
-                               @if (isset($customer->subscription)) value="{{ $customer->subscription->is_subscribed }}"
-                               {{ $customer->subscription->is_subscribed ? 'checked' : ''}} @endif  style="width: auto;">
-                        <span>{{ __('shop::app.customer.signup-form.subscribe-to-newsletter') }}</span>
-                    </div>
-                @endif
-
                 {!! view_render_event('bagisto.shop.customers.account.profile.edit_form_controls.after', ['customer' => $customer]) !!}
 
-                <div class="my-5">
-                    <button
-                        type="submit"
-                        id="submitBtn"
-                        class="display-block theme-btn col-lg-3 col-md-10 col-sm-12 mt-5 mb20" disabled>
-                        Save
-                    </button>
+            </div>
+            <div class="">
+                <button
+                    type="submit"
+                    id="submitBtn"
+                    class="theme-btn col-lg-6 col-md-12 my-3" disabled>
+                    Save
+                </button>
 
-                    <button
-                        type="submit"
-                        class="display-block theme-btn col-lg-3 col-md-10 col-sm-12 mb-5" onclick="window.showDeleteProfileModal();">
-                        Delete account
-                    </button>
-                </div>
+                <button
+                    type="submit"
+                    class="theme-btn col-lg-6 col-md-12 mb-3"
+                    onclick="window.showDeleteProfileModal();">
+                    Delete account
+                </button>
             </div>
         </div>
     </form>
@@ -187,16 +206,15 @@
             </modal>
         </form>
     </div>
-    </div>
 
     {!! view_render_event('bagisto.shop.customers.account.profile.view.after', ['customer' => $customer]) !!}
 
     @push('scripts')
         <script>
-            $(document).ready(function(){
+            $(document).ready(function () {
                 let name = $('.profile-control-input');
 
-                name.each(function() {
+                name.each(function () {
                     $(this).on('input', function () {
                         let phpName = "{{ $customer->first_name }}"
                         if ($(this).val() !== phpName) {
@@ -213,6 +231,18 @@
                 document.getElementById('deleteProfileForm').classList.remove('d-none');
 
                 window.app.showModal('deleteProfile');
+            }
+
+            function showPassword() {
+                let passwords = document.querySelectorAll('.password');
+                const passwordArray = Array.from(passwords);
+                passwordArray.forEach(function (element) {
+                    if (element.type === "password") {
+                        element.type = "text";
+                    } else {
+                        element.type = "password";
+                    }
+                });
             }
 
 
