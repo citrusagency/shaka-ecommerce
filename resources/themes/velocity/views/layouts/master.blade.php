@@ -20,11 +20,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <style>
 
-        p{
-            font-size: 18px!important;
-            line-height: 32px!important;
-            font-family: "Outfit", sans-serif!important;
-        }
          input[type='checkbox'].shaka-checkbox {
              width: 20px;
              height: 20px;
