@@ -28,6 +28,10 @@
         <div class="row col-12">
             <magnify-image src="{{ asset('storage/product/1/gMYFeoSP9mipR9wMmnosVcDiitiUl0gzDzo903fV.png') }}" type="{{ $images[0]['type'] }}">
             </magnify-image>
+
+{{--            <magnify-image src="{{ $images[0]['large_image_url'] }}" type="{{ $images[0]['type'] }}">--}}
+{{--            </magnify-image>--}}
+
         </div>
 
         <div class="row col-12">
