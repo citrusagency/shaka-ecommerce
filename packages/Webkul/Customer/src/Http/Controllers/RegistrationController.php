@@ -12,7 +12,8 @@ use Webkul\Customer\Mail\RegistrationEmail;
 use Webkul\Customer\Mail\VerificationEmail;
 use Webkul\Customer\Repositories\CustomerGroupRepository;
 use Webkul\Customer\Repositories\CustomerRepository;
-use Webkul\Shop\Mail\ContactEmail;
+use Webkul\Shop\Mail\SubscriptionEmail;
+use Webkul\Shop\Mail\SubscriptionNotification;
 
 class RegistrationController extends Controller
 {
@@ -98,11 +99,17 @@ class RegistrationController extends Controller
                 ]);
 
                 try {
-                    Mail::queue(new ContactEmail([
+                    Mail::queue(new SubscriptionEmail([
                         'email' => $data['email'],
-                        'token' => $token,
+                        'token' => $token
                     ]));
-                } catch (\Exception $e) {}
+                    Mail::queue(new SubscriptionNotification([
+                        'email' => $data['email'],
+                        'token' => $token
+                    ]));
+                } catch (\Exception $e) {
+                    dd("there's an exception!  ". $e);
+                }
             }
         }
 

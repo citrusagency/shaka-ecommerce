@@ -1,26 +1,25 @@
 @component('shop::emails.layouts.master')
 
-    <div>
-        <div style="text-align: center;">
-            <a href="{{ config('app.url') }}">
-                @include ('shop::emails.layouts.logo')
-            </a>
-        </div>
+    <p class="p-text">
+        {!! __('shop::app.mail.customer.subscription.greeting') !!}
+    </p>
 
-        <div  style="font-size:16px; color:#242424; font-weight:600; margin-top: 60px; margin-bottom: 15px">
-            {!! __('shop::app.mail.customer.subscription.greeting') !!}
-        </div>
+    <p class="p-text">
+        {{ $data['content'] }}
+    </p>
 
-        <div>
-            {!! __('shop::app.mail.customer.subscription.summary') !!}
-        </div>
+    <p class="p-text w-pd">
+        {!! __('shop::app.mail.customer.subscription.summary') !!}
+    </p>
 
-        <div  style="margin-top: 40px; text-align: center">
-            <a href="{{ route('shop.unsubscribe', $data['token']) }}" style="font-size: 16px;
-            color: #FFFFFF; text-align: center; background: #0031F0; padding: 10px 100px;text-decoration: none;">
-                {!! __('shop::app.mail.customer.subscription.unsubscribe') !!}
-            </a>
-        </div>
-    </div>
+    <p class="center-container">
+        <a href="{{ route('shop.unsubscribe', $data['token']) }}">
+            {!! __('shop::app.mail.customer.subscription.unsubscribe') !!}
+        </a>
+    </p>
+
+    <p class="p-text">
+        {{ __('shop::app.mail.forget-password.thanks') }}
+    </p>
 
 @endcomponent

@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SubscriptionEmail extends Mailable
+class SubscriptionNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,12 +28,12 @@ class SubscriptionEmail extends Mailable
     public function build()
     {
         return $this->from(core()->getSenderEmailDetails()['email'], core()->getSenderEmailDetails()['name'])
-            ->to($this->subscriptionData['email'])
+            ->to(core()->getAdminEmailDetails()['email'])
             ->subject(trans('shop::app.mail.customer.subscription.subject'))
-            ->view('shop::emails.customer.subscription-email')
+            ->view('shop::emails.admin.subscription-notification')
             ->with('data', [
-                'content' => 'You Are Subscribed!',
-                'token'   => $this->subscriptionData['token'],
+                'content' => 'You have a new subscriber: ',
+                'email'   => $this->subscriptionData['email']
             ]);
     }
 }
