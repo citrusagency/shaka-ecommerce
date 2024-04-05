@@ -95,20 +95,19 @@ class RegistrationController extends Controller
                     'customer_id'   => $customer->id,
                     'channel_id'    => core()->getCurrentChannel()->id,
                     'is_subscribed' => 1,
-                    'token'         => $token = uniqid(),
+                    'token'         => $data['token'],
                 ]);
 
                 try {
                     Mail::queue(new SubscriptionEmail([
                         'email' => $data['email'],
-                        'token' => $token
+                        'token' => $data['token']
                     ]));
                     Mail::queue(new SubscriptionNotification([
                         'email' => $data['email'],
-                        'token' => $token
+                        'token' => $data['token']
                     ]));
                 } catch (\Exception $e) {
-                    dd("there's an exception!  ". $e);
                 }
             }
         }
