@@ -32,6 +32,9 @@
         line-height: 32px !important;
         font-family: "Outfit", sans-serif !important;
     }
+    a,a:hover{
+        color: #1197C2;
+    }
 
     .header-a{
         text-transform: uppercase;
@@ -103,6 +106,9 @@
         padding: 10px;
         /*background-color: rebeccapurple;*/
     }
+
+    /*~~~~~~~~~~~~~~~~~ profile -> address css ~~~~~~~~~~~~~~~~*/
+
 
 </style>
 

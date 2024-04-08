@@ -18,8 +18,8 @@
 
         @if (! $addresses->isEmpty())
             <span class="account-action">
-                <a href="{{ route('customer.address.create') }}" class="theme-btn light unset float-right">
-                    {{ __('shop::app.customer.account.address.index.add') }}
+                <a href="{{ route('customer.address.create') }}" class="theme-btn  rounded float-right">
+                    Add new address
                 </a>
             </span>
         @endif
@@ -27,47 +27,49 @@
 
     {!! view_render_event('bagisto.shop.customers.account.address.list.before', ['addresses' => $addresses]) !!}
 
-        <div class="account-table-content">
-            @if ($addresses->isEmpty())
-                <div>{{ __('shop::app.customer.account.address.index.empty') }}</div>
-            @else
-                <div class="row address-holder no-padding">
-                    @foreach ($addresses as $address)
-                        <div >
-                            <div class="card m-1">
-                                <div class="card-body">
-                                    <h5 class="card-title fw6">{{ $address->first_name }} {{ $address->last_name }}</h5>
+    <div class="account-table-content">
+        @if ($addresses->isEmpty())
+            <div>{{ __('shop::app.customer.account.address.index.empty') }}</div>
+        @else
+            <div class="row address-holder no-padding">
+                @foreach ($addresses as $address)
+                    <div class="mt-lg-4">
+                        <div class="card m-1">
+                            <h5 class="card-header fw6">{{ $address->first_name }} {{ $address->last_name }}</h5>
+                            <div class="card-body">
+                                <ul type="none">
+                                    <li>{{ $address->address1 }}</li>
+                                    <li>{{ $address->city }}</li>
+                                    <li>{{ $address->state }}</li>
+                                    <li>{{ core()->country_name($address->country) }} {{ $address->postcode }}</li>
+                                    <li>
+                                        {{ __('shop::app.customer.account.address.index.contact') }}
+                                        : {{ $address->phone }}
+                                    </li>
+                                </ul>
 
-                                    <ul type="none">
-                                        <li>{{ $address->address1 }}</li>
-                                        <li>{{ $address->city }}</li>
-                                        <li>{{ $address->state }}</li>
-                                        <li>{{ core()->country_name($address->country) }} {{ $address->postcode }}</li>
-                                        <li>
-                                            {{ __('shop::app.customer.account.address.index.contact') }} : {{ $address->phone }}
-                                        </li>
-                                    </ul>
+                                <a class="card-link" href="{{ route('customer.address.edit', $address->id) }}">
+                                    {{ __('shop::app.customer.account.address.index.edit') }}
+                                </a>
 
-                                    <a class="card-link" href="{{ route('customer.address.edit', $address->id) }}">
-                                        {{ __('shop::app.customer.account.address.index.edit') }}
-                                    </a>
+                                <a class="card-link" href="javascript:void(0);"
+                                   onclick="deleteAddress('{{ __('shop::app.customer.account.address.index.confirm-delete') }}', '{{ $address->id }}')">
+                                    {{ __('shop::app.customer.account.address.index.delete') }}
+                                </a>
 
-                                    <a class="card-link" href="javascript:void(0);" onclick="deleteAddress('{{ __('shop::app.customer.account.address.index.confirm-delete') }}', '{{ $address->id }}')">
-                                        {{ __('shop::app.customer.account.address.index.delete') }}
-                                    </a>
+                                <form id="deleteAddressForm{{ $address->id }}"
+                                      action="{{ route('address.delete', $address->id) }}" method="post">
+                                    @method('delete')
 
-                                    <form id="deleteAddressForm{{ $address->id }}" action="{{ route('address.delete', $address->id) }}" method="post">
-                                        @method('delete')
-
-                                        @csrf
-                                    </form>
-                                </div>
+                                    @csrf
+                                </form>
                             </div>
                         </div>
-                    @endforeach
-                </div>
-            @endif
-        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+    </div>
 
     {!! view_render_event('bagisto.shop.customers.account.address.list.after', ['addresses' => $addresses]) !!}
 @endsection
@@ -75,7 +77,7 @@
 @push('scripts')
     <script>
         function deleteAddress(message, addressId) {
-            if (! confirm(message)) {
+            if (!confirm(message)) {
                 return;
             }
 

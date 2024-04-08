@@ -9,7 +9,7 @@
         <div class="image-container" v-else>
             <div class="magnifier">
                 <img
-                    :src="src"
+                    :src="activeImageVideoURL"
                     :data-zoom-image="activeImageVideoURL"
                     :class="[
                         ! isMobile()
