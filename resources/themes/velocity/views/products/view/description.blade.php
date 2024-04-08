@@ -8,10 +8,9 @@
 
 {{--            <i class="rango-arrow"></i>--}}
 {{--        </div>--}}
-
         <div slot="body">
-            <div class="full-description">
-                {!! $product->description !!}
+            <div class="full-description" style="color: #777777">
+                    {!! $product->description !!}
             </div>
         </div>
 {{--    </accordian>--}}

@@ -52,11 +52,6 @@
             font-weight: 600;
         }
 
-        #demo {
-            margin-top: -150px;
-            /*padding-top: 280px;*/
-            /*padding-bottom: 180px;*/
-        }
 
         .homepage-imga, .carousel-item {
             padding-top: 380px;
@@ -191,7 +186,7 @@
 @section('full-content-wrapper')
 
     <div class="homepage-img text-white">
-        <div id="demo" class="carousel slide" data-ride="carousel">
+        <div id="demo" class="carousel slide" data-ride="carousel" style="margin-top: -12vh;">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
