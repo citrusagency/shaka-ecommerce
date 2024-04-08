@@ -28,7 +28,7 @@
                            class="mandatory">{{ __('shop::app.customer.account.address.create.first_name') }}</label>
 
                     <input
-                        class="control profile-input form-control"
+                        class="control  form-control"
                         type="text"
                         name="first_name"
                         value="{{ old('first_name') ?? $currentCustomer->first_name }}"
@@ -47,7 +47,7 @@
                            class="mandatory">{{ __('shop::app.customer.account.address.create.last_name') }}</label>
 
                     <input
-                        class="control profile-input form-control"
+                        class="control  form-control"
                         type="text"
                         name="last_name"
                         value="{{ old('last_name') ?? $currentCustomer->last_name }}"
@@ -76,7 +76,7 @@
                            class="mandatory">{{ __('shop::app.customer.account.address.create.street-address') }}</label>
 
                     <input
-                        class="control profile-input form-control"
+                        class="control  form-control"
                         id="address_0"
                         type="text"
                         name="address1[]"
@@ -97,7 +97,7 @@
                     @for ($i = 1; $i < core()->getConfigData('customer.settings.address.street_lines'); $i++)
                         <div class="control-group" style="margin-top: -25px;">
                             <input
-                                class="control profile-input form-control"
+                                class="control  form-control"
                                 id="address_{{ $i }}"
                                 type="text"
                                 name="address1[{{ $i }}]"
@@ -111,7 +111,7 @@
                            class="mandatory">{{ __('shop::app.customer.account.address.create.phone') }}</label>
 
                     <input
-                        class="control profile-input form-control"
+                        class="control  form-control"
                         type="text"
                         name="phone"
                         value="{{ old('phone') }}"
@@ -137,7 +137,7 @@
 
                     <input
                         type="text"
-                        class="control profile-input form-control"
+                        class="control  form-control"
                         name="city"
                         value="{{ old('city') }}"
                         v-validate="'required'"
@@ -157,7 +157,7 @@
 
                     <input
                         type="text"
-                        class="control profile-input form-control"
+                        class="control  form-control"
                         name="postcode"
                         value="{{ old('postcode') }}"
                         v-validate="'{{ core()->isPostCodeRequired() ? 'required' : '' }}'"
@@ -176,7 +176,7 @@
 
             {{--            <div class="control-group d-flex">--}}
             {{--                <input--}}
-            {{--                    class="shaka-checkbox"--}}
+            {{--                    class=""--}}
             {{--                    id="default_address"--}}
             {{--                    type="checkbox"--}}
             {{--                    name="default_address"--}}

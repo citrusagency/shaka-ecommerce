@@ -31,7 +31,7 @@
 
 
                         <input value="{{ $customer->first_name }}"
-                               class="profile-control-input profile-input form-control"
+                               class="profile-control-input  form-control"
                                name="first_name"
                                type="text" v-validate="'required'" id="first_name"
                                data-vv-as="&quot;{{ __('shop::app.customer.account.profile.fname') }}&quot;"/>
@@ -47,7 +47,7 @@
                         </label>
 
                         <input value="{{ $customer->last_name }}"
-                               class="profile-control-input profile-input form-control"
+                               class="profile-control-input  form-control"
                                name="last_name"
                                type="text" v-validate="'required'"
                                data-vv-as="&quot;{{ __('shop::app.customer.account.profile.lname') }}&quot;"/>
@@ -66,7 +66,7 @@
                             {{ __('shop::app.customer.account.profile.email') }}
                         </label>
 
-                        <input class="profile-control-input profile-input form-control" value="{{ $customer->email }}"
+                        <input class="profile-control-input  form-control" value="{{ $customer->email }}"
                                name="email" type="text"
                                v-validate="'required'"/>
                         <span class="control-error" v-if="errors.has('email')" v-text="errors.first('email')"></span>
@@ -78,7 +78,7 @@
                             {{ __('shop::app.customer.account.profile.phone') }}
                         </label>
 
-                        <input class="profile-control-input profile-input form-control"
+                        <input class="profile-control-input  form-control"
                                value="{{ old('phone') ?? $customer->phone }}" name="phone" type="text"/>
                         <span class="control-error" v-if="errors.has('phone')" v-text="errors.first('phone')"></span>
                     </div>
@@ -100,7 +100,7 @@
                                 </label>
 
                                 <div :class="`${errors.has('oldpassword') ? 'has-error' : ''}`">
-                                    <input class="profile-input form-control password" value="" name="oldpassword"
+                                    <input class=" form-control password" value="" name="oldpassword"
                                            type="password"/>
                                 </div>
 
@@ -115,7 +115,7 @@
 
                                 <div :class="`${errors.has('password') ? 'has-error' : ''}`">
                                     <input
-                                        class="profile-control-input profile-input form-control password"
+                                        class="profile-control-input  form-control password"
                                         name="password"
                                         ref="password"
                                         type="password"
@@ -135,7 +135,7 @@
 
                             <div
                                 :class="`${errors.has('password_confirmation') ? 'has-error' : ''}`">
-                                <input class="profile-control-input profile-input form-control password" value=""
+                                <input class="profile-control-input  form-control password" value=""
                                        name="password_confirmation"
                                        type="password"
                                        v-validate="'min:6|confirmed:password'" data-vv-as="confirm password"/>
@@ -145,7 +145,7 @@
                             </div>
                         </div>
                         <div class="form-group align-self-auto" style="margin-top: 65px">
-                            <input type="checkbox" onclick="showPassword()" class="shaka-checkbox" name="" id="">
+                            <input type="checkbox" onclick="showPassword()" class="" name="" id="">
                             <span>Show Password</span>
                         </div>
                     </div>
@@ -189,7 +189,7 @@
                     <div class="control-group" :class="[errors.has('password') ? 'has-error' : '']">
                         <label for="password">{{ __('admin::app.users.users.password') }}</label>
 
-                        <input type="password" v-validate="'required|min:6'" class="control profile-input form-control"
+                        <input type="password" v-validate="'required|min:6'" class="control  form-control"
                                id="password"
                                name="password" data-vv-as="&quot;{{ __('admin::app.users.users.password') }}&quot;"/>
 

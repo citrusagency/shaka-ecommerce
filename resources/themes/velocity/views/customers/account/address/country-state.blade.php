@@ -41,7 +41,7 @@
                 </label>
 
                 <input
-                    class="control form-control profile-input"
+                    class="control form-control "
                     id="state"
                     type="text"
                     name="state"
