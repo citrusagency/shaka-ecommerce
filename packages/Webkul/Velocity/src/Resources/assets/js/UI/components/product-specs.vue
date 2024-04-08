@@ -33,10 +33,6 @@
 </template>
 
 <style lang="scss">
-.tab {
-    cursor: pointer;
-    // Add your styles
-}
 .tabs {
     display: flex;
     justify-content: center;
@@ -47,9 +43,10 @@
     //padding-bottom: 20px;
     margin-bottom: 10px;
     padding: 10px;
-    font-size: 1.5em;
+    font-size: 1em;
     position: relative;
     cursor: pointer;
+    text-transform: uppercase;
 
     &:last-child {
         margin-right: 0;
