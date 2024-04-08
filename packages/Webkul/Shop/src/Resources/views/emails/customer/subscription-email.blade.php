@@ -1,11 +1,11 @@
 @component('shop::emails.layouts.master')
 
-    <p class="dear-customer">
-        {{ __('shop::app.mail.customer.registration.dear', ['customer_name' => $data['first_name']. ' ' .$data['last_name']]) }},
+    <p class="p-text">
+        {!! __('shop::app.mail.customer.subscription.greeting') !!}
     </p>
 
     <p class="p-text">
-        {!! __('shop::app.mail.customer.subscription.greeting') !!}
+        {{ $data['content'] }}
     </p>
 
     <p class="p-text w-pd">
