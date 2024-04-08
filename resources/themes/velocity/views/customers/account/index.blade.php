@@ -9,20 +9,19 @@
             padding: 40px 136px;
         }
         .profile-content{
-            display: flex;
+            /*display: flex;*/
             flex-direction: column;
             align-items: flex-start;
             align-self: stretch;
-            max-width: 1300px;
+            /*max-width: 1300px;*/
             gap: 24px;
         }
         .profile-content-title{
             color: #232427;
-            text-align: center;
             font-family: "Open Sans", sans-serif;
             font-size: 24px;
             font-style: normal;
-            font-weight: 600;
+            font-weight: 700;
             line-height: normal;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -71,7 +70,7 @@
             @include('shop::customers.account.partials.sidemenu')
         </div>
 
-        <div class="profile-content" style="flex-grow: 1;">
+        <div class="profile-content">
             @yield('page-detail-wrapper')
         </div>
     </div>
