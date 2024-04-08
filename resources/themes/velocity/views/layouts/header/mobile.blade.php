@@ -31,73 +31,50 @@
         </div>
     </div>
 
-    <template v-slot:greetings>
-        @guest('customer')
-            <a class="unset" href="{{ route('customer.session.index') }}">
-                {{ __('velocity::app.responsive.header.greeting', ['customer' => 'Guest']) }}
-            </a>
-        @endguest
-
-        @auth('customer')
-            <a class="unset" href="{{ route('customer.profile.index') }}">
-                {{ __('velocity::app.responsive.header.greeting', ['customer' => auth()->guard('customer')->user()->first_name]) }}
-            </a>
-        @endauth
-    </template>
-
     <template v-slot:customer-navigation>
-
         <ul class="vc-customer-options">
             <li>
                 <a
                     class="unset fw5  {{ request()->is('/') ? 'fw7' : '' }}"
                     href="/">
-                    <span class="text-shaka-black text-uppercase fs18" >Home</span>
+                    <span style="font-family: Outfit, sans-serif;" class="text-uppercase fs18" >Homepage</span>
                 </a>
             </li>
             <li>
                 <a
                     class="unset fw5 {{ request()->is('shop') ? 'fw7' : '' }}"
                     href="{{ route('shop.getAllProducts') }}">
-                    <span class="text-shaka-black text-uppercase fs18">Shop</span>
+                    <span style="font-family: Outfit, sans-serif;" class="text-uppercase fs18">Shop</span>
                 </a>
             </li>
             <li>
                 <a
                     class="unset fw5 {{ request()->is('about') ? 'fw7' : '' }}"
                     href="{{ route("shop.about") }}">
-                    <span class="text-shaka-black text-uppercase fs18">About</span>
+                    <span style="font-family: Outfit, sans-serif;" class="text-uppercase fs18">About</span>
                 </a>
             </li>
-            <!-- <li>
-                <a
-                    class="unset fw5 {{ request()->is('behind-the-scenes') ? 'fw7' : '' }}"
-                    href="{{ route("shop.behind-the-scenes") }}">
-                    <span class="text-shaka-black text-uppercase fs18">Behind the scenes</span>
-                </a>
-            </li> -->
             <li>
                 <a
                     class="unset fw5 {{ request()->is('contact') ? 'fw7' : '' }}"
                     href="{{ route("shop.contact.index") }}">
-                    <span class="text-shaka-black text-uppercase fs18">Contact</span>
+                    <span style="font-family: Outfit, sans-serif;"  class="text-shaka-black text-uppercase fs18">Contact</span>
                 </a>
             </li>
-
         </ul>
 
         @auth('customer')
             <ul type="none" class="vc-customer-options">
                 <li>
-                    <a href="{{ route('customer.profile.index') }}" class="unset">
-                        <i class="icon profile text-down-3"></i>
+                    <a href="{{ route('customer.profile.index') }}" class="unset" style="display:flex; align-items: center; gap:10px;">
+                        {!! file_get_contents(public_path('/images/profile_icon.svg')) !!}
                         <span>{{ __('shop::app.header.profile') }}</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ route('customer.address.index') }}" class="unset">
-                        <i class="icon address text-down-3"></i>
+                    <a href="{{ route('customer.address.index') }}" class="unset" style="display:flex; align-items: center; gap:10px;">
+                        {!! file_get_contents(public_path('/images/address_icon.svg')) !!}
                         <span>{{ __('velocity::app.shop.general.addresses') }}</span>
                     </a>
                 </li>
@@ -105,38 +82,24 @@
 
                 @if (core()->getConfigData('general.content.shop.wishlist_option'))
                     <li>
-                        <a href="{{ route('customer.wishlist.index') }}" class="unset">
-                            <i class="icon wishlist text-down-3"></i>
+                        <a href="{{ route('customer.wishlist.index') }}" class="unset" style="display:flex; align-items: center; gap:10px;">
+                            {!! file_get_contents(public_path('/images/wishlist_icon.svg')) !!}
                             <span>{{ __('shop::app.header.wishlist') }}</span>
                         </a>
                     </li>
                 @endif
 
-{{--                @if (core()->getConfigData('general.content.shop.compare_option'))--}}
-{{--                    <li>--}}
-{{--                        <a href="{{ route('velocity.customer.product.compare') }}" class="unset">--}}
-{{--                            <i class="icon compare text-down-3"></i>--}}
-{{--                            <span>{{ __('shop::app.customer.compare.text') }}</span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                @endif--}}
-
                 <li>
-                    <a href="{{ route('customer.orders.index') }}" class="unset">
-                        <i class="icon orders text-down-3"></i>
+                    <a href="{{ route('customer.orders.index') }}" class="unset" style="display:flex; align-items: center; gap:10px;">
+                        {!! file_get_contents(public_path('/images/order_icon.svg')) !!}
                         <span>{{ __('velocity::app.shop.general.orders') }}</span>
                     </a>
                 </li>
 
-{{--                <li>--}}
-{{--                    <a href="{{ route('customer.downloadable_products.index') }}" class="unset">--}}
-{{--                        <i class="icon downloadables text-down-3"></i>--}}
-{{--                        <span>{{ __('velocity::app.shop.general.downloadables') }}</span>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
             </ul>
         @endauth
     </template>
+
 
     <template v-slot:extra-navigation>
         <li>
@@ -147,8 +110,12 @@
                     @method('DELETE')
                 </form>
 
-                <a
-                    class="unset fw7"
+                <a style="color:#1197C2;
+                font-size: 18px !important;
+                font-family: Outfit, sans-serif;
+                font-weight: 600 !important;
+                text-transform: uppercase !important;"
+                    class="customer-links"
                     href="{{ route('customer.session.destroy') }}"
                     onclick="event.preventDefault(); document.getElementById('customerLogout').submit();">
                     {{ __('shop::app.header.logout') }}
@@ -156,8 +123,12 @@
             @endauth
 
             @guest('customer')
-                <a
-                    class="unset fw7 "
+                <a style="color:#1197C2;
+                font-size: 18px !important;
+                font-family: Outfit, sans-serif;
+                font-weight: 600 !important;
+                text-transform: uppercase !important;"
+                    class="customer-links"
                     href="{{ route('customer.session.create') }}">
                     <span class="text-shaka text-uppercase fs18">{{ __('shop::app.customer.login-form.title') }}</span>
                 </a>
@@ -166,21 +137,26 @@
 
         <li>
             @guest('customer')
-                <a
-                    class="unset fw7 "
+                <a style="color:#1197C2;
+                font-size: 18px !important;
+                font-weight: 600 !important;
+                font-family: Outfit, sans-serif;
+                text-transform: uppercase !important;"
+                    class="customer-links"
                     href="{{ route('customer.register.index') }}">
                     <span class="text-shaka text-uppercase fs18">Create an account</span>
                 </a>
             @endguest
         </li>
+
     </template>
+
 
     <template v-slot:logo>
         <a class="left ml-5" href="{{ route('shop.home.index') }}" aria-label="Logo">
             {!! file_get_contents(public_path('/images/logo_mobile_white.svg')) !!}
         </a>
     </template>
-
 
     <template v-slot:top-header>
             <div class="" style="display: flex; flex-direction: row; justify-content: flex-end; align-items: center; gap: 20px">
@@ -199,14 +175,6 @@
                 @include('shop::layouts.particals.wishlist', ['isText' => true])
 
             </div>
-    </template>
-
-    <template v-slot:search-bar>
-        <div class="row">
-            <div class="col-md-12">
-                @include('velocity::shop.layouts.particals.search-bar')
-            </div>
-        </div>
     </template>
 
 </mobile-header>
