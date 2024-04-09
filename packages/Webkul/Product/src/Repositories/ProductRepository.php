@@ -16,6 +16,7 @@ use Webkul\Core\Eloquent\Repository;
 use Webkul\Product\Models\Product;
 use Webkul\Product\Models\ProductAttributeValueProxy;
 use Webkul\Product\Models\ProductFlat;
+use Illuminate\Support\Facades\Event;
 
 class ProductRepository extends Repository
 {
@@ -70,8 +71,13 @@ class ProductRepository extends Repository
     public function update(array $data, $id, $attribute = 'id')
     {
         $product = $this->findOrFail($id);
+        $currentQty = $product->inventories[0]->qty;
 
         $product = $product->getTypeInstance()->update($data, $id, $attribute);
+
+        if (isset($data['inventories']) && $data['inventories'][1] != $currentQty) {
+            Event::dispatch('catalog.product.restock.after', $product);
+        }
 
         if (isset($data['channels'])) {
             $product['channels'] = $data['channels'];

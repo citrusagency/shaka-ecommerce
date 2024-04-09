@@ -284,6 +284,7 @@ return [
         Webkul\Marketing\Providers\MarketingServiceProvider::class,
         Webkul\Notification\Providers\NotificationServiceProvider::class,
         Webkul\Sitemap\Providers\SitemapServiceProvider::class,
+        Webkul\Notify\Providers\NotifyServiceProvider::class,
         RKREZA\Contact\Providers\ContactServiceProvider::class
     ],
 

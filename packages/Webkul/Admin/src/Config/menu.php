@@ -235,6 +235,12 @@ return [
         'route'      => 'admin.customers.subscribers.index',
         'sort'       => 3,
         'icon-class' => '',
+    ],[
+        'key'   => 'marketing.notifys',
+        'name'  => 'Notify Customers',
+        'route' => 'admin.notify.index',
+        'sort'  =>  1,
+        'icon-class'  => 'notification-icon',
     ], [
         'key'        => 'marketing.sitemaps',
         'name'       => 'admin::app.layouts.sitemaps',
@@ -253,5 +259,5 @@ return [
         'route'      => 'admin.cms.index',
         'sort'       => 1,
         'icon-class' => '',
-    ]
+    ],
 ];

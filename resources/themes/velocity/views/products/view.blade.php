@@ -123,7 +123,7 @@
         }
 
         .quantity .actions .add-to-cart-btn button.notify-available {
-            background: #B84626 !important;
+            background:  #1197C2 !important;
             color: #fff !important;
             border-radius: 5px !important;
             border: none !important;
