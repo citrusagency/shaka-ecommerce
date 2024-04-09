@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="table-responsive">
+            <div class="table-responsive table-striped mt-3">
                 <datagrid-table
                     :actions="actions"
                     :columns="columns"
@@ -456,7 +456,7 @@ export default {
                 }
             }
         },
-        
+
         clearAllFilters() {
             this.filters = [];
 

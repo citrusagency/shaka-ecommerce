@@ -360,7 +360,7 @@
 
                 <button
                     v-text="translations.apply"
-                    class="btn btn-sm btn-primary apply-filter"
+                    class="btn theme-btn rounded-2 btn-sm apply-filter"
                     @click="getResponse"
                 ></button>
             </ul>
