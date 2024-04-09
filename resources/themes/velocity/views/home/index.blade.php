@@ -101,7 +101,7 @@
             border-radius: 8px 0 0 8px;
             border:1px solid #DADADA !important;
             color: #777;
-            font-size: 14px;
+            font-size: 16px;
             font-style: normal;
             font-weight: 400;
             line-height: 100%;
@@ -359,7 +359,7 @@ line-height: 32px; padding-right:50px !important;">
                                 <form id="registrationForm" action="{{ route('shop.subscribe') }}" class="d-flex w-100 p-2" method="POST">
                                     @csrf
                                     <input type="hidden" name="token" id="token" value="{{ $token ?? null }}">
-                                    <input type="text" name="subscriber_email" id="subscriber_email" class="w-100 input-stl" placeholder="Your email address" value="{{ $customerEmail ?? '' }}"{{ auth()->check() ? ' readonly' : '' }}>
+                                    <input type="email" name="subscriber_email" id="subscriber_email" class="w-100 input-stl" placeholder="Your email address" value="{{ $customerEmail ?? '' }}"{{ auth()->check() ? ' readonly' : '' }}>
                                     <button type="submit" id="submitButton" class="bg-shaka-primary btn-stl bnt-shaka-primary">Subscribe</button>
                                 </form>
                             </div>
