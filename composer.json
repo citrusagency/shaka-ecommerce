@@ -106,6 +106,7 @@
             "Webkul\\Marketing\\": "packages/Webkul/Marketing/src",
             "Webkul\\Notification\\": "packages/Webkul/Notification/src",
             "Webkul\\Sitemap\\": "packages/Webkul/Sitemap/src",
+            "Webkul\\Notify\\": "packages/Webkul/Notify/src",
             "RKREZA\\Contact\\": "packages/RKREZA/Contact/src"
         }
     },
