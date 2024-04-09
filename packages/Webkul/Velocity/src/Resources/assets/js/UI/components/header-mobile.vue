@@ -84,6 +84,10 @@
                 </div>
             </div>
         </div>
+
+        <div class="right-vc-header col-6">
+            <slot name="top-header"></slot>
+        </div>
     </div>
 </template>
 
