@@ -128,27 +128,17 @@
                                                     $showWishlist = core()->getConfigData('general.content.shop.wishlist_option') == "1" ? true : false;
                                                 @endphp
 
-                                                <div class="no-padding col-12 cursor-pointer fs16 item-actions">
+                                                <div class="cursor-pointer d-flex flex-column flex-sm-row">
                                                     @auth('customer')
                                                         @if ($showWishlist)
-                                                            @if (
-                                                                $item->parent_id != 'null'
-                                                                || $item->parent_id != null
-                                                            )
-                                                                <div class="d-inline-block">
-                                                                    @include('shop::products.wishlist', [
-                                                                        'route' => route('shop.movetowishlist', $item->id),
-                                                                        'text' => "<span class='align-vertical-super'>$moveToWishlist</span>"
-                                                                    ])
-                                                                </div>
-                                                            @else
-                                                                <div class="d-inline-block">
+
+                                                                <div class="d-flex row">
                                                                     @include('shop::products.wishlist', [
                                                                         'route' => route('shop.movetowishlist', $item->child->id),
                                                                         'text' => "<span class='align-vertical-super'>$moveToWishlist</span>"
                                                                     ])
                                                                 </div>
-                                                            @endif
+                                                   
                                                         @endif
                                                     @endauth
 

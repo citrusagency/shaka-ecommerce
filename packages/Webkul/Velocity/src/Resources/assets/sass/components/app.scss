@@ -395,6 +395,10 @@
     }
 }
 
+.input-btn-group{
+    display: flex;
+}
+
 .quantity {
     @extend .btn-group;
 
@@ -413,10 +417,20 @@
 
             &.decrease {
                 border-right: 0;
+                color: black !important;
+                display: flex !important;
+                flex-direction: row;
+                flex-wrap: wrap;
             }
 
             &.increase {
                 border-left: 0;
+                color: black !important;
+                display: flex !important;
+                flex-direction: row;
+                flex-wrap: wrap;
+                border-bottom-left-radius: 0;
+                border-top-left-radius: 0;
             }
 
             &:hover,
@@ -771,12 +785,10 @@
 
                     .material-icons {
                         float: left;
-                        margin-left: -2px;
-                        margin-right: 5px;
+                        margin: auto;
                     }
 
                     .rango-delete {
-                        margin-left: -2px;
                         float: left;
                     }
                 }
@@ -813,6 +825,10 @@
     }
 }
 
+.remove-icon{
+    padding: 5px 0;
+}
+
 @media only screen and (max-width: 375px) {
     .cart-details {
         .cart-content {
@@ -832,7 +848,7 @@
     min-height: 100vh;
 
     ol.breadcrumb {
-        margin: 0 0 2 0;
+        margin: 0 0 2px 0;
         padding: 0;
         list-style: none;
         background-color: transparent;
@@ -856,7 +872,7 @@
         .customer-sidebar {
             position: sticky;
             top: 40px;
-            
+
             .account-details {
                 text-align: center;
                 padding: 25px 20px;
@@ -1753,7 +1769,7 @@
 
         .category {
             padding: 5px 0 4px 15px;
-            
+
             + .nested {
                 color: $font-color;
 
@@ -2595,6 +2611,20 @@
                 }
             }
         }
+    }
+
+    .cart-details {
+        .cart-content {
+            .cart-item-list {
+                .wishlist-icon{
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+    .remove-icon{
+        padding: 50px 0;
     }
 }
 
