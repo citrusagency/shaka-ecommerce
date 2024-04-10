@@ -6,6 +6,7 @@
     >
         <label
             class="required"
+            style="width:120px;"
             for="quantity-changer"
             v-text="quantityText"
         ></label>
