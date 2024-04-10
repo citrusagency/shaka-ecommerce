@@ -210,7 +210,7 @@
             &.remove-icon {
                 width: 24px;
                 height: 24px;
-                background-image: url('../images/Icon-remove.svg');
+                background-image: url('../../../../../publishable/assets/images/Icon-remove.svg');
             }
         }
     }
@@ -826,7 +826,7 @@
 }
 
 .remove-icon{
-    padding: 5px 0;
+    padding: 10px 5px;
 }
 
 @media only screen and (max-width: 375px) {
@@ -1086,7 +1086,7 @@
                     display: inline-block;
                     background-position: 50%;
                     background-repeat: no-repeat;
-                    background-image: url(/vendor/webkul/ui/assets/images/placeholder-icon.svg);
+                    //background-image: url(/vendor/webkul/ui/assets/images/placeholder-icon.svg);
 
                     .remove-image {
                         left: 0;
@@ -2453,7 +2453,6 @@
 
     .active {
         cursor: grabbing;
-        cursor: -webkit-grabbing;
         transform: scale(1);
     }
 
@@ -2624,7 +2623,7 @@
         }
     }
     .remove-icon{
-        padding: 50px 0;
+        padding: 5px;
     }
 }
 

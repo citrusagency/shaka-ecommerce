@@ -39,10 +39,6 @@
                             <span class="col-2 fw6 fs16 no-padding text-right">
                                 {{ __('velocity::app.checkout.qty') }}
                             </span>
-
-                            <span class="col-2 fw6 fs16 text-right pr0">
-                                {{ __('velocity::app.checkout.subtotal') }}
-                            </span>
                         </div>
 
                         <div class="cart-content col-12">
@@ -128,17 +124,27 @@
                                                     $showWishlist = core()->getConfigData('general.content.shop.wishlist_option') == "1" ? true : false;
                                                 @endphp
 
-                                                <div class="cursor-pointer d-flex flex-column flex-sm-row">
+                                                <div class="cart-btn-group">
                                                     @auth('customer')
                                                         @if ($showWishlist)
-
-                                                                <div class="d-flex row">
+                                                            @if (
+                                                                $item->parent_id != 'null'
+                                                                || $item->parent_id != null
+                                                            )
+                                                                <div class="d-flex ">
                                                                     @include('shop::products.wishlist', [
-                                                                        'route' => route('shop.movetowishlist', $item->child->id),
-                                                                        'text' => "<span class='align-vertical-super'>$moveToWishlist</span>"
+                                                                        'route' => route('shop.movetowishlist', $item->id),
+                                                                   
                                                                     ])
                                                                 </div>
-                                                   
+                                                            @else
+                                                                <div class="d-flex flex-wrap">
+                                                                    @include('shop::products.wishlist', [
+                                                                        'route' => route('shop.movetowishlist', $item->child->id),
+                                                                       
+                                                                    ])
+                                                                </div>
+                                                            @endif
                                                         @endif
                                                     @endauth
 
@@ -165,12 +171,6 @@
                                                 @else
                                                     <p class="fw6 fs16 no-padding text-center ml15">--</p>
                                                 @endif
-                                            </div>
-
-                                            <div class="product-price fs18 col-1">
-                                                <span class="card-current-price fw6 mr10">
-                                                    {{ core()->currency( $item->base_total) }}
-                                                </span>
                                             </div>
 
                                             @if (! cart()->isItemHaveQuantity($item))

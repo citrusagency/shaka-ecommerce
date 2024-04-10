@@ -1,11 +1,5 @@
 <template>
-    <div class="rounded-circle bg-shaka-light"
-        style="height: 43px;
-    width: 43px;
-    float: right;
-    display: grid;
-    place-items: center;">
-
+    <div class="bg-shaka-light wishlist-round-circle">
     <i
         :class="`material-icons text-white ${addClass ? addClass : ''} text-shaka-subtitle`"
         @mouseover="isActive ? isActive = !isActive : ''"
