@@ -103,6 +103,8 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
         'view' => 'shop.products.index',
     ])->name('shop.product.file.download');
 
+    Route::get('/product-inventory/{productId}', [ProductController::class, 'productInventory'])->name('shop.product.inventory');
+
 //    Route::get('categories/filterable-attributes/{categoryId?}', [CategoryController::class, 'getFilterAttributes'])->name('catalog.categories.filterable-attributes');
     Route::get('categories/filterable-attributes', [CategoryController::class, 'getFilterAttributes'])->name('catalog.categories.filterable-attributes');
 

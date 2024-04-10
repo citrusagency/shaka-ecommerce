@@ -166,6 +166,7 @@
                                                     <quantity-changer
                                                         :control-name="'qty[{{$item->id}}]'"
                                                         quantity="{{ $item->quantity }}"
+                                                        productId="{{ $item->product_id }}"
                                                         quantity-text="{{ __('shop::app.products.quantity') }}">
                                                     </quantity-changer>
                                                 @else

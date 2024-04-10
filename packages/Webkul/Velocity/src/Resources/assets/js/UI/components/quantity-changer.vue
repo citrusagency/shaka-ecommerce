@@ -64,6 +64,11 @@ export default {
             default: 1
         },
 
+        productId: {
+            type: [Number, String],
+            default: null
+        },
+
         validations: {
             type: String,
             default: 'required|numeric|min_value:1'
@@ -72,7 +77,8 @@ export default {
 
     data: function() {
         return {
-            qty: this.quantity
+            qty: this.quantity,
+            maxQuantity: 100,
         };
     },
 
@@ -80,6 +86,8 @@ export default {
         this.$refs.quantityChanger.value = this.qty > this.minQuantity
             ? this.qty
             : this.minQuantity;
+
+        this.fetchMaxQuantity();
     },
 
     watch: {
@@ -101,11 +109,27 @@ export default {
 
         decreaseQty: function() {
             if (this.qty > this.minQuantity) this.qty = parseInt(this.qty) - 1;
+            // this.emitQtyUpdated();
         },
 
         increaseQty: function() {
-            this.qty = parseInt(this.qty) + 1;
-        }
+            if (this.qty < this.maxQuantity) this.qty = parseInt(this.qty) + 1;
+            // this.emitQtyUpdated();
+        },
+
+        fetchMaxQuantity: function() {
+            axios.get(`${this.baseUrl}/product-inventory/${this.productId}`)
+                .then(response => {
+                    this.maxQuantity = response.data.maxQuantity;
+                })
+                .catch(error => {
+                    console.error('Error fetching max quantity:', error);
+                });
+        },
+
+        // emitQtyUpdated: function() {
+        //     this.$emit('onQtyUpdated', this.qty);
+        // },
     }
 };
 </script>
