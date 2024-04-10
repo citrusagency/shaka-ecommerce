@@ -288,8 +288,8 @@
     &:focus {
         outline: none;
         box-shadow: none;
-        border: 1px solid $theme-dark-color;
-        background-color: $theme-color !important;
+        border: 1px solid #1197C2;
+        background-color: #1197C2 !important;
     }
 
     &.light {
@@ -311,8 +311,8 @@
 
 .theme-btn:hover,
 .btn-add-to-cart:hover {
-    border-color: $theme-dark-color !important;
-    background-color: $theme-dark-color !important;
+    border-color: #1197C2 !important;
+    background-color: #1197C2 !important;
     text-decoration: none;
 
     &.light {
@@ -338,7 +338,7 @@
     padding: 3px 10px;
     position: absolute;
     border-radius: 12px;
-    background-color: $theme-color;
+    background-color: #1197C2;
 }
 
 .bg-image {
