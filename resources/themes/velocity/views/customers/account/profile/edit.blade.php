@@ -160,13 +160,13 @@
                 <button
                     type="submit"
                     id="submitBtn"
-                    class="theme-btn col-lg-6 col-md-12 my-3" disabled>
+                    class="theme-btn col-lg-3 col-md-12 my-3" disabled>
                     Save
                 </button>
 
                 <button
                     type="submit"
-                    class="theme-btn col-lg-6 col-md-12 mb-3"
+                    class="theme-btn col-lg-3 col-md-12 my-3"
                     onclick="window.showDeleteProfileModal();">
                     Delete account
                 </button>
@@ -189,16 +189,21 @@
                     <div class="control-group" :class="[errors.has('password') ? 'has-error' : '']">
                         <label for="password">{{ __('admin::app.users.users.password') }}</label>
 
-                        <input type="password" v-validate="'required|min:6'" class="control  form-control"
+                        <input type="password" v-validate="'required|min:6'" class="control password form-control"
                                id="password"
                                name="password" data-vv-as="&quot;{{ __('admin::app.users.users.password') }}&quot;"/>
 
                         <span class="control-error" v-if="errors.has('password')"
                               v-text="errors.first('password')"></span>
+                        <div class="form-group align-self-auto mt-3">
+                            <input type="checkbox" onclick="showPassword()" class="" name="" id="">
+                            <span>Show Password</span>
+                        </div>
+
                     </div>
 
                     <div class="page-action">
-                        <button type="submit" class="theme-btn mt-3 mb20">
+                        <button type="submit" class="btn btn-outline-danger mt-3 mb20">
                             {{ __('shop::app.customer.account.address.index.delete') }}
                         </button>
                     </div>
