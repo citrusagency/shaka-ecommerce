@@ -71,12 +71,18 @@ class ProductRepository extends Repository
     public function update(array $data, $id, $attribute = 'id')
     {
         $product = $this->findOrFail($id);
-        $currentQty = $product->inventories[0]->qty;
+        $currentQty=null;
+
+        if(isset($product->inventories[0]->qty)){
+            $currentQty = $product->inventories[0]->qty;
+        }
 
         $product = $product->getTypeInstance()->update($data, $id, $attribute);
 
-        if (isset($data['inventories']) && $data['inventories'][1] != $currentQty) {
-            Event::dispatch('catalog.product.restock.after', $product);
+        if($currentQty===0){
+            if (isset($data['inventories']) && $data['inventories'][1] != $currentQty) {
+                Event::dispatch('catalog.product.restock.after', $product);
+            }
         }
 
         if (isset($data['channels'])) {
