@@ -25,52 +25,23 @@
             </a>
             <h4 class=" font-weight-bold account-heading">Orders</h4>
         </div>
-        {{--        CANCEL ORDER CONFIRMATION --}}
-        @if ($order->canCancel())
-            <div class="account-action">
-                <form id="cancelOrderForm" action="{{ route('customer.orders.cancel', $order->id) }}" method="post">
-                    @csrf
-                </form>
 
-                <a href="javascript:void(0);" class="theme-btn rounded float-right"
-                   onclick="cancelOrder('{{ __('shop::app.customer.account.order.view.cancel-confirm-msg') }}')"
-                   style="float: right">
-                    {{ __('shop::app.customer.account.order.view.cancel-btn-title') }}
-                </a>
-            </div>
-        @endif
     </div>
     {!! view_render_event('bagisto.shop.customers.account.orders.view.before', ['order' => $order]) !!}
 
     <div class="container">
         <tabs>
             <tab name="{{ __('shop::app.customer.account.order.view.info') }}" :selected="true">
-                <div class="sale-section">
-                    <div class="section-content">
-                        <div class="row col-12">
-                            <label class="control-label">
-                                {{ __('shop::app.customer.account.order.view.placed-on') }}
-                            </label>
-                            <span class="value">
-                                {{ core()->formatDate($order->created_at, 'd M Y') }}
-                                Order ID: {{ $order->id }}
-                                Total cost: {{ $order->grand_total }}
-                                Order date:{{ core()->formatDate($order->created_at, 'd M Y') }}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="sale-section mt-5">
+                <div class="sale-section mt-4">
                     <div class="section-title">
-                        <h5>Order {{ $order->increment_id }} details:</h5>
+                        <h5>Order #{{ $order->increment_id }} details:</h5>
                         <p> Status: {{ $order->status }} </p>
                     </div>
-                    {{--                    {{ dd($order) }}--}}
-                    <div class="section-content mt-3">
+                    <div class="section-content">
                         <div class="d-lg-flex">
 
                             @foreach ($order->items as $item)
-                                <div class="card mb-3 col" style="max-width: 18rem">
+                                <div class="card mr-lg-3 my-2 col-lg-3 col-md-6 col-sm-12">
                                     <div class="card-header bg-transparent">
                                         Product ID: {{ $item->getTypeInstance()->getOrderedItem($item)->sku }}
                                     </div>
@@ -87,8 +58,7 @@
                             @endforeach
                         </div>
 
-
-                        <div class="totals table table-striped accordion-header">
+                        <div class=" mt-lg-3 totals table table-striped">
                             <h3 class="table-heading">Total</h3>
                             <table class="sale-summary">
                                 <tbody>
@@ -170,107 +140,14 @@
                 <tab name="{{ __('shop::app.customer.account.order.view.invoices') }}">
 
                     @foreach ($order->invoices as $invoice)
+                        <div class="my-4 outline section-title">
 
-                        <div class="sale-section">
-                            <div class="section-title">
-                                <span>{{ __('shop::app.customer.account.order.view.individual-invoice', ['invoice_id' => $invoice->increment_id ?? $invoice->id]) }}</span>
+                            <h5>Order #{{ $order->increment_id }} details:</h5>
 
-                                <a href="{{ route('customer.orders.print', $invoice->id) }}" class="float-right">
-                                    {{ __('shop::app.customer.account.order.view.print') }}
-                                </a>
-                            </div>
-
-                            <div class="section-content">
-                                <div class="table">
-                                    <table>
-                                        <thead>
-                                        <tr>
-                                            <th>{{ __('shop::app.customer.account.order.view.SKU') }}</th>
-                                            <th>{{ __('shop::app.customer.account.order.view.product-name') }}</th>
-                                            <th>{{ __('shop::app.customer.account.order.view.price') }}</th>
-                                            <th>{{ __('shop::app.customer.account.order.view.qty') }}</th>
-                                            <th>{{ __('shop::app.customer.account.order.view.subtotal') }}</th>
-                                            <th>{{ __('shop::app.customer.account.order.view.tax-amount') }}</th>
-                                            <th>{{ __('shop::app.customer.account.order.view.grand-total') }}</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach ($invoice->items as $item)
-                                            <tr>
-                                                <td data-value="{{ __('shop::app.customer.account.order.view.SKU') }}">
-                                                    {{ $item->getTypeInstance()->getOrderedItem($item)->sku }}
-                                                </td>
-
-                                                <td data-value="{{ __('shop::app.customer.account.order.view.product-name') }}">
-                                                    {{ $item->name }}
-                                                </td>
-
-                                                <td data-value="{{ __('shop::app.customer.account.order.view.price') }}">
-                                                    {{ core()->formatPrice($item->price, $order->order_currency_code) }}
-                                                </td>
-
-                                                <td data-value="{{ __('shop::app.customer.account.order.view.qty') }}">
-                                                    {{ $item->qty }}
-                                                </td>
-
-                                                <td data-value="{{ __('shop::app.customer.account.order.view.subtotal') }}">
-                                                    {{ core()->formatPrice($item->total, $order->order_currency_code) }}
-                                                </td>
-
-                                                <td data-value="{{ __('shop::app.customer.account.order.view.tax-amount') }}">
-                                                    {{ core()->formatPrice($item->tax_amount, $order->order_currency_code) }}
-                                                </td>
-
-                                                <td data-value="{{ __('shop::app.customer.account.order.view.grand-total') }}">
-                                                    {{ core()->formatPrice($item->total + $item->tax_amount, $order->order_currency_code) }}
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div class="totals">
-                                    <table class="sale-summary">
-                                        <tr>
-                                            <td>{{ __('shop::app.customer.account.order.view.subtotal') }}
-                                                <span class="dash-icon">-</span>
-                                            </td>
-                                            <td>{{ core()->formatPrice($invoice->sub_total, $order->order_currency_code) }}</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>{{ __('shop::app.customer.account.order.view.shipping-handling') }}
-                                                <span class="dash-icon">-</span>
-                                            </td>
-                                            <td>{{ core()->formatPrice($invoice->shipping_amount, $order->order_currency_code) }}</td>
-                                        </tr>
-
-                                        @if ($invoice->base_discount_amount > 0)
-                                            <tr>
-                                                <td>{{ __('shop::app.customer.account.order.view.discount') }}
-                                                    <span class="dash-icon">-</span>
-                                                </td>
-                                                <td>{{ core()->formatPrice($invoice->discount_amount, $order->order_currency_code) }}</td>
-                                            </tr>
-                                        @endif
-
-                                        <tr>
-                                            <td>{{ __('shop::app.customer.account.order.view.tax') }}
-                                                <span class="dash-icon">-</span>
-                                            </td>
-                                            <td>{{ core()->formatPrice($invoice->tax_amount, $order->order_currency_code) }}</td>
-                                        </tr>
-
-                                        <tr class="fw6">
-                                            <td>{{ __('shop::app.customer.account.order.view.grand-total') }}
-                                                <span class="dash-icon">-</span>
-                                            </td>
-                                            <td>{{ core()->formatPrice($invoice->grand_total, $order->order_currency_code) }}</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
+                            <span>{{ __('shop::app.customer.account.order.view.individual-invoice', ['invoice_id' => $invoice->increment_id ?? $invoice->id]) }}</span>
+                            <a href="{{ route('customer.orders.print', $invoice->id) }}" class="float-right">
+                                {{ __('shop::app.customer.account.order.view.print') }}
+                            </a>
                         </div>
 
                     @endforeach
@@ -444,53 +321,61 @@
             @endif
         </tabs>
     </div>
-
-    <div class="d-flex">
+{{--Bottom cards --}}
+    <div class="container d-sm-block d-lg-flex">
         @if ($order->billing_address)
-            <div class="card mb-3">
-                <div class="card-header">
+            <div class="card mr-lg-3 my-2 col-lg-3 col-md-6 col-sm-12">
+                <div class="card-header bg-transparent">
                     {{ __('shop::app.customer.account.order.view.billing-address') }}
                 </div>
-                <div class="card-body text-secondary">
-                    <p class="card-text">
-                        @include ('admin::sales.address', ['address' => $order->billing_address])
-                    </p>
-                    <div class="card-text">
-                        <h5 class="mt-2"> {{ __('shop::app.customer.account.order.view.payment-method') }} </h5>
+                <div class="card-body pt-0">
+                    @include ('admin::sales.address', ['address' => $order->billing_address])
+                </div>
+                <div class="card-footer bg-transparent border-secondary">
+                    <p class=""> {{ __('shop::app.customer.account.order.view.payment-method') }} </p>
+                    <p>
                         {{ core()->getConfigData('sales.paymentmethods.' . $order->payment->method . '.title') }}
-                        @php $additionalDetails = \Webkul\Payment\Payment::getAdditionalDetails($order->payment->method); @endphp
-                        @if (! empty($additionalDetails))
-                            <div class="instructions">
-                                <label>{{ $additionalDetails['title'] }}</label>
-                                <p>{{ $additionalDetails['value'] }}</p>
-                            </div>
-                        @endif
-                    </div>
+                    </p>
+                    @php $additionalDetails = \Webkul\Payment\Payment::getAdditionalDetails($order->payment->method); @endphp
+                    @if (! empty($additionalDetails))
+                        <div class="instructions">
+                            <p>{{ $additionalDetails['title'] }}</p>
+                            <p>{{ $additionalDetails['value'] }}</p>
+                        </div>
+                    @endif
                 </div>
             </div>
         @endif
         @if ($order->shipping_address)
-            <div class="card border-secondary ml-md-3 mb-3">
-                <div class="card-header">
+            <div class="card mr-lg-3 my-2 col-lg-3 col-md-6 col-sm-12">
+                <div class="card-header bg-transparent">
                     {{ __('shop::app.customer.account.order.view.shipping-address') }}
                 </div>
-
-                <div class="card-body">
-                    <div class="card-text">
-                        @include ('admin::sales.address', ['address' => $order->shipping_address])
-                    </div>
-
+                <div class="card-body pt-0">
+                    @include ('admin::sales.address', ['address' => $order->shipping_address])
                     {!! view_render_event('bagisto.shop.customers.account.orders.view.shipping-address.after', ['order' => $order]) !!}
-
-                    <div class="card-title">
+                </div>
+                <div class="card-footer bg-transparent border-secondary">
+                    <p class="">
                         {{ __('shop::app.customer.account.order.view.shipping-method') }}
-                    </div>
-
-                    <div class="card-text">
+                    </p>
+                    <p class="">
                         {{ $order->shipping_title }}
                         {!! view_render_event('bagisto.shop.customers.account.orders.view.shipping-method.after', ['order' => $order]) !!}
-                    </div>
+                    </p>
                 </div>
+            </div>
+        @endif
+        {{--        CANCEL ORDER CONFIRMATION --}}
+        @if ($order->canCancel())
+            <div class="align-self-end col-3 mb-lg-3 ml-lg-auto">
+                <form id="cancelOrderForm" action="{{ route('customer.orders.cancel', $order->id) }}" method="post">
+                    @csrf
+                </form>
+
+                <a href="javascript:void(0);" class="btn btn-outline-danger rounded float-right"
+                   onclick="cancelOrder('{{ __('shop::app.customer.account.order.view.cancel-confirm-msg') }}')">
+                    Cancel order </a>
             </div>
         @endif
     </div>

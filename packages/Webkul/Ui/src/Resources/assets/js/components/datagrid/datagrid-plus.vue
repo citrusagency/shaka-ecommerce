@@ -103,7 +103,7 @@ export default {
         DatagridPagination,
         DatagridTable,
         DatagridExtraFilters,
-        DatagridFilterTags,
+
     },
 
     mixins: [PersistDatagridAttributes],
