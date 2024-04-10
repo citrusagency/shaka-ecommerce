@@ -64,6 +64,16 @@ export default {
             default: 1
         },
 
+        productId: {
+            type: [Number, String],
+            default: null
+        },
+
+        cartItemId: {
+            type: [Number, String],
+            default: null
+        },
+
         validations: {
             type: String,
             default: 'required|numeric|min_value:1'
@@ -72,7 +82,8 @@ export default {
 
     data: function() {
         return {
-            qty: this.quantity
+            qty: this.quantity,
+            maxQuantity: 100,
         };
     },
 
@@ -80,6 +91,8 @@ export default {
         this.$refs.quantityChanger.value = this.qty > this.minQuantity
             ? this.qty
             : this.minQuantity;
+
+        this.fetchMaxQuantity();
     },
 
     watch: {
@@ -101,11 +114,56 @@ export default {
 
         decreaseQty: function() {
             if (this.qty > this.minQuantity) this.qty = parseInt(this.qty) - 1;
+            this.removeFromCart();
         },
 
         increaseQty: function() {
-            this.qty = parseInt(this.qty) + 1;
-        }
+            if (this.qty < this.maxQuantity) this.qty = parseInt(this.qty) + 1;
+            this.addToCart();
+        },
+
+        fetchMaxQuantity: function() {
+            axios.get(`${this.baseUrl}/product-inventory/${this.productId}`)
+                .then(response => {
+                    this.maxQuantity = response.data.maxQuantity;
+                })
+                .catch(error => {
+                    console.error('Error fetching max quantity:', error);
+                });
+        },
+
+        addToCart: function () {
+            let url = `${this.$root.baseUrl}/cart/add`;
+
+            this.$http.post(url, {
+                'quantity': 1,
+                'product_id': this.productId,
+                '_token': this.csrfToken,
+            })
+                .then(response => {
+                    window.location.reload();
+                    window.showAlert(`alert-success`, this.__('shop.general.alert.success'), response.data.message);
+                })
+                .catch(error => {
+                    console.error('Error removing item from cart:', error);
+                })
+        },
+
+        removeFromCart: function () {
+            let url = `${this.$root.baseUrl}/cart/remove/${this.cartItemId}`;
+
+            axios.delete(url,{
+                data: {
+                    _token: this.csrfToken
+                }})
+                .then(response => {
+                    window.location.reload();
+                    window.showAlert(`alert-success`, this.__('shop.general.alert.success'), response.data.message);
+                })
+                .catch(error => {
+                    console.error('Error removing item from cart:', error);
+                });
+        },
     }
 };
 </script>
