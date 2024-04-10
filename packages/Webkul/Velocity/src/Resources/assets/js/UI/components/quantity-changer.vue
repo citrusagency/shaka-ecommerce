@@ -69,6 +69,11 @@ export default {
             default: null
         },
 
+        cartItemId: {
+            type: [Number, String],
+            default: null
+        },
+
         validations: {
             type: String,
             default: 'required|numeric|min_value:1'
@@ -109,12 +114,12 @@ export default {
 
         decreaseQty: function() {
             if (this.qty > this.minQuantity) this.qty = parseInt(this.qty) - 1;
-            // this.emitQtyUpdated();
+            this.removeFromCart();
         },
 
         increaseQty: function() {
             if (this.qty < this.maxQuantity) this.qty = parseInt(this.qty) + 1;
-            // this.emitQtyUpdated();
+            this.addToCart();
         },
 
         fetchMaxQuantity: function() {
@@ -127,9 +132,38 @@ export default {
                 });
         },
 
-        // emitQtyUpdated: function() {
-        //     this.$emit('onQtyUpdated', this.qty);
-        // },
+        addToCart: function () {
+            let url = `${this.$root.baseUrl}/cart/add`;
+
+            this.$http.post(url, {
+                'quantity': 1,
+                'product_id': this.productId,
+                '_token': this.csrfToken,
+            })
+                .then(response => {
+                    window.location.reload();
+                    window.showAlert(`alert-success`, this.__('shop.general.alert.success'), response.data.message);
+                })
+                .catch(error => {
+                    console.error('Error removing item from cart:', error);
+                })
+        },
+
+        removeFromCart: function () {
+            let url = `${this.$root.baseUrl}/cart/remove/${this.cartItemId}`;
+
+            axios.delete(url,{
+                data: {
+                    _token: this.csrfToken
+                }})
+                .then(response => {
+                    window.location.reload();
+                    window.showAlert(`alert-success`, this.__('shop.general.alert.success'), response.data.message);
+                })
+                .catch(error => {
+                    console.error('Error removing item from cart:', error);
+                });
+        },
     }
 };
 </script>
