@@ -144,12 +144,11 @@
 
                             <h5>Order #{{ $order->increment_id }} details:</h5>
 
-                            <span>{{ __('shop::app.customer.account.order.view.individual-invoice', ['invoice_id' => $invoice->increment_id ?? $invoice->id]) }}</span>
-                            <a href="{{ route('customer.orders.print', $invoice->id) }}" class="float-right">
+                            <p>{{ __('shop::app.customer.account.order.view.individual-invoice', ['invoice_id' => $invoice->increment_id ?? $invoice->id]) }}</p>
+                            <a href="{{ route('customer.orders.print', $invoice->id) }}" class="rounded">
                                 {{ __('shop::app.customer.account.order.view.print') }}
                             </a>
                         </div>
-
                     @endforeach
 
                 </tab>
