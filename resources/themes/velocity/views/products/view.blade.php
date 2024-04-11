@@ -152,7 +152,7 @@
                                 </div>
 
                                 {{-- right-section --}}
-                                <div class="right col-lg-7 col-md-6">
+                                <div class="right col-lg-7 col-md-6" style="padding-inline: 40px;">
                                     {{-- product-info-section --}}
                                     <div class="info">
                                         <h2 class="col-12 pb-0 mb-0"
@@ -179,7 +179,6 @@
                                                 @endforeach
                                             </div>
                                         @endif
-
                                         <hr>
 
 
@@ -211,22 +210,23 @@
                                                             <quantity-changer
                                                                 quantity-text="{{ __('shop::app.products.quantity') }}"></quantity-changer>
                                                         @endif
-                                                        <div>
-                                                            @if (core()->getConfigData('catalog.products.storefront.buy_now_button_display'))
-                                                                @include ('shop::products.buy-now', [
-                                                                    'product' => $product,
-                                                                ])
-                                                            @endif
+                                                            <div>
+                                                                @if (core()->getConfigData('catalog.products.storefront.buy_now_button_display'))
+                                                                    @include ('shop::products.buy-now', [
+                                                                        'product' => $product,
+                                                                    ])
+                                                                @endif
 
-                                                            @include ('shop::products.add-to-cart-product', [
-                                                                'form' => false,
-                                                                'product' => $product,
-                                                                'showCartIcon' => false,
-                                                                'showCompare' => core()->getConfigData('general.content.shop.compare_option') == "1"
-                                                                                ? true : false,
-                                                            ])
-                                                        </div>
+                                                                @include ('shop::products.add-to-cart-product', [
+                                                                    'form' => false,
+                                                                    'product' => $product,
+                                                                    'showCartIcon' => false,
+                                                                    'showCompare' => core()->getConfigData('general.content.shop.compare_option') == "1"
+                                                                                    ? true : false,
+                                                                ])
+                                                            </div>
                                                     </div>
+
                                                 @else
                                                     <input type="hidden" name="quantity" value="1">
                                                 @endif
@@ -235,7 +235,6 @@
 
                                                 <div class="col-12 pt-3 text-left d-flex">
                                                     <div class="p-0 pr-2 pt-1">
-
                                                         @include('shop::products.wishlist-product', [
                                                             'addClass' => $addWishlistClass ?? ''
                                                         ])
