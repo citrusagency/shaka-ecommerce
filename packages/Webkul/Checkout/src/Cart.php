@@ -319,6 +319,44 @@ class Cart
      * @param  int  $itemId
      * @return boolean
      */
+    public function removeOneItem($itemId)
+    {
+        Event::dispatch('checkout.cart.delete.before', $itemId);
+
+        if (! $cart = $this->getCart()) {
+            return false;
+        }
+
+        if ($cartItem = $cart->items()->find($itemId)) {
+            if ($cartItem->quantity > 1) {
+                $cartItem->quantity -= 1;
+                $cartItem->update([
+                    'quantity'          =>  $cartItem->quantity,
+                    'total'             => core()->convertPrice($cartItem->price * $cartItem->quantity),
+                    'base_total'        => $cartItem->price * $cartItem->quantity,
+                    'total_weight'      => $cartItem->weight * $cartItem->quantity,
+                    'base_total_weight' => $cartItem->weight * $cartItem->quantity,
+                ]);
+            } else {
+                $cartItem->delete();
+            }
+
+            if (! $cart->items()->get()->count()) {
+                $this->removeCart($cart);
+            } else {
+                Shipping::collectRates();
+            }
+
+            Event::dispatch('checkout.cart.delete.after', $itemId);
+
+            $this->collectTotals();
+
+            return true;
+        }
+
+        return false;
+    }
+
     public function removeItem($itemId)
     {
         Event::dispatch('checkout.cart.delete.before', $itemId);

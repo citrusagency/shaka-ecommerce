@@ -13,7 +13,7 @@ class SubscriptionEmail extends Mailable
 
     /**
      * Create a mailable instance
-     * 
+     *
      * @param  array  $subscriptionData
      */
     public function __construct(public $subscriptionData)
@@ -32,7 +32,7 @@ class SubscriptionEmail extends Mailable
             ->subject(trans('shop::app.mail.customer.subscription.subject'))
             ->view('shop::emails.customer.subscription-email')
             ->with('data', [
-                'content' => 'You Are Subscribed',
+                'content' => 'You Are Subscribed!',
                 'token'   => $this->subscriptionData['token'],
             ]);
     }

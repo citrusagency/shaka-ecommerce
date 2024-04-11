@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
 use Webkul\CartRule\Repositories\CartRuleCouponRepository;
 use Webkul\Product\Http\Requests\GiftCardRequest;
+use Webkul\Product\Models\ProductInventory;
 use Webkul\Product\Repositories\ProductAttributeValueRepository;
 use Webkul\Product\Repositories\ProductDownloadableLinkRepository;
 use Webkul\Product\Repositories\ProductDownloadableSampleRepository;
@@ -147,4 +148,11 @@ class ProductController extends Controller
         }
     }
 
+    public function productInventory($productId){
+        $qty = ProductInventory::query()->where('id', $productId)->value('qty');
+
+        return response()->json([
+            'maxQuantity' => $qty
+        ]);
+    }
 }

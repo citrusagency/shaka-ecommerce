@@ -1,31 +1,12 @@
 <template>
     <form method="POST" @submit.prevent="addToCart">
-
-        <!-- for move to cart from wishlist -->
-        <a
-            :href="wishlistMoveRoute"
-            :disabled="isButtonEnable == 'false' || isButtonEnable == false"
-            :class="`btn btn-add-to-cart ${addClassToBtn}`"
-            v-if="moveToCart"
-            >
-
-<!--            <i class="material-icons text-down-3" v-if="showCartIcon">shopping_cart</i>-->
-
-            <span class="fs14 fw6 text-uppercase text-up-4" v-text="btnText"></span>
-        </a>
-￼
-        <!-- for add to cart -->
         <button
             type="submit"
             :disabled="isButtonEnable == 'false' || isButtonEnable == false"
             class="btn bg-transparent text-white atc-btn"
             >
-
-<!--            <i class="material-icons text-down-3" v-if="showCartIcon">shopping_cart</i>-->
-
             <span class="fs14 fw6 text-uppercase text-up-4" v-text="btnText"></span>
         </button>
-
     </form>
 </template>
 

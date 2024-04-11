@@ -33,63 +33,71 @@
 </template>
 
 <style lang="scss">
-.tab {
-    cursor: pointer;
-    // Add your styles
-}
-.tabs {
-    display: flex;
-    justify-content: center;
-}
-.tab {
-    display: inline-block;
-    margin-right: 70px;
-    //padding-bottom: 20px;
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 1.5em;
-    position: relative;
-    cursor: pointer;
+    .tabs {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 40px;
+    }
+    .tab {
+        display: inline-block;
+        margin-right: 70px;
+        //padding-bottom: 20px;
+        margin-bottom: 10px;
+        padding:10px;
+        font-size: 1em;
+        position: relative;
+        cursor: pointer;
+        text-transform: uppercase;
 
-    &:last-child {
-        margin-right: 0;
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            display: block;
+            margin: auto;
+            border-radius: 50rem!important;
+            height: 3px;
+            width: 100%;
+            background: transparent;
+            transition: background 0.3s ease-in-out;
+            top: 35px;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        &.active::after {
+            background: #1197C2 !important;
+        }
     }
 
-    &::after {
-        content: "";
-        position: absolute;
-        display: block;
-        margin: auto;
-        border-radius: 50rem!important;
-        height: 3px;
-        width: 50%;
-        background: transparent;
-        transition: background 0.3s ease-in-out;
-        top: 50px;
-        left: 50%;
-        transform: translate(-50%,-50%);
+    .tab-content {
+        padding: 40px;
+        border: 1px solid gray;
+        color: #777777;
+        border-radius: 5px;
+        margin-bottom: 50px;
+        // Add your styles
     }
 
-    &.active::after {
-        background: #1197C2 !important;
+    .active {
+        // Add your active styles
     }
-}
 
-.tab-content {
-    padding: 40px;
-    border: 1px solid gray;
-    color: #777777;
-    border-radius: 5px;
-    // Add your styles
-}
+    .tab-content {
+        // Add your styles
+    }
 
-.active {
-    // Add your active styles
-}
-
-.tab-content {
-    // Add your styles
-}
+    @media only screen and (max-width: 550px){
+        .tabs {
+            flex-direction: column;
+            justify-content: left;
+            align-items: flex-start;
+        }
+    }
 </style>
 
 <script type="text/javascript">

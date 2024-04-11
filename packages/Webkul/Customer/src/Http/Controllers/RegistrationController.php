@@ -12,7 +12,8 @@ use Webkul\Customer\Mail\RegistrationEmail;
 use Webkul\Customer\Mail\VerificationEmail;
 use Webkul\Customer\Repositories\CustomerGroupRepository;
 use Webkul\Customer\Repositories\CustomerRepository;
-use Webkul\Shop\Mail\ContactEmail;
+use Webkul\Shop\Mail\SubscriptionEmail;
+use Webkul\Shop\Mail\SubscriptionNotification;
 
 class RegistrationController extends Controller
 {
@@ -94,15 +95,20 @@ class RegistrationController extends Controller
                     'customer_id'   => $customer->id,
                     'channel_id'    => core()->getCurrentChannel()->id,
                     'is_subscribed' => 1,
-                    'token'         => $token = uniqid(),
+                    'token'         => $data['token'],
                 ]);
 
                 try {
-                    Mail::queue(new ContactEmail([
+                    Mail::queue(new SubscriptionEmail([
                         'email' => $data['email'],
-                        'token' => $token,
+                        'token' => $data['token']
                     ]));
-                } catch (\Exception $e) {}
+                    Mail::queue(new SubscriptionNotification([
+                        'email' => $data['email'],
+                        'token' => $data['token']
+                    ]));
+                } catch (\Exception $e) {
+                }
             }
         }
 

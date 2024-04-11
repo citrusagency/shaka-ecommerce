@@ -78,7 +78,7 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
     /**
      * Subscription routes.
      */
-    Route::get('/subscribe', [SubscriptionController::class, 'subscribe'])->name('shop.subscribe');
+    Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])->name('shop.subscribe');
 
     Route::get('/unsubscribe/{token}', [SubscriptionController::class, 'unsubscribe'])->name('shop.unsubscribe');
 
@@ -102,6 +102,8 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
     Route::get('/product/{id}/{attribute_id}', [ProductController::class, 'download'])->defaults('_config', [
         'view' => 'shop.products.index',
     ])->name('shop.product.file.download');
+
+    Route::get('/product-inventory/{productId}', [ProductController::class, 'productInventory'])->name('shop.product.inventory');
 
 //    Route::get('categories/filterable-attributes/{categoryId?}', [CategoryController::class, 'getFilterAttributes'])->name('catalog.categories.filterable-attributes');
     Route::get('categories/filterable-attributes', [CategoryController::class, 'getFilterAttributes'])->name('catalog.categories.filterable-attributes');

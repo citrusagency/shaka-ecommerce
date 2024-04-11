@@ -123,7 +123,7 @@ class CartController extends Controller
      */
     public function removeProductFromCart($itemId)
     {
-        $result = Cart::removeItem($itemId);
+        $result = Cart::removeOneItem($itemId);
 
         if ($result) {
             $response = [

@@ -133,6 +133,7 @@
 
                         <div class="control-group">
                             <input type="checkbox" class="" onclick="showPassword()">Show Password
+
                         </div>
 
                         {!! view_render_event('bagisto.shop.customers.signup_form_controls.password_confirmation.after') !!}
@@ -142,9 +143,9 @@
                         </div>
 
                         @if (core()->getConfigData('customer.settings.newsletter.subscription'))
-                            <div class="control-group">
-                                <input type="checkbox" id="checkbox2" name="is_subscribed">
-                                <p>{{ __('shop::app.customer.signup-form.subscribe-to-newsletter') }}</p>
+                            <div class="control-group d-flex">
+                                <input type="checkbox" class="shaka-checkbox"  id="checkbox2" name="is_subscribed">
+                                <span>Subscribe to Newsletter</span>
                             </div>
                         @endif
 

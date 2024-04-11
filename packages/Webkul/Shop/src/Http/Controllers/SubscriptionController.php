@@ -2,9 +2,11 @@
 
 namespace Webkul\Shop\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-use Webkul\Shop\Mail\ContactEmail;
 use Webkul\Core\Repositories\SubscribersListRepository;
+use Webkul\Shop\Mail\SubscriptionEmail;
+use Webkul\Shop\Mail\SubscriptionNotification;
 
 class SubscriptionController extends Controller
 {
@@ -31,25 +33,32 @@ class SubscriptionController extends Controller
         ]);
 
         $email = request()->input('subscriber_email');
+        $token = request()->input('token');
 
-        $unique = 0;
+        if(isset($token) && $token){
+            $customerId = DB::table('customers')
+                ->where('token', $token)
+                ->value('id');
+        }else{
+            $token=uniqid();
+        }
 
         $alreadySubscribed = $this->subscriptionRepository->findWhere(['email' => $email]);
-
         $unique = function () use ($alreadySubscribed) {
             return ! $alreadySubscribed->count();
         };
 
         if ($unique()) {
-            $token = uniqid();
-
             $subscriptionData['email'] = $email;
             $subscriptionData['token'] = $token;
 
             $mailSent = true;
 
             try {
-                Mail::queue(new ContactEmail($subscriptionData));
+                if(!isset($customerId) || !$customerId){
+                    Mail::queue(new SubscriptionEmail($subscriptionData));
+                }
+                Mail::queue(new SubscriptionNotification($subscriptionData));
 
                 session()->flash('success', trans('shop::app.subscription.subscribed'));
             } catch (\Exception $e) {
@@ -62,16 +71,31 @@ class SubscriptionController extends Controller
             $result = false;
 
             if ($mailSent) {
-                $result = $this->subscriptionRepository->create([
-                    'email'         => $email,
-                    'channel_id'    => core()->getCurrentChannel()->id,
-                    'is_subscribed' => 1,
-                    'token'         => $token,
-                ]);
+                if(isset($customerId)){
+                    // for customers that are already in db
+                    $result = $this->subscriptionRepository->create([
+                        'email'         => $email,
+                        'customer_id'   => $customerId,
+                        'channel_id'    => core()->getCurrentChannel()->id,
+                        'is_subscribed' => 1,
+                        'token'         => $token,
+                    ]);
+
+                    DB::table('customers')
+                        ->where('token', $token)
+                        ->update(['subscribed_to_news_letter' => 1]);
+                }else{
+                    // for guests
+                    $result = $this->subscriptionRepository->create([
+                        'email'         => $email,
+                        'channel_id'    => core()->getCurrentChannel()->id,
+                        'is_subscribed' => 1,
+                        'token'         => $token,
+                    ]);
+                }
 
                 if (! $result) {
                     session()->flash('error', trans('shop::app.subscription.not-subscribed'));
-
                     return redirect()->back();
                 }
             }
@@ -86,7 +110,7 @@ class SubscriptionController extends Controller
      * To unsubscribe from a the subcription list
      *
      * @param  string  $token
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function unsubscribe($token)
     {
@@ -98,6 +122,11 @@ class SubscriptionController extends Controller
                 && $subscriber->is_subscribed
                 && $subscriber->update(['is_subscribed' => 0])
             ) {
+                DB::table('customers')
+                    ->where('token', $subscriber['token'])
+                    ->update(['subscribed_to_news_letter' => 0]);
+
+                $subscriber->delete();
                 session()->flash('info', trans('shop::app.subscription.unsubscribed'));
             } else {
                 session()->flash('info', trans('shop::app.subscription.already-unsub'));

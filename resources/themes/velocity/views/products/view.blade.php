@@ -123,7 +123,7 @@
         }
 
         .quantity .actions .add-to-cart-btn button.notify-available {
-            background: #B84626 !important;
+            background:  #1197C2 !important;
             color: #fff !important;
             border-radius: 5px !important;
             border: none !important;
@@ -131,6 +131,7 @@
     </style>
 @endpush
 
+{{--{{ dd($product->product->specifications); }}--}}
 @section('content-wrapper')
     <div class="container pt-4">
         <p>HOME > SHOP > {{ $product->name }}</p>
@@ -151,36 +152,14 @@
                                 </div>
 
                                 {{-- right-section --}}
-                                <div class="right col-lg-7 col-md-6">
+                                <div class="right col-lg-7 col-md-6" style="padding-inline: 40px;">
                                     {{-- product-info-section --}}
                                     <div class="info">
                                         <h2 class="col-12 pb-0 mb-0"
                                             style="font-weight: 400!important;font-size: 2rem; line-height: 1.9rem;"> {{ $product->name }}</h2>
 
-                                        {{--                                        @if ($total)--}}
-                                        {{--                                            <div class="reviews col-lg-12">--}}
-                                        {{--                                                <star-ratings--}}
-                                        {{--                                                    push-class="mr5"--}}
-                                        {{--                                                    :ratings="{{ $avgStarRating }}"--}}
-                                        {{--                                                ></star-ratings>--}}
-
-                                        {{--                                                <div class="reviews">--}}
-                                        {{--                                                    <span>--}}
-                                        {{--                                                        {{ __('shop::app.reviews.ratingreviews', [--}}
-                                        {{--                                                            'rating' => $avgRatings,--}}
-                                        {{--                                                            'review' => $total])--}}
-                                        {{--                                                        }}--}}
-                                        {{--                                                    </span>--}}
-                                        {{--                                                </div>--}}
-                                        {{--                                            </div>--}}
-                                        {{--                                        @endif--}}
-
-                                        {{--                                        @include ('shop::products.view.stock', ['product' => $product])--}}
-
-                                        <div class="col-12 price font-shaka-open-sans">
-
+                                        <div class="col-12 py-3 price font-shaka-open-sans">
                                             @include ('shop::products.price', ['product' => $product])
-
                                             @if (
                                                 Webkul\Tax\Helpers\Tax::isTaxInclusive()
                                                 && $product->getTypeInstance()->getTaxCategory()
@@ -200,7 +179,6 @@
                                                 @endforeach
                                             </div>
                                         @endif
-
                                         <hr>
 
 
@@ -232,22 +210,23 @@
                                                             <quantity-changer
                                                                 quantity-text="{{ __('shop::app.products.quantity') }}"></quantity-changer>
                                                         @endif
-                                                        <div>
-                                                            @if (core()->getConfigData('catalog.products.storefront.buy_now_button_display'))
-                                                                @include ('shop::products.buy-now', [
-                                                                    'product' => $product,
-                                                                ])
-                                                            @endif
+                                                            <div>
+                                                                @if (core()->getConfigData('catalog.products.storefront.buy_now_button_display'))
+                                                                    @include ('shop::products.buy-now', [
+                                                                        'product' => $product,
+                                                                    ])
+                                                                @endif
 
-                                                            @include ('shop::products.add-to-cart-product', [
-                                                                'form' => false,
-                                                                'product' => $product,
-                                                                'showCartIcon' => false,
-                                                                'showCompare' => core()->getConfigData('general.content.shop.compare_option') == "1"
-                                                                                ? true : false,
-                                                            ])
-                                                        </div>
+                                                                @include ('shop::products.add-to-cart-product', [
+                                                                    'form' => false,
+                                                                    'product' => $product,
+                                                                    'showCartIcon' => false,
+                                                                    'showCompare' => core()->getConfigData('general.content.shop.compare_option') == "1"
+                                                                                    ? true : false,
+                                                                ])
+                                                            </div>
                                                     </div>
+
                                                 @else
                                                     <input type="hidden" name="quantity" value="1">
                                                 @endif
@@ -256,7 +235,6 @@
 
                                                 <div class="col-12 pt-3 text-left d-flex">
                                                     <div class="p-0 pr-2 pt-1">
-
                                                         @include('shop::products.wishlist-product', [
                                                             'addClass' => $addWishlistClass ?? ''
                                                         ])
@@ -309,47 +287,18 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        {{--                                        @include ('shop::products.view.configurable-options')--}}
-
-                                        {{--                                        @include ('shop::products.view.downloadable')--}}
-
-                                        {{--                                        @include ('shop::products.view.grouped-products')--}}
-
-                                        {{--                                        @include ('shop::products.view.bundle-options')--}}
-
-                                        {{--                                        <div class="col-12 product-actions">--}}
-                                        {{--                                            @if (core()->getConfigData('catalog.products.storefront.buy_now_button_display'))--}}
-                                        {{--                                                @include ('shop::products.buy-now', [--}}
-                                        {{--                                                    'product' => $product,--}}
-                                        {{--                                                ])--}}
-                                        {{--                                            @endif--}}
-
-                                        {{--                                            @include ('shop::products.add-to-cart', [--}}
-                                        {{--                                                'form' => false,--}}
-                                        {{--                                                'product' => $product,--}}
-                                        {{--                                                'showCartIcon' => false,--}}
-                                        {{--                                                'showCompare' => core()->getConfigData('general.content.shop.compare_option') == "1"--}}
-                                        {{--                                                                ? true : false,--}}
-                                        {{--                                            ])--}}
-                                        {{--                                    </div>--}}
                                     </div>
 
                                     @include ('shop::products.view.short-description')
 
                                     {{-- product long description --}}
 {{--                                    @include ('shop::products.view.description')--}}
-
-                                    {{-- reviews count --}}
-                                    {{-- @include ('shop::products.view.reviews', ['accordian' => true])--}}
                                 </div>
                             </div>
                         </div>
                     </product-view>
                 </div>
             </section>
-        </div>
-    </div>
             <section class="col-12">
                 @if($product->product->washing_tips || $product->product->specifications || $product->product->delivery)
                     <div class="specs w-100 mt-5">
@@ -357,24 +306,25 @@
                     </div>
                 @endif
             </section>
-            <section class="col-12">
-                @if($product->product->galop_sticker)
-                    <div class="galop w-100 mt-5 py-5">
-                        <img src="{{asset("images/galop.png")}}" alt="">
-                    </div>
-                @endif
-            </section>
-
-            <div class="related-products mt-5">
-                @if($relatedProducts->count())
-                    <div class="bg-shaka-light py-5" style="width: 121%; margin-left: -10%; padding-left: 10%;overflow: hidden;">
-                        @include('shop::products.view.related-products', ['relatedProducts' => $relatedProducts])
-                    </div>
-                @endif
-                @include('shop::products.view.up-sells')
+        </div>
+    </div>
+    <section class="">
+        @if($product->product->galop_sticker)
+            <div class="galop w-100 mt-5 py-5">
+                <img src="{{asset("images/galop.png")}}" alt="">
             </div>
+        @endif
+    </section>
+    <section>
+        <div class="px-5">
+            @if($relatedProducts->count())
+                <div class="bg-shaka-light py-3" style="width: 121%; margin-left: -10%; padding-left: 10%;overflow: hidden;">
+                    @include('shop::products.view.related-products', ['relatedProducts' => $relatedProducts])
+                </div>
+            @endif
+        </div>
+    </section>
 
-    {{--    {!! view_render_event('bagisto.shop.products.view.after', ['product' => $product]) !!}--}}
 @endsection
 
 @push('scripts')

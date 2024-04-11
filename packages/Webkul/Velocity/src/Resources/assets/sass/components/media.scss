@@ -907,6 +907,10 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .cart-btn-group{
+        flex-direction: column;
+        justify-content: left;
+    }
     .sticky-header {
         display: none !important;
     }

@@ -7,6 +7,13 @@
 
     $homeSEO = $channel->home_seo;
 
+    $token=null;
+    if(auth()->guard('customer')->user()){
+        $customerEmail = auth()->guard('customer')->user()->email;
+        $subscribed = auth()->guard('customer')->user()->subscribed_to_news_letter;
+        $token = auth()->guard('customer')->user()->token;
+    }
+
     if (isset($homeSEO)) {
         $homeSEO = json_decode($channel->home_seo);
 
@@ -52,11 +59,6 @@
             font-weight: 600;
         }
 
-        #demo {
-            margin-top: -150px;
-            /*padding-top: 280px;*/
-            /*padding-bottom: 180px;*/
-        }
 
         .homepage-imga, .carousel-item {
             padding-top: 380px;
@@ -99,7 +101,7 @@
             border-radius: 8px 0 0 8px;
             border:1px solid #DADADA !important;
             color: #777;
-            font-size: 14px;
+            font-size: 16px;
             font-style: normal;
             font-weight: 400;
             line-height: 100%;
@@ -191,7 +193,7 @@
 @section('full-content-wrapper')
 
     <div class="homepage-img text-white">
-        <div id="demo" class="carousel slide" data-ride="carousel">
+        <div id="demo" class="carousel slide" data-ride="carousel" style="margin-top: -12vh;">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
@@ -345,11 +347,24 @@ line-height: 32px; padding-right:50px !important;">
                     <p class="mt-1 text-shaka-subtitle text-left w-100 txt-stl" style="padding-right: 7rem;">
                         Subscribe to our newsletter and stay updated for new Shaka arrivals.
                     </p>
-                    <div class="mt-3 w-100 subscribe d-flex">
-                        <input type="text" class="w-100 input-stl" placeholder="Your email address"><button href="#" class="bg-shaka-primary btn-stl bnt-shaka-primary">Subscribe</button>
-                    </div>
+                        @if(isset($subscribed) && $subscribed)
+                            <div class="mt-3 w-100 ">
+                                <p class="mt-1 text-shaka-subtitle text-left w-100 txt-stl" style="padding-right: 7rem;">You are already subscribed to our newsletter. Do you want to unsubscribe?</p>
+                                <a href="{{ route('shop.unsubscribe', $token) }}" class="btn bg-shaka-primary bnt-shaka-primary mt-3" style="padding: 8px 22px !important;">
+                                    {!! __('shop::app.mail.customer.subscription.unsubscribe') !!}
+                                </a>
+                            </div>
+                        @else
+                            <div class="mt-3 w-100 subscribe d-flex">
+                                <form id="registrationForm" action="{{ route('shop.subscribe') }}" class="d-flex w-100 p-2" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="token" id="token" value="{{ $token ?? null }}">
+                                    <input type="email" name="subscriber_email" id="subscriber_email" class="w-100 input-stl" placeholder="Your email address" value="{{ $customerEmail ?? '' }}"{{ auth()->check() ? ' readonly' : '' }}>
+                                    <button type="submit" id="submitButton" class="bg-shaka-primary btn-stl bnt-shaka-primary">Subscribe</button>
+                                </form>
+                            </div>
+                        @endif
                 </div>
-
             </div>
             <img src="{{asset('images/homepage4.png')}}" class="d-none d-md-block" alt="" style="max-height: 730px;
     object-fit: cover;
