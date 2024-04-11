@@ -133,7 +133,7 @@
                                         </div>
 
                                         <div class="form-group contact-checkbox">
-                                            <input type="checkbox" name="" class="shaka-checkbox contact-checkbox" id=""
+                                            <input type="checkbox" name="" class=" contact-checkbox" id=""
                                                    required> <span class="shaka-p">By checking this box, I agree to the <a
                                                     href="/privacy-policy" target="_blank">Privacy Policy</a> </span>
                                         </div>

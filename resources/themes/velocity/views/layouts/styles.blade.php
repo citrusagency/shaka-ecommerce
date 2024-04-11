@@ -32,11 +32,12 @@
         line-height: 32px !important;
         font-family: "Outfit", sans-serif !important;
     }
-    a,a:hover{
+
+    a, a:hover {
         color: #1197C2;
     }
 
-    .header-a{
+    .header-a {
         text-transform: uppercase;
         font-size: 14px !important;
         font-style: normal;
@@ -61,12 +62,6 @@
         letter-spacing: 0.48px;
     }
 
-    .login-input, textarea {
-        border: transparent 0px !important;
-        border-radius: 8px !important;
-        padding: 1.5rem 1rem !important;
-    }
-
     label {
         color: #777;
         font-family: 'Outfit', sans-serif;
@@ -78,6 +73,31 @@
         margin-bottom: 1rem;
     }
 
+    input[type="text"],input[type="password"], select {
+        border-radius: 8px !important;
+        /*padding: 1.2rem 1rem !important;*/
+    }
+
+    input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        outline: none;
+        accent-color: #1197C2;
+    }
+
+    input[type="radio"] {
+        width: 17px;
+        height: 17px;
+        outline: none;
+        accent-color: #1197C2;
+    }
+
+    .login-input, textarea {
+        border: transparent 0px !important;
+        border-radius: 8px !important;
+        padding: 1.5rem 1rem !important;
+    }
+
     .shaka-p {
         font-family: "Outfit", sans-serif;
         font-size: 18px;
@@ -87,22 +107,13 @@
         line-height: 32px;
     }
 
-    .shaka-checkbox {
-        width: 20px;
-        height: 20px;
-        outline: none;
-    }
-
     /*~~~~~~~~~~~~~~~~~ profile css ~~~~~~~~~~~~~~~~*/
 
-    .profile-input{
-        border-radius: 8px!important;
-        padding: 1.2rem 1rem!important;
+    .:focus {
+        border: solid #757575 1px !important;
     }
-    .profile-input:focus{
-        border: solid #757575 1px!important;
-    }
-    .profile-form{
+
+    .profile-form {
         padding: 10px;
         /*background-color: rebeccapurple;*/
     }

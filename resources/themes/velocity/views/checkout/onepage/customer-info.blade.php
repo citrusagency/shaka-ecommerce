@@ -1,4 +1,4 @@
-<form data-vv-scope="address-form" class="custom-form">
+<form data-vv-scope="address-form" class="">
     <div class="form-container" v-if="! this.new_billing_address">
         <accordian
             :active="true"
@@ -24,12 +24,12 @@
                                     <input
                                         type="radio"
                                         name="billing[address_id]"
+                                        class=""
                                         :value="addresses.id"
                                         v-model="address.billing.address_id"
                                         v-validate="'required'"
                                         data-vv-as="&quot;{{ __('shop::app.checkout.onepage.billing-address') }}&quot;"
                                         @change="validateForm('address-form')" />
-
                                     <span class="checkmark"></span>
                                 </div>
 
@@ -80,6 +80,7 @@
                             <input
                                 id="billing[use_for_shipping]"
                                 type="checkbox"
+                                class=""
                                 name="billing[use_for_shipping]"
                                 v-model="address.billing.use_for_shipping"
                                 @change="validateFormAfterAction" />
@@ -108,7 +109,7 @@
                 @auth('customer')
                     @if(count(auth('customer')->user()->addresses))
                         <a
-                            class="theme-btn light back-button text-up-14"
+                            class="theme-btn rounded back-button px-4 text-up-14"
                             @click="backToSavedBillingAddress()">
 
                             {{ __('shop::app.checkout.onepage.back') }}
@@ -150,6 +151,7 @@
                                         type="radio"
                                         name="shipping[address_id]"
                                         :value="addresses.id"
+                                        class=""
                                         v-model="address.shipping.address_id"
                                         v-validate="'required'"
                                         data-vv-as="&quot;{{ __('shop::app.checkout.onepage.shipping-address') }}&quot;"
@@ -219,7 +221,7 @@
                     @auth('customer')
                         @if(count(auth('customer')->user()->addresses))
                             <a
-                                class="theme-btn light float-right text-up-14"
+                                class="theme-btn rounded float-right text-up-14"
                                 @click="backToSavedShippingAddress()">
 
                                 {{ __('shop::app.checkout.onepage.back') }}

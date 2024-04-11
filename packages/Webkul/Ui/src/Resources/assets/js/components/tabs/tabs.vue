@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="tabs">
-            <ul>
-                <li v-for="tab in tabs" :class="{ 'active': tab.isActive }" @click="selectTab(tab)">
-                    <a>{{ tab.name }}</a>
+            <ul class="nav nav-pills d-flex flex-sm-column flex-lg-row ">
+                <li v-for="tab in tabs" :class="{ 'bg-shaka-primary': tab.isActive  }" class="theme-btn rounded mr-lg-3  cursor-pointer nav-item" @click="selectTab(tab)">
+                    <a class="nav-link">{{ tab.name }}</a>
                 </li>
             </ul>
         </div>

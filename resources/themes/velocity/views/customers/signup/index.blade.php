@@ -131,9 +131,9 @@
                                v-text="errors.first('password_confirmation')"></p>
                         </div>
 
-                        <div class="control-group d-flex">
-                            <input type="checkbox" class="shaka-checkbox" onclick="showPassword()">
-                            <span>Show Password</span>
+                        <div class="control-group">
+                            <input type="checkbox" class="" onclick="showPassword()">Show Password
+
                         </div>
 
                         {!! view_render_event('bagisto.shop.customers.signup_form_controls.password_confirmation.after') !!}
