@@ -45,7 +45,7 @@
                 :alt="product.name"
                 :src="product.image || product.product_image"
                 :data-src="product.image || product.product_image"
-                class="lzy_img w-100"
+                class="product-image lzy_img w-100"
                 :onerror="`this.src='${this.$root.baseUrl}/vendor/webkul/ui/assets/images/product/large-product-placeholder.png'`"/>
             <div class="sticker-new bg-shaka-primary px-4 py-1" v-if="product.special_price && product.isSaleable">
                 sale
@@ -124,7 +124,9 @@
 .product-image {
     aspect-ratio: 4/5;
     width: 100%;
+    height: 350px;
     object-fit: cover;
+
 }
 .add-to-cart-btn button span{
     font-size: 0.7rem!important;
