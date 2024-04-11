@@ -3,8 +3,9 @@
 @php
     $images = productimage()->getGalleryImages($product);
     $videos = productvideo()->getVideos($product);
-//dd($images);
     $videoData = $imageData = [];
+
+    $mainImageSource = $images[0]['large_image_url'];
 
     foreach ($videos as $key => $video) {
         $videoData[$key]['type'] = $video['type'];
@@ -26,7 +27,7 @@
 
     <div class="product-image-group">
         <div class="row col-12">
-            <magnify-image src="{{ asset('storage/product/1/gMYFeoSP9mipR9wMmnosVcDiitiUl0gzDzo903fV.png') }}" type="{{ $images[0]['type'] }}">
+            <magnify-image src="{{ $mainImageSource }}" type="{{ $images[0]['type'] }}">
             </magnify-image>
 
 {{--            <magnify-image src="{{ $images[0]['large_image_url'] }}" type="{{ $images[0]['type'] }}">--}}
