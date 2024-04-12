@@ -1,12 +1,8 @@
 <template>
 
-    <div :class="`row mb15 col-12 carousel-products-header ${rowClass}`">
-        <div class="col-4 no-padding" v-if="tabs || viewAll || scrollable">
-            <h2 class="fs20 fw6">{{ headerHeading }}</h2>
-        </div>
-
-        <div class="col-12 no-padding" v-else >
-            <h2 class="fs20 fw6">{{ headerHeading }}</h2>
+    <div :class="`row mb15 col-11 carousel-products-header ${rowClass}`">
+        <div class="col-12 no-padding d-flex justify-content-center" v-if="tabs || viewAll || scrollable">
+            <h2 class="fs20 fw6 text-center">{{ headerHeading }}</h2>
         </div>
 
         <div class="col-8 no-padding">

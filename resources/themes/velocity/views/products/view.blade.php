@@ -152,7 +152,7 @@
                                 </div>
 
                                 {{-- right-section --}}
-                                <div class="right col-lg-7 col-md-6" style="padding-inline: 40px;">
+                                <div class="right col-lg-7 col-md-6 product-view-pd">
                                     {{-- product-info-section --}}
                                     <div class="info">
                                         <h2 class="col-12 pb-0 mb-0"
@@ -210,21 +210,22 @@
                                                             <quantity-changer
                                                                 quantity-text="{{ __('shop::app.products.quantity') }}"></quantity-changer>
                                                         @endif
-                                                            <div>
-                                                                @if (core()->getConfigData('catalog.products.storefront.buy_now_button_display'))
-                                                                    @include ('shop::products.buy-now', [
-                                                                        'product' => $product,
-                                                                    ])
-                                                                @endif
 
-                                                                @include ('shop::products.add-to-cart-product', [
-                                                                    'form' => false,
-                                                                    'product' => $product,
-                                                                    'showCartIcon' => false,
-                                                                    'showCompare' => core()->getConfigData('general.content.shop.compare_option') == "1"
-                                                                                    ? true : false,
-                                                                ])
-                                                            </div>
+                                                    </div>
+                                                    <div>
+                                                        @if (core()->getConfigData('catalog.products.storefront.buy_now_button_display'))
+                                                            @include ('shop::products.buy-now', [
+                                                                'product' => $product,
+                                                            ])
+                                                        @endif
+
+                                                        @include ('shop::products.add-to-cart-product', [
+                                                            'form' => false,
+                                                            'product' => $product,
+                                                            'showCartIcon' => false,
+                                                            'showCompare' => core()->getConfigData('general.content.shop.compare_option') == "1"
+                                                                            ? true : false,
+                                                        ])
                                                     </div>
 
                                                 @else
@@ -311,14 +312,14 @@
     <section class="">
         @if($product->product->galop_sticker)
             <div class="galop w-100 mt-5 py-5">
-                <img src="{{asset("images/galop.png")}}" alt="">
+                <img src="{{asset("images/galop.png")}}" alt="galop-sticker" class="galop-sticker">
             </div>
         @endif
     </section>
     <section>
-        <div class="px-5">
+        <div>
             @if($relatedProducts->count())
-                <div class="bg-shaka-light py-3" style="width: 121%; margin-left: -10%; padding-left: 10%;overflow: hidden;">
+                <div class="bg-shaka-light px-5" style="width: 100%;overflow: hidden;">
                     @include('shop::products.view.related-products', ['relatedProducts' => $relatedProducts])
                 </div>
             @endif

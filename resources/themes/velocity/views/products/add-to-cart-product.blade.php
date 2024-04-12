@@ -111,7 +111,7 @@
                             {{--                        <i class="material-icons text-down-3">shopping_cart</i>--}}
                         @endif
 
-                        {{ ($product->type == 'booking') ?  __('shop::app.products.book-now') :  __('shop::app.products.add-to-cart') }}
+                        {{ ($product->type == 'booking') ?  __('shop::app.products.book-now') :  '+  '.__('shop::app.products.add-to-cart') }}
                     </button>
                 @else
                     <button class="notify-available d-flex" onclick="openNotifyModal()">
