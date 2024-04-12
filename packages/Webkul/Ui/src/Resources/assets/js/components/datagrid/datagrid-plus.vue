@@ -29,7 +29,7 @@
                             ></page-filter>
                         </div>
 
-                        <div class="dropdown-filters">
+                        <div class="dropdown-filters" v-if="isRouteAdmin">
                             <column-filter
                                 :columns="columns"
                                 :translations="translations"
@@ -120,6 +120,13 @@ export default {
         };
     },
 
+    computed: {
+        isRouteAdmin() {
+            let url = this.src.split('/');
+            return url[url.length-3] !== 'customer';
+        }
+    },
+
     mounted: function () {
         this.makeURL();
     },
@@ -130,10 +137,10 @@ export default {
 
             for (let i = 0; i < this.filters.length; i++) {
                 if (
-                    this.filters[i].column == 'status' ||
-                    this.filters[i].column == 'value_per_locale' ||
-                    this.filters[i].column == 'value_per_channel' ||
-                    this.filters[i].column == 'is_unique'
+                    this.filters[i].column === 'status' ||
+                    this.filters[i].column === 'value_per_locale' ||
+                    this.filters[i].column === 'value_per_channel' ||
+                    this.filters[i].column === 'is_unique'
                 ) {
                     if (this.filters[i].val.includes('True')) {
                         this.filters[i].val = 1;
@@ -421,7 +428,7 @@ export default {
             const currentPerPageSelection = $event.data.perPage;
 
             for (let i = 0; i < this.filters.length; i++) {
-                if (this.filters[i].column == 'perPage') {
+                if (this.filters[i].column === 'perPage') {
                     this.filters.splice(i, 1);
                 }
             }
