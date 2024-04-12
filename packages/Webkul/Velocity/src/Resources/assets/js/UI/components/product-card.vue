@@ -38,7 +38,7 @@
             </div>
         </div>
     </div>
-    <div class="product-container pb-5 pr-2 pl-5" style="max-width: 400px!important; min-width: 300px !important;" v-else>
+    <div class="product-container pb-5 pr-4 pl-4" style="max-width: 350px!important; min-width: 300px !important;" v-else>
         <a :href="`${baseUrl}/${product.slug}`" :title="product.name" class="product-image-container">
             <img
                 loading="lazy"

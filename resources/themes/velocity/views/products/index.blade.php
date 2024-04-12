@@ -97,7 +97,7 @@
 
                     <template v-else-if="products.length > 0">
                         @if ($toolbarHelper->getCurrentMode() == 'grid')
-                            <div class="row  remove-padding-margin pb-5">
+                            <div class="shop-products-list">
                                 <product-card
                                     class="col-6 col-md-4 col-lg-3 mt-5"
                                     :key="index"
