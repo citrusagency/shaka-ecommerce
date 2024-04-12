@@ -38,14 +38,14 @@
             </div>
         </div>
     </div>
-    <div class="product-container w-100" v-else>
+    <div class="product-container pb-5 pr-4 pl-4" style="max-width: 350px!important; min-width: 300px !important;" v-else>
         <a :href="`${baseUrl}/${product.slug}`" :title="product.name" class="product-image-container">
             <img
                 loading="lazy"
                 :alt="product.name"
                 :src="product.image || product.product_image"
                 :data-src="product.image || product.product_image"
-                class="product-image lzy_img w-100"
+                class="product-image lzy_img w-70"
                 :onerror="`this.src='${this.$root.baseUrl}/vendor/webkul/ui/assets/images/product/large-product-placeholder.png'`"/>
             <div class="sticker-new bg-shaka-primary px-4 py-1" v-if="product.special_price && product.isSaleable">
                 sale
@@ -64,8 +64,9 @@
                 :href="`${baseUrl}/${product.slug}`">
                 <span class="fs16 font-weight-bold">{{ product.name }}</span>
                 <br>
-                <p v-html="product.priceHTML"></p>
-<!--                <div class="product-price text-shaka-subtitle mt-2">{{ product.special_price ? product.special_price : product.price }}</div>-->
+                <div class="product-price">{{ product.special_price ? product.special_price : product.price }}</div>
+                <br>
+                <div class="product-price text-shaka-subtitle" :style="{ 'text-decoration': product.special_price && product.special_price !== product.price ? 'line-through' : 'none' }">{{ product.price }}</div>
             </a>
         </div>
     </div>

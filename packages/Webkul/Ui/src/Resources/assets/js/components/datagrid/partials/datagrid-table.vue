@@ -284,7 +284,7 @@ export default {
                         for (let currentId in this.gridCurrentData.data[
                             currentData
                         ]) {
-                            if (i == 0) {
+                            if (i === 0) {
                                 this.dataIds.push(
                                     this.gridCurrentData.data[currentData][
                                         this.index

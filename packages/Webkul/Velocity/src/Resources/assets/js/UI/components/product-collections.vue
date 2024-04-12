@@ -13,8 +13,7 @@
                     class="col-md-12 no-padding carousel-products"
                     :class="showRecentlyViewed === 'true' ? 'with-recent-viewed col-lg-9' : 'without-recent-viewed col-lg-12'">
                     <div class="row">
-                        <div class="col-6 col-md-4 col-lg-3" v-for="product in productCollections">
-
+                        <div class="d-flex justify-content-between flex-row flex-wrap m-auto " v-for="product in productCollections">
                             <product-card
                                 :list="list"
                                 :product="product">

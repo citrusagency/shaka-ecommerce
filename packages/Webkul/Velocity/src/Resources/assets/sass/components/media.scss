@@ -955,6 +955,9 @@
     .slider-container {
         min-height: 220px;
     }
+    .shop-products-list{
+        justify-content: center;
+    }
 }
 
 @media only screen and (max-width: 460px) {
@@ -965,6 +968,15 @@
             min-height: unset;
         }
     }
+
+    .galop-sticker{
+        max-width: 350px;
+    }
+
+    .product-view-pd{
+        padding-inline: 10px;
+    }
+
 }
 
 @media only screen and (max-width: 420px) {

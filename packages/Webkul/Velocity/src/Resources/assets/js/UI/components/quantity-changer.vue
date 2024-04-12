@@ -1,12 +1,12 @@
 <template>
     <div
-        :class="`quantity control-group ${
+        :class="`quantity control-group mb-3 ${
             errors.has(controlName) ? 'has-error' : ''
         }`"
     >
         <label
             class="required"
-            style="width:120px;"
+            style="width:100px;"
             for="quantity-changer"
             v-text="quantityText"
         ></label>

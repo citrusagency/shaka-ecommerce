@@ -757,3 +757,15 @@ body::after {
    display:block;
 }
 
+.product-view-pd{
+    padding-inline: 40px;
+}
+
+.shop-products-list{
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
