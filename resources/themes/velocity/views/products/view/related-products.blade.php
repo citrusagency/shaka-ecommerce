@@ -38,9 +38,9 @@
 {{--            @endforeach--}}
 {{--        </carousel-component>--}}
 
-        <div class="d-flex justify-content-between flex-row flex-wrap m-auto ">
+        <div class="d-flex justify-content-center flex-row flex-wrap m-auto ">
             @foreach ($relatedProducts as $index => $relatedProduct)
-                <div class="m-auto">
+                <div>
                     <product-card
                         :list="false"
                         :product="{{ json_encode($relatedProduct)  }}">
