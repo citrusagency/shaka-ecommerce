@@ -19,11 +19,11 @@
     text-transform: none;
     font-variant: normal;
     -webkit-font-smoothing: antialiased;
-    font-family: 'Webkul Rango' !important;
+    font-family: 'Webkul Rango', sans-serif !important;
 }
 
 @mixin remove-padding-margin {
     width: 100% !important;
-    margin: 0px !important;
-    padding: 0px !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }

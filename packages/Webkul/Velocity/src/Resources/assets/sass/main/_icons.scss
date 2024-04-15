@@ -3,11 +3,11 @@
     height: 48px;
     display: inline-block;
     background-size: cover;
-    background-image: url("../images/Icon-Velocity.svg");
+    background-image: url("../../../../../publishable/assets/images/Icon-Velocity.svg");
 }
 
 .camera-icon {
-    background-image: url("../images/icon-camera.svg");
+    background-image: url("../../../../../publishable/assets/images/icon-camera.svg");
     width: 24px;
     display: inline-block;
     background-size: cover;
@@ -16,22 +16,22 @@
 .router-link-active,
 .active {
     .velocity-icon {
-        background-image: url("../images/Icon-Velocity-Active.svg");
+        background-image: url("../../../../../publishable/assets/images/Icon-Velocity-Active.svg");
     }
 
     &.velocity-icon {
-        background-image: url("../images/Icon-Velocity-Active.svg");
+        background-image: url("../../../../../publishable/assets/images/Icon-Velocity-Active.svg");
     }
 }
 
 .eye-icon {
-    background-image: url("../images/icon-eye.svg");
+    background-image: url("../../../../../publishable/assets/images/icon-eye.svg");
     width: 24px;
     height: 24px;
 }
 
 .cross-icon {
-    background-image: url("../images/icon-crossed.svg");
+    background-image: url("../../../../../publishable/assets/images/icon-crossed.svg");
     width: 18px;
     height: 18px;
 }

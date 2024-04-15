@@ -43,12 +43,12 @@
         }
 
         .info {
-            margin-left: 0px;
-            border-bottom: 1px solid #d3d3d3;
+            margin-left: 0;
+            border-bottom: 1px solid $border-common;
 
             > h2,
             div {
-                padding-left: 0px;
+                padding-left: 0;
             }
 
             > * {
@@ -73,7 +73,7 @@
                 label {
                     width: max-content;
                     border: none;
-                    color: white;
+                    color: $white;
                     font-weight: 600;
                     cursor: default;
                     margin: 0;
@@ -122,7 +122,7 @@
             @extend .fs18;
             @extend .no-padding;
 
-            margin-bottom: 0px;
+            margin-bottom: 0;
         }
 
         h4 {
@@ -144,7 +144,7 @@
         }
 
         .add-to-cart-btn {
-            padding: 0px;
+            padding: 0;
 
             button {
                 text-transform: uppercase;
@@ -210,13 +210,13 @@
     .thumb-list {
         left: 15px;
         z-index: 99;
-        padding: 0px;
+        padding: 0;
         overflow: hidden;
         margin-top: 10px;
         position: relative;
 
         .arrow {
-            left: 0px;
+            left: 0;
             height: 100%;
             z-index: 1001;
             opacity: 0.5;
@@ -300,7 +300,7 @@
 
             div.left {
                 top: 60px;
-                padding: 0px;
+                padding: 0;
                 position: sticky;
 
                 .product-image-group {
@@ -334,7 +334,7 @@
                             min-width: 38px;
                             height: 38px;
                             float: left;
-                            border: 1px solid #c7c7c7;
+                            border: 1px solid $border-common;
                             border-radius: 3px;
                             line-height: 36px;
                             text-align: center;
@@ -345,15 +345,15 @@
                         img {
                             width: 38px;
                             height: 38px;
-                            border: 1px solid #c7c7c7;
+                            border: 1px solid $border-common;
                             border-radius: 3px;
                             cursor: pointer;
-                            background: rgb(242, 242, 242);
+                            background: $light-background;
                         }
 
                         input:checked + span,
                         input:checked + img {
-                            border: 1px solid #242424;
+                            border: 1px solid $gray;
                         }
 
                         input {

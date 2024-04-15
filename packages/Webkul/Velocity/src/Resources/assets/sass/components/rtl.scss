@@ -7,7 +7,7 @@ body {
         }
 
         .order-summary-container {
-            margin-left: 0px;
+            margin-left: 0;
             margin-right: 130px;
         }
 
@@ -22,7 +22,7 @@ body {
             #search-form {
                 #header-search-icon {
                     float: right;
-                    border-radius: 2px 0px 0px 2px;
+                    border-radius: 2px 0 0 2px;
                 }
 
                 .btn-group {
@@ -180,7 +180,7 @@ body {
                 }
 
                 .wishlist-icon {
-                    padding: 0px !important;
+                    padding: 0 !important;
                 }
 
                 .product-information {
@@ -245,7 +245,7 @@ body {
             .toolbar-wrapper {
                 > div {
                     label {
-                        margin-right: 0px;
+                        margin-right: 0;
                         margin-left: 10px;
                     }
                 }
@@ -254,7 +254,7 @@ body {
 
         .filter-attributes-content {
             margin-left: 7px;
-            margin-right: 0px;
+            margin-right: 0;
         }
 
         .filter-attributes-item {
@@ -306,7 +306,7 @@ body {
                         }
 
                         > div {
-                            padding-right: 0px;
+                            padding-right: 0;
                             padding-left: 15px;
                         }
                     }
@@ -359,11 +359,11 @@ body {
 
             .right {
                 .info {
-                    margin-right: 0px;
+                    margin-right: 0;
 
                     > h2,
                     div {
-                        padding-right: 0px;
+                        padding-right: 0;
                     }
 
                     .buynow {
@@ -487,7 +487,7 @@ body {
         }
 
         .pl0 {
-            padding-right: 0px !important;
+            padding-right: 0 !important;
         }
 
         .pl10 {
@@ -555,12 +555,12 @@ body {
                 button {
                     &.increase {
                         border-right: 0;
-                        border-left: 1px solid #dcdcdc;
+                        border-left: 1px solid $border-dark;
                     }
 
                     &.decrease {
                         border-left: 0;
-                        border-right: 1px solid #dcdcdc;
+                        border-right: 1px solid $border-dark;
                     }
                 }
             }
@@ -591,7 +591,7 @@ body {
                 right: unset;
                 left: 34px;
             }
-            
+
             &:after {
                 right: unset;
                 left: 8px;
@@ -607,13 +607,13 @@ body {
     body {
         &.rtl {
             .order-summary-container {
-                margin-right: 0px;
+                margin-right: 0;
             }
 
             .nav-container {
                 ul {
                     li {
-                        padding: 10px 20px 10px 0px;
+                        padding: 10px 20px 10px 0;
 
                         .rango-arrow-right {
                             float: left;

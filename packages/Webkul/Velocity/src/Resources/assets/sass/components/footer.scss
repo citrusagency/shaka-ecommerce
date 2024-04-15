@@ -80,7 +80,7 @@
                     line-height: 2.5rem;
 
                     ul {
-                        margin-bottom: 0px;
+                        margin-bottom: 0;
 
                         li {
                             margin-bottom: 5px;
@@ -94,7 +94,7 @@
             }
 
             .footer-rt-content {
-                padding-right: 0px;
+                padding-right: 0;
 
                 .row {
                     > div {
@@ -113,25 +113,25 @@
                         margin-right: 3px;
                     }
 
-                    .cash {
-                        background-image: url('../images/static/cash.png');
-                    }
-                    .cheque {
-                        width: 57px !important;
-                        background-image: url('../images/static/cheque.png');
-                    }
-                    .visa {
-                        background-image: url('../images/static/visa.png');
-                    }
-                    .master-card {
-                        background-image: url('../images/static/master-card.png');
-                    }
-                    .paypal {
-                        background-image: url('../images/static/paypal.png');
-                    }
-                    .discover {
-                        background-image: url('../images/static/discover.png');
-                    }
+                    //.cash {
+                    //    background-image: url('../images/static/cash.png');
+                    //}
+                    //.cheque {
+                    //    width: 57px !important;
+                    //    background-image: url('../images/static/cheque.png');
+                    //}
+                    //.visa {
+                    //    background-image: url('../images/static/visa.png');
+                    //}
+                    //.master-card {
+                    //    background-image: url('../images/static/master-card.png');
+                    //}
+                    //.paypal {
+                    //    background-image: url('../images/static/paypal.png');
+                    //}
+                    //.discover {
+                    //    background-image: url('../images/static/discover.png');
+                    //}
                 }
 
                 .row:not(:last-child) {
@@ -147,7 +147,7 @@
 
         .footer-statics {
             .software-description {
-                padding-left: 0px;
+                padding-left: 0;
 
                 p {
                     @extend .clr-dark;
@@ -186,7 +186,7 @@
         color: rgba(255,255,255,0.83);
 
         p {
-            padding: 0px 20px;
+            padding: 0 20px;
         }
 
         a {
@@ -198,4 +198,48 @@
         }
     }
 
+}
+
+.footer-con {
+    padding: 50px 30px !important;
+    max-width: 1300px;
+    margin-inline: auto;
+}
+
+.footer-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+}
+
+.made-by {
+    color: $footer-gray !important;
+    text-align: right;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.citrus-codes {
+    color: $link-color !important;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0.48px;
+}
+
+.footer-text {
+    font-size: 16px;
+    font-style: normal;
+}
+
+.footer-links {
+    color: $white;
+    font-weight: 300;
+    line-height: normal;
 }

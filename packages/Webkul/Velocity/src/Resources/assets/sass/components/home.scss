@@ -91,7 +91,7 @@ header #search-form > *:focus {
 }
 
 .popular-product-categories .active {
-    color: #4D7EA8;
+    color: $theme-light-color;
     padding: 0 10px 5px 10px;
     display: inline-block;
     border-bottom: 2px solid;
@@ -210,7 +210,7 @@ header #search-form > *:focus {
     .card {
         border: none;
         padding: 20px 10px;
-        background: $white-color;
+        background: $white;
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
         .policy {
@@ -299,7 +299,7 @@ header #search-form > *:focus {
         background:#2B2B2B;
 
         h2 {
-            color: $white-color;
+            color: $white;
         }
 
         li {
@@ -404,12 +404,12 @@ header #search-form > *:focus {
     }
 
     .popular-category-wrapper:nth-last-child(2) {
-        padding-right: 0px;
+        padding-right: 0;
     }
 
     .popular-category-wrapper:last-child {
         padding-left: 16px;
-        padding-right: 0px;
+        padding-right: 0;
     }
 }
 
@@ -522,7 +522,7 @@ header #search-form > *:focus {
                     padding: 11px 15px;
                     letter-spacing: 0;
                     position: relative;
-                    color: $white-color;
+                    color: $white;
                     text-decoration: none;
                 }
             }
@@ -584,13 +584,13 @@ header #search-form > *:focus {
     height: 54px;
     padding: 14px;
     font-size: 20px;
-    color: #21a179;
+    color: $theme-color;
     border-radius: 50%;
     text-align: center;
-    background: white;
+    background: $white;
     display: inline-block;
     vertical-align: middle;
-    border: 2px solid #21a179;
+    border: 2px solid $theme-color;
 }
 
 body::after {
@@ -600,7 +600,7 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(71, 55, 78, 0.8);
+    background: $bg-gray;
     opacity: 0;
     transition: opacity .3s 0s, visibility 0s .3s;
 }
@@ -614,7 +614,7 @@ body::after {
     position: absolute;
     margin-bottom: 50px;
     left: calc(50% - 350px);
-    background-color: #fff;
+    background-color: $white;
     // transition: box-shadow .3s;
     // -moz-transition: box-shadow .3s;
     // -webkit-transition: box-shadow .3s;
@@ -707,10 +707,10 @@ body::after {
 
         .VueCarousel-pagination {
             button {
-                padding: 0px !important;
+                padding: 0 !important;
                 margin: 3px !important;
                 border: 1px solid $border-dark !important;
-                background-color: $white-color !important;
+                background-color: $white !important;
 
                 &.VueCarousel-dot--active {
                     background-color: $border-dark !important;
@@ -740,12 +740,12 @@ body::after {
 
 .remove-padding-margin {
     width: 100% !important;
-    margin: 0px !important;
-    padding: 0px !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .demo {
-    border: 1px solid red;
+    border: 1px solid $border-danger;
 }
 
 .quick-addtocart-btn {
@@ -768,4 +768,3 @@ body::after {
     flex-wrap: wrap;
     margin: auto;
 }
-

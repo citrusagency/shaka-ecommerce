@@ -1,55 +1,59 @@
-/*
-|--------------------------------------------------------------------------
-| Velocity Variables
-|--------------------------------------------------------------------------
-|
-| Below are all the variables used in Velocity's SCSS.
-|
-*/
 /* theme colors */
 $theme-color: #1197C2;
-$theme-dark-color: #107fa1;
+$theme-dark-color: #0A7A9D;
+$theme-light-color: #4d7ea8;
 
 /* background colors */
+$bg-dark-color: #0A3640;
+$bg-darker-color:#052A32;
+$bg-black:#040404;
+$bg-gray: rgba(48, 43, 48, 0.8);
+$bg-light: #EEEEE9;
 $light-background: #F7F7F9;
 
-/* font colors */
+/* font */
+$font-family-pro: 'Outfit', sans-serif;
+$font-family: 'Open Sans', sans-serif;
 $font-color: rgba(0,0,0,0.83);
+$gray: #232427;
+$light-gray:#777777;
 $font-color-light: rgba(255, 255, 255, 0.83);
 
 /* button colors */
-$button-danger: #F05153;
-$button-primary-bg: #21A179;
+$button-danger: #f6696b;
+$button-primary-bg: #1197C2;
 $button-text-color: #FFFFFF;
 
 /* border colors */
 $border-common: #CCCCCC;
-$border-danger: #F05153;
+$border-danger: #f6696b;
 $border-dark: #DCDCDC;
 $border-general: #E5E5E5;
 $border-light: #ECECEC;
-$border-primary: #269c77;
+$border-primary: #1197C2;
+$border-normal: 1px solid $border-dark;
+$control-border-color: #C7C7C7;
+$border-shadow:rgba(0, 0, 0, 0.16);
 
 /* link colors */
-$link-color: #4D7EA8;
+$link-color: #1197C2;
 $light-link-color: #28557B;
+$footer-gray: #a1a1a1;
 
 /* remaining colors */
-$black-color: #111111;
-$danger-color: #F05153;
-$grey-color: rgb(158, 158, 158);
+$black: #111111;
+$grey: rgb(158, 158, 158);
+$white: #FFFFFF;
+$danger-color: #f6696b;
 $light1-black: #141516;
 $light2-black: #cfcfd0;
-$white-color: #FFFFFF;
 
 /* other stuffs */
 $sidebar-width: 230px;
-$box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 $material-icons-font-path: '../material-icons/iconfont/' !default;
-$border-normal: 1px solid $border-dark;
-$font-family-pro: 'Source Sans Pro', sans-serif;
 
-
-$control-border-color: #C7C7C7;
 $selection-color: rgba(0, 64, 255, 0.6);
-$brand-color: #0041FF;
+$brand-color: #1197C2;
+
+/* input fields */
+$input-checkbox-size: 20px;
