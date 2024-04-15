@@ -2726,3 +2726,28 @@
 .nested {
     display: none;
 }
+
+.breadcrumbs{
+    color: #777;
+
+    .bc-items{
+        color: #777;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 151.682%;
+        text-decoration-line: underline;
+        text-transform: uppercase;
+        margin-inline: 5px;
+    }
+
+    .bc-items-selected {
+        color: #1197C2;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 151.682%; /* 19.719px */
+        text-transform: uppercase;
+    }
+}
+

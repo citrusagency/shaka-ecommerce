@@ -134,7 +134,11 @@
 {{--{{ dd($product->product->specifications); }}--}}
 @section('content-wrapper')
     <div class="container pt-4">
-        <p>HOME > SHOP > {{ $product->name }}</p>
+        <p class="breadcrumbs">
+            <a class="bc-items" href="{{route('shop.home.index')}}">HOME </a>  >
+            <a class="bc-items" href="{{route('shop.getAllProducts')}}">SHOP</a>  >
+            <a class="bc-items-selected" href="#"> {{ $product->name }} </a>
+        </p>
         {!! view_render_event('bagisto.shop.products.view.before', ['product' => $product]) !!}
         <div class="row no-margin container">
             <section class="col-12 product-detail">
