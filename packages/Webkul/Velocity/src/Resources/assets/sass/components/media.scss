@@ -904,6 +904,15 @@
     .slider-container {
         min-height: 220px;
     }
+
+    .div-hid{
+        display: none;
+    }
+
+    .shop-products-list{
+        justify-content: center;
+        width: 100%;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -955,9 +964,7 @@
     .slider-container {
         min-height: 220px;
     }
-    .shop-products-list{
-        justify-content: center;
-    }
+
 }
 
 @media only screen and (max-width: 460px) {
