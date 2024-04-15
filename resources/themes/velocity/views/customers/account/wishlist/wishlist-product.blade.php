@@ -1,24 +1,3 @@
-@push('css')
-    <style type="text/css">
-        .wishcard-title{
-            color: #232427;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-            letter-spacing: 0.64px;
-        }
-        .product-price-kz{
-            color: #777;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 22px;
-            letter-spacing: 0.48px;
-        }
-    </style>
-@endpush
-
 <div class="lg-card-container product-card" >
     <div class="product-image" style=" position: relative !important;">
         @php

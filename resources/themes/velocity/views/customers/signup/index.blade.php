@@ -4,9 +4,6 @@
     {{ __('shop::app.customer.signup-form.page-title') }}
 @endsection
 
-@push('css')
-@endpush
-
 @section('content-wrapper')
     <div class="auth-content form-container">
         <div class="container">

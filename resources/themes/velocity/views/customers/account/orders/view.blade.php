@@ -4,19 +4,6 @@
     {{ __('shop::app.customer.account.order.view.page-tile', ['order_id' => $order->increment_id]) }}
 @endsection
 
-@push('css')
-    <style type="text/css">
-        .account-content .account-layout .account-head {
-            margin-bottom: 0px;
-        }
-
-        .sale-summary .dash-icon {
-            margin-right: 30px;
-            float: right;
-        }
-    </style>
-@endpush
-
 @section('page-detail-wrapper')
     <div class="account-head mb-lg-5">
         <div class="d-flex account-head">

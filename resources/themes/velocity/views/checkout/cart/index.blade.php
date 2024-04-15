@@ -10,17 +10,6 @@
     <cart-component></cart-component>
 @endsection
 
-@push('css')
-    <style type="text/css">
-        @media only screen and (max-width: 600px) {
-            .rango-delete {
-                margin-top: 10px;
-                margin-left: -10px !important;
-            }
-        }
-    </style>
-@endpush
-
 @push('scripts')
     @include('shop::checkout.cart.coupon')
 
@@ -134,14 +123,14 @@
                                                                 <div class="d-flex ">
                                                                     @include('shop::products.wishlist', [
                                                                         'route' => route('shop.movetowishlist', $item->id),
-                                                                   
+
                                                                     ])
                                                                 </div>
                                                             @else
                                                                 <div class="d-flex flex-wrap">
                                                                     @include('shop::products.wishlist', [
                                                                         'route' => route('shop.movetowishlist', $item->child->id),
-                                                                       
+
                                                                     ])
                                                                 </div>
                                                             @endif

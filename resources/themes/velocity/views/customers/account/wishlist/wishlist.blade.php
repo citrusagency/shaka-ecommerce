@@ -6,42 +6,6 @@
     {{ __('shop::app.customer.account.wishlist.page-title') }}
 @endsection
 
-@push('css')
-    <style type="text/css">
-        .wishlist-cont{
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: left;
-            align-items: flex-start;
-            gap:24px;
-        }
-        .remove-btn{
-            margin-top:5px;
-            background-color: #efefef;
-            border-radius: 50%;
-            padding: 3px 8px;
-            color:black !important;
-            border: none;
-        }
-        .remove-btn:hover{
-            background-color: #cecece;
-        }
-        .add-to-bag-link{
-            padding: 8px;
-            display: inline;
-        }
-
-        @media (max-width: 992px){
-            .wishlist-cont{
-                justify-content: space-evenly;
-            }
-        }
-
-    </style>
-@endpush
-
 @section('page-detail-wrapper')
     <div class="account-head page-title-container">
         <div class="profile-content-title">
