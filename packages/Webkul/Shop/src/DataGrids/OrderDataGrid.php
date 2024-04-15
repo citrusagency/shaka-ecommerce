@@ -29,7 +29,8 @@ class OrderDataGrid extends DataGrid
     public function prepareQueryBuilder()
     {
         $queryBuilder = DB::table('orders as order')
-            ->addSelect('order.id', 'order.increment_id', 'order.status', 'order.created_at', 'order.grand_total', 'order.order_currency_code')
+            ->addSelect('order.id', 'order.increment_id', 'order.status', 'order.grand_total', 'order.order_currency_code')
+            ->selectRaw('DATE_FORMAT(order.created_at, "%d.%m.%Y") as created_at_formatted')
             ->where('customer_id', auth()->guard('customer')->user()->id);
 
         $this->setQueryBuilder($queryBuilder);
@@ -52,7 +53,7 @@ class OrderDataGrid extends DataGrid
         ]);
 
         $this->addColumn([
-            'index'      => 'created_at',
+            'index'      => 'created_at_formatted',
             'label'      => trans('shop::app.customer.account.order.view.order-date'),
             'type'       => 'datetime',
             'searchable' => true,
