@@ -15,6 +15,21 @@ p {
     margin-bottom: 0!important;
 }
 
+p, a, button {
+    font-size: 18px !important;
+    line-height: 32px !important;
+    font-family: "Outfit", sans-serif !important;
+}
+
+a, a:hover {
+    color: $theme-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
 html {
     box-sizing: border-box;
 }
@@ -348,6 +363,58 @@ textarea {
 
 textarea {
     resize: none;
+}
+
+button {
+    padding: 8px 22px;
+    align-items: center;
+    border-radius: 8px;
+    background: $theme-color;
+    color: $white;
+    text-align: center;
+    font: 600 16px normal;
+    line-height: 22px;
+    letter-spacing: 0.48px;
+}
+
+label {
+    color: $light-gray;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0.7px;
+    margin-bottom: 1rem;
+}
+
+input[type="text"],input[type="password"], select {
+    border-radius: 8px !important;
+    /*padding: 1.2rem 1rem !important;*/
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    outline: none;
+    accent-color: $theme-color;
+}
+
+input[type="radio"] {
+    width: 17px;
+    height: 17px;
+    outline: none;
+    accent-color: $theme-color;
+}
+
+.login-input, textarea {
+    border: transparent 0 !important;
+    border-radius: 8px !important;
+    padding: 1.5rem 1rem !important;
+}
+
+:focus {
+    border: solid $light-gray 1px !important;
 }
 
 header {

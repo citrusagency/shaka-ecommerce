@@ -2602,7 +2602,7 @@
     z-index: 10;
     cursor: pointer;
     position: absolute;
-    background: #fff;
+    background: $white;
     height: 24px !important;
 }
 
@@ -2612,8 +2612,8 @@
     border-radius: 2px;
     margin-bottom: 20px;
     display: inline-block;
-    border: 1px solid #0041ff;
-    background-color: rgba(0, 65, 255, 0.1);
+    border: 1px solid $theme-color;
+    background-color: $bg-darker-color;
 
     .searched-image {
         float: left;
@@ -2632,7 +2632,7 @@
         .term-list a {
             padding: 5px 8px;
             margin-top: 10px;
-            background: #fff;
+            background: $white;
             margin-right: 10px;
         }
     }
@@ -2661,10 +2661,10 @@
 }
 
 .breadcrumbs{
-    color: #777;
+    color: $light-gray;
 
     .bc-items{
-        color: #777;
+        color: $light-gray;
         font-size: 13px;
         font-style: normal;
         font-weight: 400;
@@ -2675,7 +2675,7 @@
     }
 
     .bc-items-selected {
-        color: #1197C2;
+        color: $theme-color;
         font-size: 13px;
         font-style: normal;
         font-weight: 600;
@@ -2683,4 +2683,13 @@
         text-transform: uppercase;
     }
 }
+
+.header-a {
+    text-transform: uppercase;
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+}
+
 
