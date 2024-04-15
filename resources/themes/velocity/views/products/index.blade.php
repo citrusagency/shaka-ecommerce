@@ -53,12 +53,12 @@
                 {{--            {!! view_render_event('bagisto.shop.productOrCategory.index.before', ['category' => $category]) !!}--}}
 
                 {{--            @if (true)--}}
-                <div class="col-4">
+                <div class="col-3 div-hid">
                     @include ('shop::products.list.layered-navigation')
                 </div>
                 {{--            @endif--}}
 
-                <div class="col-12 col-md-8 container right" style="padding:0 10px; width: 100%;">
+                <div class="col-md-9 container right m-0" style="padding:0 10px; width: 100%;">
                     {{--                    <div class="row remove-padding-margin">--}}
                     {{--                        <div class="pl0 col-12">--}}
                     {{--                                                    <h2 class="fw6 mb10">{{ $category->name }}</h2>--}}

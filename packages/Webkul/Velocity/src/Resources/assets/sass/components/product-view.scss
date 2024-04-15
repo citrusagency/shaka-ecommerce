@@ -395,7 +395,7 @@
         width: 100%;
 
         tr {
-            td:first-child() {
+            td:first-child {
                 width: 100px;
             }
         }
