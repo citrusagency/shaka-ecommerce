@@ -1,0 +1,58 @@
+.bg-shaka-dark {
+    background-color: $bg-dark-color !important;
+    color: white !important;
+}
+
+.bg-shaka-darker {
+    background-color: $bg-darker-color !important;
+    color: white !important;
+}
+
+.bg-shaka-black2 {
+    background-color: $gray !important;
+}
+
+.bg-shaka-black {
+    background: $bg-black !important;
+}
+
+
+.bg-shaka-primary{
+    background-color: $theme-color !important;
+    color: white !important;
+}
+
+.bg-shaka-primary:hover {
+    background-color: $theme-dark-color !important;
+    color: white !important;
+}
+
+.bg-shaka-light {
+    background:$bg-light !important;
+}
+
+.p-shaka-about{
+    padding: 160px 50px !important;
+}
+
+.p-shaka-about-2{
+    padding: 200px 50px !important;
+}
+
+.font-shaka {
+    font-family: 'Open Sans', serif;
+}
+
+.text-shaka, .text-shaka-primary  {
+    color: $theme-color !important;
+}
+
+
+.text-shaka-black {
+    color: $black !important;
+}
+
+.text-shaka-subtitle {
+    font-size: 16px;
+    color: $light-gray !important;
+}

@@ -478,40 +478,4 @@
     }
 }
 
-@media only screen and (max-width: 768px) {
-    .grid-container {
-        .grid-top {
-            .datagrid-filters {
-                grid-template-columns: 100%;
-                row-gap: 0;
 
-                .search-filter {
-                    max-width: 100% !important;
-                }
-
-                .filter-left {
-                    display: grid;
-                    grid-template-columns: 49.5% 49%;
-                    column-gap: 5px;
-                }
-
-                .filter-right {
-                    display: grid;
-                    grid-template-columns: 49.5% 49%;
-                    column-gap: 5px;
-                    width: 100%;
-                }
-            }
-        }
-    }
-
-    .grid-dropdown-header {
-        min-width: 122px;
-    }
-
-    .dropdown-list {
-        &.dropdown-container {
-            padding: 10px;
-        }
-    }
-}

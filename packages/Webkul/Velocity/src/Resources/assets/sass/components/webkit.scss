@@ -1,0 +1,22 @@
+::-webkit-scrollbar {
+    width: 3px;
+    height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: $white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: $light-gray;
+}
+
+*::-webkit-input-placeholder {
+    font-family: $font-family-pro;
+}
+
+*::-webkit-input-placeholder {
+    font-family: $font-family-pro;
+}

@@ -611,7 +611,7 @@
     width: 350px;
     right: 0;
     position: absolute;
-    border-top: 4px solid #26a37c;
+    border-top: 4px solid $theme-color;
 
     .close {
         top: 12px;
@@ -827,21 +827,6 @@
 
 .remove-icon{
     padding: 10px 5px;
-}
-
-@media only screen and (max-width: 375px) {
-    .cart-details {
-        .cart-content {
-            .misc {
-                flex-direction: column;
-
-                button {
-                    margin-top: 10px;
-                    width: 100%;
-                }
-            }
-        }
-    }
 }
 
 .account-content {
@@ -2574,57 +2559,6 @@
     margin-left: -24px;
 }
 
-@media only screen and (max-width: 720px) {
-    .product-quantity {
-        .input-btn-group {
-            display: flex;
-        }
-    }
-    .cp-spinner {
-        left: 50%;
-        margin-left: -24px;
-        top: 50%;
-        margin-top: -24px;
-    }
-}
-
-@media only screen and (max-width: 425px) {
-    .cart-details {
-        .cart-content {
-            .product-quantity {
-                height: fit-content;
-
-                .quantity {
-                    display: flex;
-                    width: 100%;
-                }
-            }
-
-            .product-price.col-1 {
-                flex: 0 0 100%;
-                max-width: 100%;
-
-                .card-current-price.fw6 {
-                    float: right;
-                }
-            }
-        }
-    }
-
-    .cart-details {
-        .cart-content {
-            .cart-item-list {
-                .wishlist-icon{
-                    display: flex;
-                    flex-direction: column;
-                }
-            }
-        }
-    }
-    .remove-icon{
-        padding: 5px;
-    }
-}
 
 /**
  * Spinner style.
