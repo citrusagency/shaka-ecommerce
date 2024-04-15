@@ -750,3 +750,20 @@ header #search-form > *:focus {
     flex-wrap: wrap;
     margin: auto;
 }
+
+.section-padding{
+    padding-top:8em !important;
+}
+
+.category-container {
+    min-height: unset;
+}
+
+.toolbar-wrapper .col-4:first-child {
+    display: none !important;
+}
+
+.toolbar-wrapper .col-4:last-child {
+    right: 0;
+    position: absolute;
+}

@@ -4,20 +4,6 @@
     About the label
 @endsection
 
-@push('css')
-    <style type="text/css">
-        .section-padding{
-            padding-top:8em !important;
-        }
-        @media (max-width: 600px) {
-            .section-padding{
-                padding-top:3em !important;
-                padding-bottom:3em !important;
-            }
-        }
-    </style>
-@endpush
-
 @section('content-wrapper')
 
     <div class="about-content text-white">

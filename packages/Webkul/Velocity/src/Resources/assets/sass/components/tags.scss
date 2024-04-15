@@ -30,6 +30,7 @@ body {
     background: $white;
     font-family: $font-family-pro;
     scroll-behavior: smooth;
+    overflow-x: hidden!important;
 }
 
 body::after {

@@ -18,14 +18,6 @@
 
 @endphp
 
-@push('css')
-    <style>
-        .reviews {
-            display: none !important;
-        }
-    </style>
-@endpush
-
 @section('content-wrapper')
     <div class="container">
         <div class="row review-page-container">

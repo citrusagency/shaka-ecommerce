@@ -1,12 +1,7 @@
 @if ($product->type == 'bundle')
     @push('css')
         <style type="text/css">
-            .bundle-options-wrapper .bundle-option-list {
-                border: unset;
-            }
-            .bundle-option-item .radio input {
-                top: 4px;
-            }
+
         </style>
     @endpush
 
