@@ -212,6 +212,11 @@
     margin:50px auto;
 }
 
+.mx-3{
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
 .w-0 {
     width: 0 !important;
 }
@@ -333,14 +338,14 @@
     &:focus {
         outline: none;
         box-shadow: none;
-        border: 1px solid #1197C2;
-        background-color: #1197C2 !important;
+        border: 1px solid $theme-color;
+        background-color: $theme-color !important;
     }
 
     &.light {
         color: $theme-color !important;
         background-color: $white !important;
-        box-shadow: 0 1px 0 0 #CFCFCF;
+        box-shadow: 0 1px 0 0 $white-color;
         border: 1px solid rgba(0,0,0,0.12);
         z-index: 1;
 
@@ -349,15 +354,15 @@
             outline: none;
             box-shadow: none;
             border: 1px solid $theme-dark-color;
-            background-color: #f5f5f5 !important;
+            background-color: $white !important;
         }
     }
 }
 
 .theme-btn:hover,
 .btn-add-to-cart:hover {
-    border-color: #1197C2 !important;
-    background-color: #1197C2 !important;
+    border-color: $theme-color !important;
+    background-color: $theme-color !important;
     text-decoration: none;
 
     &.light {
@@ -383,7 +388,7 @@
     padding: 3px 10px;
     position: absolute;
     border-radius: 12px;
-    background-color: #1197C2;
+    background-color: $theme-color;
 }
 
 .bg-image {
@@ -425,7 +430,7 @@
         height: 20px;
         display: block;
         position: absolute;
-        background-color: #2B2B2B;
+        background-color: $gray;
         transform: rotate(45deg);
         //-webkit-transform: rotate(45deg);
         -webkit-box-shadow: 0 0 0 1px rgba(39, 44, 48, 0.05), 0 2px 7px 1px rgba(39, 44, 48, 0.16);
@@ -597,7 +602,7 @@
             max-height: 350px;
             max-width: 280px;
             margin-bottom: 10px;
-            background: #f2f2f2;
+            background: $white-color;
 
             img {
                 display: block;
@@ -644,7 +649,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    color: #555555;
+    color: $light-gray;
 }
 
 .small-card-container {
@@ -677,7 +682,7 @@
 
         .product-name {
             font-size: 18px;
-            color: #000000;
+            color: $black;
             width: 100%;
             margin-bottom: 10px;
             overflow: hidden;
@@ -733,10 +738,10 @@ ul.circle-list {
         cursor: pointer;
         border-radius: 50%;
         display: inline-block;
-        border: 1px solid #D8D8D8;
+        border: 1px solid $white-color;
 
         &.fill {
-            background: #D8D8D8;
+            background: $white-color;
         }
     }
 

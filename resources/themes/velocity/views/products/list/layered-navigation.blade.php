@@ -13,7 +13,7 @@
 @push('scripts')
     <script type="text/x-template" id="layered-navigation-template">
         <div v-if="attributes.length > 0">
-            <div class="filter-content border border-top-0 row p-0 m-0">
+            <div class="filter-content row p-0 ml-5">
                 <div class="col-4 p-0 m-0"></div>
                 <div class="filter-attributes col-8 p-0 m-0">
                     <filter-attribute-item
@@ -35,7 +35,7 @@
                     <a href="{{route("shop.giftCard")}}" class="text-uppercase display-inbl text-shaka cursor-pointer fw5">Gift Card</a>
                 </div>
             </div>
-            <div class="border border-2 border-top-0 w-100 row m-0 p-0">
+            <div class="border-top w-100 row ml-5 p-0">
                 <div class="col-4 m-0 p-0"></div>
                 <div class="col-8 m-0 p-0">
                     <h5 class="text-left font-shaka py-3 fs20">Price range</h5>
