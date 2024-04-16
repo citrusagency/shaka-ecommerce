@@ -18,7 +18,7 @@
         <div class="container py-5 py-md-0">
             <div class="row p-shaka-about">
                 <div class="col-12 col-md-6 px-0 px-md-5">
-                    <h2 class="font-shaka px-0 px-md-5">
+                    <h2 class="font-shaka px-0 px-md-4 fs32">
                         We are all born creative and use our innovation and flair
                         to negotiate life.
                     </h2>
@@ -49,9 +49,7 @@
         <div class="container">
 
             <div class="row ">
-                <div class="col-sm-12 col-md-6">
-                    {{--                <img src="{{asset('images/about1.png')}}" class="w-100 d-block d-md-none" alt="">--}}
-                </div>
+                <div class="col-sm-12 col-md-6"></div>
                 <div
                     class="align-items-center p-shaka-about col-md-6 col-sm-12 d-flex flex-column justify-content-center p-5">
                     <h2 class="text-left w-100 mb-3 font-shaka">About the artist</h2>
@@ -62,7 +60,6 @@
                         SHAKA LABEL was founded in 2020.
                         <br>
                         <br>
-
                         Katarina likes to explore some new, unfamiliar segments and so she discovers and learns. She
                         adores these processes because they bring invaluable personal experiences.
                     </p>
@@ -85,8 +82,6 @@
     object-position: left;">
         <img src="{{asset('images/collection1.png')}}" alt="" class="d-block d-md-none w-100">
         <div class="container">
-
-
             <div class="row ">
                 <div
                     class="align-items-center p-shaka-about-2 col-md-6 col-sm-12 d-flex flex-column justify-content-center section-padding">
