@@ -5,52 +5,6 @@
 @endsection
 
 @section('content-wrapper')
-    @push('css')
-        <style>
-            button {
-                padding: 8px 22px;
-                align-items: center;
-                border-radius: 8px !important;
-                background: #1197C2;
-                color: #FFF;
-                text-align: center;
-                font-size: 16px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 22px;
-                letter-spacing: 0.48px;
-            }
-
-            input, textarea {
-                border: transparent 0px !important;
-                border-radius: 8px !important;
-            }
-
-            label {
-                color: #777777;
-            }
-
-            .shaka-p {
-                font-family: "Outfit", sans-serif;
-                font-size: 18px;
-                font-style: normal;
-                color: #777;
-                font-weight: 300;
-                line-height: 32px;
-            }
-
-            input[type='checkbox'].shaka-checkbox {
-                width: 20px;
-                height: 20px;
-                outline: transparent;
-                border-radius: 100px;
-                accent-color: #1197c2;
-            }
-
-
-
-        </style>
-    @endpush
     @push('scripts')
         <script src="https://www.google.com/recaptcha/api.js" async></script>
 

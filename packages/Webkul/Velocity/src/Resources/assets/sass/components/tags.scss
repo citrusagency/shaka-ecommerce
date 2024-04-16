@@ -344,6 +344,7 @@ header {
 
 label {
     margin: 0;
+    color: $light-gray;
 }
 
 input[type='checkbox'] {
@@ -368,7 +369,7 @@ textarea {
 button {
     padding: 8px 22px;
     align-items: center;
-    border-radius: 8px;
+    border-radius: 8px !important;
     background: $theme-color;
     color: $white;
     text-align: center;
@@ -411,6 +412,11 @@ input[type="radio"] {
     border: transparent 0 !important;
     border-radius: 8px !important;
     padding: 1.5rem 1rem !important;
+}
+
+input, textarea {
+    border: transparent 0 !important;
+    border-radius: 8px !important;
 }
 
 :focus {

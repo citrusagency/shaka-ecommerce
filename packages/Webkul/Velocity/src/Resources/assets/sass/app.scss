@@ -13,11 +13,11 @@
 @import 'main/variables';
 
 /* shared components */
+@import 'components/webkit';
 @import 'components/shared';
 @import 'components/tags';
 @import 'components/buttons';
 @import 'components/shaka';
-@import 'components/webkit';
 
 /* components */
 @import 'components/UI';

@@ -65,3 +65,11 @@
     font-weight: 300;
     line-height: 32px;
 }
+
+input[type='checkbox'].shaka-checkbox {
+    width: 20px;
+    height: 20px;
+    outline: transparent;
+    border-radius: 100px;
+    accent-color: $theme-dark-color;
+}
