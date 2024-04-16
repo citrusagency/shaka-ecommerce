@@ -32,13 +32,13 @@
                 </div>
                 <div class="col-4 p-0 m-0"></div>
                 <div class="filter-attributes col-8 p-0 m-0 mb-2">
-                    <a href="{{route("shop.giftCard")}}" class="text-uppercase text-shaka cursor-pointer gift_card">Gift Card</a>
+                    <a href="{{route("shop.giftCard")}}" class="text-uppercase display-inbl text-shaka cursor-pointer fw5">Gift Card</a>
                 </div>
             </div>
             <div class="border border-2 border-top-0 w-100 row m-0 p-0">
                 <div class="col-4 m-0 p-0"></div>
                 <div class="col-8 m-0 p-0">
-                    <h5 class="text-left font-shaka py-3">Price range</h5>
+                    <h5 class="text-left font-shaka py-3 fs20">Price range</h5>
                 </div>
                 <div class="col-4 m-0 p-0"></div>
                 <div class="col-6 m-0 px-0">
@@ -88,10 +88,6 @@
                         <h6 class="text-uppercase display-inbl cursor-pointer category-p" >@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
 
                         <div class="float-right display-table pr-4">
-                            {{--                    <span class="link-color cursor-pointer" v-if="appliedFilters.length" @click.stop="clearFilters()">--}}
-                            {{--                        {{ __('shop::app.products.remove-filter-link-title') }}--}}
-                            {{--                    </span>--}}
-
                             <i :class="`icon text-right fs16 cell ${active ? 'rango-arrow-up' : 'rango-arrow-down'}`"></i>
                         </div>
                     </div>
@@ -103,13 +99,6 @@
                                 <div
                                     class="checkbox"
                                     @click="changeCategory(option.id)">
-                                    {{--                                    <input--}}
-                                    {{--                                        style="opacity: 0"--}}
-                                    {{--                                        type="radio"--}}
-                                    {{--                                        :id="option.id"--}}
-                                    {{--                                        v-bind:value="option.id"--}}
-                                    {{--                                        v-model="appliedFilters"--}}
-                                    {{--                                        @change="addFilter($event)"/>--}}
                                     <span :class="`${isActiveCategory(option.id) ? 'font-weight-bold' : ''}`" class="option-name">@{{ option.name ? option.name : option.admin_name }}</span>
                                 </div>
                             </li>
@@ -121,18 +110,6 @@
                 </div>
             </div>
             <div :class="`cursor-pointer border-0 filter-attributes-item ${active ? 'active' : ''}`" v-if="attribute.code === 'material'">
-                {{--                <div class="filter-attributes-title" @click="active = ! active">--}}
-                {{--                    <h6 class="fw6 display-inbl">@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>--}}
-
-                {{--                    <div class="float-right display-table">--}}
-                {{--                    <span class="link-color cursor-pointer" v-if="appliedFilters.length" @click.stop="clearFilters()">--}}
-                {{--                        {{ __('shop::app.products.remove-filter-link-title') }}--}}
-                {{--                    </span>--}}
-
-                {{--                        <i :class="`icon fs16 cell ${active ? 'rango-arrow-up' : 'rango-arrow-down'}`"></i>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-
                 <div class="filter-attributes-content py-4 px-0 mx-0">
                     <ul type="none" class="items p-0 m-0" v-if="attribute.type != 'price'">
                         <li
@@ -151,7 +128,6 @@
                             </div>
                         </li>
                     </ul>
-
                 </div>
             </div>
         </div>
