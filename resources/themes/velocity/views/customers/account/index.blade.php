@@ -15,6 +15,7 @@
             align-self: stretch;
             /*max-width: 1300px;*/
             gap: 24px;
+            overflow-x: auto;
         }
         .profile-content-title{
             color: #232427;
