@@ -965,6 +965,10 @@
     .main-content-wrapper .vc-header {
         box-shadow: unset;
     }
+
+    #checkout{
+        padding: 20px 50px !important;
+    }
 }
 
 @media (max-width: 992px){
@@ -1172,6 +1176,14 @@
 }
 
 @media only screen and (max-width: 480px) {
+    #checkout{
+        padding: 20px 0 !important;
+    }
+
+    .custom-form {
+        padding: 0 50px !important;
+    }
+
     .section-container {
         flex-direction: column;
         margin:10px auto;

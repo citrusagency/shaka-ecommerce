@@ -5,7 +5,7 @@
             :title="'{{ __('shop::app.checkout.onepage.billing-address') }}'">
 
             <div class="form-header mb-30" slot="header">
-                <h3 class="fw6 display-inbl">
+                <h3 class="fw6 fs28 titles display-inbl">
                     {{ __('shop::app.checkout.onepage.billing-address') }}
                 </h3>
 

@@ -67,7 +67,7 @@
             </section>
         </div>
     </div>
-    <div class="form-container">
+    <div class="form-container-gift-card">
         <form class="form-content" onsubmit="{{route('shop.sendGiftCard')}}" method="POST">
             @csrf
             @method("post")
