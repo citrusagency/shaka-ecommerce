@@ -11,14 +11,14 @@
         </a>
     @endif
 
-    <div>
-        <div class="profile-content-title">
+    <div class="d-md-flex mb-2 py-2 justify-content-between">
+        <div class="my-3 profile-content-title">
             {{ __('shop::app.customer.account.address.index.title') }}
         </div>
 
         @if (! $addresses->isEmpty())
-            <span class="account-action">
-                <a href="{{ route('customer.address.create') }}" class="theme-btn  rounded float-right">
+            <span class="my-3 account-action">
+                <a href="{{ route('customer.address.create') }}" class="theme-btn rounded">
                     Add new address
                 </a>
             </span>
@@ -33,8 +33,8 @@
         @else
             <div class="row address-holder no-padding">
                 @foreach ($addresses as $address)
-                    <div class="mt-lg-4">
-                        <div class="card m-1">
+                    <div class="mt-lg-4 col-sm-12 col-md-6 col-xl-4">
+                        <div class="card">
                             <h5 class="card-header fw6">{{ $address->first_name }} {{ $address->last_name }}</h5>
                             <div class="card-body">
                                 <ul type="none">
