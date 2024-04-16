@@ -81,7 +81,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 pl-md-5">
                                 <div class="body col-12 w-100">
-                                    <h1 class="fw2 mb-3">Contact</h1>
+                                    <h1 class="fw2 mb-3 fs40 font-shaka-open-sans">Contact</h1>
                                     <p class="mt-2 mb-5 shaka-p">If you need any help or have collaboration on mind,
                                         please reach out via contact form.</p>
                                     <form class="cd-form floating-labels w-100 "
