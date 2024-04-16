@@ -767,3 +767,109 @@ header #search-form > *:focus {
     right: 0;
     position: absolute;
 }
+
+.product-price span:first-child, .product-price span:last-child {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.homepage-image{
+    max-height: 730px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    right: 50%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    width: 50vw;
+    object-position: left;
+}
+
+.homepage-imga, .carousel-item {
+    padding-top: 380px;
+    padding-bottom: 380px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.subscribe {
+    height: 62px;
+    width: 100%;
+
+}
+.subscribe input{
+    height: 100%;
+    background: $white;
+    /* Stroke color */
+    padding: 5px 20px;
+    border: 1px solid $control-border-color;
+}
+.subscribe button {
+    height: 100%;
+    display: inline-block;
+    border: none;
+    padding: 0 20px;
+}
+
+.collection a:hover .titlovi {
+    background-color: $black !important;
+    color: $white !important;
+}
+.available:hover {
+    text-decoration: underline;
+
+}
+.input-stl{
+    border-radius: 8px 0 0 8px;
+    border:1px solid $white-color !important;
+    color: $light-gray;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: 0.28px;
+    padding: 16px !important;
+    height: 50px !important;
+}
+.btn-shaka{
+    padding: 10px 16px;
+    text-align: center;
+    border: none;
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px; /* 137.5% */
+    letter-spacing: 0.48px;
+}
+.btn-stl{
+    padding: 8px 22px;
+    border-radius: 0 8px 8px 0 !important;
+    background: $theme-color;
+    letter-spacing: 0.48px;
+    height: 50px !important;
+}
+.txt-stl{
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 32px;
+    padding-right: 0 !important;
+}
+
+.news-letter{
+    padding-top: 9rem!important;
+    padding-bottom: 9rem!important;
+    padding-left:60px !important;
+}
+
+.homepage-heading{
+    color:$white;
+    font-family:$font-family;
+    font-size: 72px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 2px;
+}

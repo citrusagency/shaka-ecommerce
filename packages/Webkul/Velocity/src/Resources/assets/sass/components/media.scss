@@ -23,6 +23,12 @@
         padding: 20px  30px !important;
         width: 70%;
     }
+    .news-letter{
+        padding:50px 15px !important;
+    }
+    .img-mobile{
+        height: 500px;
+    }
 }
 
 @media only screen and (max-width: 1192px) {
@@ -1217,6 +1223,19 @@
     }
     .notify-available{
         padding:10px !important;
+    }
+
+    .news-letter{
+        padding:50px 15px !important;
+    }
+    .img-mobile{
+        height: 300px;
+    }
+    .heading-mbl{
+        font-size: 32px !important;
+    }
+    .subtitle-mbl{
+        font-size: 14px !important;
     }
 }
 
