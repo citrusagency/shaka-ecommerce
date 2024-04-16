@@ -1,9 +1,9 @@
 <template>
-    <div class="modal-parent scrollable">
-        <div class="cd-quick-view">
+    <div class="modal-parent scrollable" >
+        <div class="cd-quick-view" style="margin-top:100px; border-radius: 6px!important;">
             <template v-if="showProductDetails || true">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-5">
                         <ul class="cd-slider" type="none">
                             <carousel-component
                                 slides-per-page="1"
@@ -25,29 +25,25 @@
                     </div>
 
                     <div class="col-lg-6 fs16">
-                        <h2 class="fw6 quick-view-name">{{ product.name }}</h2>
-
-                        <div class="product-price" v-html="product.priceHTML"></div>
-
-                        <div
-                            class="product-rating"
-                            v-if="product.totalReviews && product.totalReviews > 0">
-
-                            <star-ratings :ratings="product.avgRating"></star-ratings>
-                            <a class="pl10 unset active-hover" :href="`${$root.baseUrl}/reviews/${product.slug}`">
-                                {{ __('products.reviews-count', {'totalReviews': product.totalReviews}) }}
-                            </a>
-                        </div>
-
-                        <div class="product-rating" v-else>
-                            <span class="fs14" v-text="product.firstReviewText"></span>
-                        </div>
-
-                        <p class="pt14 fs14 description-text" v-html="product.shortDescription"></p>
-
-                        <div class="product-actions">
+                        <h2 class="fw6 quick-view-name mt-2 mb-0 pb-0">{{ product.name }}</h2>
+                        <div class="d-flex flex-row justify-content-between mt-2">
+                            <div class="product-price text-shaka-subtitle my-2" v-html="product.priceHTML"></div>
                             <vnode-injector :nodes="getDynamicHTML(product.addToCartHtml)"></vnode-injector>
                         </div>
+<!--                        <div-->
+<!--                            class="product-rating"-->
+<!--                            v-if="product.totalReviews && product.totalReviews > 0">-->
+
+<!--                            <star-ratings :ratings="product.avgRating"></star-ratings>-->
+<!--                            <a class="pl10 unset active-hover" :href="`${$root.baseUrl}/reviews/${product.slug}`">-->
+<!--                                {{ __('products.reviews-count', {'totalReviews': product.totalReviews}) }}-->
+<!--                            </a>-->
+<!--                        </div>-->
+
+<!--                        <div class="product-rating" v-else>-->
+<!--                            <span class="fs14" v-text="product.firstReviewText"></span>-->
+<!--                        </div>-->
+                        <p class="pt14 fs14 description-text" v-html="product.shortDescription"></p>
                     </div>
                 </div>
 
