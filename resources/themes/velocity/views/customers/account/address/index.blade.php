@@ -17,7 +17,7 @@
         </div>
 
         @if (! $addresses->isEmpty())
-            <span class="my-3 account-action">
+            <span class="my-3 account-action mr-lg-3">
                 <a href="{{ route('customer.address.create') }}" class="theme-btn rounded">
                     Add new address
                 </a>
@@ -31,7 +31,7 @@
         @if ($addresses->isEmpty())
             <div>{{ __('shop::app.customer.account.address.index.empty') }}</div>
         @else
-            <div class="row address-holder no-padding">
+            <div class="row address-holder mr-0">
                 @foreach ($addresses as $address)
                     <div class="mt-lg-4 col-sm-12 col-md-6 col-xl-4">
                         <div class="card">
