@@ -21,7 +21,7 @@
             <tab name="{{ __('shop::app.customer.account.order.view.info') }}" :selected="true">
                 <div class="sale-section mt-4">
                     <div class="table-responsive section-title">
-                        <div class="card">
+                        <div class="card border-0">
                             <div class="card-header bg-transparent">
                                 <table class="table bg-transparent table-light text-secondary">
                                     <thead>
@@ -34,7 +34,6 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {{--                            {{dd($order)}}--}}
                                     <tr>
                                         <td>{{ $order->status }}</td>
                                         <td>#{{ $order->increment_id }}</td>
@@ -301,9 +300,9 @@
         </tabs>
     </div>
     {{--Bottom cards --}}
-    <div class="container row p-3">
+    <div class="container d-sm-grid d-md-flex p-3">
         @if ($order->billing_address)
-            <div class="card border-0 mr-lg-3 my-2 col-lg-3 col-md-6 col-sm-12">
+            <div class="card border-0 mr-lg-3 my-2 col-lg-4 col-md-6 col-sm-12">
                 <div class="card-header bg-transparent">
                     {{ __('shop::app.customer.account.order.view.billing-address') }}
                 </div>
@@ -326,7 +325,7 @@
             </div>
         @endif
         @if ($order->shipping_address)
-            <div class="card border-0 mr-lg-3 my-2 col-lg-3 col-md-6 col-sm-12">
+            <div class="card border-0 mr-lg-3 my-2 col-lg-4 col-md-6 col-sm-12">
                 <div class="card-header bg-transparent">
                     {{ __('shop::app.customer.account.order.view.shipping-address') }}
                 </div>
@@ -347,7 +346,7 @@
         @endif
         {{--        CANCEL ORDER CONFIRMATION --}}
         @if ($order->canCancel())
-            <div class="align-self-end col-3 mb-lg-3 ml-lg-auto">
+            <div class="align-self-end col-3 p-md-0 ml-sm-2 ml-md-0 mb-lg-3 ml-lg-auto">
                 <form id="cancelOrderForm" action="{{ route('customer.orders.cancel', $order->id) }}" method="post">
                     @csrf
                 </form>

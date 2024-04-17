@@ -1,6 +1,16 @@
 @inject ('reviewHelper', 'Webkul\Product\Helpers\Review')
 @inject ('toolbarHelper', 'Webkul\Product\Helpers\Toolbar')
 
+@push('css')
+    <style>
+        .kz-add-link{
+            color: #1197C2;
+            font-size: 16px;
+            font-weight: 600;
+        }
+    </style>
+@endpush
+
 @php
     $list = $toolbarHelper->getCurrentMode() == 'list'
         ? true
@@ -84,7 +94,7 @@
             </div>
         </div>
     @else
-        <div class="card grid-card product-card-new">
+        <div class="card grid-card product-card-new m-3" style="width: 180px;">
             <a
                 href="{{ route('shop.productOrCategory.index', $product->url_key) }}"
                 title="{{ $product->name }}"
@@ -113,7 +123,7 @@
                         title="{{ $product->name }}"
                         class="unset">
 
-                        <span class="fs16">{{ $product->name }}</span>
+                        <span class="fs18 fw6">{{ $product->name }}</span>
 
                         @if (
                             isset($additionalAttributes)
@@ -132,35 +142,30 @@
                     </a>
                 </div>
 
-                <div class="product-price fs16">
+                <div class="product-price fs16 text-shaka-subtitle mb-0 pb-0">
                     @include ('shop::products.price', ['product' => $product])
                 </div>
 
-                @if ($totalReviews)
-                    <div class="product-rating col-12 no-padding">
-                        <star-ratings ratings="{{ $avgRatings }}"></star-ratings>
-                        <span class="align-top">
-                            {{ __('velocity::app.products.ratings', ['totalRatings' => $totalReviews ]) }}
-                        </span>
-                    </div>
-                @else
-                    <div class="product-rating col-12 no-padding">
-                        <span class="fs14">{{ __('velocity::app.products.be-first-review') }}</span>
-                    </div>
-                @endif
+{{--                @if ($totalReviews)--}}
+{{--                    <div class="product-rating col-12 no-padding">--}}
+{{--                        <star-ratings ratings="{{ $avgRatings }}"></star-ratings>--}}
+{{--                        <span class="align-top">--}}
+{{--                            {{ __('velocity::app.products.ratings', ['totalRatings' => $totalReviews ]) }}--}}
+{{--                        </span>--}}
+{{--                    </div>--}}
+{{--                @else--}}
+{{--                    <div class="product-rating col-12 no-padding">--}}
+{{--                        <span class="fs14">{{ __('velocity::app.products.be-first-review') }}</span>--}}
+{{--                    </div>--}}
+{{--                @endif--}}
 
-                <div class="cart-wish-wrap no-padding ml0">
-                    @include ('shop::products.add-to-cart', [
-                        'product'           => $product,
-                        'btnText'           => $btnText ?? null,
-                        'moveToCart'        => $moveToCart ?? null,
-                        'wishlistMoveRoute' => $wishlistMoveRoute ?? null,
-                        'reloadPage'        => $reloadPage ?? null,
-                        'addToCartForm'     => $addToCartForm ?? false,
-                        'addToCartBtnClass' => $addToCartBtnClass ?? '',
-                        'showCompare'       => core()->getConfigData('general.content.shop.compare_option') == "1"
-                                                ? true : false,
-                    ])
+                <div class="m-0 p-0">
+                    @include('shop::products.add-to-bag', [
+                   'reloadPage'        => true,
+                   'product'           => $product,
+                   'addClassToBtn'     => 'kz-add-link',
+                   'showCompare'       => false,
+               ])
                 </div>
             </div>
         </div>

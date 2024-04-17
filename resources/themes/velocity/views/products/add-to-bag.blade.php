@@ -1,7 +1,7 @@
 {!! view_render_event('bagisto.shop.products.add_to_cart.before', ['product' => $product]) !!}
 
-<div class="row">
-        <div style="padding-left: 12px;">
+<div class="row p-0">
+        <div>
                 @if($product->isSaleable())
                 {{--            <div class="m-0 p-0">--}}
                 {{--                <a style="display: flex !important; padding: 8px;">--}}

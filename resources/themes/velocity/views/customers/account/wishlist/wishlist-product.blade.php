@@ -1,4 +1,4 @@
-<div class="lg-card-container product-card" >
+<div class="my-4 lg-card-container product-card" >
     <div class="product-image" style=" position: relative !important;">
         @php
             $image = $item->product->getTypeInstance()->getBaseImage($item);
@@ -24,7 +24,7 @@
 
     <div class="product-information">
         <div class="p-2">
-            <div class="m-0 p-0">
+            <div class="m-0 pb-2">
                 <a
                     href="{{ route('shop.productOrCategory.index', $item->product->url_key) }}"
                     title="{{ $item->product->name }}" class="unset">
