@@ -12,7 +12,7 @@
     grid-column-gap: 40px;
     background-color: white;
     min-height: 65vh;
-    padding: 40px 136px;
+    padding: 2rem 15rem;
 }
 .profile-content{
     /*display: flex;*/
@@ -21,6 +21,7 @@
     align-self: stretch;
     /*max-width: 1300px;*/
     gap: 24px;
+    overflow-x:auto;
 }
 .profile-content-title{
     color: $gray;

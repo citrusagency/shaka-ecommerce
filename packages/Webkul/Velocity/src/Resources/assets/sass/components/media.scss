@@ -132,7 +132,7 @@
             width: 100%;
             background-color: $white;
             box-shadow: 0 3px 6px $border-shadow,
-                0 3px 6px $border-shadow;
+            0 3px 6px $border-shadow;
 
             > div {
                 display: none;
@@ -948,7 +948,7 @@
     }
 
     .toolbar-wrapper{
-       justify-content: space-evenly;
+        justify-content: space-evenly;
     }
 
     .shop-page-products{
@@ -979,7 +979,7 @@
     .profile-index{
         grid-template-columns: 1fr;
         grid-column-gap: 20px;
-        padding: 50px 60px;
+        padding: 50px 2rem;
     }
     .wishlist-cont{
         justify-content: space-evenly;
@@ -1109,7 +1109,7 @@
 
 @media (max-width: 626px){
     .profile-index{
-        padding: 50px 30px;
+        padding: 50px 1.5rem;
     }
     .page-title-container{
         margin-bottom: 20px;
