@@ -37,7 +37,7 @@
                     @include ('shop::products.list.layered-navigation')
                 </div>
 
-                <div class="col-md-9 container right m-0" style="padding:0 10px; width: 100%;">
+                <div class="col-md-9 container right m-0 shop-page-products">
                     <div class="filters-container font-shaka-open-sans fs16">
                         <template v-if="products.length >= 0">
                             @include ('shop::products.list.toolbar')

@@ -144,7 +144,7 @@
                                       v-text="errors.first('password_confirmation')"></span>
                             </div>
                         </div>
-                        <div class="form-group align-self-auto" style="margin-top: 65px">
+                        <div class="form-group align-self-auto d-flex" style="margin-top: 62px">
                             <input type="checkbox" onclick="showPassword()" class="" name="" id="">
                             <span>Show Password</span>
                         </div>

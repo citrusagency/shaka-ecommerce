@@ -6,26 +6,7 @@
 
 @push('scripts')
     <script type="text/x-template" id="toolbar-template">
-        <div class="toolbar-wrapper d-flex font-shaka-open-sans fs16" v-if='!isMobile()'>
-{{--            <div class="view-mode">--}}
-{{--                @php--}}
-{{--                  $viewOption = $toolbarHelper->getViewOption();--}}
-{{--                @endphp--}}
-
-{{--                <div class="rango-view-grid-container {{ $viewOption === 'grid' ? 'active' : '' }}">--}}
-{{--                    <a href="{{ $toolbarHelper->getModeUrl('grid') }}" class="grid-view unset" aria-label="Grid">--}}
-{{--                        <span class="rango-view-grid fs24"></span>--}}
-{{--                    </a>--}}
-{{--                </div>--}}
-{{--                <div class="rango-view-list-container {{ $viewOption === 'list' ? 'active' : '' }}" aria-label="List">--}}
-{{--                    <a--}}
-{{--                        href="{{ $toolbarHelper->getModeUrl('list') }}"--}}
-{{--                        class="list-view unset">--}}
-{{--                        <span class="rango-view-list fs24"></span>--}}
-{{--                    </a>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
+        <div class="toolbar-wrapper d-flex font-shaka-open-sans fs16" style="margin-left:30px;" v-if="!isMobile()">
             <div class="sorter">
                 <label>{{ __('shop::app.products.sort-by') }}</label>
 
@@ -61,6 +42,24 @@
                     <span class="select-icon rango-arrow-down"></span>
                 </div>
             </div>
+            <div class="view-mode">
+                @php
+                  $viewOption = $toolbarHelper->getViewOption();
+                @endphp
+
+                <div class="rango-view-grid-container {{ $viewOption === 'grid' ? 'active' : '' }}">
+                    <a href="{{ $toolbarHelper->getModeUrl('grid') }}" class="grid-view unset" aria-label="Grid">
+                        <span class="rango-view-grid fs24"></span>
+                    </a>
+                </div>
+                <div class="rango-view-list-container {{ $viewOption === 'list' ? 'active' : '' }}" aria-label="List">
+                    <a
+                        href="{{ $toolbarHelper->getModeUrl('list') }}"
+                        class="list-view unset">
+                        <span class="rango-view-list fs24"></span>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <div class="toolbar-wrapper row col-12 remove-padding-margin fs16 font-shaka-open-sans" v-else>
@@ -77,7 +76,7 @@
                     <span class="fs24 fw6">
                         {{ __('velocity::app.shop.general.filter') }}
                     </span>
-                   
+
                 </div>
 
                 @if (request()->route()->getName() != 'velocity.search.index')
@@ -85,7 +84,7 @@
                 @endif
             </div>
 
-		<div class="d-flex w-100 justify-content-left spacing">
+		<div class="d-flex w-100 justify-content-between spacing">
 		    <div class="mx-3" @click="toggleLayeredNavigation({event: $event, actionType: 'open'})">
 		        <a class="unset">
 		            <i class="material-icons">filter_list</i>
@@ -93,7 +92,7 @@
 		        </a>
 		    </div>
 
-		    
+
 			<div class="mx-3">
 			    <i class="material-icons">sort_by_alpha</i>
 
@@ -105,7 +104,7 @@
 			        @endforeach
 			    </select>
 			</div>
-		    
+
 		    <div class="mx-3">
 		        @php
 		            $isList = $toolbarHelper->isModeActive('list');
@@ -126,7 +125,7 @@
 		        </a>
 		    </div>
 		</div>
-            
+
         </div>
     </script>
 

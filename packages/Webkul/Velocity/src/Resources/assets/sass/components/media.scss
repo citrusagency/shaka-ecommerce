@@ -947,13 +947,14 @@
         box-shadow: unset;
     }
 
-    .toolbar-wrapper .col-4:last-child {
-        left: 175px;
+    .toolbar-wrapper{
+       justify-content: space-evenly;
     }
 
-    .toolbar-wrapper .sorter {
-        left: 35px;
-        position: relative;
+    .shop-page-products{
+        width: 100%;
+        padding:0 10px;
+        flex: 0 0 100%;
     }
 
     .quick-view-btn-container,
@@ -1206,7 +1207,7 @@
     .form-container{
         width: 100%;
         margin:0;
-        padding:30px 40px;
+        //padding:30px 40px;
     }
     .form-content{
         width: 100%;
