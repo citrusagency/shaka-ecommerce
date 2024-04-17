@@ -18,7 +18,7 @@
 
         &::-webkit-scrollbar-thumb {
             border-radius: 10px !important;
-            background-color: #fff !important;
+            background-color: $white !important;
             -webkit-box-shadow: inset 0 0 6px rgba(90, 90, 90, 0.7) !important;
         }
     }
@@ -31,9 +31,9 @@
         thead th {
             font-weight: 700;
             padding: 12px 10px;
-            background: #f8f9fa;
+            background: $white;
             color: $font-color;
-            border-right: 1px solid #ccc !important;
+            border-right: 1px solid $border-dark !important;
 
             &.sortable {
                 cursor: pointer;
@@ -46,7 +46,7 @@
 
         tbody td {
             padding: 10px;
-            border-bottom: solid 1px #d3d3d3;
+            border-bottom: solid 1px $border-dark;
             color: $font-color;
             vertical-align: top;
 
@@ -111,7 +111,7 @@
 
                 &.per-page {
                     .control-group {
-                        margin-bottom: 0px;
+                        margin-bottom: 0;
 
                         label {
                             margin-top: 7px;
@@ -148,7 +148,7 @@
                 margin-bottom: 10px;
 
                 .control {
-                    margin-bottom: 0px;
+                    margin-bottom: 0;
                 }
             }
 
@@ -196,7 +196,7 @@
     }
 
     &:hover {
-        box-shadow: 0px 0px 0px 1px $selection-color;
+        box-shadow: 0 0 0 1px $theme-dark-color;
     }
 
     .contorl:focus {
@@ -206,13 +206,13 @@
     .icon-wrapper {
         border: 1px solid $control-border-color;
         border-radius: 3px;
-        border-top-left-radius: 0px;
-        border-bottom-left-radius: 0px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
         height: 36px;
         width: 36px;
         padding: 5px;
-        right: 0px;
-        top: 0px;
+        right: 0;
+        top: 0;
         position: absolute;
     }
 }
@@ -236,8 +236,8 @@
     min-width: 200px;
     border: 1px solid $control-border-color;
     border-radius: 3px;
-    background-color: $white-color;
-    padding: 0px 5px 0px 5px;
+    background-color: $white;
+    padding: 0 5px 0 5px;
 
     .arrow-icon-down {
         float: right;
@@ -259,7 +259,7 @@
 
     @include border-radius(3px);
 
-    background-color: $white-color;
+    background-color: $white;
     position: absolute;
     display: none;
     z-index: 1000;
@@ -267,21 +267,21 @@
 
     &.bottom-left {
         top: 42px;
-        left: 0px;
+        left: 0;
     }
 
     &.bottom-right {
         top: 42px;
-        right: 0px;
+        right: 0;
     }
 
     &.top-left {
-        bottom: 0px;
+        bottom: 0;
         left: 42px;
     }
 
     &.top-right {
-        bottom: 0px;
+        bottom: 0;
         right: 42px;
     }
 
@@ -302,14 +302,14 @@
             font-size: 15px;
             display: inline-block;
             text-transform: uppercase;
-            color: #9e9e9e;
+            color: $footer-gray;
             font-weight: 700;
             padding-bottom: 5px;
         }
 
         ul {
-            margin: 0px;
-            padding: 0px;
+            margin: 0;
+            padding: 0;
             list-style-type: none;
 
             li {
@@ -359,8 +359,8 @@
 .dropdown-btn {
     min-width: 150px;
     text-align: left;
-    background: #fff;
-    border: 1px solid #cccccc;
+    background: $white;
+    border: 1px solid $border-common;
     border-radius: 3px;
     font-size: 14px;
     padding: 8px 35px 8px 10px;
@@ -369,7 +369,7 @@
 }
 
 .dropdown-btn:focus {
-    border-color: #26a37c !important;
+    border-color: $theme-color !important;
     outline: unset !important;
 }
 
@@ -394,11 +394,11 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        background: #e7e7e7;
-        border: 1px solid #e7e7e7;
+        background: $white;
+        border: 1px solid $border-light;
         font-size: 14px;
         height: 40px;
-        color: #000311;
+        color: $black;
         letter-spacing: -0.22px;
 
         @include border-radius(24px);
@@ -409,8 +409,8 @@
         }
 
         &:hover {
-            background: $white-color;
-            border: 1px solid #e7e7e7;
+            background: $white;
+            border: 1px solid $white;
         }
     }
 }
@@ -424,7 +424,7 @@
         .control {
             padding-right: 10px;
             border-left: 0;
-            border-right: 1px solid #c7c7c7;
+            border-right: 1px solid $white;
             border-top-right-radius: 3px;
             border-bottom-right-radius: 3px;
             border-top-left-radius: 0;
@@ -433,14 +433,14 @@
 
         .icon-wrapper {
             float: left;
-            border-top-right-radius: 0px;
-            border-bottom-right-radius: 0px;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
             border-top-left-radius: 3px;
             border-bottom-left-radius: 3px;
         }
 
         &:hover {
-            box-shadow: 0px 0px 0px 1px $selection-color;
+            box-shadow: 0 0 0 1px $theme-dark-color;
         }
     }
 
@@ -478,40 +478,4 @@
     }
 }
 
-@media only screen and (max-width: 768px) {
-    .grid-container {
-        .grid-top {
-            .datagrid-filters {
-                grid-template-columns: 100%;
-                row-gap: 0px;
 
-                .search-filter {
-                    max-width: 100% !important;
-                }
-
-                .filter-left {
-                    display: grid;
-                    grid-template-columns: 49.5% 49%;
-                    column-gap: 5px;
-                }
-
-                .filter-right {
-                    display: grid;
-                    grid-template-columns: 49.5% 49%;
-                    column-gap: 5px;
-                    width: 100%;
-                }
-            }
-        }
-    }
-
-    .grid-dropdown-header {
-        min-width: 122px;
-    }
-
-    .dropdown-list {
-        &.dropdown-container {
-            padding: 10px;
-        }
-    }
-}

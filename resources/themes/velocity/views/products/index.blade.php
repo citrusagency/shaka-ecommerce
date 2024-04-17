@@ -5,7 +5,6 @@
 
 @section('page_title')
     Shop
-    {{--        {{ trim($category->meta_title) != "" ? $category->meta_title : $category->name }}--}}
 @stop
 
 {{--@section('seo')--}}
@@ -18,22 +17,6 @@
 {{--        </script>--}}
 {{--    @endif--}}
 {{--@stop--}}
-
-@push('css')
-    <style type="text/css">
-        .product-price span:first-child, .product-price span:last-child {
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        @media only screen and (max-width: 992px) {
-            .main-content-wrapper .vc-header {
-                box-shadow: unset;
-            }
-        }
-    </style>
-@endpush
-
 
 @php
     $isProductsDisplayMode = true;
@@ -50,51 +33,19 @@
     <script type="text/x-template" id="category-template">
         <section class="container-fluidvelocity-divide-page category-page-wrapper pb-5">
             <div class="row" style="width:100%; margin:0;">
-                {{--            {!! view_render_event('bagisto.shop.productOrCategory.index.before', ['category' => $category]) !!}--}}
-
-                {{--            @if (true)--}}
                 <div class="col-3 div-hid">
                     @include ('shop::products.list.layered-navigation')
                 </div>
-                {{--            @endif--}}
 
-                <div class="col-md-9 container right m-0" style="padding:0 10px; width: 100%;">
-                    {{--                    <div class="row remove-padding-margin">--}}
-                    {{--                        <div class="pl0 col-12">--}}
-                    {{--                                                    <h2 class="fw6 mb10">{{ $category->name }}</h2>--}}
-
-                    {{--                            @if ($isDescriptionDisplayMode)--}}
-                    {{--                                                            @if ($category->description)--}}
-                    {{--                                                                <div class="category-description">--}}
-                    {{--                                                                    {!! $category->description !!}--}}
-                    {{--                                                                </div>--}}
-                    {{--                                                            @endif--}}
-                    {{--                            @endif--}}
-                    {{--                        </div>--}}
-
-                    {{--                        <div class="col-12 no-padding">--}}
-                    {{--                            <div class="hero-image">--}}
-                    {{--                                                            @if (!is_null($category->image))--}}
-                    {{--                                                                <img class="logo" src="{{ $category->image_url }}" alt="" width="20" height="20" />--}}
-                    {{--                                                            @endif--}}
-                    {{--                            </div>--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
-
-
-                    <div class="filters-container">
+                <div class="col-md-9 container right m-0 shop-page-products">
+                    <div class="filters-container font-shaka-open-sans fs16">
                         <template v-if="products.length >= 0">
                             @include ('shop::products.list.toolbar')
                         </template>
                     </div>
-
-                    {{--                    <div class="category-block">--}}
-                    {{--                                            @if ($category->display_mode == 'description_only')--}}
-                    {{--                                                style="width: 100%"--}}
-                    {{--                                            @endif>--}}
-                    {{--                                        </div>--}}
+                    
                     <shimmer-component v-if="isLoading" shimmer-count="4"></shimmer-component>
-
+                    
                     <template v-else-if="products.length > 0">
                         @if ($toolbarHelper->getCurrentMode() == 'grid')
                             <div class="shop-products-list">
@@ -115,12 +66,7 @@
                                 </product-card>
                             </div>
                         @endif
-
-                        {{--                            {!! view_render_event('bagisto.shop.productOrCategory.index.pagination.before', ['category' => $category]) !!}--}}
-
                         <div class="bottom-toolbar py-5" v-html="paginationHTML"></div>
-
-                        {{--                            {!! view_render_event('bagisto.shop.productOrCategory.index.pagination.after', ['category' => $category]) !!}--}}
                     </template>
 
                     <div class="product-list empty" v-else>
@@ -129,7 +75,6 @@
                     </div>
                 </div>
             </div>
-            {{--                        {!! view_render_event('bagisto.shop.productOrCategory.index.after', ['category' => $category]) !!}--}}
         </section>
     </script>
 

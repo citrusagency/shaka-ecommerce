@@ -6,46 +6,6 @@
     {{ __('shop::app.search.page-title') }}
 @endsection
 
-@push('css')
-    <style type="text/css">
-        .category-container {
-            min-height: unset;
-        }
-
-        .toolbar-wrapper .col-4:first-child {
-            display: none !important;
-        }
-
-        .toolbar-wrapper .col-4:last-child {
-            right: 0;
-            position: absolute;
-        }
-
-
-        @media only screen and (max-width: 992px) {
-            .main-content-wrapper .vc-header {
-                box-shadow: unset;
-            }
-
-             .toolbar-wrapper .col-4:last-child {
-                left: 175px;
-            }
-
-            .toolbar-wrapper .sorter {
-                left: 35px;
-                position: relative;
-            }
-
-            .quick-view-btn-container,
-            .rango-zoom-plus,
-            .quick-view-in-list {
-                display: none;
-            }
-
-        }
-    </style>
-@endpush
-
 @section('content-wrapper')
     <div class="container category-page-wrapper">
         <search-component></search-component>

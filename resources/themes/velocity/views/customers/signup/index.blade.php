@@ -4,9 +4,6 @@
     {{ __('shop::app.customer.signup-form.page-title') }}
 @endsection
 
-@push('css')
-@endpush
-
 @section('content-wrapper')
     <div class="auth-content form-container">
         <div class="container">
@@ -132,19 +129,19 @@
                         </div>
 
                         <div class="control-group">
-                            <input type="checkbox" class="" onclick="showPassword()">Show Password
+                            <input type="checkbox" class="shaka-checkbox" onclick="showPassword()">Show Password
 
                         </div>
 
                         {!! view_render_event('bagisto.shop.customers.signup_form_controls.password_confirmation.after') !!}
 
-                        <div class="control-group">
-                            {!! Captcha::render() !!}
-                        </div>
+{{--                        <div>--}}
+{{--                            {!! Captcha::render() !!}--}}
+{{--                        </div>--}}
 
                         @if (core()->getConfigData('customer.settings.newsletter.subscription'))
                             <div class="control-group d-flex">
-                                <input type="checkbox" class="shaka-checkbox"  id="checkbox2" name="is_subscribed">
+                                <input type="checkbox" class="shaka-checkbox" id="checkbox2" name="is_subscribed">
                                 <span>Subscribe to Newsletter</span>
                             </div>
                         @endif

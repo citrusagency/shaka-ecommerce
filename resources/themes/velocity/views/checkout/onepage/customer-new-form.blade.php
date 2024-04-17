@@ -8,7 +8,7 @@
         </label>
 
         <input
-            class="control  form-control"
+            class="form-control"
             id="shipping[first_name]"
             type="text"
             name="shipping[first_name]"
@@ -30,7 +30,7 @@
         </label>
 
         <input
-            class="control  form-control"
+            class="form-control"
             id="shipping[last_name]"
             type="text"
             name="shipping[last_name]"
@@ -52,7 +52,7 @@
         </label>
 
         <input
-            class="control  form-control"
+            class="form-control"
             id="shipping[email]"
             type="text"
             name="shipping[email]"
@@ -74,7 +74,7 @@
         </label>
 
         <input
-            class="control  form-control"
+            class="form-control"
             id="shipping_address_0"
             type="text"
             name="shipping[address1][]"
@@ -97,7 +97,7 @@
         @for ($i = 1; $i < core()->getConfigData('customer.settings.address.street_lines'); $i++)
             <div class="col-12 form-field" style="margin-top: 10px; margin-bottom: 0">
                 <input
-                    class="control  form-control"
+                    class="form-control"
                     id="shipping_address_{{ $i }}"
                     type="text"
                     name="shipping[address1][{{ $i }}]"
@@ -113,7 +113,7 @@
         </label>
 
         <input
-            class="control  form-control"
+            class="form-control"
             id="shipping[city]"
             type="text"
             name="shipping[city]"
@@ -135,7 +135,7 @@
         </label>
 
         <select
-            class="control styled-select form-control"
+            class="styled-select form-control"
             id="shipping[country]"
             type="text"
             name="shipping[country]"
@@ -168,7 +168,7 @@
         </label>
 
         <input
-            class="control  form-control"
+            class="form-control"
             id="shipping[state]"
             type="text"
             name="shipping[state]"
@@ -212,7 +212,7 @@
         </label>
 
         <input
-            class="control  form-control"
+            class="form-control"
             id="shipping[postcode]"
             type="text"
             name="shipping[postcode]"
@@ -234,7 +234,7 @@
         </label>
 
         <input
-            class="control  form-control"
+            class="form-control"
             id="shipping[phone]"
             type="text"
             name="shipping[phone]"
@@ -297,7 +297,7 @@
         </label>
 
         <input
-            class="control  form-control"
+            class="form-control"
             id="billing[first_name]"
             type="text"
             name="billing[first_name]"
@@ -319,7 +319,7 @@
         </label>
 
         <input
-            class="control  form-control"
+            class="form-control"
             id="billing[last_name]"
             type="text"
             name="billing[last_name]"
@@ -341,7 +341,7 @@
         </label>
 
         <input
-            class="control  form-control"
+            class="form-control"
             id="billing[email]"
             type="text"
             name="billing[email]"
@@ -368,7 +368,7 @@
         </label>
 
         <input
-            class="control  form-control"
+            class="form-control"
             id="billing_address_0"
             type="text"
             name="billing[address1][]"
@@ -406,7 +406,7 @@
         </label>
 
         <input
-            class="control  form-control"
+            class="form-control"
             id="billing[city]"
             type="text"
             name="billing[city]"
@@ -428,7 +428,7 @@
         </label>
 
         <select
-            class="control styled-select form-control"
+            class="styled-select form-control"
             id="billing[country]"
             type="text"
             name="billing[country]"
@@ -459,7 +459,7 @@
         </label>
 
         <input
-            class="control  form-control"
+            class="form-control"
             id="billing[state]"
             type="text"
             name="billing[state]"
@@ -470,7 +470,7 @@
             v-if="! haveStates('billing')" />
 
         <select
-            class="control styled-select form-control"
+            class="styled-select form-control"
             id="billing[state]"
             name="billing[state]"
             v-model="address.billing.state"
@@ -501,7 +501,7 @@
         </label>
 
         <input
-            class="control form-control"
+            class="form-control"
             id="billing[postcode]"
             type="text"
             name="billing[postcode]"
@@ -523,7 +523,7 @@
         </label>
 
         <input
-            class="control form-control"
+            class="form-control"
             id="billing[phone]"
             type="text"
             name="billing[phone]"

@@ -3,15 +3,6 @@
 @section('page_title')
     {{ __('shop::app.customer.account.profile.index.title') }}
 @endsection
-
-@push('css')
-    <style>
-        .account-head {
-            height: 50px;
-        }
-    </style>
-@endpush
-
 @section('page-detail-wrapper')
     <div class="account-head mb-0">
         <div class="profile-content-title">

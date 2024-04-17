@@ -56,81 +56,6 @@
     <meta property="og:url" content="{{ route('shop.productOrCategory.index', $product->url_key) }}"/>
 @stop
 
-@push('css')
-    <style type="text/css">
-        .related-products {
-            width: 100%;
-        }
-
-        .recently-viewed {
-            margin-top: 20px;
-        }
-
-        .store-meta-images > .recently-viewed:first-child {
-            margin-top: 0px;
-        }
-
-        .main-content-wrapper {
-            margin-bottom: 0px;
-        }
-
-        .buynow {
-            height: 40px;
-            text-transform: uppercase;
-        }
-
-        .gg img {
-            aspect-ratio: 4/5 !important;
-            width: 100% !important;
-            object-fit: cover !important;
-        }
-
-        .single-price {
-            font-family: 'Open Sans', sans-serif !important;
-            font-size: 1.5rem !important;
-            font-weight: 400 !important;
-        }
-
-        .quantity .actions .add-to-cart-btn button {
-            background: #1197C2 !important;
-            padding-left: 2rem !important;
-            padding-right: 2rem !important;
-        }
-
-        .actions {
-            gap: 1rem;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-content: flex-end;
-            align-items: flex-end;
-            justify-content: space-between;
-        }
-
-        body {
-            overflow-x: hidden !important;
-        }
-
-        .titlebaby1 .titlebaby div h2 {
-            font-weight: 400 !important;
-            font-size: 1.8rem !important;
-        }
-
-        .galop {
-            background-color: #FAFAFA !important;
-            display: grid;
-            place-items: center;
-        }
-
-        .quantity .actions .add-to-cart-btn button.notify-available {
-            background:  #1197C2 !important;
-            color: #fff !important;
-            border-radius: 5px !important;
-            border: none !important;
-        }
-    </style>
-@endpush
-
 {{--{{ dd($product->product->specifications); }}--}}
 @section('content-wrapper')
     <div class="container pt-4">
@@ -144,7 +69,7 @@
             <section class="col-12 product-detail">
                 <div class="layouter">
                     <product-view>
-                        <div class="form-container">
+                        <div>
                             @csrf()
 
                             <input type="hidden" name="product_id" value="{{ $product->product_id }}">

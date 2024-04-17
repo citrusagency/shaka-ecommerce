@@ -4,7 +4,7 @@
 
     > * {
         height: 36px;
-        padding: 0px 10px;
+        padding: 0 10px;
         border: 1px solid $border-common;
         vertical-align: top;
         line-height: 3.5rem;
@@ -31,8 +31,8 @@
 
 .btn-add-to-cart {
     padding: 3px 14px !important;
-    border-radius: 0px !important;
-    color: $white-color !important;
+    border-radius: 0 !important;
+    color: $white !important;
     border-color: $theme-color !important;
     background-color: $theme-color !important;
 
@@ -96,9 +96,9 @@
         right: 34px;
         top: 8px;
     }
-    
-    &::after { 
-        background-image: url(../images/icon-calendar.svg);
+
+    &::after {
+        background-image: url('../../../../../publishable/assets/images/icon-calendar.svg');
         width: 24px;
         height: 24px;
         content: "";

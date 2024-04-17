@@ -1,88 +1,4 @@
-@push('css')
-    <style type="text/css">
-        .slider{
-            height:5px;
-            border-radius: 5px;
-            background-color: #ddd;
-            position: relative;
-        }
-
-        .progress{
-            height: 5px;
-            position: absolute;
-            border-radius: 5px;
-            background-color: #333333;
-        }
-
-        .category-p{
-            color: #232427;
-            font-family: "Open Sans", sans-serif !important;
-            font-size: 16px !important;
-            font-style: normal !important;
-            font-weight: 400 !important;
-            line-height: normal !important;
-            letter-spacing: 3px !important;
-        }
-
-        .option-name{
-            color: #232427;
-            font-family: "Open Sans", sans-serif !important;
-            font-size: 17px !important;
-            font-style: normal !important;
-            line-height: normal !important;
-            letter-spacing: 1px !important;
-            padding-left: 10px;
-            /*border-left: 2px solid black;*/
-        }
-
-        .range-input{
-            position: relative;
-        }
-
-        .range-input input{
-            position: absolute;
-            top:-5px;
-            height: 5px;
-            width: 100%;
-            background: none;
-            pointer-events: none;
-            appearance:none;
-            -webkit-appearance: none;
-        }
-
-        input[type="range"]::-webkit-slider-thumb{
-            height: 17px;
-            width: 17px;
-            border-radius: 50%;
-            pointer-events: auto;
-            -webkit-appearance: none;
-            background: #333333;
-        }
-
-        input[type="range"]::-moz-range-thumb{
-            height: 17px;
-            width: 17px;
-            border:none;
-            border-radius: 50%;
-            pointer-events: auto;
-            -moz-appearance: none;
-            background: #333333;
-        }
-
-        .gift_card{
-            font-weight: 500;
-            font-size: 16px !important;
-            letter-spacing: 2px;
-            line-height: 19px !important;
-            margin-bottom: 14px !important;
-        }
-        .gift_card:hover{
-            text-decoration: none;
-        }
-    </style>
-@endpush
-
-<div class="layered-filter-wrapper p-0 py-4 left">
+<div class="layered-filter-wrapper p-0 py-5 left">
     {!! view_render_event('bagisto.shop.products.list.layered-nagigation.before') !!}
 
     <layered-navigation
@@ -97,8 +13,8 @@
 @push('scripts')
     <script type="text/x-template" id="layered-navigation-template">
         <div v-if="attributes.length > 0">
-            <div class="filter-content border border-top-0 row p-0 m-0">
-                <div class="col-4 p-0 m-0"></div>
+            <div class="filter-content row p-0 ml-5">
+                <div class="col-2 p-0 m-0"></div>
                 <div class="filter-attributes col-8 p-0 m-0">
                     <filter-attribute-item
                         v-for='(attribute, index) in categories'
@@ -114,17 +30,21 @@
                         @onFilterAdded="addFilters('category', $event)">
                     </filter-attribute-item>
                 </div>
-                <div class="col-4 p-0 m-0"></div>
+            </div>
+            <div class="filter-content row p-0 ml-5">
+            	<div class="col-2 p-0 m-0"></div>
                 <div class="filter-attributes col-8 p-0 m-0 mb-2">
-                    <a href="{{route("shop.giftCard")}}" class="text-uppercase text-shaka cursor-pointer gift_card">Gift Card</a>
+                    <a href="{{route("shop.giftCard")}}" class="text-uppercase display-inbl text-shaka cursor-pointer fw5">Gift Card</a>
                 </div>
             </div>
-            <div class="border border-2 border-top-0 w-100 row m-0 p-0">
-                <div class="col-4 m-0 p-0"></div>
+            <div class="border-top filter-content row p-0 ml-5 w-100">
+                <div class="col-2 m-0 p-0"></div>
                 <div class="col-8 m-0 p-0">
-                    <h5 class="text-left font-shaka py-3">Price range</h5>
+                    <h5 class="text-left font-shaka py-3 fs20">Price range</h5>
                 </div>
-                <div class="col-4 m-0 p-0"></div>
+            </div>
+            <div class="filter-content row p-0 ml-5 w-100">
+                <div class="col-2 m-0 p-0"></div>
                 <div class="col-6 m-0 px-0">
                 <div class="slider">
                     <div class="progress" :style="{ left: progressLeft, right: progressRight }"></div>
@@ -172,10 +92,6 @@
                         <h6 class="text-uppercase display-inbl cursor-pointer category-p" >@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>
 
                         <div class="float-right display-table pr-4">
-                            {{--                    <span class="link-color cursor-pointer" v-if="appliedFilters.length" @click.stop="clearFilters()">--}}
-                            {{--                        {{ __('shop::app.products.remove-filter-link-title') }}--}}
-                            {{--                    </span>--}}
-
                             <i :class="`icon text-right fs16 cell ${active ? 'rango-arrow-up' : 'rango-arrow-down'}`"></i>
                         </div>
                     </div>
@@ -187,13 +103,6 @@
                                 <div
                                     class="checkbox"
                                     @click="changeCategory(option.id)">
-                                    {{--                                    <input--}}
-                                    {{--                                        style="opacity: 0"--}}
-                                    {{--                                        type="radio"--}}
-                                    {{--                                        :id="option.id"--}}
-                                    {{--                                        v-bind:value="option.id"--}}
-                                    {{--                                        v-model="appliedFilters"--}}
-                                    {{--                                        @change="addFilter($event)"/>--}}
                                     <span :class="`${isActiveCategory(option.id) ? 'font-weight-bold' : ''}`" class="option-name">@{{ option.name ? option.name : option.admin_name }}</span>
                                 </div>
                             </li>
@@ -205,18 +114,6 @@
                 </div>
             </div>
             <div :class="`cursor-pointer border-0 filter-attributes-item ${active ? 'active' : ''}`" v-if="attribute.code === 'material'">
-                {{--                <div class="filter-attributes-title" @click="active = ! active">--}}
-                {{--                    <h6 class="fw6 display-inbl">@{{ attribute.name ? attribute.name : attribute.admin_name }}</h6>--}}
-
-                {{--                    <div class="float-right display-table">--}}
-                {{--                    <span class="link-color cursor-pointer" v-if="appliedFilters.length" @click.stop="clearFilters()">--}}
-                {{--                        {{ __('shop::app.products.remove-filter-link-title') }}--}}
-                {{--                    </span>--}}
-
-                {{--                        <i :class="`icon fs16 cell ${active ? 'rango-arrow-up' : 'rango-arrow-down'}`"></i>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-
                 <div class="filter-attributes-content py-4 px-0 mx-0">
                     <ul type="none" class="items p-0 m-0" v-if="attribute.type != 'price'">
                         <li
@@ -235,7 +132,6 @@
                             </div>
                         </li>
                     </ul>
-
                 </div>
             </div>
         </div>

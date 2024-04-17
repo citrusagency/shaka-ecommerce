@@ -1,0 +1,276 @@
+
+.breadcrumb-stl{
+    color: $light-gray;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 151.682%;
+    text-decoration-line: underline;
+    text-transform: uppercase;
+}
+.breadcrumb-stl-main{
+    color: $theme-color;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 151.682%; /* 19.719px */
+    text-transform: uppercase;
+}
+.breadcrumbs-p{
+    color: $light-gray;
+    font-size: 15px !important;
+    margin-left: 20px;
+    padding-bottom: 10px;
+}
+.gift-card-contents{
+    display: flex;
+    flex-direction: column;
+    font-family: Outfit, sans-serif;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    flex: 1 0 0;
+}
+.gift-card-txt{
+    color:$light-gray;
+    font-size: 18px;
+    font-style: normal;
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 300;
+    line-height: 32px;
+    width: 100%;
+    height: auto;
+    margin: 24px 0;
+}
+.gift-card-info{
+    color: $gray;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px !important;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 22px;
+    margin-bottom: 10px !important;
+    vertical-align: center;
+}
+.gift-card-title{
+    color:  $gray;
+    font-size: 24px;
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.gift-card-category{
+    color:  $theme-color;
+    font-size: 17px !important;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0.48px;
+    vertical-align: center;
+}
+.form-container-gift-card{
+    margin: 0;
+    padding: 80px 130px;
+    background: $bg-light;
+}
+.form-content{
+    width: 40%;
+    margin: auto;
+}
+.form-desc{
+    color:$light-gray;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 26px; /* 162.5% */
+}
+.form-title{
+    color: $gray;
+    font-size: 18px !important;
+    font-style: normal;
+    font-weight: 600 !important;
+    line-height: 151.682%; /* 27.303px */
+    text-transform: none;
+    letter-spacing: 0;
+}
+.form-section-title{
+    color:$gray;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600 !important;
+    line-height: 151.682%; /* 24.269px */
+    text-transform: none;
+    letter-spacing: 0;
+    margin:0;
+}
+.form-label{
+    color: $light-gray;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px; /* 114.286% */
+    letter-spacing: 0.7px;
+}
+.input-fields{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap:nowrap;
+    margin: 20px 0;
+}
+.input-field{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 48%;
+}
+.input-btn >input{
+    width: 100px !important;
+    justify-content: space-between;
+    color:  $light-gray;
+}
+.input-field > input, .form-textarea, .input-btn >input{
+    margin: 10px 0;
+    padding: 16px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+}
+.btn-submit{
+    border-radius: 8px;
+    border:none;
+    background:  $theme-color;
+    display: flex;
+    padding: 8px 22px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    align-self: stretch;
+    width: 100%;
+    color: $white;
+    text-align: center;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px; /* 137.5% */
+    letter-spacing: 0.48px;
+    margin-top: 14px;
+}
+.section-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap:30px;
+    justify-content: center;
+}
+
+.error_msg{
+    color: $danger-color;
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    margin-left: 5px;
+    font-family: Outfit, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.7px;
+}
+
+.error_inp{
+    border: 1px solid $danger-color !important;
+}
+
+
+.label-chk {
+    align-self: center;
+    position: relative;
+    width: 120px;
+    height: 50px;
+    padding:8px 16px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background-color: $white;
+    color:$light-gray;
+    border-radius: 8px;
+    border: 1px solid $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap:wrap;
+}
+
+.label-chk>.text {
+    display: block;
+    flex-grow: 1;
+    text-align: center;
+    height: 100%;
+    padding-top: 2px;
+    font-size: 13px;
+    color: $gray;
+}
+
+.label-chk:hover,
+input:checked+.label-chk {
+    border: 1px solid $theme-color;
+    border-radius: 6px;
+}
+
+.label-chk:hover,
+input:checked+.label-chk>.text {
+    color: $theme-color;
+}
+
+input:checked+.label-chk {
+    color: $theme-color;
+    background-color: white;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted $black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: $light-gray;
+    color: $white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: $light-gray transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+

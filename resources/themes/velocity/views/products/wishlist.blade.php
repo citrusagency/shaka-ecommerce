@@ -21,7 +21,7 @@
         @endphp
 
         <a
-            class="unset wishlist-icon float-right w-100 pr-3 {{ $addWishlistClass ?? '' }} text-right"
+            class="unset wishlist-icon float-right w-100  {{ $addWishlistClass ?? '' }} text-right"
             href="javascript:void(0);"
             title="{{ $title }}"
             onclick="submitWishlistForm(
