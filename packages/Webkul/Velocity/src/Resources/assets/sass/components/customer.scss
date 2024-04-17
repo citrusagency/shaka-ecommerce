@@ -150,3 +150,20 @@
     letter-spacing: 0.48px;
 }
 
+/* ORDERS */
+
+.control {
+    width: 100%;
+    margin: 0;
+    flex: 1;
+    background: #ffffff;
+    border: 2px solid #C7C7C7;
+    border-radius: 3px;
+    height: 36px;
+    display: inline-block;
+    vertical-align: middle;
+    transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 10px;
+    font-size: 15px;
+}
+

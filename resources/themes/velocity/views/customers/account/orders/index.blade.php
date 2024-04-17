@@ -13,9 +13,7 @@
 
         <div class="">
             <div class="">
-
                 <datagrid-plus src="{{ route('customer.orders.index') }}"></datagrid-plus>
-
             </div>
         </div>
 

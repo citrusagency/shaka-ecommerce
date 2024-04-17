@@ -62,7 +62,7 @@
                                     data-vv-as="&quot;{{ __('shop::app.customer.login-form.password') }}&quot;" />
                                 <p class="control-error" v-if="errors.has('password')" v-text="errors.first('password')"></p>
                                 <div style="margin-top: 10px;">
-                                    <input type="checkbox" onclick="myFunction()" id="showPassword" class="">
+                                    <input type="checkbox" class="shaka-checkbox" onclick="myFunction()" id="showPassword" class="">
                                     <span>{{ __('shop::app.customer.login-form.show-password') }}</span>
 
                                     <a href="{{ route('customer.forgot-password.create') }}" class="float-right" style="padding:0 !important;line-height: 18px !important;">
