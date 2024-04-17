@@ -6,7 +6,7 @@
             grid-column-gap: 40px;
             background-color: white;
             min-height: 65vh;
-            padding: 40px 136px;
+            padding: 2rem 15rem;
         }
         .profile-content{
             /*display: flex;*/
@@ -48,13 +48,13 @@
             .profile-index{
                 grid-template-columns: 1fr;
                 grid-column-gap: 20px;
-                padding: 50px 60px;
+                padding: 50px 2rem;
             }
         }
 
         @media (max-width: 626px){
             .profile-index{
-                padding: 50px 30px;
+                padding: 50px 1.5rem;
             }
             .page-title-container{
                 margin-bottom: 20px;
