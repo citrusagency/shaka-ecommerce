@@ -42,24 +42,6 @@
                     <span class="select-icon rango-arrow-down"></span>
                 </div>
             </div>
-            <div class="view-mode">
-                @php
-                  $viewOption = $toolbarHelper->getViewOption();
-                @endphp
-
-                <div class="rango-view-grid-container {{ $viewOption === 'grid' ? 'active' : '' }}">
-                    <a href="{{ $toolbarHelper->getModeUrl('grid') }}" class="grid-view unset" aria-label="Grid">
-                        <span class="rango-view-grid fs24"></span>
-                    </a>
-                </div>
-                <div class="rango-view-list-container {{ $viewOption === 'list' ? 'active' : '' }}" aria-label="List">
-                    <a
-                        href="{{ $toolbarHelper->getModeUrl('list') }}"
-                        class="list-view unset">
-                        <span class="rango-view-list fs24"></span>
-                    </a>
-                </div>
-            </div>
         </div>
 
         <div class="toolbar-wrapper row col-12 remove-padding-margin fs16 font-shaka-open-sans" v-else>
@@ -106,23 +88,7 @@
 			</div>
 
 		    <div class="mx-3">
-		        @php
-		            $isList = $toolbarHelper->isModeActive('list');
-		        @endphp
-
-		        <a
-		            class="unset"
-		            href="{{
-		                $isList
-		                ? $toolbarHelper->getModeUrl('grid')
-		                : $toolbarHelper->getModeUrl('list')
-		            }}">
-
-		            <i class="material-icons">
-		                @if ($isList) list @else view_module @endif
-		            </i>
-		            <span>{{ __('velocity::app.shop.general.view') }}</span>
-		        </a>
+		       
 		    </div>
 		</div>
 
