@@ -51,42 +51,6 @@ class CustomerRepository extends Repository
     }
 
     /**
-     * Upload customer's images.
-     *
-     * @param  array  $data
-     * @param  \Webkul\Customer\Models\Customer  $customer
-     * @param  string $type
-     * @return void
-     */
-    public function uploadImages($data, $customer, $type = 'image')
-    {
-        if (isset($data[$type])) {
-            $request = request();
-
-            foreach ($data[$type] as $imageId => $image) {
-                $file = $type . '.' . $imageId;
-                $dir = 'customer/' . $customer->id;
-
-                if ($request->hasFile($file)) {
-                    if ($customer->{$type}) {
-                        Storage::delete($customer->{$type});
-                    }
-
-                    $customer->{$type} = $request->file($file)->store($dir);
-                    $customer->save();
-                }
-            }
-        } else {
-            if ($customer->{$type}) {
-                Storage::delete($customer->{$type});
-            }
-
-            $customer->{$type} = null;
-            $customer->save();
-        }
-    }
-
-    /**
      * Sync new registered customer data.
      *
      * @param  \Webkul\Customer\Contracts\Customer  $customer

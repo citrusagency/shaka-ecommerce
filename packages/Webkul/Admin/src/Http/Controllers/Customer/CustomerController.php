@@ -71,9 +71,7 @@ class CustomerController extends Controller
         $this->validate(request(), [
             'first_name'    => 'string|required',
             'last_name'     => 'string|required',
-            'gender'        => 'required',
             'email'         => 'required|unique:customers,email',
-            'date_of_birth' => 'date|before:today',
         ]);
 
         $password = rand(100000, 10000000);
@@ -128,13 +126,11 @@ class CustomerController extends Controller
         $this->validate(request(), [
             'first_name'    => 'string|required',
             'last_name'     => 'string|required',
-            'gender'        => 'required',
             'email'         => 'required|unique:customers,email,' . $id,
-            'date_of_birth' => 'date|before:today',
         ]);
 
         Event::dispatch('customer.update.before', $id);
-        
+
         $customer = $this->customerRepository->update(array_merge(request()->all(), [
             'status'       => request()->has('status'),
             'is_suspended' => request()->has('is_suspended'),
@@ -245,7 +241,7 @@ class CustomerController extends Controller
         if (! $this->customerRepository->checkBulkCustomerIfTheyHaveOrderPendingOrProcessing($customerIds)) {
             foreach ($customerIds as $customerId) {
                 Event::dispatch('customer.delete.before', $customerId);
-                
+
                 $this->customerRepository->delete($customerId);
 
                 Event::dispatch('customer.delete.after', $customerId);
