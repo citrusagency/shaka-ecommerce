@@ -1,10 +1,10 @@
 <template>
-    <div class="row py-3">
+    <div class="row">
         <div class="col-6" >
             <div v-if="hamburger" class="nav-container scrollable">
-                <div class="wrapper" v-if="this.rootCategories" >
+                <div class="wrapper" v-if="this.rootCategories" style="position: relative">
                     <div class="greeting drawer-section fw6" >
-                        <span class="menu-title"> Menu </span>
+                        <span class="py-1 menu-title"> Menu </span>
                             <span class="close-container" @click="closeDrawer()" >
                                <i class="material-icons float-right text-white close-icon">
                                     close
@@ -93,18 +93,17 @@
 
 <style lang="scss">
 .close-container {
-    position: fixed;
-    left: 0;
+    position: absolute;
+    right: 0;
     top: 0;
     background: black;
-    width: 15%;
-    height: 57px;
+    width: 20%;
+    height: 100%;
     display: grid !important;
     place-items: center;
 }
 .menu-title{
     color: #232427;
-    padding: 5px;
     font-family: Outfit, sans-serif;
     font-size: 16px;
     font-style: normal;

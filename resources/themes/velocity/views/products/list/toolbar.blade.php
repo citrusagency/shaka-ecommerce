@@ -41,9 +41,8 @@
         <div class="toolbar-wrapper row col-12 remove-padding-margin fs16 font-shaka-open-sans" v-else>
             <div
                 v-if="layeredNavigation"
-                class="nav-container scrollable"
+                class="nav-container scrollable mx-0"
                 style="
-                    z-index: 1000;
                     color: black;
                     position: relative;
                 ">

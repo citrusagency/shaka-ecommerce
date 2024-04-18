@@ -1124,16 +1124,14 @@
 
     .nav-container {
         top: 0;
-        right: 0!important;
-        left: auto!important;
-        width: 85%;
+        width: 80%;
         position: fixed !important;
         opacity: 1;
         z-index: 9999;
         height: 100vh;
         font-size: 16px;
+        border-right: solid 2px $border-common;
         overflow-y: scroll;
-        box-shadow: 5px 0 5px 195px $light-gray;
         background-color: $white;
     }
 
