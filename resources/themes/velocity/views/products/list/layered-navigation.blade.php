@@ -14,7 +14,6 @@
     <script type="text/x-template" id="layered-navigation-template">
         <div v-if="attributes.length > 0">
             <div class="filter-content row p-0 ml-5">
-                <div class="col-2 p-0 m-0"></div>
                 <div class="filter-attributes col-8 p-0 m-0">
                     <filter-attribute-item
                         v-for='(attribute, index) in categories'
@@ -32,20 +31,17 @@
                 </div>
             </div>
             <div class="filter-content row p-0 ml-5">
-            	<div class="col-2 p-0 m-0"></div>
                 <div class="filter-attributes col-8 p-0 m-0 mb-2">
                     <a href="{{route("shop.giftCard")}}" class="text-uppercase display-inbl text-shaka cursor-pointer fw5">Gift Card</a>
                 </div>
             </div>
-            <div class="border-top filter-content row p-0 ml-5 w-100">
-                <div class="col-2 m-0 p-0"></div>
+            <div class="border-top filter-content row p-0 ml-3 w-100">
                 <div class="col-8 m-0 p-0">
                     <h5 class="text-left font-shaka py-3 fs20">Price range</h5>
                 </div>
             </div>
-            <div class="filter-content row p-0 ml-5 w-100">
-                <div class="col-2 m-0 p-0"></div>
-                <div class="col-6 m-0 px-0">
+            <div class="filter-content row p-0 ml-3 w-100">
+                <div class="col-9 m-0 px-0">
                 <div class="slider">
                     <div class="progress" :style="{ left: progressLeft, right: progressRight }"></div>
                 </div>

@@ -11,7 +11,7 @@
 
             <p class="row col-12">
                 @if (auth()->guard('customer')->user())
-                    {!! 
+                    {!!
                         __('shop::app.checkout.success.order-id-info', [
                             'order_id' => '<a href="' . route('customer.orders.view', $order->id) . '">' . $order->increment_id . '</a>'
                         ])
@@ -28,7 +28,7 @@
             {{ view_render_event('bagisto.shop.checkout.continue-shopping.before', ['order' => $order]) }}
                 <div class="row col-12 mt15">
                     <span class="mb30 mr10">
-                        <a href="{{ route('shop.home.index') }}" class="theme-btn remove-decoration">
+                        <a href="{{ route('shop.home.index') }}" class="theme-btn rounded remove-decoration">
                             {{ __('shop::app.checkout.cart.continue-shopping') }}
                         </a>
                     </span>

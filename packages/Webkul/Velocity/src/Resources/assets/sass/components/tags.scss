@@ -389,7 +389,10 @@ label {
     margin-bottom: 1rem;
 }
 
-input[type="text"],input[type="password"], select {
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
     border-radius: 8px !important;
     /*padding: 1.2rem 1rem !important;*/
 }

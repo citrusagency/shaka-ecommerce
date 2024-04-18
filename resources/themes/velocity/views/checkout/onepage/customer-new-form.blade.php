@@ -291,7 +291,7 @@
 {{--        </span>--}}
 {{--    </div>--}}
 
-    <div :class="`col-12 form-field ${errors.has('address-form.billing[first_name]') ? 'has-error' : ''}`">
+    <div :class="`col-12 form-field  ${errors.has('address-form.billing[first_name]') ? 'has-error' : ''}`">
         <label for="billing[first_name]" class="mandatory form-label">
             {{ __('shop::app.checkout.onepage.first-name') }}
         </label>
@@ -428,7 +428,7 @@
         </label>
 
         <select
-            class="styled-select form-control"
+            class="custom-select"
             id="billing[country]"
             type="text"
             name="billing[country]"
@@ -441,11 +441,6 @@
 
             <option v-for='(country, index) in countries' :value="country.code" v-text="country.name"></option>
         </select>
-
-        <div class="select-icon-container">
-            <i class="select-icon rango-arrow-down fw-normal"></i>
-        </div>
-
         <span
             class="control-error"
             v-text="errors.first('address-form.billing[country]')"
@@ -470,7 +465,7 @@
             v-if="! haveStates('billing')" />
 
         <select
-            class="styled-select form-control"
+            class="custom-select"
             id="billing[state]"
             name="billing[state]"
             v-model="address.billing.state"
@@ -483,10 +478,6 @@
 
             <option v-for='(state, index) in countryStates[address.billing.country]' :value="state.code" v-text="state.default_name"></option>
         </select>
-
-        <div class="select-icon-container" v-if="haveStates('billing')">
-            <i class="select-icon rango-arrow-down"></i>
-        </div>
 
         <span
             class="control-error"
