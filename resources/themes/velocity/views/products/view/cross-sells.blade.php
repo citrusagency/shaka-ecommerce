@@ -9,6 +9,28 @@
     ?>
 @endforeach
 
+<?php
+    $crossSellProducts = [];
+
+    foreach ($products as $product) {
+        foreach ($product->cross_sells()->paginate(10) as $crossSellProduct) {
+            $isUnique = true;
+
+            foreach ($cart->items as $item) {
+                if ($item->product->id === $crossSellProduct->id) {
+                    $isUnique = false;
+                    break;
+                }
+            }
+
+            if ($isUnique) {
+                $crossSellProducts[$crossSellProduct->id] = $crossSellProduct;
+            }
+        }
+    }
+    $uniqueCrossSellProducts = array_values($crossSellProducts);
+?>
+
 @if (isset($products))
 
     <card-list-header
@@ -18,24 +40,15 @@
         class="vc-full-screen w-100"
     ></card-list-header>
 
-    <div class="carousel-products vc-full-screen">
-        <carousel-component
-            slides-per-page="6"
-            navigation-enabled="hide"
-            pagination-enabled="hide"
-            id="upsell-products-carousel"
-            :slides-count="{{ $product->cross_sells()->count() }}">
-
-            @foreach($products as $product)
-                @foreach ($product->cross_sells()->paginate(2) as $index => $crossSellProduct)
-                    <slide slot="slide-{{ $index }}">
-                        @include ('shop::products.list.card', [
-                            'product' => $crossSellProduct,
-                            'addToCartBtnClass' => 'small-padding',
-                        ])
-                    </slide>
-                @endforeach
+    <div class="m-auto">
+        <div class="vc-full-screen d-flex flex-wrap" >
+            @foreach ($uniqueCrossSellProducts as $index => $crossSellProduct)
+                    @include ('shop::products.list.card', [
+                        'product' => $crossSellProduct,
+                        'addToCartBtnClass' => 'small-padding',
+                    ])
             @endforeach
-        </carousel-component>
+        </div>
     </div>
+
 @endif
