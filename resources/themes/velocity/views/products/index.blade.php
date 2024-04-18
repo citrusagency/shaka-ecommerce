@@ -43,9 +43,8 @@
                             @include ('shop::products.list.toolbar')
                         </template>
                     </div>
-                    
                     <shimmer-component v-if="isLoading" shimmer-count="4"></shimmer-component>
-                    
+
                     <template v-else-if="products.length > 0">
                         @if ($toolbarHelper->getCurrentMode() == 'grid')
                             <div class="shop-products-list">
