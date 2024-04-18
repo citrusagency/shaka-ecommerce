@@ -10,7 +10,7 @@
             <div class="sorter">
                 <label>{{ __('shop::app.products.sort-by') }}</label>
 
-                <select class="selective-div border-normal styled-select" onchange="window.location.href = this.value" aria-label="Sort By">
+                <select class="border-normal px-2" onchange="window.location.href = this.value" aria-label="Sort By">
                     @foreach ($toolbarHelper->getAvailableOrders() as $key => $order)
                         <option value="{{ $toolbarHelper->getOrderUrl($key) }}" {{ $toolbarHelper->isOrderCurrent($key) ? 'selected' : '' }}>
                             {{ __('shop::app.products.' . $order) }}
@@ -18,15 +18,12 @@
                     @endforeach
                 </select>
 
-                <div class="select-icon-container">
-                    <span class="select-icon rango-arrow-down"></span>
-                </div>
             </div>
 
             <div class="limiter">
                 <label>{{ __('shop::app.products.show') }}</label>
 
-                <select class="selective-div border-normal styled-select" onchange="window.location.href = this.value" style="width: 57px;" aria-label="Show">
+                <select class=" border-normal px-2" onchange="window.location.href = this.value" aria-label="Show">
 
                     @foreach ($toolbarHelper->getAvailableLimits() as $limit)
 
@@ -38,9 +35,6 @@
 
                 </select>
 
-                <div class="select-icon-container">
-                    <span class="select-icon rango-arrow-down"></span>
-                </div>
             </div>
         </div>
 
@@ -88,7 +82,7 @@
 			</div>
 
 		    <div class="mx-3">
-		       
+
 		    </div>
 		</div>
 
