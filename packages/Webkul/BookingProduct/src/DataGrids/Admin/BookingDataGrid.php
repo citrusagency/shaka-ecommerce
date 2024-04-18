@@ -33,12 +33,13 @@ class BookingDataGrid extends DataGrid
 
         $queryBuilder = DB::table('bookings')
             ->leftJoin('orders', 'bookings.order_id', '=', 'orders.id')
-            ->select('bookings.id as id', 'orders.increment_id as order_id', 'bookings.from as from', 'bookings.to as to', 'bookings.qty as qty', 'orders.created_at as created_at');
+            ->select('bookings.id as id', 'orders.increment_id as order_id', 'bookings.from as from', 'bookings.to as to', 'bookings.qty as qty')
+            ->selectRaw('DATE_FORMAT(orders.created_at, "%d.%m.%Y") as created_at_formatted');
 
         $this->addFilter('id', 'bookings.id');
         $this->addFilter('order_id', 'orders.increment_id');
         $this->addFilter('qty', 'bookings.qty');
-        $this->addFilter('created_at', 'orders.created_at');
+        $this->addFilter('created_at', 'created_at_formatted');
 
         $this->setQueryBuilder($queryBuilder);
     }
@@ -102,7 +103,7 @@ class BookingDataGrid extends DataGrid
         ]);
 
         $this->addColumn([
-            'index'      => 'created_at',
+            'index'      => 'created_at_formatted',
             'label'      => trans('admin::app.datagrid.created-date'),
             'type'       => 'datetime',
             'searchable' => true,
