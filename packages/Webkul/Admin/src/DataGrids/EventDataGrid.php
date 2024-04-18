@@ -13,7 +13,7 @@ class EventDataGrid extends DataGrid
 
     public function prepareQueryBuilder()
     {
-        $queryBuilder = DB::table('marketing_events')->addSelect('id', 'name', 'date');
+        $queryBuilder = DB::table('marketing_events')->addSelect('id', 'name')->selectRaw('DATE_FORMAT(date, "%d.%m.%Y") as date_formatted');
 
         $this->setQueryBuilder($queryBuilder);
     }
@@ -39,7 +39,7 @@ class EventDataGrid extends DataGrid
         ]);
 
         $this->addColumn([
-            'index'      => 'date',
+            'index'      => 'date_formatted',
             'label'      => trans('admin::app.datagrid.date'),
             'type'       => 'datetime',
             'searchable' => true,

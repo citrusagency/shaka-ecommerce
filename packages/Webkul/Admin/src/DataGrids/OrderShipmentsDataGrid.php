@@ -21,16 +21,18 @@ class OrderShipmentsDataGrid extends DataGrid
             })
             ->leftJoin('orders as ors', 'shipments.order_id', '=', 'ors.id')
             ->leftJoin('inventory_sources as is', 'shipments.inventory_source_id', '=', 'is.id')
-            ->select('shipments.id as shipment_id', 'ors.increment_id as shipment_order_id', 'shipments.total_qty as shipment_total_qty', 'ors.created_at as order_date', 'shipments.created_at as shipment_created_at')
+            ->select('shipments.id as shipment_id', 'ors.increment_id as shipment_order_id', 'shipments.total_qty as shipment_total_qty')
             ->addSelect(DB::raw('CONCAT(' . DB::getTablePrefix() . 'order_address_shipping.first_name, " ", ' . DB::getTablePrefix() . 'order_address_shipping.last_name) as shipped_to'))
-            ->selectRaw('IF(' . DB::getTablePrefix() . 'shipments.inventory_source_id IS NOT NULL,' . DB::getTablePrefix() . 'is.name, ' . DB::getTablePrefix() . 'shipments.inventory_source_name) as inventory_source_name');
+            ->selectRaw('IF(' . DB::getTablePrefix() . 'shipments.inventory_source_id IS NOT NULL,' . DB::getTablePrefix() . 'is.name, ' . DB::getTablePrefix() . 'shipments.inventory_source_name) as inventory_source_name')
+            ->selectRaw('DATE_FORMAT(ors.created_at , "%d.%m.%Y") as ors_created_at_formatted')
+            ->selectRaw('DATE_FORMAT(shipments.created_at , "%d.%m.%Y") as ship_created_at_formatted');
 
         $this->addFilter('shipment_id', 'shipments.id');
         $this->addFilter('shipment_order_id', 'ors.increment_id');
         $this->addFilter('shipment_total_qty', 'shipments.total_qty');
         $this->addFilter('inventory_source_name', DB::raw('IF(' . DB::getTablePrefix() . 'shipments.inventory_source_id IS NOT NULL,' . DB::getTablePrefix() . 'is.name, ' . DB::getTablePrefix() . 'shipments.inventory_source_name)'));
-        $this->addFilter('order_date', 'ors.created_at');
-        $this->addFilter('shipment_created_at', 'shipments.created_at');
+        $this->addFilter('order_date', 'ors_created_at_formatted');
+        $this->addFilter('shipment_created_at', 'ship_created_at_formatted');
         $this->addFilter('shipped_to', DB::raw('CONCAT(' . DB::getTablePrefix() . 'order_address_shipping.first_name, " ", ' . DB::getTablePrefix() . 'order_address_shipping.last_name)'));
 
         $this->setQueryBuilder($queryBuilder);
@@ -75,7 +77,7 @@ class OrderShipmentsDataGrid extends DataGrid
         ]);
 
         $this->addColumn([
-            'index'      => 'order_date',
+            'index'      => 'ors_created_at_formatted',
             'label'      => trans('admin::app.datagrid.order-date'),
             'type'       => 'datetime',
             'sortable'   => true,
@@ -84,7 +86,7 @@ class OrderShipmentsDataGrid extends DataGrid
         ]);
 
         $this->addColumn([
-            'index'      => 'shipment_created_at',
+            'index'      => 'ship_created_at_formatted',
             'label'      => trans('admin::app.datagrid.shipment-date'),
             'type'       => 'datetime',
             'sortable'   => true,
