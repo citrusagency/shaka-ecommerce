@@ -2690,6 +2690,11 @@
     font-style: normal;
     font-weight: 600;
     letter-spacing: 1.4px;
+
+    &:hover {
+        text-decoration: none !important;
+    }
 }
+
 
 
