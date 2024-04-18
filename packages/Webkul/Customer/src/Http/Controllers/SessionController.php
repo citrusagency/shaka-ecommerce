@@ -81,7 +81,11 @@ class SessionController extends Controller
          */
         Event::dispatch('customer.after.login', $request->get('email'));
 
-        return redirect()->intended($previousUrl ?? $this->_config['redirect']);
+        $urlPath = parse_url($previousUrl)['path'];
+        if($urlPath === '/customer/register' || $urlPath === '/admin/login' || $urlPath === '/admin' || $urlPath === '/customer/login') {
+            return redirect()->route('customer.profile.index');
+        }
+        return redirect()->intended($previousUrl ?? route('customer.profile.index'));
     }
 
     /**
