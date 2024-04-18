@@ -41,7 +41,6 @@ class CustomerDataGrid extends DataGrid
                 'customers.id as customer_id',
                 'customers.email',
                 'customers.phone',
-                'customers.gender',
                 'customers.status',
                 'customers.is_suspended',
                 'customer_groups.name as group',
@@ -54,7 +53,6 @@ class CustomerDataGrid extends DataGrid
         $this->addFilter('full_name', DB::raw('CONCAT(' . DB::getTablePrefix() . 'customers.first_name, " ", ' . DB::getTablePrefix() . 'customers.last_name)'));
         $this->addFilter('group', 'customer_groups.name');
         $this->addFilter('phone', 'customers.phone');
-        $this->addFilter('gender', 'customers.gender');
         $this->addFilter('status', 'status');
         $this->addFilter('is_suspended', 'customers.is_suspended');
 
@@ -116,22 +114,6 @@ class CustomerDataGrid extends DataGrid
                     return '-';
                 } else {
                     return $row->phone;
-                }
-            },
-        ]);
-
-        $this->addColumn([
-            'index'      => 'gender',
-            'label'      => trans('admin::app.datagrid.gender'),
-            'type'       => 'string',
-            'searchable' => false,
-            'sortable'   => true,
-            'filterable' => false,
-            'closure'    => function ($row) {
-                if (! $row->gender) {
-                    return '-';
-                } else {
-                    return $row->gender;
                 }
             },
         ]);

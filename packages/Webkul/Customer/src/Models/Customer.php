@@ -36,8 +36,6 @@ class Customer extends Authenticatable implements CustomerContract, JWTSubject
     protected $fillable = [
         'first_name',
         'last_name',
-        'gender',
-        'date_of_birth',
         'email',
         'phone',
         'password',
@@ -104,16 +102,6 @@ class Customer extends Authenticatable implements CustomerContract, JWTSubject
     }
 
     /**
-     * Get image url for the customer profile.
-     *
-     * @return string|null
-     */
-    public function getImageUrlAttribute()
-    {
-        return $this->image_url();
-    }
-
-    /**
      * Get the customer full name.
      *
      * @return string
@@ -128,14 +116,14 @@ class Customer extends Authenticatable implements CustomerContract, JWTSubject
      *
      * @return string|null
      */
-    public function image_url()
-    {
-        if (! $this->image) {
-            return;
-        }
-
-        return Storage::url($this->image);
-    }
+//    public function image_url()
+//    {
+//        if (! $this->image) {
+//            return;
+//        }
+//
+//        return Storage::url($this->image);
+//    }
 
     /**
      * Is email exists or not.

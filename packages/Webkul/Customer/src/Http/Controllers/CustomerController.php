@@ -72,20 +72,6 @@ class CustomerController extends Controller
 
         $data = $customerProfileRequest->validated();
 
-        if (
-            isset($data['date_of_birth'])
-            && $data['date_of_birth'] == ''
-        ) {
-            unset($data['date_of_birth']);
-        }
-
-        if (
-            core()->getCurrentChannel()->theme === 'default'
-            && ! isset($data['image'])
-        ) {
-            $data['image']['image_0'] = '';
-        }
-
         $data['subscribed_to_news_letter'] = isset($data['subscribed_to_news_letter']);
 
         if (isset($data['oldpassword'])) {
@@ -151,8 +137,6 @@ class CustomerController extends Controller
                     ], $subscription->id);
                 }
             }
-
-            $this->customerRepository->uploadImages($data, $customer);
 
             session()->flash('success', trans('shop::app.customer.account.profile.edit-success'));
 

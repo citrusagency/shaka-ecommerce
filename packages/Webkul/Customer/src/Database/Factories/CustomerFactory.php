@@ -38,11 +38,6 @@ class CustomerFactory extends Factory
         return [
             'first_name'        => $this->faker->firstName(),
             'last_name'         => $this->faker->lastName,
-            'gender'            => Arr::random([
-                'male',
-                'female',
-                'other',
-            ]),
             'email'             => $this->faker->email,
             'status'            => 1,
             'password'          => Hash::make($password = $this->faker->password),
