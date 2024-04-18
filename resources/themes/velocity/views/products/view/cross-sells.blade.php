@@ -9,29 +9,28 @@
     ?>
 @endforeach
 
-<?php
-    $crossSellProducts = [];
+@if (isset($products))
+        <?php
+        $crossSellProducts = [];
 
-    foreach ($products as $product) {
-        foreach ($product->cross_sells()->paginate(10) as $crossSellProduct) {
-            $isUnique = true;
+        foreach ($products as $product) {
+            foreach ($product->cross_sells()->paginate(10) as $crossSellProduct) {
+                $isUnique = true;
 
-            foreach ($cart->items as $item) {
-                if ($item->product->id === $crossSellProduct->id) {
-                    $isUnique = false;
-                    break;
+                foreach ($cart->items as $item) {
+                    if ($item->product->id === $crossSellProduct->id) {
+                        $isUnique = false;
+                        break;
+                    }
+                }
+
+                if ($isUnique) {
+                    $crossSellProducts[$crossSellProduct->id] = $crossSellProduct;
                 }
             }
-
-            if ($isUnique) {
-                $crossSellProducts[$crossSellProduct->id] = $crossSellProduct;
-            }
         }
-    }
-    $uniqueCrossSellProducts = array_values($crossSellProducts);
-?>
-
-@if (isset($products))
+        $uniqueCrossSellProducts = array_values($crossSellProducts);
+        ?>
 
     <card-list-header
         heading="{{ __('shop::app.products.cross-sell-title') }}"
