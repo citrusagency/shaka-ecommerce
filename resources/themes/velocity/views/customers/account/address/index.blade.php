@@ -5,14 +5,8 @@
 @endsection
 
 @section('page-detail-wrapper')
-    @if ($addresses->isEmpty())
-        <a href="{{ route('customer.address.create') }}" class="theme-btn light unset address-button">
-            {{ __('shop::app.customer.account.address.index.add') }}
-        </a>
-    @endif
-
-    <div class="d-md-flex mb-2 py-2 justify-content-between">
-        <div class="my-3 profile-content-title">
+    <div class="d-md-flex py-2 justify-content-between">
+        <div class="profile-content-title">
             {{ __('shop::app.customer.account.address.index.title') }}
         </div>
 
@@ -29,7 +23,11 @@
 
     <div class="account-table-content">
         @if ($addresses->isEmpty())
-            <div>{{ __('shop::app.customer.account.address.index.empty') }}</div>
+            <a href="{{ route('customer.address.create') }}" class="theme-btn rounded address-button">
+                Add new address </a>
+            <p>
+                {{ __('shop::app.customer.account.address.index.empty') }}
+            </p>
         @else
             <div class="row address-holder mr-0">
                 @foreach ($addresses as $address)
@@ -96,7 +94,7 @@
         .address-button {
             position: absolute;
             z-index: 1 !important;
-            margin-top: 110px !important;
+            margin-top: 5rem !important;
         }
     </style>
 @endif
