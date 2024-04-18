@@ -30,13 +30,14 @@ class InvoicesTransactionsDatagrid extends DataGrid
     {
         $queryBuilder = DB::table('order_transactions')
             ->leftJoin('invoices as inv', 'order_transactions.invoice_id', '=', 'inv.id')
-            ->select('order_transactions.id as id', 'order_transactions.transaction_id as transaction_id', 'order_transactions.invoice_id as invoice_id', 'order_transactions.created_at as created_at')
+            ->select('order_transactions.id as id', 'order_transactions.transaction_id as transaction_id', 'order_transactions.invoice_id as invoice_id')
+            ->selectRaw('DATE_FORMAT(order_transactions.created_at, "%d.%m.%Y") as created_at_formatted')
             ->where('order_transactions.invoice_id', request('id'));
 
         $this->addFilter('id', 'order_transactions.id');
         $this->addFilter('transaction_id', 'order_transactions.transaction_id');
         $this->addFilter('order_id', 'ors.increment_id');
-        $this->addFilter('created_at', 'order_transactions.created_at');
+        $this->addFilter('created_at', 'created_at_formatted');
 
         $this->setQueryBuilder($queryBuilder);
     }
@@ -67,7 +68,7 @@ class InvoicesTransactionsDatagrid extends DataGrid
         ]);
 
         $this->addColumn([
-            'index'      => 'created_at',
+            'index'      => 'created_at_formatted',
             'label'      => trans('admin::app.datagrid.transaction-date'),
             'type'       => 'datetime',
             'searchable' => true,

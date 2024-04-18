@@ -30,13 +30,14 @@ class CustomersInvoicesDataGrid extends DataGrid
     {
         $queryBuilder = DB::table('invoices')
             ->leftJoin('orders as ors', 'invoices.order_id', '=', 'ors.id')
-            ->select('invoices.id as id', 'ors.increment_id as order_id', 'invoices.state as state', 'ors.channel_name as channel_name', 'invoices.base_grand_total as base_grand_total', 'invoices.created_at as created_at')
+            ->select('invoices.id as id', 'ors.increment_id as order_id', 'invoices.state as state', 'ors.channel_name as channel_name', 'invoices.base_grand_total as base_grand_total')
+            ->selectRaw('DATE_FORMAT(invoices.created_at, "%d.%m.%Y") as created_at_formatted')
             ->where('ors.customer_id', request('id'));
 
         $this->addFilter('id', 'invoices.id');
         $this->addFilter('order_id', 'ors.increment_id');
         $this->addFilter('base_grand_total', 'invoices.base_grand_total');
-        $this->addFilter('created_at', 'invoices.created_at');
+        $this->addFilter('created_at', 'created_at_formatted');
 
         $this->setQueryBuilder($queryBuilder);
     }
@@ -58,7 +59,7 @@ class CustomersInvoicesDataGrid extends DataGrid
         ]);
 
         $this->addColumn([
-            'index'      => 'created_at',
+            'index'      => 'created_at_formatted',
             'label'      => trans('admin::app.datagrid.invoice-date'),
             'type'       => 'date',
             'searchable' => true,
