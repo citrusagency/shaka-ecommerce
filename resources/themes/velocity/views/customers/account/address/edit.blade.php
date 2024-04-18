@@ -28,7 +28,7 @@
 
                     <input
                         type="text"
-                        class="control  form-control"
+                        class="form-control"
                         name="first_name"
                         value="{{ old('first_name') ?? $address->first_name }}"
                         v-validate="'required'"
@@ -46,7 +46,7 @@
                            class="mandatory">{{ __('shop::app.customer.account.address.create.last_name') }}</label>
 
                     <input
-                        class="control  form-control"
+                        class="form-control"
                         type="text"
                         name="last_name"
                         value="{{ old('last_name') ?? $address->last_name }}"
@@ -75,7 +75,7 @@
                            class="mandatory">{{ __('shop::app.customer.account.address.edit.street-address') }}</label>
 
                     <input
-                        class="control  form-control"
+                        class="form-control"
                         id="address_0"
                         type="text"
                         name="address1[]"
@@ -96,7 +96,7 @@
                     @for ($i = 1; $i < core()->getConfigData('customer.settings.address.street_lines'); $i++)
                         <div class="control-group" style="margin-top: -25px;">
                             <input
-                                class="control  form-control"
+                                class="form-control"
                                 type="text"
                                 name="address1[{{ $i }}]"
                                 id="address_{{ $i }}"
@@ -110,7 +110,7 @@
                     <label for="phone" class="mandatory">{{ __('shop::app.customer.account.address.create.phone') }}</label>
 
                     <input
-                        class="control  form-control"
+                        class="form-control"
                         type="text"
                         name="phone"
                         value="{{ old('phone') ?? $address->phone }}"
@@ -137,7 +137,7 @@
                     <label for="city" class="mandatory">{{ __('shop::app.customer.account.address.create.city') }}</label>
 
                     <input
-                        class="control  form-control"
+                        class="form-control"
                         type="text"
                         name="city"
                         value="{{ old('city') ?? $address->city }}"
@@ -156,7 +156,7 @@
                            class="{{ core()->isPostCodeRequired() ? 'mandatory' : '' }}">{{ __('shop::app.customer.account.address.create.postcode') }}</label>
 
                     <input
-                        class="control  form-control"
+                        class="form-control"
                         type="text"
                         name="postcode"
                         value="{{ old('postcode') ?? $address->postcode }}"

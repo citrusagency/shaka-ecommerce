@@ -12,7 +12,7 @@
                 </label>
 
                 <select
-                    class="control form-control"
+                    class="form-control"
                     id="country"
                     type="text"
                     name="country"
@@ -41,7 +41,7 @@
                 </label>
 
                 <input
-                    class="control form-control "
+                    class="form-control "
                     id="state"
                     type="text"
                     name="state"
@@ -52,7 +52,7 @@
 
                 <template v-if="haveStates()">
                     <select
-                        class="styled-select"
+                        class="custom-select"
                         id="state"
                         name="state"
                         v-model="state"
@@ -66,9 +66,7 @@
                         </option>
                     </select>
 
-                    <div class="select-icon-container">
-                        <span class="select-icon rango-arrow-down"></span>
-                    </div>
+
                 </template>
 
                 <span
