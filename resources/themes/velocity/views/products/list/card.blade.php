@@ -94,7 +94,7 @@
             </div>
         </div>
     @else
-        <div class="card grid-card product-card-new m-3" style="width: 180px;">
+        <div class="card grid-card product-card-new m-4" style="width: 180px;">
             <a
                 href="{{ route('shop.productOrCategory.index', $product->url_key) }}"
                 title="{{ $product->name }}"

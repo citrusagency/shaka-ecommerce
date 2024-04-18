@@ -28,7 +28,7 @@
                         <h2 class="fw6 quick-view-name mt-2 mb-0 pb-0">{{ product.name }}</h2>
                         <div class="d-flex flex-row justify-content-between mt-2">
                             <div class="product-price text-shaka-subtitle my-2" v-html="product.priceHTML"></div>
-                            <vnode-injector :nodes="getDynamicHTML(product.addToCartHtml)"></vnode-injector>
+<!--                            <vnode-injector :nodes="getDynamicHTML(product.addToCartHtml)"></vnode-injector>-->
                         </div>
 <!--                        <div-->
 <!--                            class="product-rating"-->
