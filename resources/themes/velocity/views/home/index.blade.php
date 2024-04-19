@@ -71,7 +71,7 @@
 @section('full-content-wrapper')
 
     <div class="homepage-img text-white">
-        <div id="demo" class="carousel slide" data-ride="carousel" style="margin-top: -12vh;">
+        <div id="demo" class="carousel slide" data-ride="carousel" style="margin-top: -20vh;">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
@@ -166,7 +166,7 @@
                             <form id="registrationForm" action="{{ route('shop.subscribe') }}" class="d-flex w-100" method="POST">
                                 @csrf
                                 <input type="hidden" name="token" id="token" value="{{ $token ?? null }}">
-                                <input type="email" name="subscriber_email" id="subscriber_email" class="w-100 input-stl" placeholder="Your email address" value="{{ $customerEmail ?? '' }}"{{ auth()->check() ? ' readonly' : '' }}>
+                                <input type="email" name="subscriber_email" id="subscriber_email" class="w-100 input-stl" placeholder="Your email address" value="{{ $customerEmail ?? '' }}"{{ auth()->check() ? ' readonly' : '' }} style="border-bottom-right-radius: 0 !important; border-top-right-radius: 0 !important;">
                                 <button type="submit" id="submitButton" class="bg-shaka-primary btn-stl bnt-shaka-primary">Subscribe</button>
                             </form>
                         </div>

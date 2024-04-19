@@ -58,6 +58,7 @@ Vue.component('add-to-bag', () => import('@components/add-to-bag'));
 Vue.component('star-ratings', () => import('@components/star-rating'));
 Vue.component('quantity-btn', () => import('@components/quantity-btn'));
 Vue.component('quantity-changer', () => import('@components/quantity-changer'));
+Vue.component('quantity-changer-product', () => import('@components/quantity-changer-product'));
 Vue.component('proceed-to-checkout', () => import('@components/proceed-to-checkout'));
 Vue.component('compare-component-with-badge', () => import('@components/header-compare-with-badge'));
 Vue.component('searchbar-component', () => import('@components/header-searchbar'));

@@ -783,10 +783,9 @@ abstract class AbstractType
     {
         if ($this->haveSpecialPrice()) {
             $html = '<div class="sticker sale">' . trans('shop::app.products.sale') . '</div>'
-                . '<span class="regular-price text-shaka-subtitle">' . core()->currency($this->evaluatePrice($this->product->price)) . '</span>'
-                . '<span class="special-price float-right ml-2" style="color: #B84626!important; margin:0; width:100%;">' . core()->currency($this->evaluatePrice($this->getSpecialPrice())) . '
-                <span class="discount float-right ml-2 px-2" style="color: white!important; background-color: #BB4626!important;">-' . $this->getDiscount() . '%</span>
-                </span>';
+                . '<span class="regular-price text-shaka-subtitle" style="text-decoration:line-through;">' . core()->currency($this->evaluatePrice($this->product->price)) . '</span>'
+                .'<span class="discount float-right ml-2 px-2" style="color: white!important; background-color: #BB4626!important;">-' . $this->getDiscount() . '%</span>'
+                . '<span class="special-price float-right ml-2" style="color: #B84626!important;">' . core()->currency($this->evaluatePrice($this->getSpecialPrice())) . '</span>';
         } else {
             $html = '<span class="single-price">' . core()->currency($this->evaluatePrice($this->product->price)) . '</span>';
         }

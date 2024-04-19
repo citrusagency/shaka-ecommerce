@@ -136,8 +136,8 @@
                                                 @if ($product->getTypeInstance()->showQuantityBox())
                                                     <div class="col-12 actions">
                                                         @if($product->isSaleable())
-                                                            <quantity-changer
-                                                                quantity-text="{{ __('shop::app.products.quantity') }}"></quantity-changer>
+                                                            <quantity-changer-product
+                                                                quantity-text="{{ __('shop::app.products.quantity') }}"></quantity-changer-product>
                                                         @endif
 
                                                     </div>

@@ -421,6 +421,8 @@
                 display: flex !important;
                 flex-direction: row;
                 flex-wrap: wrap;
+                border-bottom-right-radius: 0 !important;
+                border-top-right-radius: 0 !important;
             }
 
             &.increase {
@@ -429,8 +431,8 @@
                 display: flex !important;
                 flex-direction: row;
                 flex-wrap: wrap;
-                border-bottom-left-radius: 0;
-                border-top-left-radius: 0;
+                border-bottom-left-radius: 0 !important;
+                border-top-left-radius: 0 !important;
             }
 
             &:hover,
@@ -1597,7 +1599,7 @@
 
     .special-price {
         display: inline-block;
-        margin-right: 10px;
+        //margin-right: 10px;
         float: left;
     }
 

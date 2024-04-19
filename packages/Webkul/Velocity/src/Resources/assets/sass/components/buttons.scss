@@ -10,6 +10,7 @@
     &:focus {
         outline: none;
         outline-offset: 0;
+        box-shadow: none !important;
     }
 
     &:active:hover {
