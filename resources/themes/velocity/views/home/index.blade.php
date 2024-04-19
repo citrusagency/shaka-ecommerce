@@ -71,7 +71,7 @@
 @section('full-content-wrapper')
 
     <div class="homepage-img text-white">
-        <div id="demo" class="carousel slide" data-ride="carousel" style="margin-top: -12vh;">
+        <div id="demo" class="carousel slide" data-ride="carousel" style="margin-top: -20vh;">
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
