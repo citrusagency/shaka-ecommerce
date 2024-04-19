@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.36, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: shaka_db
+-- Host: localhost    Database: shaka_ecomm_db
 -- ------------------------------------------------------
 -- Server version	8.0.36-0ubuntu0.22.04.1
 
@@ -52,7 +52,7 @@ CREATE TABLE `addresses` (
   CONSTRAINT `addresses_cart_id_foreign` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`) ON DELETE CASCADE,
   CONSTRAINT `addresses_customer_id_foreign` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE,
   CONSTRAINT `addresses_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,6 +61,7 @@ CREATE TABLE `addresses` (
 
 LOCK TABLES `addresses` WRITE;
 /*!40000 ALTER TABLE `addresses` DISABLE KEYS */;
+INSERT INTO `addresses` VALUES (9,'cart_billing',2,9,NULL,'mjau','Dzenis',NULL,NULL,'ihgigig',NULL,'456766','uyvibhjo',NULL,'AF','ilija@test.com','3456789876',NULL,0,NULL,'2024-04-18 12:02:58','2024-04-18 13:51:20'),(10,'cart_shipping',2,9,NULL,'mjau','Dzenis',NULL,NULL,'ihgigig',NULL,'456766','uyvibhjo',NULL,'AF','ilija@test.com','3456789876',NULL,0,NULL,'2024-04-18 12:02:58','2024-04-18 13:51:20'),(12,'order_shipping',NULL,NULL,1,'mjau','Dzenis',NULL,NULL,'ihgigig',NULL,'456766','uyvibhjo',NULL,'AF','ilija@test.com','3456789876',NULL,0,NULL,'2024-04-18 13:51:37','2024-04-18 13:51:37'),(13,'order_billing',NULL,NULL,1,'mjau','Dzenis',NULL,NULL,'ihgigig',NULL,'456766','uyvibhjo',NULL,'AF','ilija@test.com','3456789876',NULL,0,NULL,'2024-04-18 13:51:37','2024-04-18 13:51:37'),(15,'cart_billing',2,10,NULL,'mjau','Dzenis',NULL,NULL,'cfytgyhujikl',NULL,'878787','yfcguvhibjok',NULL,'BS','ilija@test.com','878787878787',NULL,0,NULL,'2024-04-18 14:06:17','2024-04-18 14:06:17'),(16,'cart_shipping',2,10,NULL,'mjau','Dzenis',NULL,NULL,'cfytgyhujikl',NULL,'878787','yfcguvhibjok',NULL,'BS','ilija@test.com','878787878787',NULL,0,NULL,'2024-04-18 14:06:17','2024-04-18 14:06:17'),(17,'order_shipping',NULL,NULL,2,'mjau','Dzenis',NULL,NULL,'cfytgyhujikl',NULL,'878787','yfcguvhibjok',NULL,'BS','ilija@test.com','878787878787',NULL,0,NULL,'2024-04-18 14:06:28','2024-04-18 14:06:28'),(18,'order_billing',NULL,NULL,2,'mjau','Dzenis',NULL,NULL,'cfytgyhujikl',NULL,'878787','yfcguvhibjok',NULL,'BS','ilija@test.com','878787878787',NULL,0,NULL,'2024-04-18 14:06:28','2024-04-18 14:06:28'),(19,'customer',2,NULL,NULL,'Rhoda','Gilliam',NULL,NULL,'56 South Rocky Old Court',NULL,'112121','Ipsam aliqua Ea in','Labore nulla enim om','MG',NULL,'1111111111',NULL,1,NULL,'2024-04-19 17:42:44','2024-04-19 17:42:44');
 /*!40000 ALTER TABLE `addresses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -409,7 +410,7 @@ CREATE TABLE `booking_product_event_ticket_translations` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `booking_product_event_ticket_translations_locale_unique` (`booking_product_event_ticket_id`,`locale`),
   CONSTRAINT `booking_product_event_ticket_translations_locale_foreign` FOREIGN KEY (`booking_product_event_ticket_id`) REFERENCES `booking_product_event_tickets` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -439,7 +440,7 @@ CREATE TABLE `booking_product_event_tickets` (
   PRIMARY KEY (`id`),
   KEY `booking_product_event_tickets_booking_product_id_foreign` (`booking_product_id`),
   CONSTRAINT `booking_product_event_tickets_booking_product_id_foreign` FOREIGN KEY (`booking_product_id`) REFERENCES `booking_products` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -535,7 +536,7 @@ CREATE TABLE `booking_products` (
   PRIMARY KEY (`id`),
   KEY `booking_products_product_id_foreign` (`product_id`),
   CONSTRAINT `booking_products_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -624,7 +625,7 @@ CREATE TABLE `cart` (
   KEY `cart_channel_id_foreign` (`channel_id`),
   CONSTRAINT `cart_channel_id_foreign` FOREIGN KEY (`channel_id`) REFERENCES `channels` (`id`) ON DELETE CASCADE,
   CONSTRAINT `cart_customer_id_foreign` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -633,6 +634,7 @@ CREATE TABLE `cart` (
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+INSERT INTO `cart` VALUES (9,'ilija@test.com','mjau','Dzenis','flatrate_flatrate',NULL,0,2,7.0000,NULL,'EUR','EUR','EUR','EUR',3511.1300,3511.1300,3441.1300,3441.1300,0.0000,0.0000,0.0000,0.0000,NULL,0,0,NULL,2,1,'2024-04-18 11:42:36','2024-04-18 13:51:37',''),(10,'ilija@test.com','mjau','Dzenis','flatrate_flatrate',NULL,0,7,7.0000,NULL,'EUR','EUR','EUR','EUR',3511.1300,3511.1300,3441.1300,3441.1300,0.0000,0.0000,0.0000,0.0000,NULL,0,0,NULL,2,1,'2024-04-18 14:05:36','2024-04-18 14:06:28',''),(11,'ilija@test.com','mjau','Dzenis',NULL,NULL,0,4,8.0000,NULL,'EUR','EUR','EUR','EUR',3932.7200,3932.7200,3932.7200,3932.7200,0.0000,0.0000,0.0000,0.0000,NULL,0,1,NULL,2,1,'2024-04-19 14:05:36','2024-04-19 16:31:50','');
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -708,7 +710,7 @@ CREATE TABLE `cart_items` (
   CONSTRAINT `cart_items_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `cart_items` (`id`) ON DELETE CASCADE,
   CONSTRAINT `cart_items_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
   CONSTRAINT `cart_items_tax_category_id_foreign` FOREIGN KEY (`tax_category_id`) REFERENCES `tax_categories` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -737,7 +739,7 @@ CREATE TABLE `cart_payment` (
   PRIMARY KEY (`id`),
   KEY `cart_payment_cart_id_foreign` (`cart_id`),
   CONSTRAINT `cart_payment_cart_id_foreign` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -746,7 +748,7 @@ CREATE TABLE `cart_payment` (
 
 LOCK TABLES `cart_payment` WRITE;
 /*!40000 ALTER TABLE `cart_payment` DISABLE KEYS */;
-INSERT INTO `cart_payment` VALUES (1,'paypal_standard',NULL,2,'2023-01-29 17:42:23','2023-01-29 17:42:23'),(4,'paypal_standard',NULL,3,'2023-02-16 18:22:22','2023-02-16 18:22:22');
+INSERT INTO `cart_payment` VALUES (1,'paypal_standard',NULL,2,'2023-01-29 17:42:23','2023-01-29 17:42:23'),(4,'paypal_standard',NULL,3,'2023-02-16 18:22:22','2023-02-16 18:22:22'),(5,'cashondelivery',NULL,9,'2024-04-18 13:51:29','2024-04-18 13:51:29'),(6,'cashondelivery',NULL,10,'2024-04-18 14:06:24','2024-04-18 14:06:24');
 /*!40000 ALTER TABLE `cart_payment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -994,7 +996,7 @@ CREATE TABLE `cart_shipping_rates` (
   PRIMARY KEY (`id`),
   KEY `cart_shipping_rates_cart_address_id_foreign` (`cart_address_id`),
   CONSTRAINT `cart_shipping_rates_cart_address_id_foreign` FOREIGN KEY (`cart_address_id`) REFERENCES `addresses` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1003,7 +1005,7 @@ CREATE TABLE `cart_shipping_rates` (
 
 LOCK TABLES `cart_shipping_rates` WRITE;
 /*!40000 ALTER TABLE `cart_shipping_rates` DISABLE KEYS */;
-INSERT INTO `cart_shipping_rates` VALUES (1,'flatrate','Flat Rate','flatrate_flatrate','Flat Rate','Flat Rate Shipping',10,10,2,'2023-01-29 17:42:20','2023-01-29 17:42:20',0.0000,0.0000,1),(2,'free','Free Shipping','free_free','Free Shipping','Free Shipping',0,0,2,'2023-01-29 17:42:20','2023-01-29 17:42:25',0.0000,0.0000,1);
+INSERT INTO `cart_shipping_rates` VALUES (1,'flatrate','Flat Rate','flatrate_flatrate','Flat Rate','Flat Rate Shipping',10,10,2,'2023-01-29 17:42:20','2023-01-29 17:42:20',0.0000,0.0000,1),(2,'free','Free Shipping','free_free','Free Shipping','Free Shipping',0,0,2,'2023-01-29 17:42:20','2023-01-29 17:42:25',0.0000,0.0000,1),(25,'flatrate','Flat Rate','flatrate_flatrate','Flat Rate','Flat Rate Shipping',70,70,10,'2024-04-18 13:51:27','2024-04-18 13:51:37',0.0000,0.0000,1),(26,'free','Free Shipping','free_free','Free Shipping','Free Shipping',0,0,10,'2024-04-18 13:51:27','2024-04-18 13:51:27',0.0000,0.0000,1),(29,'flatrate','Flat Rate','flatrate_flatrate','Flat Rate','Flat Rate Shipping',70,70,16,'2024-04-18 14:06:22','2024-04-18 14:06:28',0.0000,0.0000,1),(30,'free','Free Shipping','free_free','Free Shipping','Free Shipping',0,0,16,'2024-04-18 14:06:22','2024-04-18 14:06:22',0.0000,0.0000,1);
 /*!40000 ALTER TABLE `cart_shipping_rates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1561,7 +1563,7 @@ CREATE TABLE `core_config` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `core_config_channel_id_foreign` (`channel_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1570,7 +1572,7 @@ CREATE TABLE `core_config` (
 
 LOCK TABLES `core_config` WRITE;
 /*!40000 ALTER TABLE `core_config` DISABLE KEYS */;
-INSERT INTO `core_config` VALUES (1,'catalog.products.guest-checkout.allow-guest-checkout','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(2,'emails.general.notifications.emails.general.notifications.verification','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(3,'emails.general.notifications.emails.general.notifications.registration','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(4,'emails.general.notifications.emails.general.notifications.customer','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(5,'emails.general.notifications.emails.general.notifications.new-order','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(6,'emails.general.notifications.emails.general.notifications.new-admin','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(7,'emails.general.notifications.emails.general.notifications.new-invoice','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(8,'emails.general.notifications.emails.general.notifications.new-refund','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(9,'emails.general.notifications.emails.general.notifications.new-shipment','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(10,'emails.general.notifications.emails.general.notifications.new-inventory-source','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(11,'emails.general.notifications.emails.general.notifications.cancel-order','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(12,'catalog.products.homepage.out_of_stock_items','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(13,'customer.settings.social_login.enable_facebook','0','default',NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(14,'customer.settings.social_login.enable_twitter','0','default',NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(15,'customer.settings.social_login.enable_google','0','default',NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(16,'customer.settings.social_login.enable_linkedin','0','default',NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(17,'customer.settings.social_login.enable_github','0','default',NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(18,'general.content.shop.compare_option','0','default','en','2023-07-06 23:43:37','2023-07-07 00:16:57'),(19,'general.content.shop.compare_option','1','default','fr','2023-07-06 23:43:37','2023-07-06 23:43:37'),(20,'general.content.shop.compare_option','1','default','ar','2023-07-06 23:43:37','2023-07-06 23:43:37'),(21,'general.content.shop.compare_option','1','default','de','2023-07-06 23:43:37','2023-07-06 23:43:37'),(22,'general.content.shop.compare_option','1','default','es','2023-07-06 23:43:37','2023-07-06 23:43:37'),(23,'general.content.shop.compare_option','1','default','fa','2023-07-06 23:43:37','2023-07-06 23:43:37'),(24,'general.content.shop.compare_option','1','default','it','2023-07-06 23:43:37','2023-07-06 23:43:37'),(25,'general.content.shop.compare_option','1','default','ja','2023-07-06 23:43:37','2023-07-06 23:43:37'),(26,'general.content.shop.compare_option','1','default','nl','2023-07-06 23:43:37','2023-07-06 23:43:37'),(27,'general.content.shop.compare_option','1','default','pl','2023-07-06 23:43:37','2023-07-06 23:43:37'),(28,'general.content.shop.compare_option','1','default','pt_BR','2023-07-06 23:43:37','2023-07-06 23:43:37'),(29,'general.content.shop.compare_option','1','default','tr','2023-07-06 23:43:37','2023-07-06 23:43:37'),(30,'general.content.shop.wishlist_option','1','default','en','2023-07-06 23:43:37','2023-07-06 23:43:37'),(31,'general.content.shop.wishlist_option','1','default','fr','2023-07-06 23:43:37','2023-07-06 23:43:37'),(32,'general.content.shop.wishlist_option','1','default','ar','2023-07-06 23:43:37','2023-07-06 23:43:37'),(33,'general.content.shop.wishlist_option','1','default','de','2023-07-06 23:43:37','2023-07-06 23:43:37'),(34,'general.content.shop.wishlist_option','1','default','es','2023-07-06 23:43:37','2023-07-06 23:43:37'),(35,'general.content.shop.wishlist_option','1','default','fa','2023-07-06 23:43:37','2023-07-06 23:43:37'),(36,'general.content.shop.wishlist_option','1','default','it','2023-07-06 23:43:37','2023-07-06 23:43:37'),(37,'general.content.shop.wishlist_option','1','default','ja','2023-07-06 23:43:37','2023-07-06 23:43:37'),(38,'general.content.shop.wishlist_option','1','default','nl','2023-07-06 23:43:37','2023-07-06 23:43:37'),(39,'general.content.shop.wishlist_option','1','default','pl','2023-07-06 23:43:37','2023-07-06 23:43:37'),(40,'general.content.shop.wishlist_option','1','default','pt_BR','2023-07-06 23:43:37','2023-07-06 23:43:37'),(41,'general.content.shop.wishlist_option','1','default','tr','2023-07-06 23:43:37','2023-07-06 23:43:37'),(42,'general.content.shop.image_search','1','default','en','2023-07-06 23:43:37','2023-07-06 23:43:37'),(43,'general.content.shop.image_search','1','default','fr','2023-07-06 23:43:37','2023-07-06 23:43:37'),(44,'general.content.shop.image_search','1','default','ar','2023-07-06 23:43:37','2023-07-06 23:43:37'),(45,'general.content.shop.image_search','1','default','de','2023-07-06 23:43:37','2023-07-06 23:43:37'),(46,'general.content.shop.image_search','1','default','es','2023-07-06 23:43:37','2023-07-06 23:43:37'),(47,'general.content.shop.image_search','1','default','fa','2023-07-06 23:43:37','2023-07-06 23:43:37'),(48,'general.content.shop.image_search','1','default','it','2023-07-06 23:43:37','2023-07-06 23:43:37'),(49,'general.content.shop.image_search','1','default','ja','2023-07-06 23:43:37','2023-07-06 23:43:37'),(50,'general.content.shop.image_search','1','default','nl','2023-07-06 23:43:37','2023-07-06 23:43:37'),(51,'general.content.shop.image_search','1','default','pl','2023-07-06 23:43:37','2023-07-06 23:43:37'),(52,'general.content.shop.image_search','1','default','pt_BR','2023-07-06 23:43:37','2023-07-06 23:43:37'),(53,'general.content.shop.image_search','1','default','tr','2023-07-06 23:43:37','2023-07-06 23:43:37'),(54,'general.general.locale_options.weight_unit','kgs','default',NULL,'2023-07-07 00:16:51','2023-07-07 00:16:51'),(55,'general.content.footer.footer_content','','default','en','2023-07-07 00:16:57','2023-07-07 00:16:57'),(56,'general.content.footer.footer_toggle','0','default','en','2023-07-07 00:16:57','2023-07-07 00:16:57'),(57,'general.content.custom_scripts.custom_css','','default',NULL,'2023-07-07 00:16:57','2023-07-07 00:16:57'),(58,'general.content.custom_scripts.custom_javascript','','default',NULL,'2023-07-07 00:16:57','2023-07-07 00:16:57'),(59,'catalog.products.homepage.no_of_new_product_homepage','9',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(60,'catalog.products.homepage.no_of_featured_product_homepage','',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(61,'catalog.products.storefront.mode','grid','default',NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(62,'catalog.products.storefront.products_per_page','','default',NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(63,'catalog.products.storefront.sort_by','name-desc','default',NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(64,'catalog.products.storefront.buy_now_button_display','0',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(65,'catalog.products.cache-small-image.width','330',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:42'),(66,'catalog.products.cache-small-image.height','383',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:42'),(67,'catalog.products.cache-medium-image.width','330',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:42'),(68,'catalog.products.cache-medium-image.height','383',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:42'),(69,'catalog.products.cache-large-image.width','330',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:42'),(70,'catalog.products.cache-large-image.height','383',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:42'),(71,'catalog.products.review.guest_review','0',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(72,'catalog.products.attribute.image_attribute_upload_size','',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(73,'catalog.products.attribute.file_attribute_upload_size','',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(74,'catalog.products.social_share.enabled','0',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(75,'catalog.products.social_share.facebook','0',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(76,'catalog.products.social_share.twitter','0',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(77,'catalog.products.social_share.pinterest','0',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(78,'catalog.products.social_share.whatsapp','0',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(79,'catalog.products.social_share.linkedin','0',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(80,'catalog.products.social_share.email','0',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(81,'catalog.products.social_share.share_message','',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(82,'emails.configure.email_settings.sender_name','Katarina Zlajic','default',NULL,'2024-03-22 13:24:18','2024-03-22 13:24:39'),(83,'emails.configure.email_settings.shop_email_from','katarina@mail.com','default',NULL,'2024-03-22 13:24:18','2024-03-22 13:24:18'),(84,'emails.configure.email_settings.admin_name','Admin','default',NULL,'2024-03-22 13:24:18','2024-03-22 13:24:18'),(85,'emails.configure.email_settings.admin_email','admin@mail.com','default',NULL,'2024-03-22 13:24:18','2024-03-22 13:24:18'),(86,'customer.settings.wishlist.share','0',NULL,NULL,'2024-04-10 16:33:58','2024-04-10 16:33:58'),(87,'customer.settings.newsletter.subscription','1',NULL,NULL,'2024-04-10 16:33:58','2024-04-10 16:33:58'),(88,'customer.settings.email.verification','0',NULL,NULL,'2024-04-10 16:33:58','2024-04-10 16:33:58');
+INSERT INTO `core_config` VALUES (1,'catalog.products.guest-checkout.allow-guest-checkout','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(2,'emails.general.notifications.emails.general.notifications.verification','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(3,'emails.general.notifications.emails.general.notifications.registration','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(4,'emails.general.notifications.emails.general.notifications.customer','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(5,'emails.general.notifications.emails.general.notifications.new-order','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(6,'emails.general.notifications.emails.general.notifications.new-admin','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(7,'emails.general.notifications.emails.general.notifications.new-invoice','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(8,'emails.general.notifications.emails.general.notifications.new-refund','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(9,'emails.general.notifications.emails.general.notifications.new-shipment','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(10,'emails.general.notifications.emails.general.notifications.new-inventory-source','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(11,'emails.general.notifications.emails.general.notifications.cancel-order','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(12,'catalog.products.homepage.out_of_stock_items','1',NULL,NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(13,'customer.settings.social_login.enable_facebook','0','default',NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(14,'customer.settings.social_login.enable_twitter','0','default',NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(15,'customer.settings.social_login.enable_google','0','default',NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(16,'customer.settings.social_login.enable_linkedin','0','default',NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(17,'customer.settings.social_login.enable_github','0','default',NULL,'2023-07-06 23:43:37','2023-07-06 23:43:37'),(18,'general.content.shop.compare_option','0','default','en','2023-07-06 23:43:37','2023-07-07 00:16:57'),(19,'general.content.shop.compare_option','1','default','fr','2023-07-06 23:43:37','2023-07-06 23:43:37'),(20,'general.content.shop.compare_option','1','default','ar','2023-07-06 23:43:37','2023-07-06 23:43:37'),(21,'general.content.shop.compare_option','1','default','de','2023-07-06 23:43:37','2023-07-06 23:43:37'),(22,'general.content.shop.compare_option','1','default','es','2023-07-06 23:43:37','2023-07-06 23:43:37'),(23,'general.content.shop.compare_option','1','default','fa','2023-07-06 23:43:37','2023-07-06 23:43:37'),(24,'general.content.shop.compare_option','1','default','it','2023-07-06 23:43:37','2023-07-06 23:43:37'),(25,'general.content.shop.compare_option','1','default','ja','2023-07-06 23:43:37','2023-07-06 23:43:37'),(26,'general.content.shop.compare_option','1','default','nl','2023-07-06 23:43:37','2023-07-06 23:43:37'),(27,'general.content.shop.compare_option','1','default','pl','2023-07-06 23:43:37','2023-07-06 23:43:37'),(28,'general.content.shop.compare_option','1','default','pt_BR','2023-07-06 23:43:37','2023-07-06 23:43:37'),(29,'general.content.shop.compare_option','1','default','tr','2023-07-06 23:43:37','2023-07-06 23:43:37'),(30,'general.content.shop.wishlist_option','1','default','en','2023-07-06 23:43:37','2023-07-06 23:43:37'),(31,'general.content.shop.wishlist_option','1','default','fr','2023-07-06 23:43:37','2023-07-06 23:43:37'),(32,'general.content.shop.wishlist_option','1','default','ar','2023-07-06 23:43:37','2023-07-06 23:43:37'),(33,'general.content.shop.wishlist_option','1','default','de','2023-07-06 23:43:37','2023-07-06 23:43:37'),(34,'general.content.shop.wishlist_option','1','default','es','2023-07-06 23:43:37','2023-07-06 23:43:37'),(35,'general.content.shop.wishlist_option','1','default','fa','2023-07-06 23:43:37','2023-07-06 23:43:37'),(36,'general.content.shop.wishlist_option','1','default','it','2023-07-06 23:43:37','2023-07-06 23:43:37'),(37,'general.content.shop.wishlist_option','1','default','ja','2023-07-06 23:43:37','2023-07-06 23:43:37'),(38,'general.content.shop.wishlist_option','1','default','nl','2023-07-06 23:43:37','2023-07-06 23:43:37'),(39,'general.content.shop.wishlist_option','1','default','pl','2023-07-06 23:43:37','2023-07-06 23:43:37'),(40,'general.content.shop.wishlist_option','1','default','pt_BR','2023-07-06 23:43:37','2023-07-06 23:43:37'),(41,'general.content.shop.wishlist_option','1','default','tr','2023-07-06 23:43:37','2023-07-06 23:43:37'),(42,'general.content.shop.image_search','1','default','en','2023-07-06 23:43:37','2023-07-06 23:43:37'),(43,'general.content.shop.image_search','1','default','fr','2023-07-06 23:43:37','2023-07-06 23:43:37'),(44,'general.content.shop.image_search','1','default','ar','2023-07-06 23:43:37','2023-07-06 23:43:37'),(45,'general.content.shop.image_search','1','default','de','2023-07-06 23:43:37','2023-07-06 23:43:37'),(46,'general.content.shop.image_search','1','default','es','2023-07-06 23:43:37','2023-07-06 23:43:37'),(47,'general.content.shop.image_search','1','default','fa','2023-07-06 23:43:37','2023-07-06 23:43:37'),(48,'general.content.shop.image_search','1','default','it','2023-07-06 23:43:37','2023-07-06 23:43:37'),(49,'general.content.shop.image_search','1','default','ja','2023-07-06 23:43:37','2023-07-06 23:43:37'),(50,'general.content.shop.image_search','1','default','nl','2023-07-06 23:43:37','2023-07-06 23:43:37'),(51,'general.content.shop.image_search','1','default','pl','2023-07-06 23:43:37','2023-07-06 23:43:37'),(52,'general.content.shop.image_search','1','default','pt_BR','2023-07-06 23:43:37','2023-07-06 23:43:37'),(53,'general.content.shop.image_search','1','default','tr','2023-07-06 23:43:37','2023-07-06 23:43:37'),(54,'general.general.locale_options.weight_unit','kgs','default',NULL,'2023-07-07 00:16:51','2023-07-07 00:16:51'),(55,'general.content.footer.footer_content','','default','en','2023-07-07 00:16:57','2023-07-07 00:16:57'),(56,'general.content.footer.footer_toggle','0','default','en','2023-07-07 00:16:57','2023-07-07 00:16:57'),(57,'general.content.custom_scripts.custom_css','','default',NULL,'2023-07-07 00:16:57','2023-07-07 00:16:57'),(58,'general.content.custom_scripts.custom_javascript','','default',NULL,'2023-07-07 00:16:57','2023-07-07 00:16:57'),(59,'catalog.products.homepage.no_of_new_product_homepage','9',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(60,'catalog.products.homepage.no_of_featured_product_homepage','',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(61,'catalog.products.storefront.mode','grid','default',NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(62,'catalog.products.storefront.products_per_page','','default',NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(63,'catalog.products.storefront.sort_by','name-desc','default',NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(64,'catalog.products.storefront.buy_now_button_display','0',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(65,'catalog.products.cache-small-image.width','330',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:42'),(66,'catalog.products.cache-small-image.height','383',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:42'),(67,'catalog.products.cache-medium-image.width','330',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:42'),(68,'catalog.products.cache-medium-image.height','383',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:42'),(69,'catalog.products.cache-large-image.width','330',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:42'),(70,'catalog.products.cache-large-image.height','383',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:42'),(71,'catalog.products.review.guest_review','0',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(72,'catalog.products.attribute.image_attribute_upload_size','',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(73,'catalog.products.attribute.file_attribute_upload_size','',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(74,'catalog.products.social_share.enabled','0',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(75,'catalog.products.social_share.facebook','0',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(76,'catalog.products.social_share.twitter','0',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(77,'catalog.products.social_share.pinterest','0',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(78,'catalog.products.social_share.whatsapp','0',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(79,'catalog.products.social_share.linkedin','0',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(80,'catalog.products.social_share.email','0',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(81,'catalog.products.social_share.share_message','',NULL,NULL,'2023-07-07 00:17:22','2023-07-07 00:17:22'),(82,'emails.configure.email_settings.sender_name','Katarina Zlajic','default',NULL,'2024-03-22 13:24:18','2024-03-22 13:24:39'),(83,'emails.configure.email_settings.shop_email_from','katarina@mail.com','default',NULL,'2024-03-22 13:24:18','2024-03-22 13:24:18'),(84,'emails.configure.email_settings.admin_name','Admin','default',NULL,'2024-03-22 13:24:18','2024-03-22 13:24:18'),(85,'emails.configure.email_settings.admin_email','admin@mail.com','default',NULL,'2024-03-22 13:24:18','2024-03-22 13:24:18'),(86,'customer.settings.wishlist.share','0',NULL,NULL,'2024-04-10 16:33:58','2024-04-10 16:33:58'),(87,'customer.settings.newsletter.subscription','1',NULL,NULL,'2024-04-10 16:33:58','2024-04-10 16:33:58'),(88,'customer.settings.email.verification','0',NULL,NULL,'2024-04-10 16:33:58','2024-04-10 16:33:58'),(89,'customer.address.requirements.country','1','default',NULL,'2024-04-18 12:02:41','2024-04-18 12:02:41'),(90,'customer.address.requirements.state','0','default',NULL,'2024-04-18 12:02:41','2024-04-18 12:02:41'),(91,'customer.address.requirements.postcode','1','default',NULL,'2024-04-18 12:02:41','2024-04-18 12:02:41'),(92,'customer.address.information.street_lines','','default',NULL,'2024-04-18 12:02:41','2024-04-18 12:02:41');
 /*!40000 ALTER TABLE `core_config` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1862,7 +1864,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (2,'mjau','Dzenis','ilija@test.com',1,'$2y$10$rGSHNIJu4DH5tsEIQ/Ox5.sOreeYoMmwkzlvk8S6nqcQCdeT/iDWa','yJXxm5Ck6pVYoMs0kaBdDM7a7ITY0ARwlw4rzJhiiDWiQJPDCimN2BOlg7wC1GiWsPUrZX4Os7sWn9Y1',2,0,'sXtUR8qu6qR3DZIvjPODNC4PVyy98KZgTn0QfuKbFpU6HZfA0rHtngaIRUQv','2024-03-25 16:53:28','2024-04-03 10:31:28',1,0,'8be026532368ef619a0687927bcf6d58',NULL,'3456783456');
+INSERT INTO `customers` VALUES (2,'Test Ime','Prezime','ilija@test.com',1,'$2y$10$rGSHNIJu4DH5tsEIQ/Ox5.sOreeYoMmwkzlvk8S6nqcQCdeT/iDWa','yJXxm5Ck6pVYoMs0kaBdDM7a7ITY0ARwlw4rzJhiiDWiQJPDCimN2BOlg7wC1GiWsPUrZX4Os7sWn9Y1',2,0,'LFrq0lJMwdjwVvNzHgibCTUbQXxivOuvT3myzlkZmSQD0hnrDmB1hNlMvaGP','2024-03-25 16:53:28','2024-04-19 17:06:26',1,0,'8be026532368ef619a0687927bcf6d58',NULL,'3456783456');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2015,7 +2017,7 @@ CREATE TABLE `invoice_items` (
   KEY `invoice_items_parent_id_foreign` (`parent_id`),
   CONSTRAINT `invoice_items_invoice_id_foreign` FOREIGN KEY (`invoice_id`) REFERENCES `invoices` (`id`) ON DELETE CASCADE,
   CONSTRAINT `invoice_items_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `invoice_items` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2024,6 +2026,7 @@ CREATE TABLE `invoice_items` (
 
 LOCK TABLES `invoice_items` WRITE;
 /*!40000 ALTER TABLE `invoice_items` DISABLE KEYS */;
+INSERT INTO `invoice_items` VALUES (1,'Shaka Beige Shirt',NULL,'1',3,491.5900,491.5900,1474.7700,1474.7700,0.0000,0.0000,1,'Webkul\\Product\\Models\\Product',1,1,NULL,'{\"locale\": \"en\", \"quantity\": 3, \"product_id\": \"1\"}','2024-04-18 14:04:25','2024-04-18 14:04:25',0.0000,0.0000,0.0000),(2,'Shaka Zelena',NULL,'temporary-sku-a57232',4,491.5900,491.5900,1966.3600,1966.3600,0.0000,0.0000,3,'Webkul\\Product\\Models\\Product',2,1,NULL,'{\"locale\": \"en\", \"quantity\": 4, \"product_id\": \"3\"}','2024-04-18 14:04:25','2024-04-18 14:04:25',0.0000,0.0000,0.0000),(3,'Shaka zimzelena',NULL,'temporary-sku-17dce4',1,491.5900,491.5900,491.5900,491.5900,0.0000,0.0000,8,'Webkul\\Product\\Models\\Product',3,2,NULL,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"8\"}','2024-04-18 14:06:44','2024-04-18 14:06:44',0.0000,0.0000,0.0000),(4,'Shaka Zelena',NULL,'temporary-sku-a57232',1,491.5900,491.5900,491.5900,491.5900,0.0000,0.0000,3,'Webkul\\Product\\Models\\Product',4,2,NULL,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"3\"}','2024-04-18 14:06:44','2024-04-18 14:06:44',0.0000,0.0000,0.0000),(5,'Shaka Teget',NULL,'temporary-sku-a30473',1,491.5900,491.5900,491.5900,491.5900,0.0000,0.0000,4,'Webkul\\Product\\Models\\Product',5,2,NULL,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"4\"}','2024-04-18 14:06:44','2024-04-18 14:06:44',0.0000,0.0000,0.0000),(6,'Shaka roza',NULL,'temporary-sku-c45e40',1,491.5900,491.5900,491.5900,491.5900,0.0000,0.0000,5,'Webkul\\Product\\Models\\Product',6,2,NULL,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"5\"}','2024-04-18 14:06:44','2024-04-18 14:06:44',0.0000,0.0000,0.0000),(7,'Shaka braon',NULL,'temporary-sku-734cf7',1,491.5900,491.5900,491.5900,491.5900,0.0000,0.0000,6,'Webkul\\Product\\Models\\Product',7,2,NULL,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"6\"}','2024-04-18 14:06:44','2024-04-18 14:06:44',0.0000,0.0000,0.0000),(8,'Shaka Plava',NULL,'temporary-sku-1312e7',1,491.5900,491.5900,491.5900,491.5900,0.0000,0.0000,2,'Webkul\\Product\\Models\\Product',8,2,NULL,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"2\"}','2024-04-18 14:06:44','2024-04-18 14:06:44',0.0000,0.0000,0.0000),(9,'Shaka purpur',NULL,'temporary-sku-1d3bbb',1,491.5900,491.5900,491.5900,491.5900,0.0000,0.0000,7,'Webkul\\Product\\Models\\Product',9,2,NULL,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"7\"}','2024-04-18 14:06:44','2024-04-18 14:06:44',0.0000,0.0000,0.0000);
 /*!40000 ALTER TABLE `invoice_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2064,7 +2067,7 @@ CREATE TABLE `invoices` (
   KEY `invoices_order_id_foreign` (`order_id`),
   KEY `invoices_order_address_id_foreign` (`order_address_id`),
   CONSTRAINT `invoices_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2073,6 +2076,7 @@ CREATE TABLE `invoices` (
 
 LOCK TABLES `invoices` WRITE;
 /*!40000 ALTER TABLE `invoices` DISABLE KEYS */;
+INSERT INTO `invoices` VALUES (1,'1','paid',0,7,'EUR','EUR','EUR',3441.1300,3441.1300,3511.1300,3511.1300,70.0000,70.0000,0.0000,0.0000,0.0000,0.0000,1,13,'2024-04-18 14:04:25','2024-04-18 14:04:25',NULL,0,NULL),(2,'2','paid',0,7,'EUR','EUR','EUR',3441.1300,3441.1300,3511.1300,3511.1300,70.0000,70.0000,0.0000,0.0000,0.0000,0.0000,2,18,'2024-04-18 14:06:44','2024-04-18 14:06:44',NULL,0,NULL);
 /*!40000 ALTER TABLE `invoices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2274,7 +2278,7 @@ CREATE TABLE `notifications` (
   PRIMARY KEY (`id`),
   KEY `notifications_order_id_foreign` (`order_id`),
   CONSTRAINT `notifications_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2283,6 +2287,7 @@ CREATE TABLE `notifications` (
 
 LOCK TABLES `notifications` WRITE;
 /*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
+INSERT INTO `notifications` VALUES (1,'order',1,1,'2024-04-18 13:51:37','2024-04-18 14:04:21'),(2,'order',1,2,'2024-04-18 14:06:28','2024-04-18 14:06:41');
 /*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2296,12 +2301,12 @@ DROP TABLE IF EXISTS `notify`;
 CREATE TABLE `notify` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `product_id` int DEFAULT NULL,
-  `customer_email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_email` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `notify_customer_email_unique` (`customer_email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2310,6 +2315,7 @@ CREATE TABLE `notify` (
 
 LOCK TABLES `notify` WRITE;
 /*!40000 ALTER TABLE `notify` DISABLE KEYS */;
+INSERT INTO `notify` VALUES (1,1,'ilija@test.com','2024-04-18 14:05:48','2024-04-18 14:05:48');
 /*!40000 ALTER TABLE `notify` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2337,7 +2343,7 @@ CREATE TABLE `order_brands` (
   CONSTRAINT `order_brands_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE,
   CONSTRAINT `order_brands_order_item_id_foreign` FOREIGN KEY (`order_item_id`) REFERENCES `order_items` (`id`) ON DELETE CASCADE,
   CONSTRAINT `order_brands_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2432,7 +2438,7 @@ CREATE TABLE `order_items` (
   KEY `order_items_parent_id_foreign` (`parent_id`),
   CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE,
   CONSTRAINT `order_items_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `order_items` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2441,6 +2447,7 @@ CREATE TABLE `order_items` (
 
 LOCK TABLES `order_items` WRITE;
 /*!40000 ALTER TABLE `order_items` DISABLE KEYS */;
+INSERT INTO `order_items` VALUES (1,'1','simple','Shaka Beige Shirt',NULL,1.0000,3.0000,3,3,3,0,0,491.5900,491.5900,1474.7700,1474.7700,1474.7700,1474.7700,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1,'Webkul\\Product\\Models\\Product',1,NULL,'{\"locale\": \"en\", \"quantity\": 3, \"product_id\": \"1\"}','2024-04-18 13:51:37','2024-04-18 14:04:34'),(2,'temporary-sku-a57232','simple','Shaka Zelena',NULL,1.0000,4.0000,4,4,4,0,0,491.5900,491.5900,1966.3600,1966.3600,1966.3600,1966.3600,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,3,'Webkul\\Product\\Models\\Product',1,NULL,'{\"locale\": \"en\", \"quantity\": 4, \"product_id\": \"3\"}','2024-04-18 13:51:37','2024-04-18 14:04:34'),(3,'temporary-sku-17dce4','simple','Shaka zimzelena',NULL,1.0000,1.0000,1,1,1,0,0,491.5900,491.5900,491.5900,491.5900,491.5900,491.5900,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,8,'Webkul\\Product\\Models\\Product',2,NULL,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"8\"}','2024-04-18 14:06:28','2024-04-18 14:06:52'),(4,'temporary-sku-a57232','simple','Shaka Zelena',NULL,1.0000,1.0000,1,1,1,0,0,491.5900,491.5900,491.5900,491.5900,491.5900,491.5900,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,3,'Webkul\\Product\\Models\\Product',2,NULL,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"3\"}','2024-04-18 14:06:28','2024-04-18 14:06:52'),(5,'temporary-sku-a30473','simple','Shaka Teget',NULL,1.0000,1.0000,1,1,1,0,0,491.5900,491.5900,491.5900,491.5900,491.5900,491.5900,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,4,'Webkul\\Product\\Models\\Product',2,NULL,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"4\"}','2024-04-18 14:06:28','2024-04-18 14:06:52'),(6,'temporary-sku-c45e40','simple','Shaka roza',NULL,1.0000,1.0000,1,1,1,0,0,491.5900,491.5900,491.5900,491.5900,491.5900,491.5900,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,5,'Webkul\\Product\\Models\\Product',2,NULL,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"5\"}','2024-04-18 14:06:28','2024-04-18 14:06:52'),(7,'temporary-sku-734cf7','simple','Shaka braon',NULL,1.0000,1.0000,1,1,1,0,0,491.5900,491.5900,491.5900,491.5900,491.5900,491.5900,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,6,'Webkul\\Product\\Models\\Product',2,NULL,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"6\"}','2024-04-18 14:06:28','2024-04-18 14:06:52'),(8,'temporary-sku-1312e7','simple','Shaka Plava',NULL,1.0000,1.0000,1,1,1,0,0,491.5900,491.5900,491.5900,491.5900,491.5900,491.5900,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,2,'Webkul\\Product\\Models\\Product',2,NULL,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"2\"}','2024-04-18 14:06:28','2024-04-18 14:06:52'),(9,'temporary-sku-1d3bbb','simple','Shaka purpur',NULL,1.0000,1.0000,1,1,1,0,0,491.5900,491.5900,491.5900,491.5900,491.5900,491.5900,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,7,'Webkul\\Product\\Models\\Product',2,NULL,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"7\"}','2024-04-18 14:06:28','2024-04-18 14:06:52');
 /*!40000 ALTER TABLE `order_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2462,7 +2469,7 @@ CREATE TABLE `order_payment` (
   PRIMARY KEY (`id`),
   KEY `order_payment_order_id_foreign` (`order_id`),
   CONSTRAINT `order_payment_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2471,6 +2478,7 @@ CREATE TABLE `order_payment` (
 
 LOCK TABLES `order_payment` WRITE;
 /*!40000 ALTER TABLE `order_payment` DISABLE KEYS */;
+INSERT INTO `order_payment` VALUES (1,'cashondelivery',NULL,1,NULL,'2024-04-18 13:51:37','2024-04-18 13:51:37'),(2,'cashondelivery',NULL,2,NULL,'2024-04-18 14:06:28','2024-04-18 14:06:28');
 /*!40000 ALTER TABLE `order_payment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2583,7 +2591,7 @@ CREATE TABLE `orders` (
   KEY `orders_channel_id_foreign` (`channel_id`),
   CONSTRAINT `orders_channel_id_foreign` FOREIGN KEY (`channel_id`) REFERENCES `channels` (`id`) ON DELETE SET NULL,
   CONSTRAINT `orders_customer_id_foreign` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2592,6 +2600,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (1,'1','completed','Default',0,'ilija@test.com','mjau','Dzenis',NULL,NULL,'flatrate_flatrate','Flat Rate - Flat Rate','Flat Rate Shipping',NULL,0,2,7,'EUR','EUR','EUR',3511.1300,3511.1300,3511.1300,3511.1300,0.0000,0.0000,3441.1300,3441.1300,3441.1300,3441.1300,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,70.0000,70.0000,70.0000,70.0000,0.0000,0.0000,2,'Webkul\\Customer\\Models\\Customer',1,'Webkul\\Core\\Models\\Channel','2024-04-18 13:51:37','2024-04-18 14:04:34',9,'',0.0000,0.0000),(2,'2','completed','Default',0,'ilija@test.com','mjau','Dzenis',NULL,NULL,'flatrate_flatrate','Flat Rate - Flat Rate','Flat Rate Shipping',NULL,0,7,7,'EUR','EUR','EUR',3511.1300,3511.1300,3511.1300,3511.1300,0.0000,0.0000,3441.1300,3441.1300,3441.1300,3441.1300,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,70.0000,70.0000,70.0000,70.0000,0.0000,0.0000,2,'Webkul\\Customer\\Models\\Customer',1,'Webkul\\Core\\Models\\Channel','2024-04-18 14:06:28','2024-04-18 14:06:52',10,'',0.0000,0.0000);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2677,7 +2686,7 @@ CREATE TABLE `product_attribute_values` (
   KEY `product_attribute_values_attribute_id_foreign` (`attribute_id`),
   CONSTRAINT `product_attribute_values_attribute_id_foreign` FOREIGN KEY (`attribute_id`) REFERENCES `attributes` (`id`) ON DELETE CASCADE,
   CONSTRAINT `product_attribute_values_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=669 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2686,7 +2695,7 @@ CREATE TABLE `product_attribute_values` (
 
 LOCK TABLES `product_attribute_values` WRITE;
 /*!40000 ALTER TABLE `product_attribute_values` DISABLE KEYS */;
-INSERT INTO `product_attribute_values` VALUES (1,'en','default','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum.',NULL,NULL,NULL,NULL,NULL,NULL,1,9),(2,'en','default','<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&bull; Color: Gold</p>\r\n<p>&bull; 100% organic cotton</p>\r\n<p>&bull; Made in Montenegro</p>\r\n<p>&bull; Handmade</p>\r\n<p>&bull; Universal size</p>\r\n<p>&bull; GOTS (Global Organic Textile Standard) certified material</p>\r\n<p>&nbsp;</p>',NULL,NULL,NULL,NULL,NULL,NULL,1,10),(3,NULL,NULL,'<p>Color: atlantic melange</p>\r\n<p>Material: 100% organically certified merino wool, 360 g / m&sup2;</p>\r\n<p>Details: collar, hanging strap, two-way zipper, two pockets, drawstring at the waist, knitted cuffs</p>\r\n<p>Fit: normal</p>\r\n<p>Dimensions: approx. 78 cm long in size M (measured from the top of the shaft)</p>\r\n<p>Labels: GOTS (Global Organic Textile Standard)</p>',NULL,NULL,NULL,NULL,NULL,NULL,1,29),(4,NULL,NULL,'<p>Dont wash</p>',NULL,NULL,NULL,NULL,NULL,NULL,1,30),(5,NULL,NULL,'<p>NA</p>',NULL,NULL,NULL,NULL,NULL,NULL,1,31),(6,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,1,1),(7,'en','default','Shaka Beige Shirt',NULL,NULL,NULL,NULL,NULL,NULL,1,2),(8,NULL,NULL,'shaka-beige-shirt',NULL,NULL,NULL,NULL,NULL,NULL,1,3),(9,NULL,'default',NULL,NULL,0,NULL,NULL,NULL,NULL,1,4),(10,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,1,5),(11,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,1,6),(12,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,1,7),(13,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,1,8),(14,NULL,NULL,NULL,NULL,2,NULL,NULL,NULL,NULL,1,23),(15,NULL,NULL,NULL,NULL,6,NULL,NULL,NULL,NULL,1,24),(16,NULL,NULL,'11',NULL,NULL,NULL,NULL,NULL,NULL,1,25),(17,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,1,26),(18,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,1,27),(19,NULL,NULL,'15',NULL,NULL,NULL,NULL,NULL,NULL,1,28),(20,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,1,32),(21,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,1,16),(22,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,1,17),(23,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,1,18),(24,NULL,NULL,NULL,NULL,NULL,491.5900,NULL,NULL,NULL,1,11),(25,NULL,'default',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,12),(26,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,13),(27,NULL,'default',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,14),(28,NULL,'default',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,15),(29,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,1,19),(30,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,1,20),(31,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,1,21),(32,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,1,22);
+INSERT INTO `product_attribute_values` VALUES (381,'en','default','Kratki Opis Kratki Opis\r\nKratki Opis\r\nKratki Opis',NULL,NULL,NULL,NULL,NULL,NULL,15,9),(382,'en','default','<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>DukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpis</p>\r\n<p>&nbsp;</p>\r\n<p>DukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpis</p>\r\n<p>&nbsp;</p>',NULL,NULL,NULL,NULL,NULL,NULL,15,10),(383,NULL,NULL,'<p>Specifikacije Proizvoda</p>',NULL,NULL,NULL,NULL,NULL,NULL,15,29),(384,NULL,NULL,'<p>Washing Tips proizvoda</p>',NULL,NULL,NULL,NULL,NULL,NULL,15,30),(385,NULL,NULL,'<p>Delivery opis</p>',NULL,NULL,NULL,NULL,NULL,NULL,15,31),(386,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,15,1),(387,'en','default','Shaka Katarina Zlajic Mindjuse',NULL,NULL,NULL,NULL,NULL,NULL,15,2),(388,NULL,NULL,'shaka-katarina-zlajic-mindjuse',NULL,NULL,NULL,NULL,NULL,NULL,15,3),(389,NULL,'default',NULL,NULL,0,NULL,NULL,NULL,NULL,15,4),(390,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,15,5),(391,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,15,6),(392,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,15,7),(393,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,15,8),(394,NULL,NULL,NULL,NULL,2,NULL,NULL,NULL,NULL,15,23),(395,NULL,NULL,NULL,NULL,7,NULL,NULL,NULL,NULL,15,24),(396,NULL,NULL,'10',NULL,NULL,NULL,NULL,NULL,NULL,15,25),(397,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,15,26),(398,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,15,27),(399,NULL,NULL,'15',NULL,NULL,NULL,NULL,NULL,NULL,15,28),(400,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,15,32),(401,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,15,16),(402,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,15,17),(403,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,15,18),(404,NULL,NULL,NULL,NULL,NULL,123.0000,NULL,NULL,NULL,15,11),(405,NULL,'default',NULL,NULL,NULL,123.0000,NULL,NULL,NULL,15,12),(406,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,15,13),(407,NULL,'default',NULL,NULL,NULL,NULL,NULL,NULL,NULL,15,14),(408,NULL,'default',NULL,NULL,NULL,NULL,NULL,NULL,NULL,15,15),(409,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,15,19),(410,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,15,20),(411,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,15,21),(412,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,15,22),(413,'en','default','Short Desc',NULL,NULL,NULL,NULL,NULL,NULL,16,9),(414,'en','default','<p>DescriptionDescriptionDescriptionDescription</p>',NULL,NULL,NULL,NULL,NULL,NULL,16,10),(415,NULL,NULL,'<p>Specifications</p>',NULL,NULL,NULL,NULL,NULL,NULL,16,29),(416,NULL,NULL,'<p>Washing tips</p>',NULL,NULL,NULL,NULL,NULL,NULL,16,30),(417,NULL,NULL,'<p style=\"text-align: left;\">Delivery instructions</p>',NULL,NULL,NULL,NULL,NULL,NULL,16,31),(418,NULL,NULL,'2',NULL,NULL,NULL,NULL,NULL,NULL,16,1),(419,'en','default','Shaka Katarina Zlajic Mindjuse 2',NULL,NULL,NULL,NULL,NULL,NULL,16,2),(420,NULL,NULL,'shaka-katarina-zlajic-mindjuse-2',NULL,NULL,NULL,NULL,NULL,NULL,16,3),(421,NULL,'default',NULL,NULL,0,NULL,NULL,NULL,NULL,16,4),(422,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,16,5),(423,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,16,6),(424,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,16,7),(425,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,16,8),(426,NULL,NULL,NULL,NULL,2,NULL,NULL,NULL,NULL,16,23),(427,NULL,NULL,NULL,NULL,7,NULL,NULL,NULL,NULL,16,24),(428,NULL,NULL,'11',NULL,NULL,NULL,NULL,NULL,NULL,16,25),(429,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,16,26),(430,NULL,NULL,'2',NULL,NULL,NULL,NULL,NULL,NULL,16,27),(431,NULL,NULL,'18',NULL,NULL,NULL,NULL,NULL,NULL,16,28),(432,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,16,32),(433,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,16,16),(434,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,16,17),(435,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,16,18),(436,NULL,NULL,NULL,NULL,NULL,1250.0000,NULL,NULL,NULL,16,11),(437,NULL,'default',NULL,NULL,NULL,150.0000,NULL,NULL,NULL,16,12),(438,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,16,13),(439,NULL,'default',NULL,NULL,NULL,NULL,NULL,NULL,NULL,16,14),(440,NULL,'default',NULL,NULL,NULL,NULL,NULL,NULL,NULL,16,15),(441,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,16,19),(442,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,16,20),(443,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,16,21),(444,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,16,22),(445,'en','default','Short Desc',NULL,NULL,NULL,NULL,NULL,NULL,17,9),(446,'en','default','<p>Description</p>',NULL,NULL,NULL,NULL,NULL,NULL,17,10),(447,NULL,NULL,'<p>Specifications</p>',NULL,NULL,NULL,NULL,NULL,NULL,17,29),(448,NULL,NULL,'<p>Washing Tips</p>',NULL,NULL,NULL,NULL,NULL,NULL,17,30),(449,NULL,NULL,'<p>Delivery</p>',NULL,NULL,NULL,NULL,NULL,NULL,17,31),(450,NULL,NULL,'3',NULL,NULL,NULL,NULL,NULL,NULL,17,1),(451,'en','default','Katarina Zlajic Narukvica',NULL,NULL,NULL,NULL,NULL,NULL,17,2),(452,NULL,NULL,'katarina-zlajic-narukvica',NULL,NULL,NULL,NULL,NULL,NULL,17,3),(453,NULL,'default',NULL,NULL,0,NULL,NULL,NULL,NULL,17,4),(454,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,17,5),(455,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,17,6),(456,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,17,7),(457,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,17,8),(458,NULL,NULL,NULL,NULL,2,NULL,NULL,NULL,NULL,17,23),(459,NULL,NULL,NULL,NULL,8,NULL,NULL,NULL,NULL,17,24),(460,NULL,NULL,'11',NULL,NULL,NULL,NULL,NULL,NULL,17,25),(461,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,17,26),(462,NULL,NULL,'3',NULL,NULL,NULL,NULL,NULL,NULL,17,27),(463,NULL,NULL,'16',NULL,NULL,NULL,NULL,NULL,NULL,17,28),(464,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,17,32),(465,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,17,16),(466,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,17,17),(467,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,17,18),(468,NULL,NULL,NULL,NULL,NULL,200.0000,NULL,NULL,NULL,17,11),(469,NULL,'default',NULL,NULL,NULL,200.0000,NULL,NULL,NULL,17,12),(470,NULL,NULL,NULL,NULL,NULL,175.0000,NULL,NULL,NULL,17,13),(471,NULL,'default',NULL,NULL,NULL,NULL,NULL,'2024-04-19',NULL,17,14),(472,NULL,'default',NULL,NULL,NULL,NULL,NULL,'2024-05-03',NULL,17,15),(473,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,17,19),(474,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,17,20),(475,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,17,21),(476,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,17,22),(477,'en','default','Short Desc',NULL,NULL,NULL,NULL,NULL,NULL,18,9),(478,'en','default','<p>Description</p>',NULL,NULL,NULL,NULL,NULL,NULL,18,10),(479,NULL,NULL,'<p>Spec</p>',NULL,NULL,NULL,NULL,NULL,NULL,18,29),(480,NULL,NULL,'<p>WashingTips</p>',NULL,NULL,NULL,NULL,NULL,NULL,18,30),(481,NULL,NULL,'<p>Delivery</p>',NULL,NULL,NULL,NULL,NULL,NULL,18,31),(482,NULL,NULL,'4',NULL,NULL,NULL,NULL,NULL,NULL,18,1),(483,'en','default','Shaka Katarina Zlajic Majica',NULL,NULL,NULL,NULL,NULL,NULL,18,2),(484,NULL,NULL,'shaka-katarina-zlajic-majica',NULL,NULL,NULL,NULL,NULL,NULL,18,3),(485,NULL,'default',NULL,NULL,0,NULL,NULL,NULL,NULL,18,4),(486,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,18,5),(487,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,18,6),(488,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,18,7),(489,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,18,8),(490,NULL,NULL,NULL,NULL,3,NULL,NULL,NULL,NULL,18,23),(491,NULL,NULL,NULL,NULL,7,NULL,NULL,NULL,NULL,18,24),(492,NULL,NULL,'10',NULL,NULL,NULL,NULL,NULL,NULL,18,25),(493,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,18,26),(494,NULL,NULL,'4',NULL,NULL,NULL,NULL,NULL,NULL,18,27),(495,NULL,NULL,'15',NULL,NULL,NULL,NULL,NULL,NULL,18,28),(496,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,18,32),(497,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,18,16),(498,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,18,17),(499,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,18,18),(500,NULL,NULL,NULL,NULL,NULL,85.0000,NULL,NULL,NULL,18,11),(501,NULL,'default',NULL,NULL,NULL,85.0000,NULL,NULL,NULL,18,12),(502,NULL,NULL,NULL,NULL,NULL,75.0000,NULL,NULL,NULL,18,13),(503,NULL,'default',NULL,NULL,NULL,NULL,NULL,NULL,NULL,18,14),(504,NULL,'default',NULL,NULL,NULL,NULL,NULL,NULL,NULL,18,15),(505,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,18,19),(506,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,18,20),(507,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,18,21),(508,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,18,22),(509,'en','default','Kratki Opis Kratki Opis\r\nKratki Opis\r\nKratki Opis',NULL,NULL,NULL,NULL,NULL,NULL,19,9),(510,'en','default','<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>DukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpis</p>\r\n<p>&nbsp;</p>\r\n<p>DukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpis</p>\r\n<p>&nbsp;</p>',NULL,NULL,NULL,NULL,NULL,NULL,19,10),(511,NULL,NULL,'<p>Specifikacije Proizvoda</p>',NULL,NULL,NULL,NULL,NULL,NULL,19,29),(512,NULL,NULL,'<p>Washing Tips proizvoda</p>',NULL,NULL,NULL,NULL,NULL,NULL,19,30),(513,NULL,NULL,'<p>Delivery opis</p>',NULL,NULL,NULL,NULL,NULL,NULL,19,31),(514,NULL,NULL,'temporary-sku-c3a9a7',NULL,NULL,NULL,NULL,NULL,NULL,19,1),(515,'en','default','Copy of Shaka Katarina Zlajic Mindjuse (db11d1)',NULL,NULL,NULL,NULL,NULL,NULL,19,2),(516,NULL,NULL,'copy-of-shaka-katarina-zlajic-mindjuse-db11d1',NULL,NULL,NULL,NULL,NULL,NULL,19,3),(517,NULL,'default',NULL,NULL,0,NULL,NULL,NULL,NULL,19,4),(518,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,19,5),(519,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,19,6),(520,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,19,7),(521,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,19,8),(522,NULL,NULL,NULL,NULL,2,NULL,NULL,NULL,NULL,19,23),(523,NULL,NULL,NULL,NULL,7,NULL,NULL,NULL,NULL,19,24),(524,NULL,NULL,'10',NULL,NULL,NULL,NULL,NULL,NULL,19,25),(525,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,19,26),(526,NULL,NULL,'copy-of-1-db11d1',NULL,NULL,NULL,NULL,NULL,NULL,19,27),(527,NULL,NULL,'15',NULL,NULL,NULL,NULL,NULL,NULL,19,28),(528,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,19,32),(529,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,19,16),(530,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,19,17),(531,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,19,18),(532,NULL,NULL,NULL,NULL,NULL,170.0000,NULL,NULL,NULL,19,11),(533,NULL,'default',NULL,NULL,NULL,170.0000,NULL,NULL,NULL,19,12),(534,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,19,13),(535,NULL,'default',NULL,NULL,NULL,NULL,NULL,NULL,NULL,19,14),(536,NULL,'default',NULL,NULL,NULL,NULL,NULL,NULL,NULL,19,15),(537,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,19,19),(538,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,19,20),(539,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,19,21),(540,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,19,22),(541,'en','default','Short Desc',NULL,NULL,NULL,NULL,NULL,NULL,20,9),(542,'en','default','<p>Description</p>',NULL,NULL,NULL,NULL,NULL,NULL,20,10),(543,NULL,NULL,'<p>Specifications</p>',NULL,NULL,NULL,NULL,NULL,NULL,20,29),(544,NULL,NULL,'<p>Washing Tips</p>',NULL,NULL,NULL,NULL,NULL,NULL,20,30),(545,NULL,NULL,'<p>Delivery</p>',NULL,NULL,NULL,NULL,NULL,NULL,20,31),(546,NULL,NULL,'temporary-sku-d918e2',NULL,NULL,NULL,NULL,NULL,NULL,20,1),(547,'en','default','Copy of Katarina Zlajic Narukvica (5179c9)',NULL,NULL,NULL,NULL,NULL,NULL,20,2),(548,NULL,NULL,'copy-of-katarina-zlajic-narukvica-5179c9',NULL,NULL,NULL,NULL,NULL,NULL,20,3),(549,NULL,'default',NULL,NULL,0,NULL,NULL,NULL,NULL,20,4),(550,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,20,5),(551,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,20,6),(552,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,20,7),(553,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,20,8),(554,NULL,NULL,NULL,NULL,2,NULL,NULL,NULL,NULL,20,23),(555,NULL,NULL,NULL,NULL,8,NULL,NULL,NULL,NULL,20,24),(556,NULL,NULL,'11',NULL,NULL,NULL,NULL,NULL,NULL,20,25),(557,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,20,26),(558,NULL,NULL,'copy-of-3-5179c9',NULL,NULL,NULL,NULL,NULL,NULL,20,27),(559,NULL,NULL,'16',NULL,NULL,NULL,NULL,NULL,NULL,20,28),(560,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,20,32),(561,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,20,16),(562,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,20,17),(563,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,20,18),(564,NULL,NULL,NULL,NULL,NULL,200.0000,NULL,NULL,NULL,20,11),(565,NULL,'default',NULL,NULL,NULL,200.0000,NULL,NULL,NULL,20,12),(566,NULL,NULL,NULL,NULL,NULL,175.0000,NULL,NULL,NULL,20,13),(567,NULL,'default',NULL,NULL,NULL,NULL,NULL,'2024-04-19',NULL,20,14),(568,NULL,'default',NULL,NULL,NULL,NULL,NULL,'2024-05-03',NULL,20,15),(569,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,20,19),(570,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,20,20),(571,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,20,21),(572,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,20,22),(573,'en','default','Short Desc',NULL,NULL,NULL,NULL,NULL,NULL,21,9),(574,'en','default','<p>Description</p>',NULL,NULL,NULL,NULL,NULL,NULL,21,10),(575,NULL,NULL,'<p>Spec</p>',NULL,NULL,NULL,NULL,NULL,NULL,21,29),(576,NULL,NULL,'<p>WashingTips</p>',NULL,NULL,NULL,NULL,NULL,NULL,21,30),(577,NULL,NULL,'<p>Delivery</p>',NULL,NULL,NULL,NULL,NULL,NULL,21,31),(578,NULL,NULL,'temporary-sku-5e26f9',NULL,NULL,NULL,NULL,NULL,NULL,21,1),(579,'en','default','Copy of Shaka Katarina Zlajic Majica (9a5660)',NULL,NULL,NULL,NULL,NULL,NULL,21,2),(580,NULL,NULL,'copy-of-shaka-katarina-zlajic-majica-9a5660',NULL,NULL,NULL,NULL,NULL,NULL,21,3),(581,NULL,'default',NULL,NULL,0,NULL,NULL,NULL,NULL,21,4),(582,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,21,5),(583,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,21,6),(584,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,21,7),(585,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,21,8),(586,NULL,NULL,NULL,NULL,3,NULL,NULL,NULL,NULL,21,23),(587,NULL,NULL,NULL,NULL,7,NULL,NULL,NULL,NULL,21,24),(588,NULL,NULL,'10',NULL,NULL,NULL,NULL,NULL,NULL,21,25),(589,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,21,26),(590,NULL,NULL,'copy-of-4-9a5660',NULL,NULL,NULL,NULL,NULL,NULL,21,27),(591,NULL,NULL,'15',NULL,NULL,NULL,NULL,NULL,NULL,21,28),(592,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,21,32),(593,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,21,16),(594,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,21,17),(595,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,21,18),(596,NULL,NULL,NULL,NULL,NULL,85.0000,NULL,NULL,NULL,21,11),(597,NULL,'default',NULL,NULL,NULL,85.0000,NULL,NULL,NULL,21,12),(598,NULL,NULL,NULL,NULL,NULL,75.0000,NULL,NULL,NULL,21,13),(599,NULL,'default',NULL,NULL,NULL,NULL,NULL,NULL,NULL,21,14),(600,NULL,'default',NULL,NULL,NULL,NULL,NULL,NULL,NULL,21,15),(601,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,21,19),(602,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,21,20),(603,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,21,21),(604,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,21,22),(605,'en','default','Short Desc',NULL,NULL,NULL,NULL,NULL,NULL,22,9),(606,'en','default','<p>DescriptionDescriptionDescriptionDescription</p>',NULL,NULL,NULL,NULL,NULL,NULL,22,10),(607,NULL,NULL,'<p>Specifications</p>',NULL,NULL,NULL,NULL,NULL,NULL,22,29),(608,NULL,NULL,'<p>Washing tips</p>',NULL,NULL,NULL,NULL,NULL,NULL,22,30),(609,NULL,NULL,'<p style=\"text-align: left;\">Delivery instructions</p>',NULL,NULL,NULL,NULL,NULL,NULL,22,31),(610,NULL,NULL,'temporary-sku-bf18f7',NULL,NULL,NULL,NULL,NULL,NULL,22,1),(611,'en','default','Copy of Shaka Katarina Zlajic Mindjuse 2 (ac6eff)',NULL,NULL,NULL,NULL,NULL,NULL,22,2),(612,NULL,NULL,'copy-of-shaka-katarina-zlajic-mindjuse-2-ac6eff',NULL,NULL,NULL,NULL,NULL,NULL,22,3),(613,NULL,'default',NULL,NULL,0,NULL,NULL,NULL,NULL,22,4),(614,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,22,5),(615,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,22,6),(616,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,22,7),(617,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,22,8),(618,NULL,NULL,NULL,NULL,2,NULL,NULL,NULL,NULL,22,23),(619,NULL,NULL,NULL,NULL,7,NULL,NULL,NULL,NULL,22,24),(620,NULL,NULL,'11',NULL,NULL,NULL,NULL,NULL,NULL,22,25),(621,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,22,26),(622,NULL,NULL,'copy-of-2-ac6eff',NULL,NULL,NULL,NULL,NULL,NULL,22,27),(623,NULL,NULL,'18',NULL,NULL,NULL,NULL,NULL,NULL,22,28),(624,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,22,32),(625,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,22,16),(626,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,22,17),(627,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,22,18),(628,NULL,NULL,NULL,NULL,NULL,1250.0000,NULL,NULL,NULL,22,11),(629,NULL,'default',NULL,NULL,NULL,150.0000,NULL,NULL,NULL,22,12),(630,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,22,13),(631,NULL,'default',NULL,NULL,NULL,NULL,NULL,NULL,NULL,22,14),(632,NULL,'default',NULL,NULL,NULL,NULL,NULL,NULL,NULL,22,15),(633,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,22,19),(634,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,22,20),(635,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,22,21),(636,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,22,22),(637,'en','default','Kratki Opis Kratki Opis\r\nKratki Opis\r\nKratki Opis',NULL,NULL,NULL,NULL,NULL,NULL,23,9),(638,'en','default','<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>DukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpis</p>\r\n<p>&nbsp;</p>\r\n<p>DukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpis</p>\r\n<p>&nbsp;</p>',NULL,NULL,NULL,NULL,NULL,NULL,23,10),(639,NULL,NULL,'<p>Specifikacije Proizvoda</p>',NULL,NULL,NULL,NULL,NULL,NULL,23,29),(640,NULL,NULL,'<p>Washing Tips proizvoda</p>',NULL,NULL,NULL,NULL,NULL,NULL,23,30),(641,NULL,NULL,'<p>Delivery opis</p>',NULL,NULL,NULL,NULL,NULL,NULL,23,31),(642,NULL,NULL,'temporary-sku-fc75cc',NULL,NULL,NULL,NULL,NULL,NULL,23,1),(643,'en','default','Copy of Shaka Katarina Zlajic Mindjuse (6fb30a)',NULL,NULL,NULL,NULL,NULL,NULL,23,2),(644,NULL,NULL,'copy-of-shaka-katarina-zlajic-mindjuse-6fb30a',NULL,NULL,NULL,NULL,NULL,NULL,23,3),(645,NULL,'default',NULL,NULL,0,NULL,NULL,NULL,NULL,23,4),(646,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,23,5),(647,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,23,6),(648,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,23,7),(649,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,23,8),(650,NULL,NULL,NULL,NULL,2,NULL,NULL,NULL,NULL,23,23),(651,NULL,NULL,NULL,NULL,7,NULL,NULL,NULL,NULL,23,24),(652,NULL,NULL,'10',NULL,NULL,NULL,NULL,NULL,NULL,23,25),(653,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,23,26),(654,NULL,NULL,'copy-of-1-6fb30a',NULL,NULL,NULL,NULL,NULL,NULL,23,27),(655,NULL,NULL,'15',NULL,NULL,NULL,NULL,NULL,NULL,23,28),(656,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,23,32),(657,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,23,16),(658,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,23,17),(659,'en','default','',NULL,NULL,NULL,NULL,NULL,NULL,23,18),(660,NULL,NULL,NULL,NULL,NULL,123.0000,NULL,NULL,NULL,23,11),(661,NULL,'default',NULL,NULL,NULL,123.0000,NULL,NULL,NULL,23,12),(662,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,23,13),(663,NULL,'default',NULL,NULL,NULL,NULL,NULL,NULL,NULL,23,14),(664,NULL,'default',NULL,NULL,NULL,NULL,NULL,NULL,NULL,23,15),(665,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,23,19),(666,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,23,20),(667,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,23,21),(668,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,23,22);
 /*!40000 ALTER TABLE `product_attribute_values` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2800,7 +2809,7 @@ CREATE TABLE `product_categories` (
 
 LOCK TABLES `product_categories` WRITE;
 /*!40000 ALTER TABLE `product_categories` DISABLE KEYS */;
-INSERT INTO `product_categories` VALUES (1,1);
+INSERT INTO `product_categories` VALUES (15,1),(15,2),(15,3),(16,1),(16,2),(16,3),(17,1),(17,2),(17,4),(18,1),(18,19),(18,20),(19,1),(19,2),(19,3),(20,1),(20,2),(20,4),(21,1),(21,19),(21,20),(22,1),(22,2),(22,3),(23,1),(23,2),(23,3);
 /*!40000 ALTER TABLE `product_categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3036,7 +3045,7 @@ CREATE TABLE `product_flat` (
   KEY `product_flat_parent_id_foreign` (`parent_id`),
   CONSTRAINT `product_flat_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `product_flat` (`id`) ON DELETE CASCADE,
   CONSTRAINT `product_flat_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3045,7 +3054,7 @@ CREATE TABLE `product_flat` (
 
 LOCK TABLES `product_flat` WRITE;
 /*!40000 ALTER TABLE `product_flat` DISABLE KEYS */;
-INSERT INTO `product_flat` VALUES (1,'1','1','Shaka Beige Shirt','<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&bull; Color: Gold</p>\r\n<p>&bull; 100% organic cotton</p>\r\n<p>&bull; Made in Montenegro</p>\r\n<p>&bull; Handmade</p>\r\n<p>&bull; Universal size</p>\r\n<p>&bull; GOTS (Global Organic Textile Standard) certified material</p>\r\n<p>&nbsp;</p>','shaka-beige-shirt',1,0,1,NULL,491.5900,NULL,NULL,NULL,NULL,1.0000,2,'Green',6,'S','2023-07-07 02:12:07','en','default',1,'2023-07-07 02:34:48',NULL,1,491.5900,491.5900,'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum.','','','',0.0000,0.0000,NULL);
+INSERT INTO `product_flat` VALUES (15,'1','1','Shaka Katarina Zlajic Mindjuse','<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>DukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpis</p>\r\n<p>&nbsp;</p>\r\n<p>DukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpis</p>\r\n<p>&nbsp;</p>','shaka-katarina-zlajic-mindjuse',1,1,1,NULL,123.0000,123.0000,NULL,NULL,NULL,1.0000,2,'Green',7,'M','2024-04-19 19:27:43','en','default',15,'2024-04-19 19:31:59',NULL,1,NULL,NULL,'Kratki Opis Kratki Opis\r\nKratki Opis\r\nKratki Opis','','','',0.0000,0.0000,NULL),(16,'2','2','Shaka Katarina Zlajic Mindjuse 2','<p>DescriptionDescriptionDescriptionDescription</p>','shaka-katarina-zlajic-mindjuse-2',1,1,1,NULL,1250.0000,150.0000,NULL,NULL,NULL,1.0000,2,'Green',7,'M','2024-04-19 19:32:07','en','default',16,'2024-04-19 19:34:02',NULL,1,NULL,NULL,'Short Desc','','','',0.0000,0.0000,NULL),(17,'3','3','Katarina Zlajic Narukvica','<p>Description</p>','katarina-zlajic-narukvica',1,1,1,NULL,200.0000,200.0000,175.0000,'2024-04-19','2024-05-03',1.0000,2,'Green',8,'L','2024-04-19 19:34:28','en','default',17,'2024-04-19 19:36:10',NULL,1,NULL,NULL,'Short Desc','','','',0.0000,0.0000,NULL),(18,'4','4','Shaka Katarina Zlajic Majica','<p>Description</p>','shaka-katarina-zlajic-majica',1,1,1,NULL,85.0000,85.0000,75.0000,NULL,NULL,1.0000,3,'Yellow',7,'M','2024-04-19 19:36:33','en','default',18,'2024-04-19 19:38:35',NULL,1,NULL,NULL,'Short Desc','','','',0.0000,0.0000,NULL),(19,'temporary-sku-c3a9a7','copy-of-1-db11d1','Copy of Shaka Katarina Zlajic Mindjuse (db11d1)','<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>DukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpis</p>\r\n<p>&nbsp;</p>\r\n<p>DukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpis</p>\r\n<p>&nbsp;</p>','copy-of-shaka-katarina-zlajic-mindjuse-db11d1',1,1,1,NULL,170.0000,170.0000,NULL,NULL,NULL,1.0000,2,'Green',7,'M','2024-04-19 19:38:39','en','default',19,'2024-04-19 19:39:04',NULL,1,170.0000,170.0000,'Kratki Opis Kratki Opis\r\nKratki Opis\r\nKratki Opis','','','',0.0000,0.0000,NULL),(20,'temporary-sku-d918e2','copy-of-3-5179c9','Copy of Katarina Zlajic Narukvica (5179c9)','<p>Description</p>','copy-of-katarina-zlajic-narukvica-5179c9',1,1,1,NULL,200.0000,200.0000,175.0000,'2024-04-19','2024-05-03',1.0000,2,'Green',8,'L','2024-04-19 19:39:07','en','default',20,'2024-04-19 19:39:12',NULL,1,175.0000,200.0000,'Short Desc','','','',0.0000,0.0000,NULL),(21,'temporary-sku-5e26f9','copy-of-4-9a5660','Copy of Shaka Katarina Zlajic Majica (9a5660)','<p>Description</p>','copy-of-shaka-katarina-zlajic-majica-9a5660',1,1,1,NULL,85.0000,85.0000,75.0000,NULL,NULL,1.0000,3,'Yellow',7,'M','2024-04-19 19:39:17','en','default',21,'2024-04-19 19:39:22',NULL,1,75.0000,85.0000,'Short Desc','','','',0.0000,0.0000,NULL),(22,'temporary-sku-bf18f7','copy-of-2-ac6eff','Copy of Shaka Katarina Zlajic Mindjuse 2 (ac6eff)','<p>DescriptionDescriptionDescriptionDescription</p>','copy-of-shaka-katarina-zlajic-mindjuse-2-ac6eff',1,1,1,NULL,1250.0000,150.0000,NULL,NULL,NULL,1.0000,2,'Green',7,'M','2024-04-19 19:39:28','en','default',22,'2024-04-19 19:39:33',NULL,1,1250.0000,1250.0000,'Short Desc','','','',0.0000,0.0000,NULL),(23,'temporary-sku-fc75cc','copy-of-1-6fb30a','Copy of Shaka Katarina Zlajic Mindjuse (6fb30a)','<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>DukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpis</p>\r\n<p>&nbsp;</p>\r\n<p>DukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpisDukackiOpis</p>\r\n<p>&nbsp;</p>','copy-of-shaka-katarina-zlajic-mindjuse-6fb30a',1,1,1,NULL,123.0000,123.0000,NULL,NULL,NULL,1.0000,2,'Green',7,'M','2024-04-19 19:39:35','en','default',23,'2024-04-19 19:39:40',NULL,1,123.0000,123.0000,'Kratki Opis Kratki Opis\r\nKratki Opis\r\nKratki Opis','','','',0.0000,0.0000,NULL);
 /*!40000 ALTER TABLE `product_flat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3095,7 +3104,7 @@ CREATE TABLE `product_images` (
   PRIMARY KEY (`id`),
   KEY `product_images_product_id_foreign` (`product_id`),
   CONSTRAINT `product_images_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3104,7 +3113,7 @@ CREATE TABLE `product_images` (
 
 LOCK TABLES `product_images` WRITE;
 /*!40000 ALTER TABLE `product_images` DISABLE KEYS */;
-INSERT INTO `product_images` VALUES (3,'images','product/1/gMYFeoSP9mipR9wMmnosVcDiitiUl0gzDzo903fV.png',1,0),(4,'images','product/1/WDiz8ug3oV1t0WpKQshOJq8Iad4LLcVraeiljrdY.png',1,1),(5,'images','product/1/sJUtcGfyx8mVRxYcplEqnIXLLueU2VaTZE5xp0zX.png',1,2);
+INSERT INTO `product_images` VALUES (35,'images','product/15/GaLc8FMzdEKe9OebFg4hKrTXq8RHycbgpUtq0oY4.jpg',15,0),(36,'images','product/16/xDl3Pm6NNqzGAa1t2QiH5RWH7hTzBVekR8bl69rW.jpg',16,0),(37,'images','product/16/XakD7VPTZwwXekJ5qfTr70Kl3mMfynzcr7iJMFE1.jpg',16,1),(38,'images','product/17/9MIV70XwsD6E5NU0dBny3V4MNpuz86qbzcgapiP8.jpg',17,0),(39,'images','product/18/a6OwSShvui5DdsEWADUq77nJUGjnpFahdG5ljKio.jpg',18,0),(40,'images','product/19/GaLc8FMzdEKe9OebFg4hKrTXq8RHycbgpUtq0oY4.jpg',19,0),(41,'images','product/20/9MIV70XwsD6E5NU0dBny3V4MNpuz86qbzcgapiP8.jpg',20,0),(42,'images','product/21/a6OwSShvui5DdsEWADUq77nJUGjnpFahdG5ljKio.jpg',21,0),(43,'images','product/22/xDl3Pm6NNqzGAa1t2QiH5RWH7hTzBVekR8bl69rW.jpg',22,0),(44,'images','product/22/XakD7VPTZwwXekJ5qfTr70Kl3mMfynzcr7iJMFE1.jpg',22,1),(45,'images','product/23/GaLc8FMzdEKe9OebFg4hKrTXq8RHycbgpUtq0oY4.jpg',23,0);
 /*!40000 ALTER TABLE `product_images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3126,7 +3135,7 @@ CREATE TABLE `product_inventories` (
   KEY `product_inventories_inventory_source_id_foreign` (`inventory_source_id`),
   CONSTRAINT `product_inventories_inventory_source_id_foreign` FOREIGN KEY (`inventory_source_id`) REFERENCES `inventory_sources` (`id`) ON DELETE CASCADE,
   CONSTRAINT `product_inventories_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3135,7 +3144,7 @@ CREATE TABLE `product_inventories` (
 
 LOCK TABLES `product_inventories` WRITE;
 /*!40000 ALTER TABLE `product_inventories` DISABLE KEYS */;
-INSERT INTO `product_inventories` VALUES (1,3,1,1,0);
+INSERT INTO `product_inventories` VALUES (12,150,15,1,0),(13,150,16,1,0),(14,20,17,1,0),(15,100,18,1,0),(16,150,19,1,0),(17,20,20,1,0),(18,100,21,1,0),(19,150,22,1,0),(20,150,23,1,0);
 /*!40000 ALTER TABLE `product_inventories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3156,7 +3165,7 @@ CREATE TABLE `product_ordered_inventories` (
   KEY `product_ordered_inventories_channel_id_foreign` (`channel_id`),
   CONSTRAINT `product_ordered_inventories_channel_id_foreign` FOREIGN KEY (`channel_id`) REFERENCES `channels` (`id`) ON DELETE CASCADE,
   CONSTRAINT `product_ordered_inventories_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3191,6 +3200,7 @@ CREATE TABLE `product_relations` (
 
 LOCK TABLES `product_relations` WRITE;
 /*!40000 ALTER TABLE `product_relations` DISABLE KEYS */;
+INSERT INTO `product_relations` VALUES (16,15);
 /*!40000 ALTER TABLE `product_relations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3357,7 +3367,7 @@ CREATE TABLE `products` (
   KEY `products_parent_id_foreign` (`parent_id`),
   CONSTRAINT `products_attribute_family_id_foreign` FOREIGN KEY (`attribute_family_id`) REFERENCES `attribute_families` (`id`) ON DELETE RESTRICT,
   CONSTRAINT `products_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3366,7 +3376,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'1','simple','2023-07-07 00:12:07','2023-07-07 00:12:07',NULL,1,NULL);
+INSERT INTO `products` VALUES (15,'1','simple','2024-04-19 17:27:43','2024-04-19 17:27:43',NULL,1,NULL),(16,'2','simple','2024-04-19 17:32:07','2024-04-19 17:32:07',NULL,1,NULL),(17,'3','simple','2024-04-19 17:34:27','2024-04-19 17:34:27',NULL,1,NULL),(18,'4','simple','2024-04-19 17:36:33','2024-04-19 17:36:33',NULL,1,NULL),(19,'temporary-sku-c3a9a7','simple','2024-04-19 17:38:39','2024-04-19 17:38:39',NULL,1,NULL),(20,'temporary-sku-d918e2','simple','2024-04-19 17:39:07','2024-04-19 17:39:07',NULL,1,NULL),(21,'temporary-sku-5e26f9','simple','2024-04-19 17:39:17','2024-04-19 17:39:17',NULL,1,NULL),(22,'temporary-sku-bf18f7','simple','2024-04-19 17:39:28','2024-04-19 17:39:28',NULL,1,NULL),(23,'temporary-sku-fc75cc','simple','2024-04-19 17:39:35','2024-04-19 17:39:35',NULL,1,NULL);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3525,7 +3535,7 @@ CREATE TABLE `shipment_items` (
   PRIMARY KEY (`id`),
   KEY `shipment_items_shipment_id_foreign` (`shipment_id`),
   CONSTRAINT `shipment_items_shipment_id_foreign` FOREIGN KEY (`shipment_id`) REFERENCES `shipments` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3534,6 +3544,7 @@ CREATE TABLE `shipment_items` (
 
 LOCK TABLES `shipment_items` WRITE;
 /*!40000 ALTER TABLE `shipment_items` DISABLE KEYS */;
+INSERT INTO `shipment_items` VALUES (1,'Shaka Beige Shirt',NULL,'1',3,3,491.5900,491.5900,1474.7700,1474.7700,1,'Webkul\\Product\\Models\\Product',1,1,'{\"locale\": \"en\", \"quantity\": 3, \"product_id\": \"1\"}','2024-04-18 14:04:34','2024-04-18 14:04:34'),(2,'Shaka Zelena',NULL,'temporary-sku-a57232',4,4,491.5900,491.5900,1966.3600,1966.3600,3,'Webkul\\Product\\Models\\Product',2,1,'{\"locale\": \"en\", \"quantity\": 4, \"product_id\": \"3\"}','2024-04-18 14:04:34','2024-04-18 14:04:34'),(3,'Shaka zimzelena',NULL,'temporary-sku-17dce4',1,1,491.5900,491.5900,491.5900,491.5900,8,'Webkul\\Product\\Models\\Product',3,2,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"8\"}','2024-04-18 14:06:52','2024-04-18 14:06:52'),(4,'Shaka Zelena',NULL,'temporary-sku-a57232',1,1,491.5900,491.5900,491.5900,491.5900,3,'Webkul\\Product\\Models\\Product',4,2,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"3\"}','2024-04-18 14:06:52','2024-04-18 14:06:52'),(5,'Shaka Teget',NULL,'temporary-sku-a30473',1,1,491.5900,491.5900,491.5900,491.5900,4,'Webkul\\Product\\Models\\Product',5,2,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"4\"}','2024-04-18 14:06:52','2024-04-18 14:06:52'),(6,'Shaka roza',NULL,'temporary-sku-c45e40',1,1,491.5900,491.5900,491.5900,491.5900,5,'Webkul\\Product\\Models\\Product',6,2,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"5\"}','2024-04-18 14:06:52','2024-04-18 14:06:52'),(7,'Shaka braon',NULL,'temporary-sku-734cf7',1,1,491.5900,491.5900,491.5900,491.5900,6,'Webkul\\Product\\Models\\Product',7,2,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"6\"}','2024-04-18 14:06:52','2024-04-18 14:06:52'),(8,'Shaka Plava',NULL,'temporary-sku-1312e7',1,1,491.5900,491.5900,491.5900,491.5900,2,'Webkul\\Product\\Models\\Product',8,2,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"2\"}','2024-04-18 14:06:52','2024-04-18 14:06:52'),(9,'Shaka purpur',NULL,'temporary-sku-1d3bbb',1,1,491.5900,491.5900,491.5900,491.5900,7,'Webkul\\Product\\Models\\Product',9,2,'{\"_token\": \"iR3UuD5kXLWUEg07nbnXdGiA1AW80tBQa5QyavPN\", \"locale\": \"en\", \"quantity\": 1, \"product_id\": \"7\"}','2024-04-18 14:06:52','2024-04-18 14:06:52');
 /*!40000 ALTER TABLE `shipment_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3567,7 +3578,7 @@ CREATE TABLE `shipments` (
   KEY `shipments_order_address_id_foreign` (`order_address_id`),
   CONSTRAINT `shipments_inventory_source_id_foreign` FOREIGN KEY (`inventory_source_id`) REFERENCES `inventory_sources` (`id`) ON DELETE SET NULL,
   CONSTRAINT `shipments_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3576,6 +3587,7 @@ CREATE TABLE `shipments` (
 
 LOCK TABLES `shipments` WRITE;
 /*!40000 ALTER TABLE `shipments` DISABLE KEYS */;
+INSERT INTO `shipments` VALUES (1,NULL,7,7,NULL,'','',0,2,'Webkul\\Customer\\Models\\Customer',1,12,'2024-04-18 14:04:34','2024-04-18 14:04:34',1,'Default'),(2,NULL,7,7,NULL,'','',0,2,'Webkul\\Customer\\Models\\Customer',2,17,'2024-04-18 14:06:52','2024-04-18 14:06:52',1,'Default');
 /*!40000 ALTER TABLE `shipments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3952,7 +3964,7 @@ CREATE TABLE `wishlist` (
   CONSTRAINT `wishlist_channel_id_foreign` FOREIGN KEY (`channel_id`) REFERENCES `channels` (`id`) ON DELETE CASCADE,
   CONSTRAINT `wishlist_customer_id_foreign` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE,
   CONSTRAINT `wishlist_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3973,4 +3985,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-10 15:05:18
+-- Dump completed on 2024-04-19 16:18:23
