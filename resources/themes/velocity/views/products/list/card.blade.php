@@ -44,7 +44,7 @@
             </div>
 
             <div class="product-information">
-                <div>
+                <div >
                     <div class="product-name">
                         <a
                             href="{{ route('shop.productOrCategory.index', $product->url_key) }}"
@@ -117,6 +117,14 @@
             @endif
 
             <div class="card-body">
+                <div class="m-0 p-0">
+                    @include('shop::products.add-to-bag', [
+                   'reloadPage'        => true,
+                   'product'           => $product,
+                   'addClassToBtn'     => 'kz-add-link',
+                   'showCompare'       => false,
+               ])
+
                 <div class="product-name col-12 no-padding">
                     <a
                         href="{{ route('shop.productOrCategory.index', $product->url_key) }}"
@@ -142,6 +150,9 @@
                     </a>
                 </div>
 
+
+                </div>
+
                 <div class="product-price fs16 text-shaka-subtitle mb-0 pb-0">
                     @include ('shop::products.price', ['product' => $product])
                 </div>
@@ -159,14 +170,7 @@
 {{--                    </div>--}}
 {{--                @endif--}}
 
-                <div class="m-0 p-0">
-                    @include('shop::products.add-to-bag', [
-                   'reloadPage'        => true,
-                   'product'           => $product,
-                   'addClassToBtn'     => 'kz-add-link',
-                   'showCompare'       => false,
-               ])
-                </div>
+
             </div>
         </div>
     @endif

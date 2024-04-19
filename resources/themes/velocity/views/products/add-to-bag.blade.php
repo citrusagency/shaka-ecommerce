@@ -26,11 +26,11 @@
                     </add-to-bag>
                 @else
                     <div class="m-0 p-0">
-                        <a style="display: flex !important; padding: 8px;">
+                        <a style="display: flex !important; padding: 5px; line-height: 27px !important;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M12 22C13.1 22 14 21.1 14 20H10C10 21.1 10.9 22 12 22ZM18 16V11C18 7.9 16.4 5.4 13.5 4.7V4C13.5 3.2 12.8 2.5 12 2.5C11.2 2.5 10.5 3.2 10.5 4V4.7C7.6 5.4 6 7.9 6 11V16L4 18V19H20V18L18 16ZM16 17H8V11C8 8.5 9.5 6.5 12 6.5C14.5 6.5 16 8.5 16 11V17Z" fill="#1197C2"/>
                             </svg>
-                            <span class="kz-link">Notify me when available</span>
+                            <span class="kz-link">Notify me</span>
                         </a>
                     </div>
                 @endif
