@@ -71,14 +71,9 @@
                     btn-text="{{ (! isset($moveToCart) && $product->type == 'booking') ?  __('shop::app.products.book-now') : $btnText ?? __('shop::app.products.add-to-cart') }}">
                     </add-to-cart>
                 @else
-                    <button class="{{ $addToCartBtnClass ?? '' }}" style="font-size: 16px!important;
-                    width: 100%;
-                    background-color: transparent!important;
-                    border: none!important;
-                    text-align: left;
-                    font-weight: 500; line-height: 24px;
-                    /*text-decoration: underline;*/
-                    ">Notify me when available</button>
+                    <button class="btn bg-transparent text-white atc-btn">
+                        <span class="fs14 fw6 text-uppercase text-up-4">Notify me</span>
+                    </button>
                 @endif
             @endif
         </div>
