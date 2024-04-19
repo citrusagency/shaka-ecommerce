@@ -29,6 +29,10 @@
     .img-mobile{
         height: 500px;
     }
+    .product-container{
+        max-width: 350px;
+        min-width: 330px !important;
+    }
 }
 
 @media only screen and (max-width: 1192px) {
@@ -1143,6 +1147,10 @@
         margin-top: 10px;
         margin-left: -10px !important;
     }
+    //.product-container{
+        max-width: 220px!important;
+        min-width: 170px!important;
+    //}
 }
 
 @media only screen and (max-width: 500px) {
